@@ -1,0 +1,51 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.6 Commutation of $\nabla$ on the Riemann tensor -- simple computation}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   DD{#}::Derivative.
+   \nabla{#}::Derivative.
+
+   RabcdF := R_{a b c d} -> A_{a} B_{b} C_{c} D_{d}.      # cdb(RabcdF.000,RabcdF)
+   RabcdB := A_{a} B_{b} C_{c} D_{d} -> R_{a b c d}.      # cdb(RabcdB.000,RabcdB)
+
+   derivDD := DD_{b c}{V?_{a}}} -> R^{d}_{a b c} V?_{d}.  # cdb(derivDD.000,derivDD)
+
+   nablaDD := \nabla_{f}{\nabla_{e}{R_{a b c d}}}
+            - \nabla_{e}{\nabla_{f}{R_{a b c d}}} -> DD_{e f}{R_{a b c d}}.
+
+   # product rule for DD acting on A_{a} B_{b} C_{c} D_{d}
+   pruleDD := DD_{e f}{A_{a} B_{b} C_{c} D_{d}} -> DD_{e f}{A_{a}} B_{b} C_{c} D_{d}
+                                                 + A_{a} DD_{e f}{B_{b}} C_{c} D_{d}
+                                                 + A_{a} B_{b} DD_{e f}{C_{c}} D_{d}
+                                                 + A_{a} B_{b} C_{c} DD_{e f}{D_{d}}.
+                                                          # cdb(pruleDD.000,pruleDD)
+
+   expr :=   \nabla_{f}{\nabla_{e}{R_{a b c d}}}
+           - \nabla_{e}{\nabla_{f}{R_{a b c d}}}.         # cdb (ex-0306.100, expr)
+
+   substitute   (expr,nablaDD)                            # cdb (ex-0306.101, expr)
+   substitute   (expr,RabcdF)                             # cdb (ex-0306.102, expr)
+   substitute   (expr,pruleDD)                            # cdb (ex-0306.103, expr)
+   substitute   (expr,derivDD)                            # cdb (ex-0306.104, expr)
+   sort_product (expr)                                    # cdb (ex-0306.105, expr)
+   substitute   (expr,RabcdB)                             # cdb (ex-0306.106, expr)
+
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0306.100} = \Cdb*{ex-0306.101}
+                             = \Cdb*{ex-0306.102}
+                             = \Cdb*{ex-0306.103}
+                             = \Cdb*{ex-0306.104}
+                             = \Cdb*{ex-0306.105}
+                             = \Cdb*{ex-0306.106}}
+\end{dgroup*}
+
+\end{document}

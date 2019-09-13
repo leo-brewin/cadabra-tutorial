@@ -1,0 +1,121 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.8 Symmetry of $R_{ab}$}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative;
+
+   g_{a b}::Metric;
+   g^{a b}::InverseMetric;
+
+   dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.
+                                                          # cdb (dgab.000,dgab)
+
+   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                                                + \partial_{c}{g_{b e}}
+                                                - \partial_{e}{g_{b c}}).
+                                                          # cdb (Gamma.000,Gamma)
+
+   Rabcd := R^{a}_{b c d} ->
+            \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+          - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.
+                                                          # cdb (Rabcd.000,Rabcd)
+
+   Rab := R_{a b} -> R^{c}_{a c b}.                       # cdb (Rab.000,Rab)
+
+   expr := 4 (R_{a b} - R_{b a}).                         # cdb (ex-0308.100,expr)
+
+   substitute   (expr, Rab)                               # cdb (ex-0308.101,expr)
+   substitute   (expr, Rabcd)                             # cdb (ex-0308.102,expr)
+   substitute   (expr, Gamma)                             # cdb (ex-0308.103,expr)
+
+   distribute   (expr)                                    # cdb (ex-0308.104,expr)
+   product_rule (expr)                                    # cdb (ex-0308.105,expr)
+   canonicalise (expr)                                    # cdb (ex-0308.106,expr)
+
+   substitute   (expr, dgab)                              # cdb (ex-0308.107,expr)
+   canonicalise (expr)                                    # cdb (ex-0308.108,expr)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0308.100} = \Cdb*{ex-0308.101}
+                             = \Cdb*{ex-0308.102}
+                             = \Cdb*{ex-0308.103}
+                             = \Cdb*{ex-0308.104}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0308.105}
+                             = \Cdb*{ex-0308.106}
+                             = \Cdb*{ex-0308.107}
+                             = \Cdb*{ex-0308.108}}
+\end{dgroup*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.8 Symmetry of $R_{ab}$ alternative solution}
+
+This differs from the previous code by the inclusion of a call to \verb|canonicalise| immediately
+after the first two substitutions and a declaration that $\Gamma^{a}{}_{bc}$ is symmetric in $bc$.
+This pair of changes produces a more compact set of results than given above. Incidently, this also
+shows that $\partial_{a}\Gamma^{c}{}_{bc} = \partial_{b}\Gamma^{c}{}_{ac}$.
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative;
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   g_{a b}::Metric;
+   g^{a b}::InverseMetric;
+
+   dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.
+                                                          # cdb (dgab.000,dgab)
+
+   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                                                + \partial_{c}{g_{b e}}
+                                                - \partial_{e}{g_{b c}}).
+                                                          # cdb (Gamma.000,Gamma)
+
+   Rabcd := R^{a}_{b c d} ->
+            \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+          - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.
+                                                          # cdb (Rabcd.000,Rabcd)
+
+   Rab := R_{a b} -> R^{c}_{a c b}.                       # cdb (Rab.000,Rab)
+
+   expr := 4 (R_{a b} - R_{b a}).                         # cdb (ex-0308.200,expr)
+
+   substitute   (expr, Rab)                               # cdb (ex-0308.201,expr)
+   substitute   (expr, Rabcd)                             # cdb (ex-0308.202,expr)
+   canonicalise (expr)                                    # cdb (ex-0308.203,expr)
+   substitute   (expr, Gamma)                             # cdb (ex-0308.204,expr)
+
+   distribute   (expr)                                    # cdb (ex-0308.205,expr)
+   product_rule (expr)                                    # cdb (ex-0308.206,expr)
+   canonicalise (expr)                                    # cdb (ex-0308.207,expr)
+
+   substitute   (expr, dgab)                              # cdb (ex-0308.208,expr)
+   canonicalise (expr)                                    # cdb (ex-0308.209,expr)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0308.200} = \Cdb*{ex-0308.201}
+                             = \Cdb*{ex-0308.202}
+                             = \Cdb*{ex-0308.203}
+                             = \Cdb*{ex-0308.204}
+                             = \Cdb*{ex-0308.205}
+                             = \Cdb*{ex-0308.206}
+                             = \Cdb*{ex-0308.207}
+                             = \Cdb*{ex-0308.208}
+                             = \Cdb*{ex-0308.209}}
+\end{dgroup*}
+
+\end{document}

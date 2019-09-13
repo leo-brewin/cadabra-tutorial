@@ -1,0 +1,27 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+def add_tags (obj,tag):
+   n = 0
+   ans = Ex('0')
+   for i in obj.top().terms():
+      foo = obj[i]
+      bah = Ex(tag+'_{'+str(n)+'}')
+      ans := @(ans) + @(bah) @(foo).
+      n = n + 1
+   return ans
+
+def clear_tags (obj,tag):
+   ans := @(obj).
+   foo  = Ex(tag+'_{a?} -> 1')
+   substitute (ans,foo)
+   return ans
+
+expr := A_{a b} B^{a b} + A_{a b} A_{c d} B^{a b} B^{c d} - C_{a b} B^{a b}.
+
+expr  = add_tags (expr,'\\mu')
+
+substitute (expr, $\mu_{1} -> 0$)
+
+expr = clear_tags (expr,'\\mu')
+
+

@@ -1,0 +1,68 @@
+import cdblib
+jsonfile = 'example-02.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# rule for covariant derivative of v^{a}
+
+deriv := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}} + \Gamma^{b}_{c a} v^{c}.
+
+# create an expression
+
+foo := \nabla_{a}{v^{b}}.
+
+# apply the rule, then simplify
+
+substitute   (foo,deriv)
+canonicalise (foo)
+
+json.append (foo)
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# rule for covariant derivative of v^{a}
+
+deriv := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}} + \Gamma^{b}_{c a} v^{c}.
+
+# create an expression
+
+foo := \nabla_{a}{v^{b}}.
+
+# apply the rule, then simplify
+
+substitute   (foo,deriv)
+canonicalise (foo)
+
+json.append (foo)
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# template for covariant derivative of a vector
+
+deriv := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}} + \Gamma^{b}_{c a} A?^{c}.
+
+# create an expression
+
+foo := \nabla_{a}{u^{b}} + \nabla_{a}{v^{b}}.
+
+# apply the rule, then simplify
+
+substitute   (foo,deriv)
+canonicalise (foo)
+
+json.append (foo)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

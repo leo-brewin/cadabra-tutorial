@@ -1,0 +1,3 @@
+bah := {V_{\theta} = \varphi, V_{\varphi} = \sin(\theta)}.
+foo := U_{a} V_{b}.
+evaluate (foo, bah)

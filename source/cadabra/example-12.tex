@@ -1,0 +1,602 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-12.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 12 Checking the 2nd and 3rd order terms of Calzetta etal.}
+
+The following calculations show that my results for the RNC connection agree with those of Calzetta etal. to third order terms.
+
+Note that I take $\nabla_{ab}$ to be $\nabla_a\left(\nabla_b\right)$.
+
+Note also that $(LCB)\>R_{abcd} = - (Calzetta)\> R_{abcd}$. Consequently, I have replaced $R_{abcd}$ with
+$-R_{abcd}$ in the Calzetta expressions.
+
+This is relatively straightforward. We just apply a few carefully chosen applications of the first and second Bianchi identities.
+
+\clearpage
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,u,v#}::Indices("latin",position=independent).
+   {\mu,\nu,\rho,\sigma,\tau,\lambda,\xi#}::Indices("greek",position=independent).
+
+   \nabla{#}::Derivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+   g^{a b}::Weight(label=gnum,value=1).
+
+   \delta{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+   R_{a b c d}::Depends(\nabla{#}).
+
+   x^{a}::Weight(label=xnum,value=1).
+
+   def add_tags (obj,tag):
+
+      n = 0
+      ans = Ex('0')
+
+      for i in obj.top().terms():
+         foo = obj[i]
+         bah = Ex(tag+'_{'+str(n)+'}')
+         ans := @(ans) + @(bah) @(foo).
+         n = n + 1
+
+      return ans
+
+   def clear_tags (obj,tag):
+
+      ans := @(obj).
+      foo  = Ex(tag+'_{a?} -> 1')
+      substitute (ans,foo)
+
+      return ans
+
+   def get_xterm (obj,n):
+
+       foo := @(obj).
+       bah  = Ex("xnum = " + str(n))
+       distribute  (foo)
+       keep_weight (foo, bah)
+
+       return foo
+
+   def get_gterm (obj,n):
+
+       foo := @(obj).
+       bah  = Ex("gnum = " + str(n))
+       distribute  (foo)
+       keep_weight (foo, bah)
+
+       return foo
+
+   def product_sort (obj):
+       substitute (obj,$ g^{a b}                   -> A001^{a b}                $)
+       substitute (obj,$ x^{a}                     -> A002^{a}                  $)
+       substitute (obj,$ z^{a}                     -> A003^{a}                  $)
+       substitute (obj,$ R_{a b c d}               -> A004_{a b c d}            $)
+       substitute (obj,$ \nabla_{e}{R_{a b c d}}   -> A005_{a b c d e}          $)
+       substitute (obj,$ \nabla_{e f}{R_{a b c d}} -> A006_{a b c d e f}        $)
+       sort_sum       (obj)
+       sort_product   (obj)
+       rename_dummies (obj)
+       substitute (obj,$ A001^{a b}                -> g^{a b}                   $)
+       substitute (obj,$ A002^{a}                  -> x^{a}                     $)
+       substitute (obj,$ A003^{a}                  -> z^{a}                     $)
+       substitute (obj,$ A004_{a b c d}            -> R_{a b c d}               $)
+       substitute (obj,$ A005_{a b c d e}          -> \nabla_{e}{R_{a b c d}}   $)
+       substitute (obj,$ A006_{a b c d e f}        -> \nabla_{e f}{R_{a b c d}} $)
+
+   def reformat (obj,scaleA,scaleB):
+
+      foo  = Ex(str(scaleA))
+      moo  = Ex(str(scaleB))
+      bah := @(foo) @(obj) / @(moo).
+
+      distribute     (bah)
+      product_sort   (bah)
+      rename_dummies (bah)
+      canonicalise   (bah)
+      factor_out     (bah,$g^{c? d?}$)
+      factor_out     (bah,$x^{a?},z^{b?}$)
+      ans := @(moo) @(bah) / @(foo).
+
+      return ans
+
+   # ==========================================================================
+   # LCB
+
+   import cdblib
+   Gamma  = cdblib.get ('Gamma','example-11.json')                # cdb(ex-12.100,Gamma)
+
+   Gamma := z^{b} z^{c} @(Gamma).
+
+   # lower index ^{a} to _{v}
+
+   Gamma := g_{v a} @(Gamma).
+
+   distribute (Gamma)
+   substitute (Gamma, $g_{a d} g^{d b} -> \delta_{a}^{b}$)
+   eliminate_kronecker (Gamma)                                    # cdb(ex-12.101,Gamma)
+
+   # change free index _{v} to _{a}
+
+   foo := tmp_{v} -> @(Gamma).                                    # cdb(ex-12.191,foo)
+   bah := tmp_{a}.                                                # cdb(ex-12.192,bah)
+   substitute (bah, foo)                                          # cdb(ex-12.193,bah)
+
+   Gamma := @(bah).                                               # cdb(ex-12.102,Gamma)
+
+   product_sort (Gamma)                                           # cdb(ex-12.103,Gamma)
+
+   json.append (Gamma)
+
+   gam1  = get_xterm (Gamma,1)                                    # cdb(ex-12.200,gam1)
+   gam2  = get_xterm (Gamma,2)                                    # cdb(ex-12.201,gam2)
+   gam3  = get_xterm (Gamma,3)                                    # cdb(ex-12.202,gam3)
+
+   gam30 = get_gterm (gam3,0)                                     # cdb(ex-12.203,gam30)
+   gam31 = get_gterm (gam3,1)                                     # cdb(ex-12.204,gam31)
+
+   gam1  = reformat (gam1, 3,1)                                   # cdb(ex-12.300,gam1)
+   gam2  = reformat (gam2,12,1)                                   # cdb(ex-12.301,gam2)
+
+   gam30 = reformat (gam30,40,1)                                  # cdb(ex-12.302,gam30)
+   gam31 = reformat (gam31,45,2)                                  # cdb(ex-12.303,gam31)
+
+   gam3 := @(gam30) + @(gam31).                                   # cdb(ex-12.304,gam3)
+
+   Gamma := @(gam1) + @(gam2) + @(gam3).                          # cdb(ex-12.305,Gamma)
+
+   json.append (Gamma)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.100}}
+   \Dmath*{\cdb*{ex-12.191}}
+   \Dmath*{\cdb*{ex-12.192}}
+   \Dmath*{\cdb*{ex-12.193}}
+   \Dmath*{\cdb*{ex-12.101}}
+   \Dmath*{\cdb*{ex-12.102}}
+   \Dmath*{\cdb*{ex-12.103}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.200}}
+   \Dmath*{\cdb*{ex-12.201}}
+   \Dmath*{\cdb*{ex-12.202}}
+   \Dmath*{\cdb*{ex-12.203}}
+   \Dmath*{\cdb*{ex-12.204}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.300}}
+   \Dmath*{\cdb*{ex-12.301}}
+   \Dmath*{\cdb*{ex-12.302}}
+   \Dmath*{\cdb*{ex-12.303}}
+   \Dmath*{\cdb*{ex-12.304}}
+   \Dmath*{\cdb*{ex-12.305}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{cadabra}
+   # ==========================================================================
+   # Calzetta
+   # note: \nabla_{a b} defined as \nabla_{a}\nabla_{b}
+
+   GammaBar := z^{\nu} z^{\rho} (
+                 (2/3) R^{\mu}_{\nu\rho\sigma} x^{\sigma}
+               + (1/12) (5 \nabla_{\lambda}{R^{\mu}_{\nu\rho\sigma}}
+                         + \nabla_{\rho}{R^{\mu}_{\sigma\nu\lambda}}) x^{\sigma} x^{\lambda}
+               + (1/6) (  (9/10) \nabla_{\tau\lambda}{R^{\mu}_{\rho\nu\sigma}}
+                        + (3/20) (  \nabla_{\tau\rho}{R^{\mu}_{\sigma\nu\lambda}}
+                                  + \nabla_{\rho\tau}{R^{\mu}_{\sigma\nu\lambda}} )
+                        + (1/60) (  21 R^{\mu}_{\lambda\xi\rho} R^{\xi}_{\sigma\nu\tau}
+                                  + 48 R^{\mu}_{\xi\rho\lambda} R^{\xi}_{\sigma\nu\tau}
+                                  - 37 R^{\mu}_{\sigma\xi\lambda} R^{\xi}_{\nu\rho\tau} ) ) x^{\sigma} x^{\lambda} x^{\tau} ).
+                                                                  # cdb(ex-12.400,GammaBar)
+
+   # convert from Greek to Latin indices
+
+   distribute (GammaBar)
+   rename_dummies (GammaBar,"greek","latin")                      # cdb(ex-12.401,GammaBar)
+
+   # lower the \mu index
+
+   GammaBar := \delta_{a \mu} @(GammaBar).                        # cdb(ex-12.402,GammaBar)
+   distribute (GammaBar)                                          # cdb(ex-12.403,GammaBar)
+   eliminate_kronecker (GammaBar)                                 # cdb(ex-12.404,GammaBar)
+
+   # sort products
+
+   product_sort (GammaBar)                                        # cdb(ex-12.405,GammaBar)
+
+   json.append (GammaBar)
+
+   # Replace R with - R (Calzetta uses the non-MTW convention for Riemann)
+
+   substitute (GammaBar, $R_{a b c d} -> - R_{a b c d}$)          # cdb(ex-12.406,GammaBar)
+   substitute (GammaBar, $R^{a}_{b c d} -> - R^{a}_{b c d}$)      # cdb(ex-12.407,GammaBar)
+
+   substitute (GammaBar, $R^{a}_{b c d} -> g^{a e} R_{e b c d}$)  # cdb(ex-12.408,GammaBar)
+
+   cal1 = get_xterm (GammaBar,1)                                  # cdb(ex-12.500,cal1)
+   cal2 = get_xterm (GammaBar,2)                                  # cdb(ex-12.501,cal2)
+   cal3 = get_xterm (GammaBar,3)                                  # cdb(ex-12.502,cal3)
+
+   cal1 = reformat (cal1,3,1)                                     # cdb(ex-12.600,cal1)
+   cal2 = reformat (cal2,12,1)                                    # cdb(ex-12.601,cal2)
+   # cal3 = reformat (cal3,360,1)                                   # cdb(ex-12.602,cal3)
+
+   cal30 = get_gterm (cal3,0)                                     # cdb(ex-12.602,cal30)
+   cal31 = get_gterm (cal3,1)                                     # cdb(ex-12.603,cal31)
+
+   cal1  = reformat (cal1, 3,1)                                   # cdb(ex-12.604,cal1)
+   cal2  = reformat (cal2,12,1)                                   # cdb(ex-12.605,cal2)
+
+   cal30 = reformat (cal30,40,1)                                  # cdb(ex-12.606,cal30)
+   cal31 = reformat (cal31,360,1)                                 # cdb(ex-12.607,cal31)
+
+   cal3 := @(cal30) + @(cal31).                                   # cdb(ex-12.608,cal3)
+
+   GammaBar := @(cal1) + @(cal2) + @(cal3).                       # cdb(ex-12.409,GammaBar)
+
+   json.append (GammaBar)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.400}}
+   \Dmath*{\cdb*{ex-12.401}}
+   \Dmath*{\cdb*{ex-12.402}}
+   \Dmath*{\cdb*{ex-12.403}}
+   \Dmath*{\cdb*{ex-12.404}}
+   \Dmath*{\cdb*{ex-12.405}}
+   \Dmath*{\cdb*{ex-12.406}}
+   \Dmath*{\cdb*{ex-12.407}}
+   \Dmath*{\cdb*{ex-12.408}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.500}}
+   \Dmath*{\cdb*{ex-12.501}}
+   \Dmath*{\cdb*{ex-12.502}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.600}}
+   \Dmath*{\cdb*{ex-12.601}}
+   \Dmath*{\cdb*{ex-12.602}}
+   \Dmath*{\cdb*{ex-12.603}}
+   \Dmath*{\cdb*{ex-12.604}}
+   \Dmath*{\cdb*{ex-12.605}}
+   \Dmath*{\cdb*{ex-12.606}}
+   \Dmath*{\cdb*{ex-12.607}}
+   \Dmath*{\cdb*{ex-12.608}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.409}}
+\end{dgroup*}
+
+\clearpage
+
+\def\GammaBar{{\bar{\Gamma}}}
+
+% -----------------------------------------------------------------------------
+\subsection*{The fun begins $\Gamma - \GammaBar$}
+
+It's now time to compute the difference $\Gamma-\GammaBar$. Here it is.
+
+\begin{cadabra}
+   def reformat_diff (obj):
+
+       distribute (obj)
+
+       obj1  = get_xterm (obj,1)
+       obj2  = get_xterm (obj,2)
+       obj3  = get_xterm (obj,3)
+
+       obj30 = get_gterm (obj3,0)
+       obj31 = get_gterm (obj3,1)
+
+       obj1  = reformat (obj1, 3,1)
+       obj2  = reformat (obj2,12,1)
+
+       obj30 = reformat (obj30,40,1)
+       obj31 = reformat (obj31,360,1)
+
+       obj3 := @(obj30) + @(obj31).
+
+       ans := @(obj1) + @(obj2) + @(obj3).
+
+       return ans
+
+   # We could use reformat_diff here but instead we'll do it one step at a time so that
+   # we can see exactly what's going on. Later on we will use reformat_diff to do the job.
+
+   diff := @(Gamma) - @(GammaBar).                                # cdb(ex-12.diff.100,diff)
+   distribute (diff)
+
+   diff1  = get_xterm (diff,1)                                    # cdb(ex-12.diff.200,diff1)
+   diff2  = get_xterm (diff,2)                                    # cdb(ex-12.diff.201,diff2)
+   diff3  = get_xterm (diff,3)                                    # cdb(ex-12.diff.202,diff3)
+
+   diff30 = get_gterm (diff3,0)                                   # cdb(ex-12.diff.203,diff30)
+   diff31 = get_gterm (diff3,1)                                   # cdb(ex-12.diff.204,diff31)
+
+   diff1  = reformat (diff1, 3,1)                                 # cdb(ex-12.diff.300,diff1)
+   diff2  = reformat (diff2,12,1)                                 # cdb(ex-12.diff.301,diff2)
+
+   diff30 = reformat (diff30,40,1)                                # cdb(ex-12.diff.302,diff30)
+   diff31 = reformat (diff31,360,1)                               # cdb(ex-12.diff.303,diff31)
+
+   diff3 := @(diff30) + @(diff31).                                # cdb(ex-12.diff.304,diff3)
+
+   diff := @(diff1) + @(diff2) + @(diff3).                        # cdb(ex-12.diff.305,diff)
+
+\end{cadabra}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.100}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.200}}
+   \Dmath*{\cdb*{ex-12.diff.201}}
+   \Dmath*{\cdb*{ex-12.diff.202}}
+   \Dmath*{\cdb*{ex-12.diff.203}}
+   \Dmath*{\cdb*{ex-12.diff.204}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.300}}
+   \Dmath*{\cdb*{ex-12.diff.301}}
+   \Dmath*{\cdb*{ex-12.diff.302}}
+   \Dmath*{\cdb*{ex-12.diff.303}}
+   \Dmath*{\cdb*{ex-12.diff.304}}
+   \Dmath*{\cdb*{ex-12.diff.305}}
+\end{dgroup*}
+
+\clearpage
+
+% -----------------------------------------------------------------------------
+\subsection*{Second order terms}
+
+\begin{cadabra}
+   diff2  = get_xterm (diff,2)
+   diff2 := 12 @(diff2).                                                        # cdb (ex-12.701,diff2)
+   distribute (diff2)                                                           # cdb (ex-12.702,diff2)
+
+   diff2 = add_tags (diff2,'\\mu')                                              # cdb (ex-12.711,diff2)
+
+   # swap indices on middle term, then apply 2nd Bianchi identity
+
+   zoom       (diff2, $\mu_{1} Q??$)                                            # cdb (ex-12.712,diff2)
+   substitute (diff2, $\nabla_{b}{R_{a d c e}} -> - \nabla_{b}{R_{d a c e}}$)   # cdb (ex-12.713,diff2)
+   unzoom     (diff2)
+
+   substitute (diff2, $\mu_{1} -> \mu_{0}, \mu_{2} -> \mu_{0}$)                 # cdb (ex-12.714,diff2)
+   substitute (diff2, $\mu_{0} -> 0$)                                           # cdb (ex-12.715,diff2)
+
+   diff2 = clear_tags (diff2,'\\mu')                                            # cdb (ex-12.716,diff2)
+
+   diff2 := @(diff2) / 12 .
+
+   diff := @(diff1) + @(diff2) + @(diff3).
+
+   diff  = reformat_diff (diff)                                                 # cdb(ex-12.diff.306,diff)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.701}}
+   \Dmath*{\cdb*{ex-12.702}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.711}}
+   \Dmath*{\cdb*{ex-12.712}}
+   \Dmath*{\cdb*{ex-12.713}}
+   \Dmath*{\cdb*{ex-12.714}}
+   \Dmath*{\cdb*{ex-12.715}}
+   \Dmath*{\cdb*{ex-12.716}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.306}}
+\end{dgroup*}
+
+\clearpage
+
+% -----------------------------------------------------------------------------
+\subsection*{Third order terms, commute $\nabla\nabla R$ terms}
+
+\begin{cadabra}
+   diff3  = get_xterm (diff,3)
+   diff3 := 360 @(diff3).                              # cdb (ex-12.801,diff3)
+   distribute (diff3)                                  # cdb (ex-12.802,diff3)
+
+   # commutation rule for covariant derivs on Rabcd, see exrecise 3.6
+   # note: \nabla_{a b} defined as \nabla_{a}\nabla_{b}
+   CommuteNablaRiemann := \nabla_{f e}(R_{a b c d}) -> \nabla_{e f}(R_{a b c d})
+                                                     + g^{u v} R_{u a e f} R_{v b c d}
+                                                     + g^{u v} R_{u b e f} R_{a v c d}
+                                                     + g^{u v} R_{u c e f} R_{a b v d}
+                                                     + g^{u v} R_{u d e f} R_{a b c v}.
+
+   diff3 = add_tags (diff3,'\\mu')                     # cdb (ex-12.901,diff3)
+
+   # commute derivs on Rabcd so that each double deriv is of the form \nabla_{b*}
+
+   substitute (diff3, $\mu_{3} -> \mu_{1}$)            # cdb (ex-12.902,diff3)
+
+   zoom       (diff3, $\mu_{1} Q??$)                   # cdb (ex-12.903,diff3)
+   substitute (diff3, CommuteNablaRiemann)             # cdb (ex-12.904,diff3)
+   unzoom     (diff3)
+
+   diff3 = clear_tags (diff3,'\\mu')
+   diff3 := @(diff3) / 360 .
+
+   distribute   (diff3)
+   canonicalise (diff3)                                # cdb (ex-12.905,diff3)
+
+   diff := @(diff1) + @(diff2) + @(diff3).
+
+   diff  = reformat_diff (diff)                        # cdb(ex-12.diff.307,diff)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.801}}
+   \Dmath*{\cdb*{ex-12.802}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.901}}
+   \Dmath*{\cdb*{ex-12.902}}
+   \Dmath*{\cdb*{ex-12.903}}
+   \Dmath*{\cdb*{ex-12.904}}
+   \Dmath*{\cdb*{ex-12.905}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.307}}
+\end{dgroup*}
+
+\clearpage
+
+% -----------------------------------------------------------------------------
+\subsection*{Third order terms, use 2nd Bianchi identity on $\nabla\nabla R$ terms}
+
+\begin{cadabra}
+   diff3  = get_xterm (diff,3)
+   diff3 := 360 @(diff3).                                                           # cdb (ex-12.910,diff3)
+   distribute (diff3)                                                               # cdb (ex-12.911,diff3)
+
+   diff3 = add_tags (diff3,'\\mu')                                                  # cdb (ex-12.912,diff3)
+
+   # swap indices on middle second deriv term, then apply 2nd Bianchi identity
+
+   zoom       (diff3, $\mu_{1} Q??$)                                                # cdb (ex-12.913,diff3)
+   substitute (diff3, $\nabla_{b c}{R_{a e d f}} -> - \nabla_{b c}{R_{e a d f}}$)   # cdb (ex-12.914,diff3)
+   unzoom     (diff3)
+
+   substitute (diff3, $\mu_{1} -> \mu_{0}, \mu_{2} -> \mu_{0}$)                     # cdb (ex-12.915,diff3)
+   substitute (diff3, $\mu_{0} -> 0$)                                               # cdb (ex-12.916,diff3)
+
+   diff3 = clear_tags (diff3,'\\mu')
+   diff3 := @(diff3) / 360 .
+
+   distribute   (diff3)
+   canonicalise (diff3)                                                             # cdb (ex-12.917,diff3)
+
+   diff := @(diff1) + @(diff2) + @(diff3).
+
+   diff  = reformat_diff (diff)                                                     # cdb(ex-12.diff.308,diff)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.910}}
+   \Dmath*{\cdb*{ex-12.911}}
+   \Dmath*{\cdb*{ex-12.912}}
+   \Dmath*{\cdb*{ex-12.913}}
+   \Dmath*{\cdb*{ex-12.914}}
+   \Dmath*{\cdb*{ex-12.915}}
+   \Dmath*{\cdb*{ex-12.916}}
+   \Dmath*{\cdb*{ex-12.917}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.308}}
+\end{dgroup*}
+
+\clearpage
+
+% -----------------------------------------------------------------------------
+\subsection*{Third order terms, use 1st Bianchi identity on $R R$ terms}
+
+\begin{cadabra}
+   diff3  = get_xterm (diff,3)
+   diff3 := 360 @(diff3).
+   distribute (diff3)
+
+   diff3 = add_tags (diff3,'\\mu')                                              # cdb (ex-12.921,diff3)
+
+   # swap indices on middle term, then apply 1st Bianchi identity
+
+   zoom       (diff3, $\mu_{1} Q??$)                                            # cdb (ex-12.922,diff3)
+   substitute (diff3, $R_{a d b g} R_{c e f h} -> - R_{a d g b} R_{c e f h}$)   # cdb (ex-12.923,diff3)
+   unzoom     (diff3)
+
+   substitute (diff3, $\mu_{1} -> \mu_{0}, \mu_{2} -> \mu_{0}$)                 # cdb (ex-12.924,diff3)
+   substitute (diff3, $\mu_{0} -> 0$)                                           # cdb (ex-12.925,diff3)
+
+   diff3 = clear_tags (diff3,'\\mu')                                            # cdb (ex-12.926,diff3)
+
+   diff := @(diff1) + @(diff2) + @(diff3).
+
+   diff  = reformat_diff (diff)                                                 # cdb(ex-12.diff.309,diff)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.921}}
+   \Dmath*{\cdb*{ex-12.922}}
+   \Dmath*{\cdb*{ex-12.923}}
+   \Dmath*{\cdb*{ex-12.924}}
+   \Dmath*{\cdb*{ex-12.925}}
+   \Dmath*{\cdb*{ex-12.926}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff.309}}
+\end{dgroup*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.3 Evaluate with undefined components}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   bah := {V_{\theta} = \varphi, V_{\varphi} = \sin(\theta)}.  # cdb(ex-0603.100,bah)
+   foo := U_{a} V_{b}.                                         # cdb(ex-0603.101,foo)
+
+   evaluate (foo, bah)                                         # cdb(ex-0603.102,foo)
+\end{cadabra}
+
+\begin{align*}
+   & \Cdb{ex-0603.100}\\[10pt]
+   & \Cdb{ex-0603.101}\\[10pt]
+   & \Cdb{ex-0603.102}
+\end{align*}
+
+\end{document}

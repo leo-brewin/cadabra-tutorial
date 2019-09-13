@@ -1,0 +1,124 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+% \bgroup
+% \CdbSetup{action=hide}
+% \begin{cadabra}
+%    import cdblib
+%    jsonfile = 'example-08.json'
+%    cdblib.create (jsonfile)
+%    json = []
+% \end{cadabra}
+% \egroup
+%
+% \clearpage
+
+% ============================================================================================
+\section*{Example 8 Importing and exporting Cadabra expressions}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   def create (file_name):
+       import json, io, os, errno
+
+       try:
+           os.remove(file_name)                # delete the file if it exsists
+           with open(file_name, 'w'): pass     # create an empty file
+       except OSError as e:
+           if e.errno == errno.ENOENT:         # errno.ENOENT = no such file or directory
+              with open(file_name, 'w'): pass  # create an empty file
+           else:
+               raise                           # report an exception
+
+       # Create and save an empty dict
+       data_out = {}
+       with io.open(os.getcwd() + '/' + file_name, 'w', encoding='utf-8') as out_file:
+           out_file.write(json.dumps(data_out,
+                                     indent=2,
+                                     sort_keys=True,
+                                     separators=(',', ': '),
+                                     ensure_ascii=False)+'\n')
+
+   def put (key_name,object,file_name):
+       import json, io, os
+
+       # Read the current dict
+       with io.open(os.getcwd() + '/' + file_name) as inp_file:
+           data_out = json.load(inp_file)
+
+       # Add a new entry to the dict
+       data_out[key_name] = object.input_form()
+
+       # Save the updated dict
+       with io.open(os.getcwd() + '/' + file_name, 'w', encoding='utf-8') as out_file:
+           out_file.write(json.dumps(data_out,
+                                     indent=2,
+                                     sort_keys=True,
+                                     separators=(',', ': '),
+                                     ensure_ascii=False)+'\n')
+
+   def get (key_name,file_name):
+       import json, io, os
+
+       # Read the current dict
+       with io.open(os.getcwd() + '/' + file_name) as inp_file:
+           data_inp = json.load(inp_file)
+
+       # Return one entry from the dict
+       return Ex (data_inp[key_name])
+
+   lib_name = 'example-08.json'
+
+   create (lib_name)
+
+   \nabla{#}::Derivative.
+
+   gab := g_{a b} - 1/3 x^{c} x^{d} R_{a c b d}
+                  - 1/6 x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}.                   # cdb (ex-08-02.101,gab)
+
+   iab := g^{a b} + 1/3 x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}
+                  + 1/6 x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}.   # cdb (ex-08-02.102,iab)
+
+   put ('g_ab',gab,lib_name)
+   put ('g^ab',iab,lib_name)
+
+   foo = get ('g_ab',lib_name)                        # cdb (ex-08-02.103,foo)
+   bah = get ('g^ab',lib_name)                        # cdb (ex-08-02.104,bah)
+
+   tmp := @(gab) - @(foo).                            # cdb (ex-08-02.105,tmp)
+   tmp := @(iab) - @(bah).                            # cdb (ex-08-02.106,tmp)
+\end{cadabra}
+
+\begin{align*}
+   g_{ab}(x) &= \Cdb{ex-08-02.101}\\[10pt]
+   g^{ab}(x) &= \Cdb{ex-08-02.102}
+\end{align*}
+
+\begin{align*}
+   {\bar{g}}_{ab}(x) &= \Cdb{ex-08-02.103}\\[10pt]
+   {\bar{g}}^{ab}(x) &= \Cdb{ex-08-02.104}
+\end{align*}
+
+\begin{align*}
+   g_{ab}(x) - {\bar{g}}_{ab}(x) &= \Cdb{ex-08-02.105}\\[10pt]
+   g^{ab}(x) - {\bar{g}}^{ab}(x) &= \Cdb{ex-08-02.106}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+% \bgroup
+% \CdbSetup{action=hide}
+% \begin{cadabra}
+%    for i in range( len(json) ):
+%       cdblib.put ('json%03d'%(i),json[i],jsonfile)
+% \end{cadabra}
+% \egroup
+
+\end{document}

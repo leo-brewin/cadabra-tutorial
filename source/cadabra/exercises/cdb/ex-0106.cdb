@@ -1,0 +1,19 @@
+{D,C,B,A}::SortOrder.
+
+foo := A B C D .
+
+sort_product (foo)
+
+{V,U}::SortOrder.
+
+foo := U V A B C D .
+
+sort_product (foo)
+
+{A,B,C,D}::SortOrder.
+                       # first SortOrder so they will be effectively ignored
+
+foo := U V D C B A .
+
+sort_product (foo)
+

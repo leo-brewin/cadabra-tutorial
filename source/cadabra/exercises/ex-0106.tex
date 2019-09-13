@@ -1,0 +1,47 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.6 Multiple {\tt SortOrder} lists}
+
+\begin{cadabra}
+   {D,C,B,A}::SortOrder.  # first SortOrder list
+
+   foo := A B C D .       # cdb(ex-0106.101,foo)
+
+   sort_product (foo)     # cdb(ex-0106.102,foo)
+
+   {V,U}::SortOrder.      # second SortOrder list, all entries distinct from first list
+
+   foo := U V A B C D .   # cdb(ex-0106.201,foo)
+
+   sort_product (foo)     # cdb(ex-0106.202,foo)
+
+   {A,B,C,D}::SortOrder.  # all entries in this list appear in the
+                          # first SortOrder so they will be effectively ignored
+
+   foo := U V D C B A .   # cdb(ex-0106.301,foo)
+
+   sort_product (foo)     # cdb(ex-0106.302,foo)
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}[spread=2pt]
+   \Dmath*{\cdb*{ex-0106.101}}
+   \Dmath*{\cdb*{ex-0106.102}}
+\end{dgroup*}
+
+\begin{dgroup*}[spread=2pt]
+   \Dmath*{\cdb*{ex-0106.201}}
+   \Dmath*{\cdb*{ex-0106.202}}
+\end{dgroup*}
+
+\begin{dgroup*}[spread=2pt]
+   \Dmath*{\cdb*{ex-0106.301}}
+   \Dmath*{\cdb*{ex-0106.302}}
+\end{dgroup*}
+
+\end{document}

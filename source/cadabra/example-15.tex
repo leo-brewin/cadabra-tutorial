@@ -1,0 +1,151 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-15.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 15 Verifying the BSSN equations}
+
+This is short examplem verifies two of the main equations in the Phys Rev D paper
+by Miguel Alcubierre, Bernd Brugmann etal. (Phys.Rev.D. (62) 044034 (2000)).
+
+The code for the full set of BSSN equations can be found at
+\url{https://github.com/leo-brewin/adm-bssn-equations}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent,values={t,x,y,z}).
+   {t,x,y,z}::Coordinate.
+
+   \partial{#}::PartialDerivative.
+   D{#}::Derivative.
+   DBar{#}::Derivative.
+
+   N::Depends(t,x,y,z).
+
+   g_{a b}::Symmetric.
+   g^{a b}::Symmetric.
+   g_{a}^{b}::KroneckerDelta.
+   g^{a}_{b}::KroneckerDelta.
+
+   g_{a b}::Depends(t,x,y,z).
+   g^{a b}::Depends(t,x,y,z).
+
+   gBar_{a b}::Symmetric.
+   gBar^{a b}::Symmetric.
+   gBar_{a}^{b}::KroneckerDelta.
+   gBar^{a}_{b}::KroneckerDelta.
+
+   gBar_{a b}::Depends(t,x,y,z).
+   gBar^{a b}::Depends(t,x,y,z).
+
+   trK::LaTeXForm("K").
+   detg::LaTeXForm("g").
+   ABar{#}::LaTeXForm("{\bar{A}}").
+   DBar{#}::LaTeXForm("{\bar{D}}").
+\end{cadabra}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\subsection*{15.1 Evolution equation for $\phi$}
+
+\begin{cadabra}
+   phi     := \phi -> (1/12) \log(detg).
+   gdotK   := g^{i j} K_{i j} -> trK.
+   DdetgDt := \partial_{t}{detg} -> detg g^{i j} \partial_{t}{g_{i j}}.
+
+   DgijDt  := \partial_{t}{g_{i j}} -> -2 N K_{i j}.
+
+   dlog    := \partial_{a?}{\log(A?)} -> (1/A?)\partial_{a?}{A?}.
+   dexp    := \partial_{a?}{\exp(A?)} -> \exp(A?)\partial_{a?}{A?}.
+
+   dotphi  := \partial_{t}{\phi}.
+
+   substitute (dotphi, phi)                 # cdb (ex-15-02.101,dotphi)
+   substitute (dotphi, dlog)                # cdb (ex-15-02.102,dotphi)
+   substitute (dotphi, DdetgDt)             # cdb (ex-15-02.103,dotphi)
+   substitute (dotphi, DgijDt)              # cdb (ex-15-02.104,dotphi)
+   substitute (dotphi, gdotK)               # cdb (ex-15-02.105,dotphi)
+   map_sympy  (dotphi, "simplify")          # cdb (ex-15-02.106,dotphi)
+
+   DphiDt := \partial_{t}{\phi} -> @(dotphi).
+
+   json.append (dotphi)
+\end{cadabra}
+
+\begin{align*}
+  \frac{d{\phi}}{dt} &=\Cdb{ex-15-02.101}\\[10pt]
+                     &=\Cdb{ex-15-02.102}\\[10pt]
+                     &=\Cdb{ex-15-02.103}\\[10pt]
+                     &=\Cdb{ex-15-02.104}\\[10pt]
+                     &=\Cdb{ex-15-02.105}\\[10pt]
+                     &=\Cdb{ex-15-02.106}
+\end{align*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\subsection*{15.2 Evolution equation for ${\bar g}_{ij}$}
+
+\begin{cadabra}
+   gBarij := gBar_{i j} -> \exp(-4\phi) g_{i j}.
+   Kij    := K_{i j} -> A_{i j} + (1/3) g_{i j} trK.
+   A2ABar := \exp(-4\phi) A_{i j} -> ABar_{i j}.
+   ABar2A := ABar_{i j} -> \exp(-4\phi) A_{i j}.
+
+   dotgBarij := \partial_{t}{gBar_{i j}}.
+
+   substitute   (dotgBarij, gBarij)         # cdb (ex-15-03.101,dotgBarij)
+   product_rule (dotgBarij)                 # cdb (ex-15-03.102,dotgBarij)
+   substitute   (dotgBarij, dexp)           # cdb (ex-15-03.103,dotgBarij)
+   substitute   (dotgBarij, DgijDt)         # cdb (ex-15-03.104,dotgBarij)
+   substitute   (dotgBarij, DphiDt)         # cdb (ex-15-03.105,dotgBarij)
+   substitute   (dotgBarij, Kij)            # cdb (ex-15-03.106,dotgBarij)
+   distribute   (dotgBarij)                 # cdb (ex-15-03.107,dotgBarij)
+   map_sympy    (dotgBarij, "simplify")     # cdb (ex-15-03.108,dotgBarij)
+   substitute   (dotgBarij, A2ABar)         # cdb (ex-15-03.109,dotgBarij)
+
+   DgBarijDt := \partial_{t}{gBar_{i j}} -> @(dotgBarij).
+
+   json.append (dotgBarij)
+\end{cadabra}
+
+\begin{align*}
+  \frac{d{\bar g}_{ij}}{dt} &=\Cdb{ex-15-03.101}\\[10pt]
+                            &=\Cdb{ex-15-03.102}\\[10pt]
+                            &=\Cdb{ex-15-03.103}\\[10pt]
+                            &=\Cdb{ex-15-03.104}\\[10pt]
+                            &=\Cdb{ex-15-03.105}\\[10pt]
+                            &=\Cdb{ex-15-03.106}\\[10pt]
+                            &=\Cdb{ex-15-03.107}\\[10pt]
+                            &=\Cdb{ex-15-03.108}\\[10pt]
+                            &=\Cdb{ex-15-03.109}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

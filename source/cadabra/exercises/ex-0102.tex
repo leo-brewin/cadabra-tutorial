@@ -1,0 +1,42 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.2 Christoffel symbol and dg}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+   g_{a b}::Metric.
+   g_{a}^{b}::KroneckerDelta.
+
+   \partial{#}::PartialDerivative.
+
+   GammaU := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                                + \partial_{c}{g_{b d}}
+                                                - \partial_{d}{g_{b c}} ).
+
+   GammaD := \Gamma_{a b c} -> g_{a d} \Gamma^{d}_{b c}.
+
+   expr := \Gamma_{a b c} + \Gamma_{b a c} - \partial_{c}{g_{a b}}.   # cdb (ex-0102.101,expr)
+
+   substitute          (expr, GammaD)                                 # cdb (ex-0102.102,expr)
+   substitute          (expr, GammaU)                                 # cdb (ex-0102.103,expr)
+   distribute          (expr)                                         # cdb (ex-0102.104,expr)
+   eliminate_metric    (expr)                                         # cdb (ex-0102.105,expr)
+   eliminate_kronecker (expr)                                         # cdb (ex-0102.106,expr)
+   canonicalise        (expr)                                         # cdb (ex-0102.107,expr)
+\end{cadabra}
+
+\begin{align*}
+   \cdb{ex-0102.101} &= \cdb{ex-0102.102}\\
+                     &= \cdb{ex-0102.103}\\
+                     &= \cdb{ex-0102.104}\\
+                     &= \cdb{ex-0102.105}\\
+                     &= \cdb{ex-0102.106}\\
+                     &= \cdb{ex-0102.107}
+\end{align*}
+
+\end{document}

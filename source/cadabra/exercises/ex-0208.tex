@@ -1,0 +1,36 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.8 Position keyword in {\tt ::Indices}}
+
+\begin{cadabra}
+   {a,b,c}::Indices(position=free).
+
+   foo := A_{a b} + A^{a b}.                       # cdb (ex-0208.101,foo)
+
+   substitute (foo, $A_{a b} -> B_{a b}$)          # cdb (ex-0208.102,foo)
+
+   {p,q,r}::Indices(position=fixed).
+
+   foo := A_{p q} B^{p q} + A^{p q} B_{p q}.       # cdb (ex-0208.201,foo)
+
+   canonicalise (foo)                              # cdb (ex-0208.202,foo)
+
+   {u,v,w}::Indices(position=independent).
+
+   foo := A_{u v} B^{u v} + A^{u v} B_{u v}.       # cdb (ex-0208.301,foo)
+
+   canonicalise (foo)                              # cdb (ex-0208.302,foo)
+
+\end{cadabra}
+
+\begin{align*}
+   \cdb{ex-0208.101} &= \Cdb{ex-0208.102}\\[5pt]
+   \cdb{ex-0208.201} &= \Cdb{ex-0208.202}\\[5pt]
+   \cdb{ex-0208.301} &= \Cdb{ex-0208.302}
+\end{align*}
+
+\end{document}

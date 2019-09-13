@@ -1,0 +1,66 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.7 Subtleties of {\tt foo = bah} and {\tt foo := @(bah)}}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h#}::Indices.
+
+   foo := B_{b} A_{a}.
+   bah := A_{a} C_{c}.
+
+   # cdbBeg(print.0107)
+   print("foo = "+str(foo))
+   print("bah = "+str(bah)+"\n")
+
+   print("type foo = "+str(type(foo)))
+   print("type bah = "+str(type(bah))+"\n")
+
+   print("id foo = "+str(id(foo)))
+   print("id bah = "+str(id(bah))+"\n")
+
+   bah = foo
+
+   print("foo = "+str(foo))
+   print("bah = "+str(bah)+"\n")
+
+   sort_product (foo)
+
+   print("bah = "+str(bah)+"\n")
+
+   print("id foo = "+str(id(foo)))
+   print("id bah = "+str(id(bah))+"\n")
+
+   bah := @(foo).
+
+   print("id foo = "+str(id(foo)))
+   print("id bah = "+str(id(bah))+"\n")
+   # cdbEnd(print.0107)
+\end{cadabra}
+
+\clearpage
+
+\IfFileExists{ex-0106.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{ex-0106.cdbcopy}}%
+{Where is {\tt ex-0106.cdbcopy}?}
+
+\vskip 1cm
+Note that the line numbers referenced in the following are those of the output above not
+those of the Cadabra source.
+
+\begin{itemize}
+   \item Lines 7 and 8 show that the objects \verb|foo| and \verb|bah| point to distinct
+         areas of memeory (i.e., they point to different objects).
+   \item Lines 10 and 11 show the result of the statement \verb|bah = foo|.
+   \item Line 13 shows that \verb|bah| has changed after the statement
+         \verb|sort_product (foo)|.
+   \item Lines 15 and 16 verifies that \verb|foo| and \verb|bah| point to the same object
+         (so changes in \verb|foo| will be seen by \verb|bah|, as just noted).
+   \item Lines 18 and 19 shows that after \verb|bah := @(foo)| the symbols \verb|bah| and
+         \verb|foo| no longer point to the same object.
+\end{itemize}
+
+\end{document}

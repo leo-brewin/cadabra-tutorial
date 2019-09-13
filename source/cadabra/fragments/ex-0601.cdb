@@ -1,0 +1,2 @@
+dV := dV_{a b} -> \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.
+evaluate (dV, V, rhsonly=True)

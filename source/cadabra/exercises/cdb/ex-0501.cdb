@@ -1,0 +1,7 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+expr := A_{a} (P^{b}+Q^{b}) + C_{a} V^{b}.
+
+substitute (expr, $A_{a} B?? + C_{a} D?? -> A_{a} D?? + C_{a} B??$)
+
+

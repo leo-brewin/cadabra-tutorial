@@ -1,0 +1,98 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-05.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 5a Keeping focused}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+   expr := A_{a} v^{a} + B_{a} v^{a} + C_{a} v^{a}.  # cdb (ex-05.100,expr)
+
+   zoom (expr,$B_{a} Q??$)                           # cdb (ex-05.101,expr)
+   substitute (expr, $v^{a} -> w^{a}$)               # cdb (ex-05.102,expr)
+   unzoom (expr)                                     # cdb (ex-05.103,expr)
+
+   json.append (expr)
+\end{cadabra}
+
+\begin{align*}
+   \cdb{ex-05.100} &= \Cdb{ex-05.101}\\
+                   &= \Cdb{ex-05.102}\\
+                   &= \Cdb{ex-05.103}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 5b Tags}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   def add_tags (obj,tag):
+      n = 0
+      ans = Ex('0')
+      for i in obj.top().terms():
+         foo = obj[i]
+         bah = Ex(tag+'_{'+str(n)+'}')
+         ans := @(ans) + @(bah) @(foo).
+         n = n + 1
+      return ans
+
+   def clear_tags (obj,tag):
+      ans := @(obj).
+      foo  = Ex(tag+'_{a?} -> 1')
+      substitute (ans,foo)
+      return ans
+
+   expr := 2 V_{p q} - 3 V_{q p}.                    # cdb (ex-05.200,expr)
+
+   expr = add_tags (expr,'\\mu')                     # cdb (ex-05.201,expr)
+
+   zoom       (expr, $\mu_{1} Q??$)                  # cdb (ex-05.202,expr)
+   substitute (expr, $V_{a b} -> - V_{b a}$)         # cdb (ex-05.203,expr)
+   unzoom     (expr)                                 # cdb (ex-05.204,expr)
+
+   expr = clear_tags (expr,'\\mu')                   # cdb (ex-05.205,expr)
+
+   json.append (expr)
+\end{cadabra}
+
+\begin{align*}
+   \cdb{ex-05.200} &= \Cdb{ex-05.201}\\
+                   &= \Cdb{ex-05.202}\\
+                   &= \Cdb{ex-05.203}\\
+                   &= \Cdb{ex-05.204}\\
+                   &= \Cdb{ex-05.205}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

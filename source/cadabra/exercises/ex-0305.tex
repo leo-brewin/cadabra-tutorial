@@ -1,0 +1,31 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.5 Commutation of covariant derivatives}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+
+   expr :=   \nabla_{d}{\nabla_{c}{A_{a} B_{b}}}
+           - \nabla_{c}{\nabla_{d}{A_{a} B_{b}}}.  # cdb(ex-0305.100,expr)
+
+   product_rule (expr)                             # cdb(ex-0305.101,expr)
+   distribute   (expr)                             # cdb(ex-0305.102,expr)
+   product_rule (expr)                             # cdb(ex-0305.103,expr)
+   factor_out   (expr,$A_{a?},B_{b?}$)             # cdb(ex-0305.104,expr)
+
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0305.100} = \Cdb*{ex-0305.101}
+                             = \Cdb*{ex-0305.102}
+                             = \Cdb*{ex-0305.103}
+                             = \Cdb*{ex-0305.104}}
+\end{dgroup*}
+
+\end{document}

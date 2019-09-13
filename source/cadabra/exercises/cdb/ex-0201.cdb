@@ -1,0 +1,63 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# templates for covariant derivatives
+
+deriv1 := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}}
+                              + \Gamma^{b}_{c a} A?^{c}.
+
+deriv2 := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}}
+                              - \Gamma^{c}_{b a} A?_{c}.
+
+# create an object
+
+uv := \nabla_{a}{v_{b} u^{b}}
+    - \partial_{a}{v_{b} u^{b}}.
+
+# apply the rules, then simplify
+
+product_rule   (uv)
+substitute     (uv,deriv1)
+substitute     (uv,deriv2)
+distribute     (uv)
+sort_product   (uv)
+rename_dummies (uv)
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# templates for covariant derivatives
+
+deriv1 := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}}
+                              + \Gamma^{b}_{c a} A?^{c}.
+
+deriv2 := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}}
+                              - \Gamma^{c}_{b a} A?_{c}.
+
+# tempaltes for product rules
+
+deriv3 := \nabla_{a}{A?_{b} B?^{c}} -> B?^{c} \nabla_{a}{A?_{b}}
+                                     + A?_{b} \nabla_{a}{B?^{c}}.
+
+deriv4 := \partial_{a}{A?_{b} B?^{c}} -> B?^{c} \partial_{a}{A?_{b}}
+                                       + A?_{b} \partial_{a}{B?^{c}}.
+
+# create an object
+
+uv := \nabla_{a}{v_{b} u^{b}}
+    - \partial_{a}{v_{b} u^{b}}.
+
+# apply the rules, then simplify
+
+substitute     (uv,deriv3)
+substitute     (uv,deriv4)
+substitute     (uv,deriv1)
+substitute     (uv,deriv2)
+distribute     (uv)
+sort_product   (uv)
+rename_dummies (uv)
+

@@ -1,0 +1,87 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-03.101}{%
+V^{a}{}_{; b} \rightarrow \partial_{b}{V^{a}}+\Gamma^{a}{}_{c b} V^{c}%
+}
+\cdbtag{ex-03.102}{%
+V^{a}{}_{; b ; c} \rightarrow \partial_{c}{V^{a}{}_{; b}}+\Gamma^{a}{}_{d c} V^{d}{}_{; b}-\Gamma^{d}{}_{b c} V^{a}{}_{; d}%
+}
+\cdbtag{ex-03.103}{%
+V^{a}{}_{; b ; c} \rightarrow \partial_{c}\left(\partial_{b}{V^{a}}+\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \left(\partial_{b}{V^{d}}+\Gamma^{d}{}_{e b} V^{e}\right)-\Gamma^{d}{}_{b c} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)%
+}
+\cdbtag{ex-03.104}{%
+V^{a}{}_{; b ; c}-V^{a}{}_{; c ; b}%
+}
+\cdbtag{ex-03.105}{%
+\partial_{c}\left(\partial_{b}{V^{a}}+\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \left(\partial_{b}{V^{d}}+\Gamma^{d}{}_{e b} V^{e}\right)-\Gamma^{d}{}_{b c} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)-\partial_{b}\left(\partial_{c}{V^{a}}+\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \left(\partial_{c}{V^{d}}+\Gamma^{d}{}_{e c} V^{e}\right)+\Gamma^{d}{}_{c b} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)%
+}
+\cdbtag{ex-03.106}{%
+\partial_{c b}{V^{a}}+\partial_{c}\left(\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \partial_{b}{V^{d}}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}\left(\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \partial_{c}{V^{d}}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-03.107}{%
+\partial_{c b}{V^{a}}+\partial_{c}{\Gamma^{a}{}_{d b}} V^{d}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}{\Gamma^{a}{}_{d c}} V^{d}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-03.108}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}{\Gamma^{a}{}_{d b}}+V^{e} \Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-V^{e} \Gamma^{a}{}_{e d} \Gamma^{d}{}_{b c}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}{\Gamma^{a}{}_{d c}}-V^{e} \Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+V^{e} \Gamma^{a}{}_{e d} \Gamma^{d}{}_{c b}%
+}
+\cdbtag{ex-03.109}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}{\Gamma^{a}{}_{d b}}+V^{d} \Gamma^{a}{}_{e c} \Gamma^{e}{}_{d b}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-V^{d} \Gamma^{a}{}_{d e} \Gamma^{e}{}_{b c}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}{\Gamma^{a}{}_{d c}}-V^{d} \Gamma^{a}{}_{e b} \Gamma^{e}{}_{d c}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+V^{d} \Gamma^{a}{}_{d e} \Gamma^{e}{}_{c b}%
+}
+\cdbtag{ex-03.110}{%
+V^{d} \partial_{c}{\Gamma^{a}{}_{b d}}+V^{d} \Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}-V^{d} \partial_{b}{\Gamma^{a}{}_{c d}}-V^{d} \Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}%
+}
+\cdbtag{ex-03.111}{%
+V^{d} \partial_{c}{\Gamma^{a}{}_{b d}}-V^{d} \partial_{b}{\Gamma^{a}{}_{c d}}-V^{d} \Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}+V^{d} \Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}%
+}
+\cdbtag{ex-03.112}{%
+V^{d} \left(\partial_{c}{\Gamma^{a}{}_{b d}}-\partial_{b}{\Gamma^{a}{}_{c d}}-\Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}+\Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}\right)%
+}
+\cdbtag{ex-03.113}{%
+-\partial_{c}{\Gamma^{a}{}_{b d}}+\partial_{b}{\Gamma^{a}{}_{c d}}+\Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}-\Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}%
+}
+\cdbtag{ex-03.114}{%
+R^{a}{}_{d b c} \rightarrow -\partial_{c}{\Gamma^{a}{}_{b d}}+\partial_{b}{\Gamma^{a}{}_{c d}}+\Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}-\Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}%
+}
+\cdbtag{ex-03.115}{%
+R^{a}{}_{b c d}%
+}
+\cdbtag{ex-03.116}{%
+-\partial_{d}{\Gamma^{a}{}_{c b}}+\partial_{c}{\Gamma^{a}{}_{d b}}+\Gamma^{a}{}_{c e} \Gamma^{e}{}_{d b}-\Gamma^{a}{}_{d e} \Gamma^{e}{}_{c b}%
+}
+\cdbtag{ex-03.301}{%
+V^{a}{}_{; b} \rightarrow \partial_{b}{V^{a}}+\Gamma^{a}{}_{c b} V^{c}%
+}
+\cdbtag{ex-03.302}{%
+V^{a}{}_{; b ; c} \rightarrow \partial_{c}{V^{a}{}_{; b}}+\Gamma^{a}{}_{d c} V^{d}{}_{; b}-\Gamma^{d}{}_{b c} V^{a}{}_{; d}%
+}
+\cdbtag{ex-03.303}{%
+V^{a}{}_{; b ; c} \rightarrow \partial_{c}\left(\partial_{b}{V^{a}}+\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \left(\partial_{b}{V^{d}}+\Gamma^{d}{}_{e b} V^{e}\right)-\Gamma^{d}{}_{b c} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)%
+}
+\cdbtag{ex-03.304}{%
+V^{a}{}_{; b ; c}-V^{a}{}_{; c ; b}%
+}
+\cdbtag{ex-03.305}{%
+\partial_{c}\left(\partial_{b}{V^{a}}+\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \left(\partial_{b}{V^{d}}+\Gamma^{d}{}_{e b} V^{e}\right)-\Gamma^{d}{}_{b c} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)-\partial_{b}\left(\partial_{c}{V^{a}}+\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \left(\partial_{c}{V^{d}}+\Gamma^{d}{}_{e c} V^{e}\right)+\Gamma^{d}{}_{c b} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)%
+}
+\cdbtag{ex-03.306}{%
+\partial_{c b}{V^{a}}+\partial_{c}\left(\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \partial_{b}{V^{d}}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}\left(\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \partial_{c}{V^{d}}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-03.307}{%
+\partial_{c b}{V^{a}}+\partial_{c}{\Gamma^{a}{}_{d b}} V^{d}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}{\Gamma^{a}{}_{d c}} V^{d}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-03.308}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}\left(G^{a} G_{d b}\right)+G^{a} G^{d} G_{d c} G_{e b} V^{e}-G^{d} G_{b c} \partial_{d}{V^{a}}-G^{a} G^{d} G_{b c} G_{e d} V^{e}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}\left(G^{a} G_{d c}\right)-G^{a} G^{d} G_{d b} G_{e c} V^{e}+G^{d} G_{c b} \partial_{d}{V^{a}}+G^{a} G^{d} G_{c b} G_{e d} V^{e}%
+}
+\cdbtag{ex-03.309}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}\left(G^{a} G_{d b}\right)+G^{a} G^{d} G_{d c} G_{e b} V^{e}-G^{d} G_{b c} \partial_{d}{V^{a}}-G^{a} G^{d} G_{b c} G_{e d} V^{e}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}\left(G^{a} G_{d c}\right)-G^{a} G^{d} G_{d b} G_{e c} V^{e}+G^{d} G_{c b} \partial_{d}{V^{a}}+G^{a} G^{d} G_{c b} G_{e d} V^{e}%
+}
+\cdbtag{ex-03.310}{%
+V^{d} \partial_{c}\left(G^{a} G_{b d}\right)+G^{a} G^{d} G_{b e} G_{c d} V^{e}-V^{d} \partial_{b}\left(G^{a} G_{c d}\right)-G^{a} G^{d} G_{b d} G_{c e} V^{e}%
+}
+\cdbtag{ex-03.311}{%
+V^{d} \partial_{c}{\Gamma^{a}{}_{b d}}-V^{d} \partial_{b}{\Gamma^{a}{}_{c d}}+V^{d} \Gamma^{a}{}_{b d} \Gamma^{e}{}_{c e}-V^{d} \Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}%
+}
+\cdbtag{ex-03.312}{%
+V^{d} \left(\partial_{c}{\Gamma^{a}{}_{b d}}-\partial_{b}{\Gamma^{a}{}_{c d}}+\Gamma^{a}{}_{b d} \Gamma^{e}{}_{c e}-\Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}\right)%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

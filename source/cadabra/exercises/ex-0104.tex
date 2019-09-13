@@ -1,0 +1,103 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.4 Experiments with sorting}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   expr := C^{f}
+           w^{e}
+           B^{d}
+           v^{c}
+           A^{b}
+           u^{a}.                        # cdb (ex-0104.100,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.101,expr)
+
+   expr := \Omega_{f}
+           \gamma_{e}
+           \Pi_{d}
+           \beta_{c}
+           \Gamma_{b}
+           \alpha_{a}.                   # cdb (ex-0104.200,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.201,expr)
+
+   expr := C^{f}
+           w^{e}
+           B^{d}
+           v^{c}
+           A^{b}
+           u^{a}
+           \Omega_{f}
+           \gamma_{e}
+           \Pi_{d}
+           \beta_{c}
+           \Gamma_{b}
+           \alpha_{a}.                   # cdb (ex-0104.300,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.301,expr)
+
+   expr := \partial_{f}{C^{f}}
+           w^{l}
+           \partial_{d}{B^{d}}
+           v^{k}
+           \partial_{b}{A^{b}}
+           u^{j}
+           \Omega_{i}
+           \partial^{e}{ \gamma_{e}}
+           \Pi_{h}
+           \partial^{c}{\beta_{c}}
+           \Gamma_{g}
+           \partial^{a}{\alpha_{a}}.     # cdb (ex-0104.400,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.401,expr)
+
+   expr := \partial{C}
+           w
+           \partial{B}
+           v
+           \partial{A}
+           u
+           \Omega
+           \partial{ \gamma}
+           \Pi
+           \partial{\beta}
+           \Gamma
+           \partial{\alpha}.             # cdb (ex-0104.500,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.501,expr)
+
+   expr := A_{b}
+           A_{a}
+           A_{c d e}
+           A_{f g}.                      # cdb (ex-0104.600,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.601,expr)
+
+   expr :=  A_{a} A^{a}
+          + A^{a} A_{a}.                 # cdb (ex-0104.700,expr)
+
+   sort_product (expr)                   # cdb (ex-0104.701,expr)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}[spread=2pt]
+   \Dmath*{\cdb*{ex-0104.100}}\Dmath*{\cdb*{ex-0104.101}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.200}}\Dmath*{\cdb*{ex-0104.201}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.300}}\Dmath*{\cdb*{ex-0104.301}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.400}}\Dmath*{\cdb*{ex-0104.401}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.500}}\Dmath*{\cdb*{ex-0104.501}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.600}}\Dmath*{\cdb*{ex-0104.601}\V{10pt}}
+   \Dmath*{\cdb*{ex-0104.700}}\Dmath*{\cdb*{ex-0104.701}}
+\end{dgroup*}
+
+\end{document}

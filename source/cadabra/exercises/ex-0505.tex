@@ -1,0 +1,53 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 5.5 Commuting covariant derivatives}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   ;::Symbol.
+
+   def add_tags (obj,tag):
+      n = 0
+      ans = Ex('0')
+      for i in obj.top().terms():
+         foo = obj[i]
+         bah = Ex(tag+'_{'+str(n)+'}')
+         ans := @(ans) + @(bah) @(foo).
+         n = n + 1
+      return ans
+
+   def clear_tags (obj,tag):
+      ans := @(obj).
+      foo  = Ex(tag+'_{a?} -> 1')
+      substitute (ans,foo)
+      return ans
+
+   rule := V^{a}_{; b ; c} -> V^{a}_{; c ; b} - R^{a}_{d b c} V^{d}.
+
+   expr := V^{a}_{; b ; c} - V^{a}_{; c ; b}.   # cdb (ex-0505.100,expr)
+
+   expr  = add_tags (expr,'\\mu')               # cdb (ex-0505.101,expr)
+
+   zoom       (expr, $\mu_{0} Q??$)             # cdb (ex-0505.102,expr)
+   substitute (expr, rule)                      # cdb (ex-0505.103,expr)
+   unzoom     (expr)                            # cdb (ex-0505.104,expr)
+
+   expr = clear_tags (expr,'\\mu')              # cdb (ex-0505.105,expr)
+
+\end{cadabra}
+
+\begin{align}
+   \cdb{ex-0505.100} &= \Cdb{ex-0505.101}\\
+                     &= \Cdb{ex-0505.101}\\
+                     &= \Cdb{ex-0505.102}\\
+                     &= \Cdb{ex-0505.103}\\
+                     &= \Cdb{ex-0505.104}\\
+                     &= \Cdb{ex-0505.105}
+\end{align}
+
+\end{document}

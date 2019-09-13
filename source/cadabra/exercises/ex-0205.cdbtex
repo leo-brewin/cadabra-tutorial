@@ -1,0 +1,24 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0205.101}{%
+v^{c}{}_{b a} \rightarrow \nabla_{a}\left(\nabla_{b}{v^{c}}\right)%
+}
+\cdbtag{ex-0205.102}{%
+v^{c}{}_{b a} \rightarrow \partial_{a}\left(\nabla_{b}{v^{c}}\right)+\Gamma^{c}{}_{d a} \nabla_{b}{v^{d}}-\Gamma^{d}{}_{b a} \nabla_{d}{v^{c}}%
+}
+\cdbtag{ex-0205.103}{%
+v^{c}{}_{b a} \rightarrow \partial_{a}\left(\partial_{b}{v^{c}}+\Gamma^{c}{}_{d b} v^{d}\right)+\Gamma^{c}{}_{d a} \left(\partial_{b}{v^{d}}+\Gamma^{d}{}_{e b} v^{e}\right)-\Gamma^{d}{}_{b a} \left(\partial_{d}{v^{c}}+\Gamma^{c}{}_{e d} v^{e}\right)%
+}
+\cdbtag{ex-0205.104}{%
+v^{c}{}_{b a} \rightarrow \partial_{a b}{v^{c}}+\partial_{a}\left(\Gamma^{c}{}_{d b} v^{d}\right)+\Gamma^{c}{}_{d a} \partial_{b}{v^{d}}+\Gamma^{c}{}_{d a} \Gamma^{d}{}_{e b} v^{e}-\Gamma^{d}{}_{b a} \partial_{d}{v^{c}}-\Gamma^{d}{}_{b a} \Gamma^{c}{}_{e d} v^{e}%
+}
+\cdbtag{ex-0205.105}{%
+v^{c}{}_{b a} \rightarrow \partial_{a b}{v^{c}}+\partial_{a}{\Gamma^{c}{}_{d b}} v^{d}+\Gamma^{c}{}_{d b} \partial_{a}{v^{d}}+\Gamma^{c}{}_{d a} \partial_{b}{v^{d}}+\Gamma^{c}{}_{d a} \Gamma^{d}{}_{e b} v^{e}-\Gamma^{d}{}_{b a} \partial_{d}{v^{c}}-\Gamma^{d}{}_{b a} \Gamma^{c}{}_{e d} v^{e}%
+}
+\cdbtag{ex-0205.107}{%
+v^{c}{}_{b a} \rightarrow \partial_{a b}{v^{c}}+\partial_{a}{\Gamma^{c}{}_{d b}} v^{d}+\Gamma^{c}{}_{d b} \partial_{a}{v^{d}}+\Gamma^{c}{}_{d a} \partial_{b}{v^{d}}+\Gamma^{c}{}_{d a} \Gamma^{d}{}_{e b} v^{e}-\Gamma^{d}{}_{b a} \partial_{d}{v^{c}}-\Gamma^{c}{}_{d e} \Gamma^{e}{}_{b a} v^{d}%
+}
+\cdbtag{ex-0205.108}{%
+\nabla_{a}\left(\nabla_{b}{v^{c}}\right) \rightarrow \partial_{a b}{v^{c}}+\partial_{a}{\Gamma^{c}{}_{d b}} v^{d}+\Gamma^{c}{}_{d b} \partial_{a}{v^{d}}+\Gamma^{c}{}_{d a} \partial_{b}{v^{d}}+\Gamma^{c}{}_{d a} \Gamma^{d}{}_{e b} v^{e}-\Gamma^{d}{}_{b a} \partial_{d}{v^{c}}-\Gamma^{c}{}_{d e} \Gamma^{e}{}_{b a} v^{d}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

@@ -1,0 +1,28 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.10 Relabel free indices}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,u,v,w}::Indices.
+
+   \delta{#}::KroneckerDelta.
+
+   expr := A_{a b c}.                                             # cdb (ex-0110.101,expr)
+
+   expr := \delta^{a}_{u} \delta^{b}_{v} \delta^{c}_{w} @(expr).  # cdb (ex-0110.102,expr)
+
+   eliminate_kronecker (expr)                                     # cdb (ex-0110.103,expr)
+
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-0110.101}\\
+   &\Cdb{ex-0110.102}\\
+   &\Cdb{ex-0110.103}
+\end{align*}
+
+\end{document}

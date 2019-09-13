@@ -1,0 +1,29 @@
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+theta{#}::LaTeXForm{"\theta"}.
+varphi{#}::LaTeXForm{"\varphi"}.
+
+gab := { g_{\theta \theta}   = r**2,
+         g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
+
+metric := g_{a b} -> g_{a b}.
+
+evaluate (metric,gab,rhsonly=True)
+
+indcs = metric[1][2][1][0]
+compt = metric[1][2][1][1]
+
+print ('metric = ' + str(metric.input_form())+'\n')
+
+print ('metric[0] = ' + str(metric[0]))
+print ('metric[1] = ' + str(metric[1])+'\n')
+
+print ('metric[1][0] = ' + str(metric[1][0]))
+print ('metric[1][1] = ' + str(metric[1][1]))
+print ('metric[1][2] = ' + str(metric[1][2])+'\n')
+
+print ('metric[1][2][1] = '+ str(metric[1][2][1]))
+print ('metric[1][2][1][0] = '+ str(metric[1][2][1][0]))
+print ('metric[1][2][1][1] = '+ str(metric[1][2][1][1]))
+

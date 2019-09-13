@@ -1,0 +1,2 @@
+expr := A_{a} (P^{b}+Q^{b}) + C_{a} V^{b}.
+swap := A_{a} B?? + C_{a} D?? -> A_{a} D?? + C_{a} B??

@@ -1,0 +1,211 @@
+import cdblib
+jsonfile = 'example-10.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Integer(1..3).
+
+\nabla{#}::Derivative.
+
+d{#}::KroneckerDelta.
+
+g^{a b}::Symmetric.
+g_{a b}::Symmetric.
+
+R_{a b c d}::RiemannTensor.
+
+x^{a}::Weight(label=num,value=1).
+
+def truncate (obj,n):
+
+    ans = Ex("0")
+
+    for i in range (0,n+1):
+       foo := @(obj).
+       bah  = Ex("num = " + str(i))
+       distribute  (foo)
+       keep_weight (foo, bah)
+       ans = ans + foo
+
+    return ans
+
+gab := g_{a b}
+       - (1/3)   x^{c} x^{d} R_{a c b d}
+       - (1/6)   x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}
+       + (1/180) x^{c} x^{d} x^{e} x^{f} ( 8 g^{g h} R_{a c d g} R_{b e f h}
+                                          -9 \nabla_{c d}{R_{a e b f}} ).
+
+iab := g^{a b}
+       + (1/3)  x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}
+       + (1/6)  x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}
+       + (1/60) x^{c} x^{d} x^{e} x^{f} g^{a g} g^{b h}
+                              ( 4 g^{i j} R_{c g d i} R_{e h f j}
+                               +3 \nabla_{c d}{R_{e g f h}} ).
+
+distribute (gab)
+distribute (iab)
+
+gxab := gx_{a b} -> @(gab).
+
+eps := d^{a}_{i} d^{b}_{j} d^{c}_{k}.
+asym (eps,$^{a},^{b},^{c}$)
+
+# compute negative detg rather than det g, note 1/3! included in eps
+Ndetg := @(eps) gx_{p a} gx_{q b} gx_{r c} g^{i p} g^{j q} g^{k r}.
+
+substitute     (Ndetg,gxab)
+distribute     (Ndetg)
+Ndetg = truncate (Ndetg,4)
+substitute     (Ndetg,$g^{a b} g_{b c} -> d^{a}_{c}$,repeat=True)
+eliminate_kronecker (Ndetg)
+sort_product   (Ndetg)
+rename_dummies (Ndetg)
+canonicalise   (Ndetg)
+
+# introduce the Ricci tensor
+
+substitute (Ndetg,$R_{a b c d} g^{a c}               -> R_{b d}$,repeat=True)
+substitute (Ndetg,$\nabla_{a}{R_{b c d e}} g^{b d}   -> \nabla_{a}{R_{c e}}$,repeat=True)
+substitute (Ndetg,$\nabla_{a b}{R_{c d e f}} g^{c e} -> \nabla_{a b}{R_{d f}}$,repeat=True)
+
+# the following was based on sqrt-Ndetg.tex
+
+sqrtNdetg := 1/2 + (1/2) @(Ndetg)
+            - (1/8) (1/9) R_{a b} R_{c d} x^{a} x^{b} x^{c} x^{d}
+            - (1/4) (1/18) R_{a b} \nabla_{c}{R_{d e}} x^{a} x^{b} x^{c} x^{d} x^{e}.
+                                                                      # cdb (ex-10.sqrtNdetg.001,sqrtNdetg)
+
+sort_product   (sqrtNdetg)
+rename_dummies (sqrtNdetg)
+canonicalise   (sqrtNdetg)
+
+logNdetg := -1 + @(Ndetg)
+           - (1/2) (1/9) R_{a b} R_{c d} x^{a} x^{b} x^{c} x^{d}
+           - (1/18) R_{a b} \nabla_{c}{R_{d e}} x^{a} x^{b} x^{c} x^{d} x^{e}.
+                                                                      # cdb (ex-10.logNdetg.001,logNdetg)
+
+sort_product   (logNdetg)
+rename_dummies (logNdetg)
+canonicalise   (logNdetg)
+
+# =================================================================================================
+# the remaining code is just for pretty printing
+
+def product_sort (obj):
+    substitute (obj,$ x^{a}                            -> A000^{a}               $)
+    substitute (obj,$ g^{a b}                          -> A001^{a b}             $)
+    substitute (obj,$ \nabla_{c}{R_{a b}}              -> A004_{a b c}           $)
+    substitute (obj,$ \nabla_{c d}{R_{a b}}            -> A005_{a b c d}         $)
+    substitute (obj,$ \nabla_{c d e}{R_{a b}}          -> A006_{a b c d e}       $)
+    substitute (obj,$ \nabla_{c d e f}{R_{a b}}        -> A007_{a b c d e f}     $)
+    substitute (obj,$ \nabla_{e}{R_{a b c d}}          -> A008_{a b c d e}       $)
+    substitute (obj,$ \nabla_{e f}{R_{a b c d}}        -> A009_{a b c d e f}     $)
+    substitute (obj,$ \nabla_{e f g}{R_{a b c d}}      -> A010_{a b c d e f g}   $)
+    substitute (obj,$ \nabla_{e f g h}{R_{a b c d}}    -> A011_{a b c d e f g h} $)
+    substitute (obj,$ R_{a b}                          -> A002_{a b}             $)
+    substitute (obj,$ R_{a b c d}                      -> A003_{a b c d}         $)
+    sort_product   (obj)
+    rename_dummies (obj)
+    substitute (obj,$ A000^{a}                 -> x^{a}                          $)
+    substitute (obj,$ A001^{a b}               -> g^{a b}                        $)
+    substitute (obj,$ A002_{a b}               -> R_{a b}                        $)
+    substitute (obj,$ A003_{a b c d}           -> R_{a b c d}                    $)
+    substitute (obj,$ A004_{a b c}             -> \nabla_{c}{R_{a b}}            $)
+    substitute (obj,$ A005_{a b c d}           -> \nabla_{c d}{R_{a b}}          $)
+    substitute (obj,$ A006_{a b c d e}         -> \nabla_{c d e}{R_{a b}}        $)
+    substitute (obj,$ A007_{a b c d e f}       -> \nabla_{c d e f}{R_{a b}}      $)
+    substitute (obj,$ A008_{a b c d e}         -> \nabla_{e}{R_{a b c d}}        $)
+    substitute (obj,$ A009_{a b c d e f}       -> \nabla_{e f}{R_{a b c d}}      $)
+    substitute (obj,$ A010_{a b c d e f g}     -> \nabla_{e f g}{R_{a b c d}}    $)
+    substitute (obj,$ A011_{a b c d e f g h}   -> \nabla_{e f g h}{R_{a b c d}}  $)
+
+def get_term (obj,n):
+
+    x^{a}::Weight(label=xnum).
+
+    foo := @(obj).
+    bah  = Ex("xnum = " + str(n))
+    keep_weight (foo,bah)
+
+    return foo
+
+def reformat (obj,scale):
+    foo  = Ex(str(scale))
+    bah := @(foo) @(obj).
+    distribute     (bah)
+    product_sort   (bah)
+    rename_dummies (bah)
+    canonicalise   (bah)
+    sort_sum       (bah)
+    factor_out     (bah,$x^{a?}$)
+    ans := @(bah) / @(foo).
+    return ans
+
+def rescale (obj,scale):
+    foo  = Ex(str(scale))
+    bah := @(foo) @(obj).
+    distribute  (bah)
+    factor_out  (bah,$x^{a?}$)
+    return bah
+
+# ---------------------------------------------------------------
+# reformat Ndetg
+
+Rterm0 = get_term (Ndetg,0)
+Rterm1 = get_term (Ndetg,1)
+Rterm2 = get_term (Ndetg,2)
+Rterm3 = get_term (Ndetg,3)
+Rterm4 = get_term (Ndetg,4)
+
+Rterm0 = reformat (Rterm0,  1)
+Rterm1 = reformat (Rterm1,  1)
+Rterm2 = reformat (Rterm2,  3)
+Rterm3 = reformat (Rterm3,  6)
+Rterm4 = reformat (Rterm4,180)
+
+Ndetg := @(Rterm0) + @(Rterm1) + @(Rterm2) + @(Rterm3) + @(Rterm4).
+
+# ---------------------------------------------------------------
+# reformat sqrtNdetg
+
+Rterm0 = get_term (sqrtNdetg,0)
+Rterm1 = get_term (sqrtNdetg,1)
+Rterm2 = get_term (sqrtNdetg,2)
+Rterm3 = get_term (sqrtNdetg,3)
+Rterm4 = get_term (sqrtNdetg,4)
+
+Rterm0 = reformat (Rterm0,  1)
+Rterm1 = reformat (Rterm1,  1)
+Rterm2 = reformat (Rterm2,  6)
+Rterm3 = reformat (Rterm3, 12)
+Rterm4 = reformat (Rterm4,360)
+
+sqrtNdetg := @(Rterm0) + @(Rterm1) + @(Rterm2) + @(Rterm3) + @(Rterm4).
+
+# ---------------------------------------------------------------
+# reformat logNdetg
+
+Rterm0 = get_term (logNdetg,0)
+Rterm1 = get_term (logNdetg,1)
+Rterm2 = get_term (logNdetg,2)
+Rterm3 = get_term (logNdetg,3)
+Rterm4 = get_term (logNdetg,4)
+
+Rterm0 = reformat (Rterm0,  1)
+Rterm1 = reformat (Rterm1,  1)
+Rterm2 = reformat (Rterm2,  3)
+Rterm3 = reformat (Rterm3,  6)
+Rterm4 = reformat (Rterm4,180)
+
+logNdetg := @(Rterm0) + @(Rterm1) + @(Rterm2) + @(Rterm3) + @(Rterm4).
+
+json.append (Ndetg)
+json.append (sqrtNdetg)
+json.append (logNdetg)
+
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

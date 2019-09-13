@@ -1,0 +1,8 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+expr := A_{a b} B^{a b} + A_{a b} A_{c d} B^{a b} B^{c d} - C_{a b} B^{a b}.
+
+zoom       (expr, $A_{a b} A_{c d} Q??$)
+substitute (expr, $A_{a b} -> 0$)
+unzoom     (expr)
+

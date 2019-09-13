@@ -1,0 +1,7 @@
+{a,b,c,d,e,f,u,v,w}::Indices.
+
+foo := A_{a c} C^{c}.
+bah := B_{b c} C^{c}.
+
+foobah := @(foo) @(bah).
+

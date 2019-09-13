@@ -1,0 +1,34 @@
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+\partial{#}::PartialDerivative.
+
+g^{a b}::InverseMetric.
+
+Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                           + \partial_{f}{g_{b g}}
+                                           - \partial_{b}{g_{f g}} ).
+
+Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                          - \partial_{g}{\Gamma^{d}_{e f}}
+                          + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                          - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+Rab := R_{a b} -> R^{c}_{a c b}.
+
+R := R -> R_{e g} g^{e g}.
+
+gab := { g_{\theta\theta}   = r**2,
+         g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.
+
+complete   (gab, $g^{a b}$)
+
+substitute (Rabcd, Gamma)
+substitute (Rab, Rabcd)
+substitute (R, Rab)
+
+evaluate   (Gamma, gab, rhsonly=True)
+evaluate   (Rabcd, gab, rhsonly=True)
+evaluate   (Rab,   gab, rhsonly=True)
+evaluate   (R,     gab, rhsonly=True)
+

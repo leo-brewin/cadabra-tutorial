@@ -1,0 +1,43 @@
+import cdblib
+jsonfile = 'example-04.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+def truncate (poly,n):
+
+    # define the weight and give it a label
+    x^{a}::Weight(label=\epsilon).
+
+    # start with an empty espression
+    ans = Ex("0")
+
+    # loop over selected terms in the source
+    for i in range (0,n+1):
+
+       foo := @(poly).
+       bah  = Ex("\epsilon = " + str(i))
+
+       # extract a single term
+       keep_weight (foo, bah)
+
+       # update the running sum
+       ans = ans + foo
+
+    # all done, return final answer
+    return ans
+
+Quartic := c^{a}
+         + c^{a}_{b} x^b
+         + c^{a}_{b c} x^b x^c
+         + c^{a}_{b c d} x^b x^c x^d
+         + c^{a}_{b c d e} x^b x^c x^d x^e.
+
+Cubic = truncate (Quartic,3)
+
+json.append (Cubic)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

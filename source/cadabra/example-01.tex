@@ -1,0 +1,72 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-01.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 1 The metric connection}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+   g_{a b}::Metric.
+   g_{a}^{b}::KroneckerDelta.
+
+   \partial{#}::PartialDerivative.
+
+   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                               + \partial_{c}{g_{b d}}
+                                               - \partial_{d}{g_{b c}} ).   # cdb (ex-01.101,Gamma)
+
+   cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
+                                   - g_{d b}\Gamma^{d}_{a c}.               # cdb (ex-01.102,cderiv)
+
+   substitute          (cderiv, Gamma)                                      # cdb (ex-01.103,cderiv)
+   distribute          (cderiv)                                             # cdb (ex-01.104,cderiv)
+   eliminate_metric    (cderiv)                                             # cdb (ex-01.105,cderiv)
+   eliminate_kronecker (cderiv)                                             # cdb (ex-01.106,cderiv)
+   canonicalise        (cderiv)                                             # cdb (ex-01.107,cderiv)
+
+   json.append (cderiv)
+\end{cadabra}
+
+\clearpage
+
+\begin{align*}
+    \Gamma &=\Cdb{ex-01.101}\\
+   g_{ab;c}&=\Cdb{ex-01.102}\\
+           &=\Cdb{ex-01.103}\\
+           &=\Cdb{ex-01.104}\\
+           &=\Cdb{ex-01.105}\\
+           &=\Cdb{ex-01.106}\\
+           &=\Cdb{ex-01.107}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}
+

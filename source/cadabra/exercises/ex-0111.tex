@@ -1,0 +1,59 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.11 Cycling free indices -- preferred solution}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,u,v,w}::Indices.
+
+   expr := A_{a b c}.                                             # cdb (ex-0111.101,expr)
+
+   rule := T_{a b c} -> @(expr).
+   expr := T_{b c a}.                                             # cdb (ex-0111.102,expr)
+
+   substitute (expr, rule)                                        # cdb (ex-0111.103,expr)
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-0111.101}\\
+   &\Cdb{ex-0111.102}\\
+   &\Cdb{ex-0111.103}
+\end{align*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.11 Cycling free indices -- alternative solution}
+
+This alternative solution uses two rounds of Kroncker deltas. It does the job but is not as
+simple as the previous solution.
+
+\begin{cadabra}
+   {a,b,c,d,e,f,u,v,w}::Indices.
+
+   \delta{#}::KroneckerDelta.
+
+   expr := A_{a b c}.                                             # cdb (ex-0111.201,expr)
+
+   expr := \delta^{a}_{u} \delta^{b}_{v} \delta^{c}_{w} @(expr).  # cdb (ex-0111.202,expr)
+
+   eliminate_kronecker (expr)                                     # cdb (ex-0111.203,expr)
+
+   expr := \delta^{u}_{b} \delta^{v}_{c} \delta^{w}_{a} @(expr).  # cdb (ex-0111.204,expr)
+
+   eliminate_kronecker (expr)                                     # cdb (ex-0111.205,expr)
+
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-0111.201}\\
+   &\Cdb{ex-0111.202}\\
+   &\Cdb{ex-0111.203}\\
+   &\Cdb{ex-0111.204}\\
+   &\Cdb{ex-0111.205}
+\end{align*}
+
+\end{document}

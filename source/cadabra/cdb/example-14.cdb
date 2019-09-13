@@ -1,0 +1,110 @@
+import cdblib
+jsonfile = 'example-14.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (position=independent).
+
+\partial{#}::PartialDerivative.
+
+g_{a b}::Metric.
+g^{a b}::InverseMetric.
+g_{a}^{b}::KroneckerDelta.
+
+GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                             + \partial_{c}{g_{b d}}
+                                             - \partial_{d}{g_{b c}}).
+
+GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                   + \partial_{c}{g_{b a}}
+                                   - \partial_{a}{g_{b c}}).
+
+Rabcd := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                        - \partial_{d}{\Gamma_{a b c}}
+                        + \Gamma_{e a d} \Gamma^{e}_{b c}
+                        - \Gamma_{e a c} \Gamma^{e}_{b d}.
+
+Rab     := R_{a b} -> g^{c d} R_{a c b d}.
+
+Rscalar := R -> g^{a b} R_{a b}.
+
+# Weyl in 4-dimensions
+
+Cabcd := R_{a b c d} - (1/2) (R_{a c} g_{b d} - R_{a d} g_{b c})
+                     - (1/2) (g_{a c} R_{b d} - g_{a d} R_{b c})
+                     + (R/6) (g_{a c} g_{b d} - g_{a d} g_{b c}).
+
+{\partial_{a b}{\phi},\partial_{a}{\phi},\phi}::SortOrder.
+{\partial_{a b}{g_{c d}},\partial_{a}{g_{b c}},g_{a b},g^{a b}}::SortOrder.
+
+substitute (Cabcd,Rscalar)
+substitute (Cabcd,Rab)
+substitute (Cabcd,Rabcd)
+substitute (Cabcd,GammaU)
+substitute (Cabcd,GammaD)
+
+distribute     (Cabcd)
+
+sort_product   (Cabcd)
+rename_dummies (Cabcd)
+canonicalise   (Cabcd)
+
+# this is the Weyl tensor on the base metric
+baseC := @(Cabcd).
+
+conformal := {g_{a b} -> \phi g_{a b}, g^{a b} -> (1/phi) g^{a b}}.
+
+substitute     (Cabcd, conformal)
+product_rule   (Cabcd)
+distribute     (Cabcd)
+product_rule   (Cabcd)
+distribute     (Cabcd)
+
+map_sympy      (Cabcd, "simplify")
+
+sort_product   (Cabcd)
+rename_dummies (Cabcd)
+canonicalise   (Cabcd)
+
+# this is the Weyl tensor on the conformal metric
+confC := @(Cabcd).
+
+# their difference, should be zero
+diff := @(confC) - \phi @(baseC).
+
+distribute     (diff)
+sort_product   (diff)
+rename_dummies (diff)
+canonicalise   (diff)
+
+# this trick is not essential but it does reduce the number of terms in diff
+substitute     (diff,$\partial_{a}{\partial_{b}{g_{c d}}} -> g_{c d b a}$)
+substitute     (diff,$\partial_{a}{g_{b c}} -> 0$)
+substitute     (diff,$g_{c d b a} -> \partial_{a}{\partial_{b}{g_{c d}}}$)
+
+# standard expressions in 4-d
+substitute     (diff,$g_{a b} g^{a b} -> 4$,repeat=True)
+substitute     (diff,$g_{a b} g^{c b} -> g_{a}^{c}$,repeat=True)
+substitute     (diff,$g_{b a} g^{b c} -> g_{a}^{c}$,repeat=True)
+substitute     (diff,$g_{a}^{a} -> 4$,repeat=True)
+substitute     (diff,$g^{a}_{a} -> 4$,repeat=True)
+eliminate_kronecker (diff)
+
+# need a second round since the above block introduces new terms that match those just eliminated
+substitute     (diff,$g_{a b} g^{a b} -> 4$,repeat=True)
+substitute     (diff,$g_{a b} g^{c b} -> g_{a}^{c}$,repeat=True)
+substitute     (diff,$g_{b a} g^{b c} -> g_{a}^{c}$,repeat=True)
+substitute     (diff,$g_{a}^{a} -> 4$,repeat=True)
+substitute     (diff,$g^{a}_{a} -> 4$,repeat=True)
+eliminate_kronecker (diff)
+
+sort_product   (diff)
+rename_dummies (diff)
+canonicalise   (diff)
+
+json.append (baseC)
+json.append (confC)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

@@ -1,0 +1,62 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.5 Digging into Cadabra's datastructure}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   theta{#}::LaTeXForm{"\theta"}.
+   varphi{#}::LaTeXForm{"\varphi"}.
+
+   gab := { g_{\theta \theta}   = r**2,
+            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-0605.100,gab)
+
+   metric := g_{a b} -> g_{a b}.  # a trivial rule :)
+
+   evaluate (metric,gab,rhsonly=True)
+
+   indcs = metric[1][2][1][0]                               # cdb(ex-0605.101,indcs)
+   compt = metric[1][2][1][1]                               # cdb(ex-0605.102,compt)
+
+   # cdbBeg(print.0605)
+   print ('metric = ' + str(metric.input_form())+'\n')  # reveals Cadabra's internal structure for storing metric
+
+   print ('metric[0] = ' + str(metric[0]))
+   print ('metric[1] = ' + str(metric[1])+'\n')
+
+   print ('metric[1][0] = ' + str(metric[1][0]))
+   print ('metric[1][1] = ' + str(metric[1][1]))
+   print ('metric[1][2] = ' + str(metric[1][2])+'\n')
+
+   print ('metric[1][2][1] = '+ str(metric[1][2][1]))
+   print ('metric[1][2][1][0] = '+ str(metric[1][2][1][0]))
+   print ('metric[1][2][1][1] = '+ str(metric[1][2][1][1]))
+   # cdbEnd(print.0605)
+\end{cadabra}
+
+\clearpage
+
+\begin{align*}
+   &\Cdb{ex-0605.101}\\[10pt]
+   &\Cdb{ex-0605.102}
+\end{align*}
+
+\begin{align*}
+   g_{\varphi\varphi} &= g_{\Cdb{ex-0605.101}}\\
+                      &= \Cdb{ex-0605.102}
+\end{align*}
+
+\vskip 1cm
+
+\bgroup
+\IfFileExists{ex-0605.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{ex-0605.cdbcopy}}%
+{Where is {\tt ex-0605.cdbcopy}?}
+\egroup
+
+\end{document}

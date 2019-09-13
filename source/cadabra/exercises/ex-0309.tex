@@ -1,0 +1,76 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.9 Ricci in terms of the metric and its derivatives}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative;
+
+   g_{a b}::Metric;
+   g^{a b}::InverseMetric;
+
+   dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.      # cdb (ex-0309.dgab,dgab)
+
+   Gamma := \Gamma^{a}_{b c} ->
+            (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                            + \partial_{c}{g_{b e}}
+                            - \partial_{e}{g_{b c}}).                             # cdb (ex-0309.Gamma,Gamma)
+
+   Rabcd := R^{a}_{b c d} ->
+            \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+          - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.   # cdb (ex-0309.Rabcd,Rabcd)
+
+   FourRab := 4 R^{c}_{a c b}.                      # cdb (ex-0309.101,FourRab)
+
+   substitute     (FourRab, Rabcd)                  # cdb (ex-0309.102,FourRab)
+   substitute     (FourRab, Gamma)                  # cdb (ex-0309.103,FourRab)
+
+   product_rule   (FourRab)                         # cdb (ex-0309.104,FourRab)
+   distribute     (FourRab)                         # cdb (ex-0309.105,FourRab)
+
+   substitute     (FourRab, dgab)                   # cdb (ex-0309.106,FourRab)
+
+   sort_product   (FourRab)                         # cdb (ex-0309.107,FourRab)
+   rename_dummies (FourRab)                         # cdb (ex-0309.108,FourRab)
+   canonicalise   (FourRab)                         # cdb (ex-0309.109,FourRab)
+
+   # sort so that g to appeares before dg
+
+   substitute     (FourRab, $g^{a b} -> A^{a b}$)
+   sort_product   (FourRab)
+   rename_dummies (FourRab)
+   substitute     (FourRab, $A^{a b} -> g^{a b}$)   # cdb (ex-0309.110,FourRab)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{4 R_{ab} = \Cdb*{ex-0309.101}
+                    = \Cdb*{ex-0309.102}
+                    = \Cdb*{ex-0309.103}
+                    = \Cdb*{ex-0309.104}
+                    = \Cdb*{ex-0309.105}
+                    = \Cdb*[\hskip 2cm\hfill]{ex-0309.106}
+                    = \Cdb*[\hskip 2cm\hfill]{ex-0309.107}
+                    = \Cdb*[\hskip 2cm\hfill]{ex-0309.108}
+                    = \Cdb*{ex-0309.109}
+                    = \Cdb*{ex-0309.110}}
+\end{dgroup*}
+
+% ============================================================================================
+% export to json format
+
+\CdbSetup{action=hide}
+
+\begin{cadabra}
+   import cdblib
+   cdblib.create ('ex-0309.json')
+   cdblib.put ('FourRab',FourRab,'ex-0309.json')
+\end{cadabra}
+
+\end{document}

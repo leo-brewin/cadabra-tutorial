@@ -1,0 +1,80 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative.
+
+expr := C^{f}
+        w^{e}
+        B^{d}
+        v^{c}
+        A^{b}
+        u^{a}.
+
+sort_product (expr)
+
+expr := \Omega_{f}
+        \gamma_{e}
+        \Pi_{d}
+        \beta_{c}
+        \Gamma_{b}
+        \alpha_{a}.
+
+sort_product (expr)
+
+expr := C^{f}
+        w^{e}
+        B^{d}
+        v^{c}
+        A^{b}
+        u^{a}
+        \Omega_{f}
+        \gamma_{e}
+        \Pi_{d}
+        \beta_{c}
+        \Gamma_{b}
+        \alpha_{a}.
+
+sort_product (expr)
+
+expr := \partial_{f}{C^{f}}
+        w^{l}
+        \partial_{d}{B^{d}}
+        v^{k}
+        \partial_{b}{A^{b}}
+        u^{j}
+        \Omega_{i}
+        \partial^{e}{ \gamma_{e}}
+        \Pi_{h}
+        \partial^{c}{\beta_{c}}
+        \Gamma_{g}
+        \partial^{a}{\alpha_{a}}.
+
+sort_product (expr)
+
+expr := \partial{C}
+        w
+        \partial{B}
+        v
+        \partial{A}
+        u
+        \Omega
+        \partial{ \gamma}
+        \Pi
+        \partial{\beta}
+        \Gamma
+        \partial{\alpha}.
+
+sort_product (expr)
+
+expr := A_{b}
+        A_{a}
+        A_{c d e}
+        A_{f g}.
+
+sort_product (expr)
+
+expr :=  A_{a} A^{a}
+       + A^{a} A_{a}.
+
+sort_product (expr)
+
+

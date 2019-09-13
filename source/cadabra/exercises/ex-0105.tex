@@ -1,0 +1,30 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.5 A sort hack}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z#}::Indices(position=independent).
+
+   foo := A_{a} A^{a} + A^{a} A_{a}.            # cdb (ex-0105.100,foo)
+
+   sort_product (foo)                           # cdb (ex-0105.101,foo)
+
+   substitute   (foo, $A^{a} -> Z^{a}$)         # cdb (ex-0105.102,foo)
+   sort_product (foo)                           # cdb (ex-0105.103,foo)
+   substitute   (foo, $Z^{a} -> A^{a}$)         # cdb (ex-0105.104,foo)
+
+\end{cadabra}
+
+\begin{align*}
+   &\cdb*{ex-0105.100}\\
+   &\cdb*{ex-0105.101}\\
+   &\cdb*{ex-0105.102}\\
+   &\cdb*{ex-0105.103}\\
+   &\cdb*{ex-0105.104}
+\end{align*}
+
+\end{document}

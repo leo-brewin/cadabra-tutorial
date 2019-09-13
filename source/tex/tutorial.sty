@@ -1,0 +1,173 @@
+%-------------------------------------------------------------------------------
+\parindent=0pt
+\parskip=8pt plus 2pt minus 1pt
+%-------------------------------------------------------------------------------
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% \setcounter{footnote}{0}% may need this in body of .tex to force LaTeX to return to
+% the first footnote symbol as there are only 9 fn symbols available
+% at the 10th \footnote LaTeX will whimper, LaTeX Error:  Counter too large.
+\renewcommand{\thefootnote}{\alph{footnote}}% use the letters a to z, 26 footnotes
+%-------------------------------------------------------------------------------
+\newbox\tmpbox
+\def\stomp#1{\setbox\tmpbox=\hbox{#1}\dp\tmpbox=0pt\ht\tmpbox=0pt\box\tmpbox}
+\def\at(#1,#2)#3{{\offinterlineskip\hbox{\vbox to 0pt{\kern#2cm\hbox to 0pt{\kern#1cm\stomp{#3}\hss}\vss}}}}
+\def\At(#1,#2)#3{{\offinterlineskip\vbox to 0pt{\kern#2cm\hbox to 0pt{\kern#1cm\stomp{#3}\hss}\vss}}}
+\def\Offset(#1,#2)#3{{\offinterlineskip\vbox{\kern#2cm\hbox{\kern#1cm\hbox{#3}\hss}\vss}}}
+\def\AT#1{\hbox{#1}}
+%-------------------------------------------------------------------------------
+\def\titlefont{\rmfamily\bfseries\Large}
+\def\authorfont{\rmfamily\normalsize}
+\def\datefont{\rmfamily\normalsize}
+\def\referencefont{\rmfamily\normalsize}
+\def\maketitle{%
+\noindent
+\At(0,-1){\hbox{\vtop{\referencefont\@thereference}}}%
+\begin{center}%
+\hrule height 0pt depth 0pt%
+\vskip 20pt%
+{\titlefont\@thetitle}%
+\vskip 20pt%
+{\authorfont\@theauthor}%
+\vskip 10pt%
+{\datefont\@thedate}%
+\end{center}}
+%-------------------------------------------------------------------------------
+\long\def\title#1{\long\gdef\@thetitle{\hbox{\vbox{#1}}}}
+\long\def\date#1{\long\gdef\@thedate{#1}}
+\long\def\author#1{\long\gdef\@theauthor{#1}}
+\long\def\reference#1{\long\gdef\@thereference{#1}}
+\let\@thetitle\@empty
+\let\@theauthor\@empty
+\let\@thedate\@empty
+\let\@thereference\@empty
+%-------------------------------------------------------------------------------
+\newcounter{MYappendix}
+\setcounter{MYappendix}{0}
+\gdef\appendix{%
+\gdef\@seccntformat##1{Appendix \@nameuse{the##1}.\quad}%
+\gdef\theequation{\Alph{MYappendix}.\arabic{equation}}
+\gdef\thesection{\Alph{MYappendix}}
+\global\let\oldsection=\section
+\gdef\section{\stepcounter{MYappendix}\setcounter{equation}{0}\oldsection}}
+%-------------------------------------------------------------------------------
+\def\BigO#1{\mathcal{O}\left(#1\right)}
+\def\eps{\epsilon}
+\def\dsp{\displaystyle}
+%-------------------------------------------------------------------------------
+\def\ngab#1{\overset{\kern-0pt\scriptscriptstyle #1}{g}\vphantom{g}}
+\def\ndetg#1{\overset{\kern-0pt\scriptscriptstyle #1}{\hbox{\rm det}\, g}\vphantom{g}}
+%-------------------------------------------------------------------------------
+% doesn't work well inside Exercises environment -- leftskip messes up alignment and size
+% but it works fine in a list enviorment...hmm, should be able to fix this
+\def\Note#1{\par\fbox{\color{red}\hsize=0.9825\linewidth\vbox{{\bf #1}}}\par}
+%-------------------------------------------------------------------------------
+\def\BegDate#1{\par\hbox to 1.0\hsize{\leaders\hrule height 1pt\hfill \kern5pt\lower2pt\hbox{\small{#1}}}\par}
+\def\EndDate{\par\hbox to 1.0\hsize{\leaders\hrule height 1pt\hfill}\par}
+%-------------------------------------------------------------------------------
+\def\BegNote#1{\par\hbox to 1.0\hsize{\leaders\hrule height 1pt\hfill \kern5pt\lower2pt\hbox{\small{#1}}\kern5pt\leaders\hrule height 1pt\hfill}\par}
+\def\EndNote{\par\hbox to 1.0\hsize{\leaders\hrule height 1pt\hfill}\par}
+%-------------------------------------------------------------------------------
+\def\goodbreak{%
+\vskip 0pt plus 0.1\vsize\penalty-250\vskip 0pt plus-0.1\vsize%
+\nobreak}
+\def\Goodbreak{%
+\vskip 0pt plus 0.1\vsize\penalty-500\vskip 0pt plus-0.1\vsize%
+\nobreak}
+\def\Break{\hfill\break}
+%-------------------------------------------------------------------------------
+\newcounter{ExerciseNum}
+\setcounter{ExerciseNum}{0}
+%-------------------------------------------------------------------------------
+\newenvironment{Exercises}%
+{\Goodbreak{\BegExerciseRule\bfseries\large Exercises}%
+\par\advance\leftskip1.2cm%
+\lstset{language=cadabra,gobble=8,numbers=none,xleftmargin=39.5pt}}% 39.5pt by trial and error
+{\par\advance\leftskip-1.2cm\EndExerciseRule}%
+\newenvironment{Exercise}{\stepcounter{ExerciseNum}\goodbreak\leavevmode\llap{\bfseries\arabic{section}.\arabic{ExerciseNum}.\hskip0.15cm}\ignorespaces}{\ignorespacesafterend}
+%-------------------------------------------------------------------------------
+\def\BegExerciseRule{\vskip1.5\parskip\hrule height 0.5pt\vskip0.0\parskip}
+\def\EndExerciseRule{\vskip1.0\parskip\hrule height 0.5pt\vskip1.0\parskip}
+%-------------------------------------------------------------------------------
+\def\tts{\tt\small}
+\def\bgcolour#1{\lstset{backgroundcolor=\color{#1}}}
+\definecolor{grey95}{rgb}{0.95,0.95,0.95}
+%-------------------------------------------------------------------------------
+\def\verbatim@font{\color{blue}\normalfont\ttfamily\small}% for use with \verb
+\def\cdbverb#1{{\color{blue}\texttt{\small\detokenize{#1}}}}% for inline Cadabra verbatim, fails with # in arg.
+%-------------------------------------------------------------------------------
+\newcommand{\dMath}[3]{\begin{dmath*}[number={#1}]#2#3(#1)\end{dmath*}}
+\newcommand{\V}[1]{\vrule height0pt depth#1 width0pt}
+%-------------------------------------------------------------------------------
+\lstdefinestyle{myC}{
+  language=C,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  % maths functions
+  emph={[1]sin,cos,tan,sinh,cosh,tanh,%
+        asin,acos,atan,atan2,asinh,acosh,atanh,atanh2,%
+        abs,fabs,div,fmod,fmax,fmin,nan,%
+        exp,exp2,log,log2,log10,%
+        sqrt,cbrt,pow,%
+        ceil,floor,trunc,round},
+  emphstyle=[1]\color{green!40!black},
+}
+%-------------------------------------------------------------------------------
+% macros for rcording errors or warnings, look in .log file for line numbers
+%
+\newwrite\errorfile%
+\immediate\openout\errorfile=./\jobname.errors%
+\def\MyWarning#1{\immediate\write\errorfile{#1}\PackageWarning{(none)}{#1}}
+% The above does not empty an existing file *until* the first call to \write.
+% Thus if there are no errors on this run then any errors (from previous versions)
+% will remain in the .errors file.
+% The only way I know to fix this is to write anything to the file.
+% Note that TeX primatives such as \% and \relax can *not* be expanded and will
+% be written as is.
+\immediate\write\errorfile{-- should be empty, see \jobname.log for line numbers --}
+%
+%-------------------------------------------------------------------------------
+% macros for label & ref of listings' line numbers
+%
+\IfFileExists{./\jobname.lstnum}{\input ./\jobname.lstnum\relax}{}
+%
+\newwrite\lstnumfile%
+\immediate\openout\lstnumfile=./\jobname.lstnum%
+%
+\def\lstlabel#1{%
+\expandafter\xdef\csname lst@num@#1\endcsname{\arabic{lstnumber}}% can also use \the\vlaue{...} for \arabic{...}
+\immediate\write\lstnumfile{%
+\noexpand\expandafter\noexpand\xdef\noexpand\csname ex@num@#1\noexpand\endcsname{\arabic{lstnumber}}}}%
+%
+\def\lstref{\@ifstar\lst@ref\lst@@ref}
+%
+% lots of choices here ...
+\def\lst@@ref#1{\hbox{\normalfont\color{blue} \ifcsname lst@num@#1\endcsname/\csname lst@num@#1\endcsname/\else ?#1?\MyWarning{Undefined line number: #1}\fi}}% for lines numbers of the output
+\def\lst@ref#1{\hbox{\normalfont\color{blue} \ifcsname lst@num@#1\endcsname\csname lst@num@#1\endcsname\else ?#1?\MyWarning{Undefined line number: #1}\fi}}%    for lines numbers of the source
+%-------------------------------------------------------------------------------
+% macros for label & ref of exercises
+%
+\IfFileExists{./\jobname.exnum}{\input ./\jobname.exnum\relax}{}
+%
+\newwrite\exnumfile%
+\immediate\openout\exnumfile=./\jobname.exnum%
+%
+\def\exlabel#1{%
+\expandafter\xdef\csname ex@num@#1\endcsname{\arabic{section}.\arabic{ExerciseNum}}% can also use \the\vlaue{...} for \arabic{...}
+\immediate\write\exnumfile{%
+\noexpand\expandafter\noexpand\xdef\noexpand\csname ex@num@#1\noexpand\endcsname{\arabic{section}.\arabic{ExerciseNum}}}}%
+%
+\def\exref#1{\hbox{\normalfont\color{blue} \ifcsname ex@num@#1\endcsname\csname ex@num@#1\endcsname\else ?#1?\MyWarning{Undefined exercise: #1}\fi}}
+%
+%-------------------------------------------------------------------------------
+% for the BSSN stuff
+\def\ddt#1{\frac{\partial #1}{\partial t}}
+\def\gBar{{\bar{g}}}
+\def\ABar{{\bar{A}}}
+\def\RBar{{\bar{R}}}
+% \def\trK{{\rm tr}K}
+\def\trK{{K}}
+\def\GammaBar{{\bar{\Gamma}}}
+\def\DBar{{\bar{D}}}
+

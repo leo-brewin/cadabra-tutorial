@@ -1,0 +1,8 @@
+deriv1 := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}}
+                             + \Gamma^{b}_{d a} v^{d}.
+
+deriv2 := \nabla_{a}{\nabla_{b}{v^{c}}} -> \partial_{a}{\nabla_{b}{v^{c}}}
+                                         + \Gamma^{c}_{d a} \nabla_{b}{v^{d}}
+                                         - \Gamma^{d}_{b a} \nabla_{d}{v^{c}}.
+
+substitute (deriv2,deriv1)

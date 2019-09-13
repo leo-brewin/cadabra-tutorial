@@ -1,0 +1,105 @@
+# ----------------------------------------------
+# auto-generated from dgeom.tex
+# ----------------------------------------------
+def Print (obj):
+    try:
+        print(obj._latex_())
+    except:
+        print(latex(obj))
+# ----------------------------------------------
+
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+g_{a b}::Metric.
+g^{a b}::InverseMetric.
+g_{a}^{b}::KroneckerDelta.
+g^{a}_{b}::KroneckerDelta.
+
+R_{a b c d}::RiemannTensor.
+R^{a}_{b c d}::RiemannTensor.
+
+\Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+\Gamma_{a b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+g_{a b}::Depends(\partial{#}).
+g^{a b}::Depends(\partial{#}).
+\Gamma^{a}_{b c}::Depends(\partial{#}).
+\Gamma^{a b c}::Depends(\partial{#}).
+
+dgab := \partial_{c}{g_{a b}} ->   \Gamma^{d}_{a c} g_{d b}
+                                 + \Gamma^{d}_{b c} g_{a d}.
+
+diab := \partial_{c}{g^{a b}} -> - \Gamma^{a}_{d c} g^{d b}
+                                 - \Gamma^{b}_{d c} g^{a d}.
+
+GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                             + \partial_{c}{g_{b d}}
+                                             - \partial_{d}{g_{b c}}).
+
+GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                   + \partial_{c}{g_{b a}}
+                                   - \partial_{a}{g_{b c}}).
+
+RabcdU := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                           - \partial_{d}{\Gamma^{a}_{b c}}
+                           + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                           - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
+
+RabcdD := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                         - \partial_{d}{\Gamma_{a b c}}
+                         + \Gamma_{e a d} \Gamma^{e}_{b c}
+                         - \Gamma_{e a c} \Gamma^{e}_{b d}.
+
+Rab := R_{a b} -> R^{c}_{a c b}.
+
+Rscalar := R -> g^{a b} R_{a b}.
+
+Cabcd := C_{a b c d} -> R_{a b c d} - (1/2) (R_{a c} g_{b d} - R_{a d} g_{b c})
+                                    - (1/2) (g_{a c} R_{b d} - g_{a d} R_{b c})
+                                    + (R/6) (g_{a c} g_{b d} - g_{a d} g_{b c}).
+
+expr := \partial_{c}{g_{a b}}.
+substitute (expr,dgab)
+
+expr := \partial_{c}{g^{a b}}.
+substitute (expr,diab)
+
+expr := \Gamma^{a}_{b c}.
+substitute (expr,GammaU)
+
+expr := \Gamma_{a b c}.
+substitute (expr,GammaD)
+
+expr := R^{a}_{b c d}.
+substitute (expr,RabcdU)
+
+expr := R_{a b c d}.
+substitute (expr,RabcdD)
+
+expr := R_{a b}.
+substitute (expr,Rab)
+
+expr := R.
+substitute (expr,Rscalar)
+
+expr := C_{a b c d}.
+substitute (expr,Cabcd)
+
+import cdblib
+
+cdblib.create ('dgeom.json')
+
+cdblib.put ('dgab',dgab,'dgeom.json')
+cdblib.put ('diab',diab,'dgeom.json')
+cdblib.put ('GammaU',GammaU,'dgeom.json')
+cdblib.put ('GammaD',GammaD,'dgeom.json')
+cdblib.put ('RabcdU',RabcdU,'dgeom.json')
+cdblib.put ('RabcdD',RabcdD,'dgeom.json')
+cdblib.put ('Rab',Rab,'dgeom.json')
+cdblib.put ('Rscalara',Rscalar,'dgeom.json')
+cdblib.put ('Cabcd',Cabcd,'dgeom.json')
+

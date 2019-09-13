@@ -1,0 +1,39 @@
+-- 04 Aug 2019 --------------------------------------------
+
+Cadabra 2.2.7 (build 2133.26cc507944 dated 2019-06-07)
+
+example-01   -->  0.5 secs and 43 Mbytes
+example-02   -->  0.5 secs and 43 Mbytes
+example-03   -->  0.7 secs and 43 Mbytes
+example-04   -->  0.5 secs and 43 Mbytes
+example-05   -->  0.5 secs and 44 Mbytes
+example-06   -->  8.1 secs and 49 Mbytes
+example-07   -->  4.7 secs and 48 Mbytes
+example-08   -->  0.5 secs and 44 Mbytes
+example-09   -->  0.8 secs and 43 Mbytes
+example-10   -->  1.0 secs and 47 Mbytes
+example-11a  -->  9.4 secs and 48 Mbytes
+example-11b  -->  0.7 secs and 44 Mbytes
+example-12   -->  8.7 secs and 50 Mbytes
+example-13   -->  6.1 secs and 49 Mbytes
+example-14   -->  3.3 secs and 45 Mbytes
+example-15   --> 23.1 secs and 51 Mbytes
+
+-- 28 June 2019 -------------------------------------------
+
+Cadabra 2.2.7 (build 2133.26cc507944 dated 2019-06-07)
+
+example-01 --> 0.8 secs and 44 Mbytes
+example-02 --> 0.5 secs and 43 Mbytes
+example-03 --> 0.7 secs and 44 Mbytes
+example-04 --> 0.4 secs and 43 Mbytes
+example-05 --> 0.5 secs and 42 Mbytes
+example-06 --> 5.7 secs and 49 Mbytes
+example-07 --> 1.2 secs and 47 Mbytes
+example-08 --> 0.5 secs and 44 Mbytes
+example-09 --> 0.8 secs and 43 Mbytes
+example-10 --> 1.0 secs and 46 Mbytes
+example-11 --> 0.7 secs and 44 Mbytes
+example-12 --> 8.7 secs and 51 Mbytes
+example-13 --> 2.5 secs and 45 Mbytes
+example-14 --> 0.7 secs and 45 Mbytes

@@ -1,0 +1,80 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.6 More digging around in Cadabra's datastructure}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   gab := { g_{\theta \theta}   = r**2,
+            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-0606.101,gab)
+
+   complete   (gab, $g^{a b}$)                              # cdb(ex-0606.102,gab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+
+   evaluate   (Gamma, gab, rhsonly=True)                    # cdb(ex-0606.103,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                    # cdb(ex-0606.104,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                    # cdb(ex-0606.105,Rab)
+
+   indcs = Rab[1][2][0][0]                                  # cdb(ex-0606.106,indcs)
+   compt = Rab[1][2][0][1]                                  # cdb(ex-0606.107,compt)
+
+   # cdbBeg(print.0606)
+   print ('Rab = ' + str(Rab.input_form())+'\n')  # reveals Cadabra's internal structure for storing Rab
+
+   print ('Rab[0] = ' + str(Rab[0]))
+   print ('Rab[1] = ' + str(Rab[1])+'\n')
+
+   print ('Rab[1][0] = ' + str(Rab[1][0]))
+   print ('Rab[1][1] = ' + str(Rab[1][1]))
+   print ('Rab[1][2] = ' + str(Rab[1][2])+'\n')
+
+   print ('Rab[1][2][0] = ' + str(Rab[1][2][0]))
+   print ('Rab[1][2][0][0] = ' + str(Rab[1][2][0][0]))
+   print ('Rab[1][2][0][1] = ' + str(Rab[1][2][0][1]))
+   # cdbEnd(print.0606)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\Cdb*{ex-0606.101}}
+   \Dmath*{\Cdb*{ex-0606.102}}
+   \Dmath*{\Cdb*{ex-0606.103}}
+   \Dmath*{\Cdb*{ex-0606.104}}
+   \Dmath*{\Cdb*{ex-0606.105}}
+\end{dgroup*}
+
+\begin{align*}
+   R_{\varphi\varphi} &= R_{\Cdb{ex-0606.106}}\\
+                      &= \Cdb{ex-0606.107}
+\end{align*}
+
+\bgroup
+\IfFileExists{ex-0606.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{ex-0606.cdbcopy}}%
+{Where is {\tt ex-0606.cdbcopy}?}
+\egroup
+
+\end{document}

@@ -1,0 +1,31 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# template for covariant derivative of a vector
+
+derivU := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}} + \Gamma^{b}_{c a} A?^{c}.
+derivD := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}} - \Gamma^{c}_{b a} A?_{c}.
+
+vab := v_{a b} -> A_{a} B_{b}.
+iab := A_{a} B_{b} -> v_{a b}.
+
+pab := \partial_{a}{A_{b}} B_{c} -> \partial_{a}{A_{b} B_{c}} - A_{b} \partial_{a}{B_{c}}.
+
+# create an object
+
+Dvab := \nabla_{a}{v_{b c}}.
+
+# apply the rule, then simplify
+
+substitute     (Dvab,vab)
+product_rule   (Dvab)
+substitute     (Dvab,derivD)
+substitute     (Dvab,derivU)
+distribute     (Dvab)
+substitute     (Dvab,pab)
+canonicalise   (Dvab)
+substitute     (Dvab,iab)
+sort_product   (Dvab)
+

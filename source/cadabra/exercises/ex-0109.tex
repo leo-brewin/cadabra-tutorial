@@ -1,0 +1,24 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.9 No index clashes}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,u,v,w}::Indices.
+
+   foo := A_{a c} C^{c}.                                  # cdb (ex-0109.101,foo)
+   bah := B_{b c} C^{c}.                                  # cdb (ex-0109.102,bah)
+
+   foobah := @(foo) @(bah).                               # cdb (ex-0109.103,foobah)
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-0109.101}\\
+   &\Cdb{ex-0109.102}\\
+   &\Cdb{ex-0109.103}
+\end{align*}
+
+\end{document}

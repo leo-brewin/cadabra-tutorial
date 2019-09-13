@@ -1,0 +1,75 @@
+import cdblib
+jsonfile = 'example-09.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+
+K_{a b}::Symmetric.
+g^{a}_{b}::KroneckerDelta.
+
+# define the projection operator
+
+hab:=h^{a}_{b} -> g^{a}_{b} - n^{a} n_{b}.
+
+# 3-covariant derivative obtained by projection on 4-covariant derivative
+
+vpq:=v_{p q} -> h^{a}_{p} h^{b}_{q} \nabla_{b}{v_{a}}.
+
+# compute 3-curvature by commutation of covariant derivatives
+
+vpqr:= h^{a}_{p} h^{b}_{q} h^{c}_{r} ( \nabla_{c}{v_{a b}} - \nabla_{b}{v_{a c}} ).
+
+substitute (vpq,hab)
+substitute (vpqr,vpq)
+
+distribute   (vpqr)
+product_rule (vpqr)
+distribute   (vpqr)
+eliminate_kronecker (vpqr)
+
+# standard substitutions
+
+substitute (vpqr,$h^{a}_{b} n^{b} -> 0$)
+substitute (vpqr,$h^{a}_{b} n_{a} -> 0$)
+substitute (vpqr,$\nabla_{a}{g^{b}_{c}} -> 0$)
+substitute (vpqr,$n^{a} \nabla_{b}{v_{a}} -> -v_{a} \nabla_{b}{n^{a}}$)
+substitute (vpqr,$v_{a} \nabla_{b}{n^{a}} -> v_{p} h^{p}_{a}\nabla_{b}{n^{a}}$)
+substitute (vpqr,$h^{p}_{a} h^{q}_{b} \nabla_{p}{n_{q}} -> K_{a b}$)
+substitute (vpqr,$h^{p}_{a} h^{q}_{b} \nabla_{p}{n^{b}} -> K_{a}^{q}$)
+
+# tidy up
+
+{v_{a},h^{a}_{b},K_{a}^{b},K_{a b},R^{a}_{b c d},\nabla_{a}{v_{b}}}::SortOrder.
+
+sort_product   (vpqr)
+rename_dummies (vpqr)
+canonicalise   (vpqr)
+factor_out     (vpqr,$h^{a?}_{b?}$)
+factor_out     (vpqr,$v_{a?}$)
+
+json.append (vpqr)
+
+R{#}::LaTeXForm("{{\strut}^g R}").
+
+gRabcd := \nabla_{c}{\nabla_{b}{v_{a}}}
+         -\nabla_{b}{\nabla_{c}{v_{a}}} -> R^{d}_{a b c} v_{d}.
+
+substitute     (vpqr,gRabcd)
+distribute     (vpqr)
+substitute     (vpqr,$v_{a} -> h^{b}_{a} v_{b}$)
+substitute     (vpqr,$h^{b}_{a} K_{c}^{a} -> K_{c}^{b}$)
+sort_product   (vpqr)
+rename_dummies (vpqr)
+canonicalise   (vpqr)
+factor_out     (vpqr,$v_{a?}$)
+substitute     (vpqr,$v_{a}->1$)
+sort_product   (vpqr)
+
+json.append (vpqr)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

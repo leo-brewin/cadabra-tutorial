@@ -1,0 +1,200 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-11.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 11 The RNC connection.}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
+
+   D{#}::PartialDerivative.
+   \nabla{#}::Derivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+   g^{a b}::Weight(label=gnum,value=1).
+
+   \delta{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+   R_{a b c d}::Depends(\nabla{#}).
+
+   x^{a}::Depends(D{#}).
+   x^{a}::Weight(label=xnum,value=1).
+
+   Dx := D_{a}{x^{b}} -> \delta^{b}_{a}.   # cdb (ex-11.000,Dx)
+
+   gab := g_{a b} -> g_{a b}
+                  -  (1/3)   x^{c} x^{d} R_{a c b d}
+                  -  (1/6)   x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}
+                  +  (1/180) x^{c} x^{d} x^{e} x^{f} ( 8 g^{g h} R_{a c d g} R_{b e f h}
+                                                      -9 \nabla_{c d}{R_{a e b f}} ).      # cdb (ex-11.001,gab)
+
+   iab := g^{a b} -> g^{a b}
+                  + (1/3)  x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}
+                  + (1/6)  x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}
+                  + (1/60) x^{c} x^{d} x^{e} x^{f} g^{a g} g^{b h}
+                                         ( 4 g^{i j} R_{c g d i} R_{e h f j}
+                                          +3 \nabla_{c d}{R_{e g f h}} ).                  # cdb(ex-11.002,iab)
+
+   distribute (gab)
+   distribute (iab)
+
+   ChrSym := \Gamma^{a}_{b c} -> 1/2 g^{a d} (  D_{b}{g_{d c}}
+                                              + D_{c}{g_{b d}}
+                                              - D_{d}{g_{b c}} ).   # cdb (ex-11.003,ChrSym)
+
+   Gamma := \Gamma^{a}_{b c}.        # cdb (ex-11.100,Gamma)
+
+   substitute     (Gamma,ChrSym)     # cdb (ex-11.101,Gamma)
+   substitute     (Gamma,gab)        # cdb (ex-11.102,Gamma)
+   substitute     (Gamma,iab)        # cdb (ex-11.103,Gamma)
+   distribute     (Gamma)            # cdb (ex-11.104,Gamma)
+   unwrap         (Gamma)            # cdb (ex-11.105,Gamma)
+   product_rule   (Gamma)            # cdb (ex-11.106,Gamma)
+   distribute     (Gamma)            # cdb (ex-11.107,Gamma)
+   substitute     (Gamma,Dx)         # cdb (ex-11.108,Gamma)
+   eliminate_kronecker (Gamma)       # cdb (ex-11.109,Gamma)
+
+   def truncate (obj,n):
+
+       ans = Ex("0")  # create a Cadabra object with value zero
+
+       for i in range (0,n+1):
+          foo := @(obj).
+          bah  = Ex("xnum = " + str(i))
+          distribute  (foo)
+          keep_weight (foo, bah)
+          ans = ans + foo
+
+       return ans
+
+   json.append (Gamma)
+
+   # sort_product   (Gamma)  # 52.3 sec, 49 Mbyte
+   # rename_dummies (Gamma)  # 58.6 sec, 51 Mbyte
+   # canonicalise   (Gamma)  # killed after 20 mins and over 500 Mbyte
+
+   Gamma = truncate (Gamma,3)   # cdb (ex-11.110,Gamma)  # allow up to 3rd order in x^a
+
+   sort_product   (Gamma)
+   rename_dummies (Gamma)
+   canonicalise   (Gamma)
+
+   json.append (Gamma)
+
+   # ==========================================================================
+   # the remaining code is just for pretty printing
+
+   def product_sort (obj):
+       substitute (obj,$ g^{a b}                   -> A001^{a b}                $)
+       substitute (obj,$ x^{a}                     -> A002^{a}                  $)
+       substitute (obj,$ z^{a}                     -> A003^{a}                  $)
+       substitute (obj,$ R_{a b c d}               -> A004_{a b c d}            $)
+       substitute (obj,$ \nabla_{e}{R_{a b c d}}   -> A005_{a b c d e}          $)
+       substitute (obj,$ \nabla_{e f}{R_{a b c d}} -> A006_{a b c d e f}        $)
+       sort_sum       (obj)
+       sort_product   (obj)
+       rename_dummies (obj)
+       substitute (obj,$ A001^{a b}                -> g^{a b}                   $)
+       substitute (obj,$ A002^{a}                  -> x^{a}                     $)
+       substitute (obj,$ A003^{a}                  -> z^{a}                     $)
+       substitute (obj,$ A004_{a b c d}            -> R_{a b c d}               $)
+       substitute (obj,$ A005_{a b c d e}          -> \nabla_{e}{R_{a b c d}}   $)
+       substitute (obj,$ A006_{a b c d e f}        -> \nabla_{e f}{R_{a b c d}} $)
+
+   def get_xterm (obj,n):
+
+       foo := @(obj).
+       bah  = Ex("xnum = " + str(n))
+       distribute  (foo)
+       keep_weight (foo, bah)
+
+       return foo
+
+   def get_gterm (obj,n):
+
+       foo := @(obj).
+       bah  = Ex("gnum = " + str(n))
+       distribute  (foo)
+       keep_weight (foo, bah)
+
+       return foo
+
+   def reformat (obj,scale):
+
+      foo  = Ex(str(scale))
+      bah := @(foo) @(obj).
+
+      distribute     (bah)
+      product_sort   (bah)
+      rename_dummies (bah)
+      canonicalise   (bah)
+      factor_out     (bah,$x^{a?},g^{b? c?}$)
+      ans := @(bah) / @(foo).
+
+      return ans
+
+   gam1  = get_xterm (Gamma, 1)                          # cdb (ex-11.200,gam1)
+   gam2  = get_xterm (Gamma, 2)                          # cdb (ex-11.201,gam2)
+   gam3  = get_xterm (Gamma, 3)                          # cdb (ex-11.202,gam3)
+
+   gam31 = get_gterm (gam3,  1)                          # cdb (ex-11.210,gam31)
+   gam32 = get_gterm (gam3,  2)                          # cdb (ex-11.211,gam31)
+
+   gam1  = reformat (gam1,   3)                          # cdb (ex-11.220,gam1)
+   gam2  = reformat (gam2,  12)                          # cdb (ex-11.221,gam2)
+
+   gam31 = reformat (gam31, 40)                          # cdb (ex-11.222,gam31)
+   gam32 = reformat (gam32, 45)                          # cdb (ex-11.223,gam32)
+
+   Gamma  := @(gam1) + @(gam2) + @(gam31) + @(gam32).    # cdb (ex-11.230,Gamma)
+   Scaled := 360 @(Gamma).                               # cdb (ex-11.231,Scaled)
+
+   json.append (Gamma)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb{ex-11.100}(x) = \Cdb*[\hskip 3.0cm]{ex-11.230}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{360 \cdb{ex-11.100}(x) = \Cdb*[\hskip 3.0cm]{ex-11.231}}
+\end{dgroup*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\begin{cadabra}
+   cdblib.put ('Gamma',Gamma,jsonfile)
+\end{cadabra}
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

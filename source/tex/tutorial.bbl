@@ -1,0 +1,120 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{brewin:2009-02}
+L.~Brewin, {A brief introduction to Cadabra: a tool for tensor computations in
+  General Relativity}, {\em Computer Physics Communications} {\bf 181} (2010)
+  489--498, \href{http://arxiv.org/abs/arXiv:0903.2085}{{\tt arXiv:0903.2085}}.
+  \url{http://users.monash.edu.au/~leo/research/papers/files/lcb09-02.html}.
+
+\bibitem{kulyabov:2019-01}
+D.~S. Kulyabov, A.~V. Korolkova, and L.~A. Sevastianov, New features in the
+  second version of the cadabra computer algebra system,
+  \href{http://dx.doi.org/10.1134/s0361768819020063}{{\em Programming and
+  Computer Software} {\bf 45} (2019) no.~2, 58--64}.
+  \url{http://dx.doi.org/10.1134/S0361768819020063}.
+
+\bibitem{grtensorIII:2017-01}
+P.~Musgrave, D.~Pollney, and K.~Lake.
+\newblock {GRTensorIII home page}.
+\newblock \url{https://github.com/grtensor/grtensor}.
+
+\bibitem{mathtensor:2008-01}
+S.~M. Christensen and L.~Parker.
+\newblock {MathTensor home page}.
+\newblock \url{http://smc.vnet.net/MathTensor.html}.
+
+\bibitem{manssur:2004-01}
+L.~R.~U. Manssur and R.~Portugal, The canon package: a fast kernel for tensor
+  manipulators, \href{http://dx.doi.org/10.1016/S0010-4655(03)00494-6}{{\em
+  Computer Physics Communications} {\bf 157} (2004) no.~2, 173--180}.
+  \url{http://www.lncc.br/~portugal/Invar.html}.
+
+\bibitem{portugal:1997-01}
+R.~Portugal and S.~L. Saut\'u, {Applications of Maple to general relativity},
+  \href{http://dx.doi.org/10.1016/S0010-4655(97)00078-7}{{\em Computer Physics
+  Communications} {\bf 105} (1997) no.~2-3, 233--253}.
+
+\bibitem{xact:2008-01}
+J.~Mart\'{\i}n-Garc\'{\i}a.
+\newblock {xAct: Efficient tensor computer algebra for Mathematica}.
+\newblock \url{http://metric.iem.csic.es/Martin-Garcia/xAct/}.
+
+\bibitem{maccallum:2018-01}
+M.~A.~H. MacCallum, Computer algebra in gravity research,
+  \href{http://dx.doi.org/10.1007/s41114-018-0015-6}{{\em Living Reviews in
+  Relativity} {\bf 21} (2018)  }.
+  \url{https://doi.org/10.1007/s41114-018-0015-6}.
+
+\bibitem{peeters:2017-02}
+K.~Peeters.
+\newblock {The Cadabra2 GitHub reporistory}.
+\newblock \url{https://github.com/kpeeters/cadabra2}.
+
+\bibitem{peeters:2017-01}
+K.~Peeters.
+\newblock {The Cadabra v2.x home page}.
+\newblock \url{https://cadabra.science/index.html}.
+
+\bibitem{husa:2006-01}
+S.~Husa, I.~Hinder, and C.~Lechner, {Kranc: a Mathematica package to generate
+  numerical codes for tensorial evolution equations},
+  \href{http://dx.doi.org/https://doi.org/10.1016/j.cpc.2006.02.002}{{\em
+  Computer Physics Communications} {\bf 174} (2006) no.~12, 983 -- 1004},
+  \href{http://arxiv.org/abs/arXiv:gr-qc/0404023}{{\tt arXiv:gr-qc/0404023}}.
+  \url{http://www.sciencedirect.com/science/article/pii/S0010465506001020}.
+
+\bibitem{ruchlin:2018-01}
+I.~Ruchlin, Z.~B. Etienne, and T.~W. Baumgarte, $\mathrm{SENR}/\mathrm{NRPy}+$:
+  Numerical relativity in singular curvilinear coordinate systems,
+  \href{http://dx.doi.org/10.1103/PhysRevD.97.064036}{{\em Phys. Rev. D} {\bf
+  97} (2018)  064036}, \href{http://arxiv.org/abs/arXiv:1712.07658}{{\tt
+  arXiv:1712.07658}}.
+  \url{https://link.aps.org/doi/10.1103/PhysRevD.97.064036}.
+
+\bibitem{chavel:2006-01}
+I.~Chavel, {\em {Riemannian Geometry. A modern introduction, 2nd ed.}}
+\newblock Cambridge University Press, Cambridge., 2006.
+
+\bibitem{chern-chen-lam:2000-01}
+S.~Chern, W.~Chen, and K.~Lam, {\em {Lectures on Differential Geometry}}.
+\newblock World Scientific, Singapore, 2000.
+
+\bibitem{eisenhart:1926-01}
+L.~P. Eisenhart, {\em Riemannian Geometry}.
+\newblock Princeton University Press, Princeton, 1926.
+
+\bibitem{gray:1973-01}
+A.~Gray, {The volume of a small geodesic ball of a Riemannian manifold}, {\em
+  Michigan.Math.J.} {\bf 20} (1973)  329--344.
+
+\bibitem{willmore:1996-01}
+T.~Willmore, {\em Riemannian Geometry}.
+\newblock Oxford University Press, Oxford, 1996.
+
+\bibitem{calzetta:1988-01}
+E.~Calzetta, S.~Habib, and B.~Hu, {Quantum kinetic field theory in curved
+  spacetime: Covariant Wigner function and Liouville-Vlasov equations}, {\em
+  Phys. Rev. D} {\bf 37} (1988) no.~10, 2901--2919.
+
+\bibitem{shibata:1995-01}
+M.~Shibata and T.~Nakamura, Evolution of three-dimensional gravitational waves:
+  Harmonic slicing case, {\em Phys. Rev. D} {\bf 52} (1995)  5428--5444.
+
+\bibitem{baumgarte:1998-01}
+T.~W. Baumgarte and S.~L. Shapiro, {Numerical integration of Einstein's field
+  equations}, {\em Phys. Rev. D} {\bf 59} (1998)  024007,
+  \href{http://arxiv.org/abs/gr-qc/9810065}{{\tt gr-qc/9810065}}.
+
+\bibitem{alcubierre:2000-03}
+M.~Alcubierre, B.~Brugmann, T.~Dramlitsch, J.~A. Font, P.~Papadopoulos,
+  E.~Seidel, N.~Stergioulas, and R.~Takahashi, {Towards a stable numerical
+  evolution of strongly gravitating systems in general relativity: The
+  conformal treatments}, {\em Phys. Rev. D} {\bf 62} (2000)  044034.
+
+\bibitem{alcubierre:2003-01}
+M.~Alcubierre, B.~Br{\"u}gmann, P.~Diener, M.~Koppitz, D.~Pollney, E.~Seidel, ,
+  and R.~Takahashi, {Gauge conditions for long-term numerical black hole
+  evolutions without excision}, {\em Phys. Rev. D} {\bf 67} (2003)  084023,
+  \href{http://arxiv.org/abs/gr-qc/0206072}{{\tt gr-qc/0206072}}.
+
+\end{thebibliography}\endgroup

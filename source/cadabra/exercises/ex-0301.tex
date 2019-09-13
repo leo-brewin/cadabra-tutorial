@@ -1,0 +1,100 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.1 Some symmetries of Riemann}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   ;::Symbol;
+
+   \partial{#}::PartialDerivative.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.       # cdb(Rabcd.000,Rabcd)
+
+   dRabcd := R^{a}_{b c d ; e} -> \partial_{e}{R^{a}_{b c d}}
+                                + \Gamma^{a}_{f e} R^{f}_{b c d}
+                                - \Gamma^{f}_{b e} R^{a}_{f c d}
+                                - \Gamma^{f}_{c e} R^{a}_{b f d}
+                                - \Gamma^{f}_{d e} R^{a}_{b c f}.       # cdb(dRabcd.000,dRabcd)
+
+\end{cadabra}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.1 Antisymmetry on last pair of indices}
+
+\begin{cadabra}
+   expr := R^{a}_{b c d} + R^{a}_{b d c}.                               # cdb(ex-0301.101,expr)
+
+   substitute (expr, Rabcd)                                             # cdb(ex-0301.102,expr)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0301.101} = \Cdb*{ex-0301.102}}
+\end{dgroup*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.1 First Bianchi identity}
+
+\begin{cadabra}
+   expr := R^{a}_{b c d} + R^{a}_{d b c} + R^{a}_{c d b}.               # cdb(ex-0301.201,expr)
+
+   substitute   (expr, Rabcd)                                           # cdb(ex-0301.202,expr)
+   canonicalise (expr)                                                  # cdb(ex-0301.203,expr)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0301.201} = \Cdb*[\hskip2.0cm\hfill]{ex-0301.202}
+                             = \Cdb*{ex-0301.203}}
+\end{dgroup*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.1 Second Bianchi identity}
+
+\begin{cadabra}
+   expr := R^{a}_{b c d ; e} + R^{a}_{b e c ; d} + R^{a}_{b d e ; c}.   # cdb(ex-0301.301,expr)
+
+   substitute     (expr, dRabcd)                                        # cdb(ex-0301.302,expr)
+   substitute     (expr,  Rabcd)                                        # cdb(ex-0301.303,expr)
+   distribute     (expr)                                                # cdb(ex-0301.304,expr)
+   product_rule   (expr)                                                # cdb(ex-0301.305,expr)
+   sort_product   (expr)                                                # cdb(ex-0301.306,expr)
+   rename_dummies (expr)                                                # cdb(ex-0301.307,expr)
+   canonicalise   (expr)                                                # cdb(ex-0301.308,expr)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0301.301} = \Cdb*[\hskip2.0cm\hfill]{ex-0301.302}
+                             = \Cdb*{ex-0301.303}
+                             = \Cdb*{ex-0301.304}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0301.301} = \Cdb*[\hskip2.0cm\hfill]{ex-0301.305}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0301.306}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0301.301} = \Cdb*[\hskip2.0cm\hfill]{ex-0301.307}
+                             = \Cdb*{ex-0301.308}}
+\end{dgroup*}
+
+\end{document}

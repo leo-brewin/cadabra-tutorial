@@ -1,0 +1,70 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 4.7 Return in functions}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l#}::Indices(position=independent).
+
+   # ---------------------------------------------------------------
+   # this function uses in-place changes for obj
+
+   def tidy (obj):
+
+       sort_product   (obj)
+       rename_dummies (obj)
+       canonicalise   (obj)
+
+   foo := C^{f} B^{a} A_{f a}.                  # cdb (ex-0407.101,foo)
+   tidy (foo)                                   # cdb (ex-0407.102,foo)
+
+   # ---------------------------------------------------------------
+   # this function creates new objects,
+   # it will not give the correct result
+
+   def tidy (obj):
+
+       bah := @(obj).
+
+       sort_product   (bah)
+       rename_dummies (bah)
+       canonicalise   (bah)
+
+       obj := @(bah).
+
+   foo := C^{f} B^{a} A_{f a}.                  # cdb (ex-0407.201,foo)
+   tidy (foo)                                   # cdb (ex-0407.202,foo)
+
+   # ---------------------------------------------------------------
+   # this function uses a return statement
+   # it will give the correct result
+
+   def tidy (obj):
+
+       bah := @(obj).
+
+       sort_product   (bah)
+       rename_dummies (bah)
+       canonicalise   (bah)
+
+       obj := @(bah).
+
+       return obj
+
+   foo := C^{f} B^{a} A_{f a}.                  # cdb (ex-0407.301,foo)
+   foo = tidy (foo)                             # cdb (ex-0407.302,foo)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{align*}
+   \cdb{ex-0407.101} &= \Cdb{ex-0407.102}\\
+   \cdb{ex-0407.201} &= \Cdb{ex-0407.202}\\
+   \cdb{ex-0407.301} &= \Cdb{ex-0407.302}
+\end{align*}
+
+\end{document}

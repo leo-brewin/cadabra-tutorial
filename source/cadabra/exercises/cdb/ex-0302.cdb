@@ -1,0 +1,31 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+\Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2});
+
+# rules for the first two covariant derivs of V^a
+
+deriv1 := \nabla_{a}{V^{b}} -> \partial_{a}{V^{b}}
+                             + \Gamma^{b}_{d a} V^{d}.
+
+deriv2 := \nabla_{a}{\nabla_{b}{V^{c}}} -> \partial_{a}{\nabla_{b}{V^{c}}}
+                                         + \Gamma^{c}_{d a} \nabla_{b}{V^{d}}
+                                         - \Gamma^{d}_{b a} \nabla_{d}{V^{c}}.
+                                                                # cdb (ex-0302.102,deriv2)
+
+Vabc :=   \nabla_{c}{\nabla_{b}{V^{a}}}
+        - \nabla_{b}{\nabla_{c}{V^{a}}}.
+
+substitute (Vabc,deriv2)
+substitute (Vabc,deriv1)
+
+distribute     (Vabc)
+product_rule   (Vabc)
+
+sort_product   (Vabc)
+rename_dummies (Vabc)
+canonicalise   (Vabc)
+factor_out     (Vabc,$V^{a?}$)
+

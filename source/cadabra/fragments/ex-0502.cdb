@@ -1,0 +1,2 @@
+expr := 2 V_{a b} - 3 V_{b a}.
+substitute (expr, $3 V_{b a} -> - 3 V_{a b})

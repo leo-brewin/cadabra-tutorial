@@ -1,0 +1,73 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative;
+
+g_{a b}::Metric;
+g^{a b}::InverseMetric;
+
+dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.
+                                                       # cdb (dgab.000,dgab)
+
+Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                                             + \partial_{c}{g_{b e}}
+                                             - \partial_{e}{g_{b c}}).
+                                                       # cdb (Gamma.000,Gamma)
+
+Rabcd := R^{a}_{b c d} ->
+         \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+       - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.
+                                                       # cdb (Rabcd.000,Rabcd)
+
+Rab := R_{a b} -> R^{c}_{a c b}.
+
+expr := 4 (R_{a b} - R_{b a}).
+
+substitute   (expr, Rab)
+substitute   (expr, Rabcd)
+substitute   (expr, Gamma)
+
+distribute   (expr)
+product_rule (expr)
+canonicalise (expr)
+
+substitute   (expr, dgab)
+canonicalise (expr)
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative;
+
+\Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+g_{a b}::Metric;
+g^{a b}::InverseMetric;
+
+dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.
+                                                       # cdb (dgab.000,dgab)
+
+Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                                             + \partial_{c}{g_{b e}}
+                                             - \partial_{e}{g_{b c}}).
+                                                       # cdb (Gamma.000,Gamma)
+
+Rabcd := R^{a}_{b c d} ->
+         \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+       - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.
+                                                       # cdb (Rabcd.000,Rabcd)
+
+Rab := R_{a b} -> R^{c}_{a c b}.
+
+expr := 4 (R_{a b} - R_{b a}).
+
+substitute   (expr, Rab)
+substitute   (expr, Rabcd)
+canonicalise (expr)
+substitute   (expr, Gamma)
+
+distribute   (expr)
+product_rule (expr)
+canonicalise (expr)
+
+substitute   (expr, dgab)
+canonicalise (expr)
+

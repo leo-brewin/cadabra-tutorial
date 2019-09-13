@@ -1,0 +1,225 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-13.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% =============================================================================
+\section*{Example 13a The Weyl tensor vanishes in 3d -- direct proof}
+
+\begin{cadabra}
+   {x,y,z}::Coordinate.
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (values={x,y,z},position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   {\partial_{a b}{g_{c d}},\partial_{a}{g_{b c}},g_{a b},g^{a b}}::SortOrder.
+
+   GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                                + \partial_{c}{g_{b d}}
+                                                - \partial_{d}{g_{b c}}). # cdb(Gamma.000,GammaU)
+
+   GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                      + \partial_{c}{g_{b a}}
+                                      - \partial_{a}{g_{b c}}).           # cdb(Gamma.010,GammaD)
+
+   Rabcd := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                           - \partial_{d}{\Gamma_{a b c}}
+                           + \Gamma_{e a d} \Gamma^{e}_{b c}
+                           - \Gamma_{e a c} \Gamma^{e}_{b d}.             # cdb (Rabcd.000,Rabcd)
+
+   Rab     := R_{a b} -> g^{c d} R_{a c b d}.                             # cdb (Rab.000,Rab)
+
+   Rscalar := R -> g^{a b} R_{a b}.                                       # cdb (R.000,Rscalar)
+
+   # Weyl in 3-dimensions
+
+   Cabcd := R_{a b c d} - (R_{a c} g_{b d} - R_{a d} g_{b c})
+                        - (g_{a c} R_{b d} - g_{a d} R_{b c})
+                  + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).            # cdb (ex-13a.100,Cabcd)
+
+   EightCabcd := 8 @(Cabcd).   # cdb (ex-13a.110,EightCabcd)
+
+   substitute     (Cabcd,Rscalar)
+   substitute     (Cabcd,Rab)
+   substitute     (Cabcd,Rabcd)
+   substitute     (Cabcd,GammaU)
+   substitute     (Cabcd,GammaD)
+
+   distribute     (Cabcd)
+
+   sort_product   (Cabcd)
+   rename_dummies (Cabcd)
+   canonicalise   (Cabcd)     # cdb (ex-13a.101,Cabcd)
+
+   EightCabcd := 8 @(Cabcd).  # cdb (ex-13a.111,EightCabcd)
+
+   gab := {g_{x x} = gxx, g_{x y} = gxy, g_{x z} = gxz,
+           g_{y x} = gxy, g_{y y} = gyy, g_{y z} = gyz,
+           g_{z x} = gxz, g_{z y} = gyz, g_{z z} = gzz}.
+
+   complete  (gab, $g^{a b}$)
+   evaluate  (Cabcd,gab)        # cdb (ex-13a.102,Cabcd)
+   evaluate  (EightCabcd,gab)   # cdb (ex-13a.112,EightCabcd)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{ C_{abcd} = \Cdb*{ex-13a.100}
+                     = \Cdb*{ex-13a.101}
+                     = \Cdb*{ex-13a.102}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{ 8C_{abcd} = \Cdb*{ex-13a.110}
+                      = \Cdb*{ex-13a.111}
+                      = \Cdb*{ex-13a.112}}
+\end{dgroup*}
+
+\clearpage
+
+% =============================================================================
+\section*{Example 13b The Weyl tensor vanishes in 3d -- orthonormal basis}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   R_{a b c d}::RiemannTensor.
+
+   ex{#}::LaTeXForm{"e_x"}.
+   ey{#}::LaTeXForm{"e_y"}.
+   ez{#}::LaTeXForm{"e_z"}.
+
+   {R_{a b c d}, g_{a b}, g^{a b}}::SortOrder.
+
+   Rab     := R_{a b} -> g^{c d} R_{a c b d}.
+
+   Rscalar := R -> g^{a b} R_{a b}.
+
+   gab := g^{a b} -> ex^{a} ex^{b} + ey^{a} ey^{b} + ez^{a} ez^{b}.
+
+   ortho := {ex^{a} ex^{b} g_{a b} -> 1, ey^{a} ey^{b} g_{a b} -> 1, ez^{a} ez^{b} g_{a b} -> 1,
+             ex^{a} ey^{b} g_{a b} -> 0, ex^{a} ez^{b} g_{a b} -> 0,
+             ey^{a} ex^{b} g_{a b} -> 0, ey^{a} ez^{b} g_{a b} -> 0,
+             ez^{a} ex^{b} g_{a b} -> 0, ez^{a} ey^{b} g_{a b} -> 0}.
+
+   # Weyl in 3-dimensions
+
+   Cabcd := R_{a b c d} - (R_{a c} g_{b d} - R_{a d} g_{b c})
+                        - (g_{a c} R_{b d} - g_{a d} R_{b c})
+                  + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).   # cdb (ex-13b.100,Cabcd)
+
+
+   substitute     (Cabcd, Rscalar)                               # cdb(ex-13b.101,Cabcd)
+   substitute     (Cabcd, Rab)                                   # cdb(ex-13b.102,Cabcd)
+   distribute     (Cabcd)                                        # cdb(ex-13b.103,Cabcd)
+
+   Cabcd := C_{a b c d} -> @(Cabcd).
+
+   Cxyxy := C_{a b c d} ex^{a} ey^{b} ex^{c} ey^{d}.             # cdb(ex-13b.104,Cxyxy)
+
+   substitute     (Cxyxy,Cabcd)                                  # cdb(ex-13b.105,Cxyxy)
+   distribute     (Cxyxy)                                        # cdb(ex-13b.106,Cxyxy)
+
+   substitute     (Cxyxy, ortho, repeat=True)                    # cdb(ex-13b.107,Cxyxy)
+
+   substitute     (Cxyxy, gab)                                   # cdb(ex-13b.108,Cxyxy)
+   distribute     (Cxyxy)                                        # cdb(ex-13b.109,Cxyxy)
+
+   sort_product   (Cxyxy)                                        # cdb(ex-13b.110,Cxyxy)
+   rename_dummies (Cxyxy)                                        # cdb(ex-13b.111,Cxyxy)
+   canonicalise   (Cxyxy)                                        # cdb(ex-13b.112,Cxyxy)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-13b.101}}
+   \Dmath*{\cdb*{ex-13b.102}}
+   \Dmath*{\cdb*{ex-13b.103}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb{ex-13b.104}
+         = \Cdb*[\hfill\hskip2.5cm]{ex-13b.105}
+         = \Cdb*{ex-13b.106}
+         = \Cdb*{ex-13b.107}
+         = \Cdb*[\hfill\hskip2.0cm]{ex-13b.108}
+         = \Cdb*{ex-13b.109}
+         = \Cdb*{ex-13b.110}
+         = \Cdb*{ex-13b.111}
+         = \Cdb*{ex-13b.112}}
+\end{dgroup*}
+
+\clearpage
+
+% =============================================================================
+\section*{Example 13c The Weyl tensor vanishes in 3d -- orthonormal basis}
+
+\begin{cadabra}
+   Cxyxz := C_{a b c d} ex^{a} ey^{b} ex^{c} ez^{d}.             # cdb(ex-13c.101,Cxyxz)
+
+   substitute     (Cxyxz,Cabcd)                                  # cdb(ex-13c.102,Cxyxz)
+
+   distribute     (Cxyxz)                                        # cdb(ex-13c.103,Cxyxz)
+
+   substitute     (Cxyxz, ortho, repeat=True)                    # cdb(ex-13c.104,Cxyxz)
+
+   substitute     (Cxyxz, gab)                                   # cdb(ex-13c.105,Cxyxz)
+   distribute     (Cxyxz)                                        # cdb(ex-13c.106,Cxyxz)
+
+   sort_product   (Cxyxz)                                        # cdb(ex-13c.107,Cxyxz)
+   rename_dummies (Cxyxz)                                        # cdb(ex-13c.108,Cxyxz)
+   canonicalise   (Cxyxz)                                        # cdb(ex-13c.109,Cxyxz)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb{ex-13c.101}
+         = \Cdb*[\hfill\hskip2.5cm]{ex-13c.102}
+         = \Cdb*{ex-13c.103}
+         = \Cdb*{ex-13c.104}
+         = \Cdb*{ex-13c.105}
+         = \Cdb*{ex-13c.106}
+         = \Cdb*{ex-13c.107}
+         = \Cdb*{ex-13c.108}
+         = \Cdb*{ex-13c.109}}
+\end{dgroup*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

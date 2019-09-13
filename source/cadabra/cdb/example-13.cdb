@@ -1,0 +1,132 @@
+import cdblib
+jsonfile = 'example-13.json'
+cdblib.create (jsonfile)
+json = []
+
+{x,y,z}::Coordinate.
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (values={x,y,z},position=independent).
+
+\partial{#}::PartialDerivative.
+
+g_{a b}::Metric.
+g^{a b}::InverseMetric.
+
+{\partial_{a b}{g_{c d}},\partial_{a}{g_{b c}},g_{a b},g^{a b}}::SortOrder.
+
+GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                             + \partial_{c}{g_{b d}}
+                                             - \partial_{d}{g_{b c}}).
+
+GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                   + \partial_{c}{g_{b a}}
+                                   - \partial_{a}{g_{b c}}).
+
+Rabcd := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                        - \partial_{d}{\Gamma_{a b c}}
+                        + \Gamma_{e a d} \Gamma^{e}_{b c}
+                        - \Gamma_{e a c} \Gamma^{e}_{b d}.
+
+Rab     := R_{a b} -> g^{c d} R_{a c b d}.
+
+Rscalar := R -> g^{a b} R_{a b}.
+
+# Weyl in 3-dimensions
+
+Cabcd := R_{a b c d} - (R_{a c} g_{b d} - R_{a d} g_{b c})
+                     - (g_{a c} R_{b d} - g_{a d} R_{b c})
+               + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).
+
+EightCabcd := 8 @(Cabcd).
+
+substitute     (Cabcd,Rscalar)
+substitute     (Cabcd,Rab)
+substitute     (Cabcd,Rabcd)
+substitute     (Cabcd,GammaU)
+substitute     (Cabcd,GammaD)
+
+distribute     (Cabcd)
+
+sort_product   (Cabcd)
+rename_dummies (Cabcd)
+canonicalise   (Cabcd)
+
+EightCabcd := 8 @(Cabcd).
+
+gab := {g_{x x} = gxx, g_{x y} = gxy, g_{x z} = gxz,
+        g_{y x} = gxy, g_{y y} = gyy, g_{y z} = gyz,
+        g_{z x} = gxz, g_{z y} = gyz, g_{z z} = gzz}.
+
+complete  (gab, $g^{a b}$)
+evaluate  (Cabcd,gab)
+evaluate  (EightCabcd,gab)
+
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+g_{a b}::Metric.
+g^{a b}::InverseMetric.
+
+R_{a b c d}::RiemannTensor.
+
+ex{#}::LaTeXForm{"e_x"}.
+ey{#}::LaTeXForm{"e_y"}.
+ez{#}::LaTeXForm{"e_z"}.
+
+{R_{a b c d}, g_{a b}, g^{a b}}::SortOrder.
+
+Rab     := R_{a b} -> g^{c d} R_{a c b d}.
+
+Rscalar := R -> g^{a b} R_{a b}.
+
+gab := g^{a b} -> ex^{a} ex^{b} + ey^{a} ey^{b} + ez^{a} ez^{b}.
+
+ortho := {ex^{a} ex^{b} g_{a b} -> 1, ey^{a} ey^{b} g_{a b} -> 1, ez^{a} ez^{b} g_{a b} -> 1,
+          ex^{a} ey^{b} g_{a b} -> 0, ex^{a} ez^{b} g_{a b} -> 0,
+          ey^{a} ex^{b} g_{a b} -> 0, ey^{a} ez^{b} g_{a b} -> 0,
+          ez^{a} ex^{b} g_{a b} -> 0, ez^{a} ey^{b} g_{a b} -> 0}.
+
+# Weyl in 3-dimensions
+
+Cabcd := R_{a b c d} - (R_{a c} g_{b d} - R_{a d} g_{b c})
+                     - (g_{a c} R_{b d} - g_{a d} R_{b c})
+               + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).
+
+
+substitute     (Cabcd, Rscalar)
+substitute     (Cabcd, Rab)
+distribute     (Cabcd)
+
+Cabcd := C_{a b c d} -> @(Cabcd).
+
+Cxyxy := C_{a b c d} ex^{a} ey^{b} ex^{c} ey^{d}.
+
+substitute     (Cxyxy,Cabcd)
+distribute     (Cxyxy)
+
+substitute     (Cxyxy, ortho, repeat=True)
+
+substitute     (Cxyxy, gab)
+distribute     (Cxyxy)
+
+sort_product   (Cxyxy)
+rename_dummies (Cxyxy)
+canonicalise   (Cxyxy)
+
+Cxyxz := C_{a b c d} ex^{a} ey^{b} ex^{c} ez^{d}.
+
+substitute     (Cxyxz,Cabcd)
+
+distribute     (Cxyxz)
+
+substitute     (Cxyxz, ortho, repeat=True)
+
+substitute     (Cxyxz, gab)
+distribute     (Cxyxz)
+
+sort_product   (Cxyxz)
+rename_dummies (Cxyxz)
+canonicalise   (Cxyxz)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

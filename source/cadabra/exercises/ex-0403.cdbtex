@@ -1,0 +1,12 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0403.100}{%
+c^{a}+c^{a}{}_{b} x^{b}+c^{a}{}_{b c} x^{b} x^{c}+c^{a}{}_{b c d} x^{b} x^{c} x^{d}+c^{a}{}_{b c d e} x^{b} x^{c} x^{d} x^{e}%
+}
+\cdbtag{ex-0403.101}{%
+d^{f}+d^{f}{}_{b} x^{b}+d^{f}{}_{b c} x^{b} x^{c}+d^{f}{}_{b c d} x^{b} x^{c} x^{d}+d^{f}{}_{b c d e} x^{b} x^{c} x^{d} x^{e}%
+}
+\cdbtag{ex-0403.102}{%
+c^{a} d^{f}+x^{b} \left(c^{a} d^{f}{}_{b}+c^{a}{}_{b} d^{f}\right)+x^{b} x^{c} \left(c^{a} d^{f}{}_{b c}+c^{a}{}_{b} d^{f}{}_{c}+c^{a}{}_{b c} d^{f}\right)+x^{b} x^{c} x^{d} \left(c^{a} d^{f}{}_{b c d}+c^{a}{}_{b} d^{f}{}_{c d}+c^{a}{}_{b c} d^{f}{}_{d}+c^{a}{}_{b c d} d^{f}\right)%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

@@ -1,0 +1,44 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative.
+
+\Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+\Gamma_{a b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+dgab := \partial_{c}{g_{a b}} ->   \Gamma^{d}_{a c} g_{d b}
+                                 + \Gamma^{d}_{b c} g_{a d}.
+
+RabcdU := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                           - \partial_{d}{\Gamma^{a}_{b c}}
+                           + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                           - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
+
+GammaD := {g_{a e} \Gamma^{e}_{b c} -> \Gamma_{a b c},
+           g_{e a} \Gamma^{e}_{b c} -> \Gamma_{a b c}}.
+
+RabcdD := R_{a b c d} -> g_{a e} R^{e}_{b c d}.
+
+gabDGamma := g_{a e} \partial_{c}{\Gamma^{e}_{b d}} ->
+                  \partial_{c}{g_{a e} \Gamma^{e}_{b d}}
+                - \Gamma^{e}_{b d} \partial_{c}{g_{a e}}.
+
+# this pair of rules needed to sort \Gamma_{a b c} to the very left
+# this helps canonicalise spot the terms that cancel
+bah := \Gamma_{a b c} -> A_{a b c}.
+foo := A_{a b c} -> \Gamma_{a b c}.
+
+expr := R_{a b c d}.
+
+substitute     (expr, RabcdD)
+substitute     (expr, RabcdU)
+distribute     (expr)
+substitute     (expr, gabDGamma)
+substitute     (expr, dgab)
+substitute     (expr, GammaD)
+distribute     (expr)
+substitute     (expr, bah)
+sort_product   (expr)
+rename_dummies (expr)
+substitute     (expr, foo)
+canonicalise   (expr)
+

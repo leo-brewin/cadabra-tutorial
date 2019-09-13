@@ -1,0 +1,33 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-05.100}{%
+A_{a} v^{a}+B_{a} v^{a}+C_{a} v^{a}%
+}
+\cdbtag{ex-05.101}{%
+ \ldots +B_{a} v^{a}+ \ldots %
+}
+\cdbtag{ex-05.102}{%
+ \ldots +B_{a} w^{a}+ \ldots %
+}
+\cdbtag{ex-05.103}{%
+A_{a} v^{a}+B_{a} w^{a}+C_{a} v^{a}%
+}
+\cdbtag{ex-05.200}{%
+2V_{p q}-3V_{q p}%
+}
+\cdbtag{ex-05.201}{%
+2\mu_{0} V_{p q}-3\mu_{1} V_{q p}%
+}
+\cdbtag{ex-05.202}{%
+ \ldots -3\mu_{1} V_{q p}%
+}
+\cdbtag{ex-05.203}{%
+ \ldots +3\mu_{1} V_{p q}%
+}
+\cdbtag{ex-05.204}{%
+2\mu_{0} V_{p q}+3\mu_{1} V_{p q}%
+}
+\cdbtag{ex-05.205}{%
+5V_{p q}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

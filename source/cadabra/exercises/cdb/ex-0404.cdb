@@ -1,0 +1,35 @@
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+
+def reformat (obj,scale):
+
+    {x^{a},A_{a b},B_{a b},C_{a b},g^{a b}}::SortOrder.
+
+    foo  = Ex(str(scale))
+    bah := @(foo) @(obj).
+
+    distribute     (bah)
+    sort_product   (bah)
+    rename_dummies (bah)
+    canonicalise   (bah)
+    factor_out     (bah,$x^{a?}$)
+
+    ans := @(bah) / @(foo).
+
+    return ans
+
+# ---------------------------------------------------------------
+
+# a messy unformatted expression
+
+expr := + (1/3) A_{a b} x^{a} x^{b}
+        + (1/9) B_{e c} x^{c} x^{e}
+        - (1/5) C_{p c} B_{d q} g^{c d} x^{p} x^{q}.
+
+# reformat terms and tidy fractions
+
+expr = reformat (expr,45)
+
+

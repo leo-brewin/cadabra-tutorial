@@ -1,0 +1,9 @@
+metric = \components_{a b}({{\theta, \theta} = (r)**2, {\varphi, \varphi} = (r)**2 (\sin(\theta))**2})
+
+metric[0] = a
+metric[1] = b
+metric[2] = {{\theta, \theta} = (r)**2, {\varphi, \varphi} = (r)**2 (\sin(\theta))**2}
+
+metric[2][1] = {\varphi, \varphi} = (r)**2 (\sin(\theta))**2
+metric[2][1][0] = {\varphi, \varphi}
+metric[2][1][1] = (r)**2 (\sin(\theta))**2

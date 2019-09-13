@@ -1,0 +1,20 @@
+foo = B_{b} A_{a}
+bah = A_{a} C_{c}
+
+type foo = <class 'cadabra2.Ex'>
+type bah = <class 'cadabra2.Ex'>
+
+id foo = 4583384656
+id bah = 4588747048
+
+foo = B_{b} A_{a}
+bah = B_{b} A_{a}
+
+bah = A_{a} B_{b}
+
+id foo = 4583384656
+id bah = 4583384656
+
+id foo = 4583384656
+id bah = 4588747888
+

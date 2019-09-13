@@ -1,0 +1,52 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.6 Cummutation of $\nabla$ on a scalar}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # covariant derivative of \phi
+
+   dphi := \nabla_{a}{\phi} -> \partial_{a}{\phi}.
+
+   # rules to hide and reveal \partial\phi
+
+   hide   := \partial_{a}{\phi} -> w_{a}.
+   reveal := w_{a} -> \partial_{a}{\phi}.
+
+   # template for covariant derivative of a dual-vector
+
+   deriv := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}} - \Gamma^{c}_{b a} A?_{c}.
+
+   # create an object
+
+   expr :=   \nabla_{a}{\nabla_{b}{\phi}}
+           - \nabla_{b}{\nabla_{a}{\phi}}.   # cdb (ex-0206.101,expr)
+
+   # apply the rules, then simplify
+
+   substitute     (expr,dphi)                # cdb (ex-0206.102,expr)
+   substitute     (expr,hide)                # cdb (ex-0206.103,expr)
+   substitute     (expr,deriv)               # cdb (ex-0206.104,expr)
+   substitute     (expr,reveal)              # cdb (ex-0206.105,expr)
+   canonicalise   (expr)                     # cdb (ex-0206.106,expr)
+\end{cadabra}
+
+\clearpage
+
+\begin{align}
+   \cdb{ex-0206.101} &= \Cdb{ex-0206.102}\\
+                     &= \Cdb{ex-0206.103}\\
+                     &= \Cdb{ex-0206.104}\\
+                     &= \Cdb{ex-0206.105}\\
+                     &= \Cdb{ex-0206.106}
+\end{align}
+
+\end{document}

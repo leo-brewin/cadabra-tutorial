@@ -1,0 +1,139 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+\lstset{language=cadabra,gobble=2}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+   g_{a}^{b}::KroneckerDelta.
+   g^{a}_{b}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+   R^{a}_{b c d}::RiemannTensor.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+   \Gamma_{a b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   g_{a b}::Depends(\partial{#}).
+   g^{a b}::Depends(\partial{#}).
+   \Gamma^{a}_{b c}::Depends(\partial{#}).
+   \Gamma^{a b c}::Depends(\partial{#}).
+
+   dgab := \partial_{c}{g_{a b}} ->   \Gamma^{d}_{a c} g_{d b}
+                                    + \Gamma^{d}_{b c} g_{a d}.           # cdb(dgab.000,dgab)
+
+   diab := \partial_{c}{g^{a b}} -> - \Gamma^{a}_{d c} g^{d b}
+                                    - \Gamma^{b}_{d c} g^{a d}.           # cdb(diab.000,diab)
+
+   GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                                + \partial_{c}{g_{b d}}
+                                                - \partial_{d}{g_{b c}}). # cdb(Gamma.000,GammaU)
+
+   GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                      + \partial_{c}{g_{b a}}
+                                      - \partial_{a}{g_{b c}}).           # cdb(Gamma.010,GammaD)
+
+   RabcdU := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                              - \partial_{d}{\Gamma^{a}_{b c}}
+                              + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                              - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.        # cdb(Rabcd.000,RabcdU)
+
+   RabcdD := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                            - \partial_{d}{\Gamma_{a b c}}
+                            + \Gamma_{e a d} \Gamma^{e}_{b c}
+                            - \Gamma_{e a c} \Gamma^{e}_{b d}.            # cdb(Rabcd.010,RabcdD)
+
+   Rab := R_{a b} -> R^{c}_{a c b}.                                       # cdb(Rab.000,Rab)
+
+   Rscalar := R -> g^{a b} R_{a b}.                                       # cdb(Rscalar.000,Rscalar)
+
+   # Weyl in 4 dimensions
+   Cabcd := C_{a b c d} -> R_{a b c d} - (1/2) (R_{a c} g_{b d} - R_{a d} g_{b c})
+                                       - (1/2) (g_{a c} R_{b d} - g_{a d} R_{b c})
+                                       + (R/6) (g_{a c} g_{b d} - g_{a d} g_{b c}).     # cdb(Cabcd.000,Cabcd)
+
+   expr := \partial_{c}{g_{a b}}.   # cdb(libdg.dgab.000,expr)
+   substitute (expr,dgab)           # cdb(libdg.dgab.001,expr)
+
+   expr := \partial_{c}{g^{a b}}.   # cdb(libdg.diab.000,expr)
+   substitute (expr,diab)           # cdb(libdg.diab.001,expr)
+
+   expr := \Gamma^{a}_{b c}.        # cdb(libdg.Gamma.000,expr)
+   substitute (expr,GammaU)         # cdb(libdg.Gamma.001,expr)
+
+   expr := \Gamma_{a b c}.          # cdb(libdg.Gamma.010,expr)
+   substitute (expr,GammaD)         # cdb(libdg.Gamma.011,expr)
+
+   expr := R^{a}_{b c d}.           # cdb(libdg.Rabcd.000,expr)
+   substitute (expr,RabcdU)         # cdb(libdg.Rabcd.001,expr)
+
+   expr := R_{a b c d}.             # cdb(libdg.Rabcd.010,expr)
+   substitute (expr,RabcdD)         # cdb(libdg.Rabcd.011,expr)
+
+   expr := R_{a b}.                 # cdb(libdg.Rab.000,expr)
+   substitute (expr,Rab)            # cdb(libdg.Rab.001,expr)
+
+   expr := R.                       # cdb(libdg.Rscalar.000,expr)
+   substitute (expr,Rscalar)        # cdb(libdg.Rscalar.001,expr)
+
+   expr := C_{a b c d}.             # cdb(libdg.Cabcd.000,expr)
+   substitute (expr,Cabcd)          # cdb(libdg.Cabcd.001,expr)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{gather}
+   \cdb{dgab.000}\\
+   \cdb{diab.000}\\
+   \cdb{Gamma.000}\\
+   \cdb{Gamma.010}\\
+   \cdb{Rabcd.000}\\
+   \cdb{Rabcd.010}\\
+   \cdb{Rab.000}\\
+   \cdb{Rscalar.000}\\
+   \cdb{Cabcd.000}
+\end{gather}
+
+\begin{gather}
+   \cdb{libdg.dgab.000}    = \cdb{libdg.dgab.001}\\
+   \cdb{libdg.diab.000}    = \cdb{libdg.diab.001}\\
+   \cdb{libdg.Gamma.000}   = \cdb{libdg.Gamma.001}\\
+   \cdb{libdg.Gamma.010}   = \cdb{libdg.Gamma.011}\\
+   \cdb{libdg.Rabcd.000}   = \cdb{libdg.Rabcd.001}\\
+   \cdb{libdg.Rabcd.010}   = \cdb{libdg.Rabcd.011}\\
+   \cdb{libdg.Rab.000}     = \cdb{libdg.Rab.001}\\
+   \cdb{libdg.Rscalar.000} = \cdb{libdg.Rscalar.001}\\
+   \cdb{libdg.Cabcd.000}   = \cdb{libdg.Cabcd.001}
+\end{gather}
+
+\clearpage
+
+% ============================================================================================
+% export rules to json format
+
+\begin{cadabra}
+   import cdblib
+
+   cdblib.create ('dgeom.json')
+
+   cdblib.put ('dgab',     dgab,    'dgeom.json')
+   cdblib.put ('diab',     diab,    'dgeom.json')
+   cdblib.put ('GammaU',   GammaU,  'dgeom.json')
+   cdblib.put ('GammaD',   GammaD,  'dgeom.json')
+   cdblib.put ('RabcdU',   RabcdU,  'dgeom.json')
+   cdblib.put ('RabcdD',   RabcdD,  'dgeom.json')
+   cdblib.put ('Rab',      Rab,     'dgeom.json')
+   cdblib.put ('Rscalara', Rscalar, 'dgeom.json')
+   cdblib.put ('Cabcd',    Cabcd,   'dgeom.json')
+
+\end{cadabra}
+
+\end{document}

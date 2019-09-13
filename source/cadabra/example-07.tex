@@ -1,0 +1,110 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-07.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 7 Export to C-code}
+
+\begin{cadabra}
+   def write_code (obj,name,filename,rank):
+
+      import os
+
+      from sympy.printing.ccode import C99CodePrinter as printer
+      from sympy.printing.codeprinter import Assignment
+
+      idx=[]  # indices in the form [{x, x}, {x, y} ...]
+      lst=[]  # corresponding terms [termxx, termxy, ...]
+
+      for i in range( len(obj[rank]) ):                 # rank = number of free indices
+          idx.append( str(obj[rank][i][0]._sympy_()) )  # indices for this term
+          lst.append( str(obj[rank][i][1]._sympy_()) )  # the matching term
+
+      mat = sympy.Matrix([lst])                         # row vector of terms
+      sub_exprs, simplified_rhs = sympy.cse(mat)        # optimise code
+
+      with open(os.getcwd() + '/' + filename, 'w') as out:
+
+         for lhs, rhs in sub_exprs:
+            out.write(printer().doprint(Assignment(lhs, rhs))+'\n')
+
+         for index, rhs in enumerate (simplified_rhs[0]):
+            lhs = sympy.Symbol(name+' '+(idx[index]).replace(', ',']['))
+            out.write(printer().doprint(Assignment(lhs, rhs))+'\n')
+\end{cadabra}
+
+\clearpage
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   gab := { g_{\theta \theta}   = r**2,
+            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-07.101,gab)
+
+   complete (gab, $g^{a b}$)                                # cdb(ex-07.102,gab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+
+   evaluate   (Gamma, gab, rhsonly=True)                    # cdb(ex-07.103,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                    # cdb(ex-07.104,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                    # cdb(ex-07.105,Rab)
+
+   write_code (Gamma[1],'myGamma','example-07-gamma.c',3)
+   write_code (Rabcd[1],'myRabcd','example-07-rabcd.c',4)
+   write_code (Rab[1],  'myRab',  'example-07-rab.c',2)
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-07.101}\\[10pt]
+   &\Cdb{ex-07.102}\\[10pt]
+   &\Cdb{ex-07.103}\\[10pt]
+   &\Cdb{ex-07.104}\\[10pt]
+   &\Cdb{ex-07.105}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

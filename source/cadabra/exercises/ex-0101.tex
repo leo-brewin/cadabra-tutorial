@@ -1,0 +1,33 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.1 Verify symmetry of $\Gamma^{a}{}_{bc}$}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+   g_{a b}::Metric.
+
+   \partial{#}::PartialDerivative.
+
+   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                               + \partial_{c}{g_{b d}}
+                                               - \partial_{d}{g_{b c}} ).
+
+   diff := \Gamma^{a}_{b c} - \Gamma^{a}_{c b}.   # cdb (ex-0101.101,diff)
+
+   substitute    (diff, Gamma)                    # cdb (ex-0101.102,diff)
+   distribute    (diff)                           # cdb (ex-0101.103,diff)
+   canonicalise  (diff)                           # cdb (ex-0101.104,diff)
+\end{cadabra}
+
+\begin{align*}
+   \cdb{ex-0101.101} &= \cdb{ex-0101.102}\\
+                     &= \cdb{ex-0101.103}\\
+                     &= \cdb{ex-0101.104}
+\end{align*}
+
+\end{document}

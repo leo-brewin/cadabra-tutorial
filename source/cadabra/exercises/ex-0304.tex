@@ -1,0 +1,117 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.4 More symmetries of Riemann}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g_{a b}::Symmetric.
+   g^{a b}::Symmetric.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+   \Gamma_{a b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                                + \partial_{c}{g_{b d}}
+                                                - \partial_{d}{g_{b c}}). # cdb(Gamma.000,GammaU)
+
+   GammaD := \Gamma_{a b c} ->  1/2 (   \partial_{b}{g_{a c}}
+                                      + \partial_{c}{g_{b a}}
+                                      - \partial_{a}{g_{b c}}).           # cdb(Gamma.010,GammaD)
+
+   Rabcd := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                           - \partial_{d}{\Gamma_{a b c}}
+                           + \Gamma_{e a d} \Gamma^{e}_{b c}
+                           - \Gamma_{e a c} \Gamma^{e}_{b d}.             # cdb(Rabcd.000,Rabcd)
+
+\end{cadabra}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.4 Antisymmetry on first pair of indices}
+
+\begin{cadabra}
+   expr := R_{a b c d} + R_{b a c d}.   # cdb(ex-0304.101,expr)
+
+   substitute     (expr, Rabcd)         # cdb(ex-0304.102,expr)
+   substitute     (expr, GammaU)        # cdb(ex-0304.103,expr)
+   substitute     (expr, GammaD)        # cdb(ex-0304.104,expr)
+   distribute     (expr)                # cdb(ex-0304.105,expr)
+   product_rule   (expr)                # cdb(ex-0304.106,expr)
+   sort_product   (expr)                # cdb(ex-0304.107,expr)
+   rename_dummies (expr)                # cdb(ex-0304.108,expr)
+   canonicalise   (expr)                # cdb(ex-0304.109,expr)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.101} = \Cdb*{ex-0304.102}
+                             = \Cdb*{ex-0304.103}
+                             = \Cdb*[\hskip3.0cm\hfill]{ex-0304.104}
+                             = \Cdb*{ex-0304.105}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.101} = \Cdb*{ex-0304.106}
+                             = \Cdb*{ex-0304.107}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.101} = \Cdb*{ex-0304.108}
+                             = \Cdb*{ex-0304.109}}
+\end{dgroup*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.4 Symmetric on swapping first and second pair of indices}
+
+\begin{cadabra}
+   expr := R_{a b c d} - R_{c d a b}.   # cdb(ex-0304.201,expr)
+
+   substitute     (expr, Rabcd)         # cdb(ex-0304.202,expr)
+   substitute     (expr, GammaU)        # cdb(ex-0304.203,expr)
+   substitute     (expr, GammaD)        # cdb(ex-0304.204,expr)
+   distribute     (expr)                # cdb(ex-0304.205,expr)
+   product_rule   (expr)                # cdb(ex-0304.206,expr)
+   sort_product   (expr)                # cdb(ex-0304.207,expr)
+   rename_dummies (expr)                # cdb(ex-0304.208,expr)
+   canonicalise   (expr)                # cdb(ex-0304.209,expr)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.201} = \Cdb*{ex-0304.202}
+                             = \Cdb*{ex-0304.203}
+                             = \Cdb*[\hskip3.0cm\hfill]{ex-0304.204}
+                             = \Cdb*[\hskip2.5cm\hfill]{ex-0304.205}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.201} = \Cdb*[\hskip2.5cm\hfill]{ex-0304.206}
+                             = \Cdb*[\hskip2.5cm\hfill]{ex-0304.207}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0304.201} = \Cdb*[\hskip2.5cm\hfill]{ex-0304.208}
+                             = \Cdb*{ex-0304.209}}
+\end{dgroup*}
+
+\end{document}

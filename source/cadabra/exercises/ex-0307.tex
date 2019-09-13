@@ -1,0 +1,76 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.7 Commutation of $\nabla$ on the Riemann tensor -- direct computation}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   ;::Symbol;
+
+   \partial{#}::PartialDerivative.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   RabcdD :=   \partial_{c}{\Gamma_{a b d}}
+             - \partial_{d}{\Gamma_{a b c}}
+             + \Gamma_{e a d} \Gamma^{e}_{b c}
+             - \Gamma_{e a c} \Gamma^{e}_{b d} -> R_{a b c d}.            # cdb(Rabcd.010,RabcdD)
+
+   RabcdU :=   \partial_{c}{\Gamma^{a}_{b d}}
+             - \partial_{d}{\Gamma^{a}_{b c}}
+             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+             - \Gamma^{e}_{b c} \Gamma^{a}_{d e} -> R^{a}_{b c d}.        # cdb(Rabcd.000,RabcdU)
+
+   d1Rabcd := R_{a b c d ; e} ->   \partial_{e}{R_{a b c d}}
+                                 - \Gamma^{f}_{a e} R_{f b c d}
+                                 - \Gamma^{f}_{b e} R_{a f c d}
+                                 - \Gamma^{f}_{c e} R_{a b f d}
+                                 - \Gamma^{f}_{d e} R_{a b c f}.          # cdb(d1Rabcd.000,d1Rabcd)
+
+   d2Rabcd := R_{a b c d ; e ; f} ->   \partial_{f}{R_{a b c d ; e}}
+                                     - \Gamma^{g}_{a f} R_{g b c d ; e}
+                                     - \Gamma^{g}_{b f} R_{a g c d ; e}
+                                     - \Gamma^{g}_{c f} R_{a b g d ; e}
+                                     - \Gamma^{g}_{d f} R_{a b c g ; e}
+                                     - \Gamma^{g}_{e f} R_{a b c d ; g}.  # cdb(d2Rabcd.000,d2Rabcd)
+
+   substitute (d2Rabcd,d1Rabcd)                                           # cdb (d2Rabcd.001, d2Rabcd)
+
+   expr := R_{a b c d ; e ; f} - R_{a b c d ; f ; e}.                     # cdb (ex-0307.100, expr)
+
+   substitute     (expr,d2Rabcd)                                          # cdb (ex-0307.101, expr)
+
+   distribute     (expr)                                                  # cdb (ex-0307.102, expr)
+   product_rule   (expr)                                                  # cdb (ex-0307.103, expr)
+
+   sort_product   (expr)                                                  # cdb (ex-0307.104, expr)
+   rename_dummies (expr)                                                  # cdb (ex-0307.105, expr)
+   canonicalise   (expr)                                                  # cdb (ex-0307.106, expr)
+   factor_out     (expr,$R_{a? b? c? d?}$)                                # cdb (ex-0307.107, expr)
+
+   substitute     (expr,RabcdU)                                           # cdb (ex-0307.108, expr)
+   substitute     (expr,$R^{a}_{b c d} -> -R^{a}_{b d c}$)                # cdb (ex-0307.109, expr)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.101}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.102}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.103}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.104}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.105}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*[\hskip2.0cm\hfill]{ex-0307.106}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.107}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.108}}
+   \Dmath*{\cdb{ex-0307.100} = \Cdb*{ex-0307.109}}
+\end{dgroup*}
+
+\clearpage
+
+\end{document}

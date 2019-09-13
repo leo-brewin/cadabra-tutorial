@@ -1,0 +1,48 @@
+import cdblib
+jsonfile = 'example-05.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+expr := A_{a} v^{a} + B_{a} v^{a} + C_{a} v^{a}.
+
+zoom (expr,$B_{a} Q??$)
+substitute (expr, $v^{a} -> w^{a}$)
+unzoom (expr)
+
+json.append (expr)
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+def add_tags (obj,tag):
+   n = 0
+   ans = Ex('0')
+   for i in obj.top().terms():
+      foo = obj[i]
+      bah = Ex(tag+'_{'+str(n)+'}')
+      ans := @(ans) + @(bah) @(foo).
+      n = n + 1
+   return ans
+
+def clear_tags (obj,tag):
+   ans := @(obj).
+   foo  = Ex(tag+'_{a?} -> 1')
+   substitute (ans,foo)
+   return ans
+
+expr := 2 V_{p q} - 3 V_{q p}.
+
+expr = add_tags (expr,'\\mu')
+
+zoom       (expr, $\mu_{1} Q??$)
+substitute (expr, $V_{a b} -> - V_{b a}$)
+unzoom     (expr)
+
+expr = clear_tags (expr,'\\mu')
+
+json.append (expr)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

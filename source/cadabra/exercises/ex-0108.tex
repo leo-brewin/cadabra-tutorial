@@ -1,0 +1,76 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.8 Syntax errors -- original code}
+
+\CdbSetup{action=verbatim}
+
+\begin{cadabra}
+   {a,b,c,d,e,f#}::Indices.
+   C{#}::Symmetric.
+
+   foo := A_{a} B_{b} + C_{ab}.                        # C_{ab} should be C_{a b}
+   bah := B_{b} A_{a} + C_{ba}.                        # C_{ba} should be C_{b a}
+   meh := @(foo) - @(bah)                              # missing dot or semi-colon terminator
+
+   if meh == 0:
+      print ("meh is zero, and all is good")
+         success = True.                               # indentation error, drop the dot
+   else:
+      print ("meh is not zero, oops")
+         success = False.                              # indentation error, drop the dot
+
+   canonicalise (meh).                                 # terminate with ; or nothing
+   sort_product (meh);
+
+   {\alpha\beta\gamma}::Indices.                       # separate list elements with commas
+
+   foo := Ex ("A_{ab} - A_{a b}");                     # use = for assignment, A_{ab} should be A_{a b}
+   bah := Ex ("A_{\alpha\beta} - A_{\alpha \beta}");   # use = for assignment, need raw string in Ex
+\end{cadabra}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 1.8 Syntax errors -- corrected code}
+
+\CdbSetup{action=show}
+
+\begin{cadabra}
+   {a,b,c,d,e,f#}::Indices.
+   C{#}::Symmetric.
+
+   foo := A_{a} B_{b} + C_{a b}.                       # cdb (ex-0108.101,foo)
+   bah := B_{b} A_{a} + C_{b a}.                       # cdb (ex-0108.102,bah)
+   meh := @(foo) - @(bah).                             # cdb (ex-0108.103,meh)
+
+   if meh == 0:
+      print ("meh is zero, and all is good")
+      success = True
+   else:
+      print ("meh is not zero, oops")
+      success = False
+
+   canonicalise (meh)                                  # cdb (ex-0108.104,meh)
+   sort_product (meh);                                 # cdb (ex-0108.105,meh)
+
+   {\alpha,\beta,\gamma}::Indices.
+
+   foo = Ex ("A_{a b} - A_{a b}");                     # cdb (ex-0108.106,foo)
+   bah = Ex (r"A_{\alpha\beta} - A_{\alpha \beta}");   # cdb (ex-0108.107,bah)
+\end{cadabra}
+
+\begin{align*}
+   &\cdb*{ex-0108.101}\\
+   &\cdb*{ex-0108.102}\\
+   &\cdb*{ex-0108.103}\\
+   &\cdb*{ex-0108.104}\\
+   &\cdb*{ex-0108.105}\\
+   &\cdb*{ex-0108.106}\\
+   &\cdb*{ex-0108.107}
+\end{align*}
+
+\end{document}

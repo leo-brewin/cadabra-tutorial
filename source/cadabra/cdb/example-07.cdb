@@ -1,0 +1,69 @@
+import cdblib
+jsonfile = 'example-07.json'
+cdblib.create (jsonfile)
+json = []
+
+def write_code (obj,name,filename,rank):
+
+   import os
+
+   from sympy.printing.ccode import C99CodePrinter as printer
+   from sympy.printing.codeprinter import Assignment
+
+   idx=[]
+   lst=[]
+
+   for i in range( len(obj[rank]) ):
+       idx.append( str(obj[rank][i][0]._sympy_()) )
+       lst.append( str(obj[rank][i][1]._sympy_()) )
+
+   mat = sympy.Matrix([lst])
+   sub_exprs, simplified_rhs = sympy.cse(mat)
+
+   with open(os.getcwd() + '/' + filename, 'w') as out:
+
+      for lhs, rhs in sub_exprs:
+         out.write(printer().doprint(Assignment(lhs, rhs))+'\n')
+
+      for index, rhs in enumerate (simplified_rhs[0]):
+         lhs = sympy.Symbol(name+' '+(idx[index]).replace(', ',']['))
+         out.write(printer().doprint(Assignment(lhs, rhs))+'\n')
+
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+\partial{#}::PartialDerivative.
+
+g_{a b}::Metric.
+g^{a b}::InverseMetric.
+
+Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                           + \partial_{f}{g_{b g}}
+                                           - \partial_{b}{g_{f g}} ).
+
+Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                          - \partial_{g}{\Gamma^{d}_{e f}}
+                          + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                          - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+Rab := R_{a b} -> R^{c}_{a c b}.
+
+gab := { g_{\theta \theta}   = r**2,
+         g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
+
+complete (gab, $g^{a b}$)
+
+substitute (Rabcd, Gamma)
+substitute (Rab, Rabcd)
+
+evaluate   (Gamma, gab, rhsonly=True)
+evaluate   (Rabcd, gab, rhsonly=True)
+evaluate   (Rab,   gab, rhsonly=True)
+
+write_code (Gamma[1],'myGamma','example-07-gamma.c',3)
+write_code (Rabcd[1],'myRabcd','example-07-rabcd.c',4)
+write_code (Rab[1],  'myRab',  'example-07-rab.c',2)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

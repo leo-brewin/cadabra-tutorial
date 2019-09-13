@@ -1,0 +1,20 @@
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+\partial{#}::PartialDerivative.
+
+V  := { V_{\theta} = \varphi, V_{\varphi} = \sin(\theta) }.
+dV := dV_{a b} -> \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.
+
+evaluate (dV, V)
+
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+\partial{#}::PartialDerivative.
+
+V  := { V_{\theta} = \varphi, V_{\varphi} = \sin(\theta) }.
+dV := dV_{a b} -> \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.
+
+evaluate (dV, V, rhsonly=True)
+

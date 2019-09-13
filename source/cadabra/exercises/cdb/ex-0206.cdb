@@ -1,0 +1,31 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# covariant derivative of \phi
+
+dphi := \nabla_{a}{\phi} -> \partial_{a}{\phi}.
+
+# rules to hide and reveal \partial\phi
+
+hide   := \partial_{a}{\phi} -> w_{a}.
+reveal := w_{a} -> \partial_{a}{\phi}.
+
+# template for covariant derivative of a dual-vector
+
+deriv := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}} - \Gamma^{c}_{b a} A?_{c}.
+
+# create an object
+
+expr :=   \nabla_{a}{\nabla_{b}{\phi}}
+        - \nabla_{b}{\nabla_{a}{\phi}}.
+
+# apply the rules, then simplify
+
+substitute     (expr,dphi)
+substitute     (expr,hide)
+substitute     (expr,deriv)
+substitute     (expr,reveal)
+canonicalise   (expr)
+

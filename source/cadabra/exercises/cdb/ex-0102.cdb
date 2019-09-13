@@ -1,0 +1,22 @@
+{a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+g_{a b}::Metric.
+g_{a}^{b}::KroneckerDelta.
+
+\partial{#}::PartialDerivative.
+
+GammaU := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                             + \partial_{c}{g_{b d}}
+                                             - \partial_{d}{g_{b c}} ).
+
+GammaD := \Gamma_{a b c} -> g_{a d} \Gamma^{d}_{b c}.
+
+expr := \Gamma_{a b c} + \Gamma_{b a c} - \partial_{c}{g_{a b}}.
+
+substitute          (expr, GammaD)
+substitute          (expr, GammaU)
+distribute          (expr)
+eliminate_metric    (expr)
+eliminate_kronecker (expr)
+canonicalise        (expr)
+

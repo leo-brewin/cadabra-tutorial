@@ -1,0 +1,60 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+def deriv (poly):
+
+    \delta^{a}::Weight(label=\epsilon).
+
+    bah := @(poly).
+
+    substitute     (bah,$x^{a} -> x^{a} + \delta^{a}$)
+    distribute     (bah)
+
+    foo := @(bah) - @(poly).
+
+    keep_weight    (foo, $\epsilon = 1$)
+    sort_product   (foo)
+    rename_dummies (foo)
+    factor_out     (foo, $\delta^{a?}$)
+    substitute     (foo, $\delta^{a} -> 1$)
+
+    return foo
+
+# ---------------------------------------------------------------
+
+poly := c^{a}
+      + c^{a}{}_{b} x^b
+      + c^{a}{}_{b c} x^b x^c.
+
+dpoly = deriv (poly)
+
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+def deriv (poly):
+
+    \partial{#}::PartialDerivative.
+    \delta^{a}_{b}::KroneckerDelta.
+
+    x^{a}::Depends(\partial{#}).
+
+    bah := \partial_{b}{@(poly)}.
+
+    distribute     (bah)
+    unwrap         (bah)
+    product_rule   (bah)
+    distribute     (bah)
+    substitute     (bah,$\partial_{b}{x^{a}}->\delta^{a}_{b}$)
+    eliminate_kronecker (bah)
+
+    sort_product   (bah)
+    rename_dummies (bah)
+
+    return bah
+
+poly := c^{a}
+      + c^{a}{}_{b} x^b
+      + c^{a}{}_{b c} x^b x^c.
+
+dpoly = deriv (poly)
+
+

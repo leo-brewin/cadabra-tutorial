@@ -1,0 +1,60 @@
+expr := C^{f}
+        w^{e}
+        B^{d}
+        v^{c}
+        A^{b}
+        u^{a}.
+
+expr := \Omega_{f}
+        \gamma_{e}
+        \Pi_{d}
+        \beta_{c}
+        \Gamma_{b}
+        \alpha_{a}.
+
+expr := C^{f}
+        w^{e}
+        B^{d}
+        v^{c}
+        A^{b}
+        u^{a}
+        \Omega_{f}
+        \gamma_{e}
+        \Pi_{d}
+        \beta_{c}
+        \Gamma_{b}
+        \alpha_{a}.
+
+expr := \partial_{f}{C^{f}}
+        w^{l}
+        \partial_{d}{B^{d}}
+        v^{k}
+        \partial_{b}{A^{b}}
+        u^{j}
+        \Omega_{i}
+        \partial^{e}{ \gamma_{e}}
+        \Pi_{h}
+        \partial^{c}{\beta_{c}}
+        \Gamma_{g}
+        \partial^{a}{\alpha_{a}}.
+
+expr := \partial{C}
+        w
+        \partial{B}
+        v
+        \partial{A}
+        u
+        \Omega
+        \partial{ \gamma}
+        \Pi
+        \partial{\beta}
+        \Gamma
+        \partial{\alpha}.
+
+expr := A_{b}
+        A_{a}
+        A_{c d e}
+        A_{f g}.
+
+expr :=  A_{a} A^{a}
+       + B^{b} B_{b}.

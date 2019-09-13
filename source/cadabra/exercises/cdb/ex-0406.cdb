@@ -1,0 +1,24 @@
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+def bespoke_sort (expr):
+
+    substitute     (expr,$ x^{a}            -> AAA01^{a}      $)
+    substitute     (expr,$ g_{a b}          -> AAA02_{a b}    $)
+    substitute     (expr,$ \Gamma_{a b c}   -> AAA03_{a b c}  $)
+
+    sort_product   (expr)
+
+    substitute     (expr,$ AAA01^{a}        -> x^{a}          $)
+    substitute     (expr,$ AAA02_{a b}      -> g_{a b}        $)
+    substitute     (expr,$ AAA03_{a b c}    -> \Gamma_{a b c} $)
+
+    return expr
+
+# ---------------------------------------------------------------
+
+expr := g_{a b} x^{a} x^{b} + \Gamma_{a b c} x^{a} x^{b} x^{c}.
+
+expr = bespoke_sort (expr)
+
+

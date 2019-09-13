@@ -1,0 +1,57 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.8 The Kasner cosmology}
+
+\begin{cadabra}
+   {t, x, y, z}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={t, x, y, z}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   p1::LaTeXForm("p_1").
+   p2::LaTeXForm("p_2").
+   p3::LaTeXForm("p_3").
+
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   gab := { g_{t t} = -1,
+            g_{x x} = t**(2*p1),
+            g_{y y} = t**(2*p2),
+            g_{z z} = t**(2*p3)}.                             # cdb(ex-0608.101,gab)
+
+   complete   (gab, $g^{a b}$)                                # cdb(ex-0608.102,gab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+
+   evaluate   (Gamma, gab, rhsonly=True)                      # cdb(ex-0608.103,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                      # cdb(ex-0608.104,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                      # cdb(ex-0608.105,Rab)
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\Cdb*{ex-0608.101}}
+   \Dmath*{\Cdb*{ex-0608.102}}
+   \Dmath*{\Cdb*{ex-0608.103}}
+   \Dmath*{\Cdb*{ex-0608.104}}
+   \Dmath*{\Cdb*{ex-0608.105}}
+\end{dgroup*}
+
+\end{document}

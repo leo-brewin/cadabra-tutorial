@@ -1,0 +1,17 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative.
+
+hide   := \partial_{c d}{g_{a b}} -> Z_{c d a b}.
+reveal := Z_{c d a b} -> \partial_{c d}{g_{a b}}.
+
+kill := \partial_{c}{g_{a b}} -> 0.
+
+Aab := g_{a b} + \partial_{c}{g_{a b}} x^{c}
+               + \partial_{c d}{g_{a b}} x^{c} x^{d}.
+
+substitute (Aab,hide)
+substitute (Aab,kill)
+substitute (Aab,reveal)
+
+

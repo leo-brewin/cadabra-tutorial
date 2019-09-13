@@ -1,0 +1,39 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.4 Combining rules -- a problem}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # rules for covariant derivatives of v
+
+   deriv1 := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}}
+                                + \Gamma^{b}_{d a} v^{d}.
+
+   deriv2 := \nabla_{a}{\nabla_{b}{v^{c}}} -> \partial_{a}{\nabla_{b}{v^{c}}}
+                                            + \Gamma^{c}_{d a} \nabla_{b}{v^{d}}
+                                            - \Gamma^{d}_{b a} \nabla_{d}{v^{c}}.
+
+   # attempt to combine both rules for second covariant derivative of v
+
+   substitute (deriv2,deriv1)       # cdb (ex-0204.101,deriv2)
+
+\end{cadabra}
+
+\vskip 1cm
+
+Note that the call to \verb|substitute| has made changes to both sides of the rule for
+\verb|deriv2|. This is not ideal and a better method is developed in the following exercise.
+
+\begin{align*}
+   \Cdb{ex-0204.101}
+\end{align*}
+
+\end{document}

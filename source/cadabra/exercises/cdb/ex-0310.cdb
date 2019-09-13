@@ -1,0 +1,8 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
+
+foo := A B + A B A B + A B A B A B + A B A B A B A B .
+bah := @(foo).
+
+substitute (foo,$A B -> A$)
+substitute (bah,$A B -> A$,repeat=True)
+

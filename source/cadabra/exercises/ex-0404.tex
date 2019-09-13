@@ -1,0 +1,53 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 4.4 Reformatting simple expressions}
+
+\begin{cadabra}
+
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+
+   def reformat (obj,scale):
+
+       {x^{a},A_{a b},B_{a b},C_{a b},g^{a b}}::SortOrder.  # choose a sort order
+
+       foo  = Ex(str(scale))          # create a scale factor
+       bah := @(foo) @(obj).          # apply the scale factor, clears all fractions
+
+       distribute     (bah)           # only required if (bah) contains brackets
+       sort_product   (bah)
+       rename_dummies (bah)
+       canonicalise   (bah)
+       factor_out     (bah,$x^{a?}$)
+
+       ans := @(bah) / @(foo).        # undo previous scaling
+
+       return ans
+
+   # ---------------------------------------------------------------
+
+   # a messy unformatted expression
+
+   expr := + (1/3) A_{a b} x^{a} x^{b}
+           + (1/9) B_{e c} x^{c} x^{e}
+           - (1/5) C_{p c} B_{d q} g^{c d} x^{p} x^{q}.  # cdb (ex-0404.100,expr)
+
+   # reformat terms and tidy fractions
+
+   expr = reformat (expr,45)                             # cdb(ex-0404.101,expr)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{ g = \Cdb*[\V{15pt}\hfill]{ex-0404.100}
+              = \Cdb*{ex-0404.101} }
+\end{dgroup*}
+
+\end{document}

@@ -1,0 +1,55 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0608.101}{%
+\left[g_{t t} = -1,~\discretionary{}{}{} g_{x x} = {t}^{2p_1},~\discretionary{}{}{} g_{y y} = {t}^{2p_2},~\discretionary{}{}{} g_{z z} = {t}^{2p_3}\right]%
+}
+\cdbtag{ex-0608.102}{%
+\left[g_{t t} = -1,~\discretionary{}{}{} g_{x x} = {t}^{2p_1},~\discretionary{}{}{} g_{y y} = {t}^{2p_2},~\discretionary{}{}{} g_{z z} = {t}^{2p_3},~\discretionary{}{}{} g^{t t} = -1,~\discretionary{}{}{} g^{x x} = {t}^{-2p_1},~\discretionary{}{}{} g^{y y} = {t}^{-2p_2},~\discretionary{}{}{} g^{z z} = {t}^{-2p_3}\right]%
+}
+\cdbtag{ex-0608.103}{%
+\Gamma^{a}{}_{f g} \rightarrow \square{}_{f}{}_{g}{}^{a}\left\{\begin{aligned}\square{}_{z}{}_{t}{}^{z}&= p_3 {t}^{-1}\\[-.5ex]%
+\square{}_{y}{}_{t}{}^{y}&= p_2 {t}^{-1}\\[-.5ex]%
+\square{}_{x}{}_{t}{}^{x}&= p_1 {t}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{z}{}^{z}&= p_3 {t}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{y}{}^{y}&= p_2 {t}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{x}{}^{x}&= p_1 {t}^{-1}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{t}&= p_3 {t}^{\left(2p_3-1\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{t}&= p_2 {t}^{\left(2p_2-1\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{t}&= p_1 {t}^{\left(2p_1-1\right)}\\[-.5ex]%
+\end{aligned}\right.%
+}
+\cdbtag{ex-0608.104}{%
+R^{d}{}_{e f g} \rightarrow \square{}_{e}{}_{g}{}^{d}{}_{f}\left\{\begin{aligned}\square{}_{x}{}_{x}{}^{t}{}_{t}&= p_1 {t}^{\left(2p_1-2\right)} \left(p_1-1\right)\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{t}{}_{t}&= p_2 {t}^{\left(2p_2-2\right)} \left(p_2-1\right)\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{t}{}_{t}&= p_3 {t}^{\left(2p_3-2\right)} \left(p_3-1\right)\\[-.5ex]%
+\square{}_{t}{}_{x}{}^{x}{}_{t}&= p_1 \left(p_1-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{y}{}^{y}{}_{t}&= p_2 \left(p_2-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{z}{}^{z}{}_{t}&= p_3 \left(p_3-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{x}{}_{t}{}^{t}{}_{x}&= -p_1 {t}^{\left(2p_1-2\right)} \left(p_1-1\right)\\[-.5ex]%
+\square{}_{y}{}_{t}{}^{t}{}_{y}&= -p_2 {t}^{\left(2p_2-2\right)} \left(p_2-1\right)\\[-.5ex]%
+\square{}_{z}{}_{t}{}^{t}{}_{z}&= -p_3 {t}^{\left(2p_3-2\right)} \left(p_3-1\right)\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{x}{}_{x}&= p_1 \left(-p_1+1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{y}{}_{y}&= p_2 \left(-p_2+1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{z}{}_{z}&= p_3 \left(-p_3+1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{y}{}_{y}&= p_2 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{x}{}_{x}&= p_1 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{z}{}_{z}&= p_2 p_3 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{x}{}_{x}&= p_1 p_2 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{z}{}_{z}&= p_1 p_3 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{y}{}_{y}&= p_1 p_2 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{y}{}^{y}{}_{z}&= -p_2 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{x}{}^{x}{}_{z}&= -p_1 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{z}{}^{z}{}_{y}&= -p_2 p_3 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{x}{}^{x}{}_{y}&= -p_1 p_2 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{z}{}^{z}{}_{x}&= -p_1 p_3 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{y}{}^{y}{}_{x}&= -p_1 p_2 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
+\end{aligned}\right.%
+}
+\cdbtag{ex-0608.105}{%
+R_{a b} \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{x}{}_{x}&= p_1 {t}^{\left(2p_1-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
+\square{}_{y}{}_{y}&= p_2 {t}^{\left(2p_2-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
+\square{}_{z}{}_{z}&= p_3 {t}^{\left(2p_3-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
+\square{}_{t}{}_{t}&= \left(-{p_1}^{2}+p_1-{p_2}^{2}+p_2-{p_3}^{2}+p_3\right) {t}^{-2}\\[-.5ex]%
+\end{aligned}\right.%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

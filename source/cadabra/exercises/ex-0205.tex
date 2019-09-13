@@ -1,0 +1,60 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.5 Combining rules -- a solution}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # rules for covariant derivatives of v
+
+   deriv1 := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}}
+                                + \Gamma^{b}_{d a} v^{d}.
+
+   deriv2 := \nabla_{a}{\nabla_{b}{v^{c}}} -> \partial_{a}{\nabla_{b}{v^{c}}}
+                                            + \Gamma^{c}_{d a} \nabla_{b}{v^{d}}
+                                            - \Gamma^{d}_{b a} \nabla_{d}{v^{c}}.
+
+   # second covariant derivative of v
+
+   expr := v^{c}_{b a} -> \nabla_{a}{\nabla_{b}{v^{c}}}.  # cdb (ex-0205.101,expr)
+   save := @(expr).
+
+   # apply the rules, then simplify
+
+   substitute     (expr,deriv2)       # cdb (ex-0205.102,expr)
+   substitute     (expr,deriv1)       # cdb (ex-0205.103,expr)
+   distribute     (expr)              # cdb (ex-0205.104,expr)
+   product_rule   (expr)              # cdb (ex-0205.105,expr)
+   canonicalise   (expr)              # cdb (ex-0205.107,expr)
+   substitute     (expr,save)         # cdb (ex-0205.108,expr)
+\end{cadabra}
+
+The trick here is to introduce in line 17 a dummy left hand side, \verb|v^{c}{}_{b a}|,
+that is invisible with respect to the substitution rules of lines 8 and 11. Thus lines 22
+and 23 will only target the right hand side of \verb|expr|.
+
+Notice how a copy of the initial expression is made in 18. This is used later in line 27 to
+replace the dummy object \verb|v^{c}{}_{b a}| with \verb|\nabla_{a}{\nabla_{b}{v^{c}}}|
+but this time acting on the left hand side of the rule. The result is a rule for second
+covariant deriavtives.
+
+\clearpage
+
+\begin{align*}
+   & \Cdb{ex-0205.101} \\
+   & \Cdb{ex-0205.102} \\
+   & \Cdb{ex-0205.103} \\
+   & \Cdb{ex-0205.104} \\
+   & \Cdb{ex-0205.105} \\
+   & \Cdb{ex-0205.107} \\
+   & \Cdb{ex-0205.108}
+\end{align*}
+
+\end{document}

@@ -1,0 +1,19 @@
+{a,b,c}::Indices(position=free).
+
+foo := A_{a b} + A^{a b}.
+
+substitute (foo, $A_{a b} -> B_{a b}$)
+
+{p,q,r}::Indices(position=fixed).
+
+foo := A_{p q} B^{p q} + A^{p q} B_{p q}.
+
+canonicalise (foo)
+
+{u,v,w}::Indices(position=independent).
+
+foo := A_{u v} B^{u v} + A^{u v} B_{u v}.
+
+canonicalise (foo)
+
+

@@ -1,0 +1,67 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.9 Killing vectors of the Schwarzschild spacetime}
+
+\begin{cadabra}
+   {t, r, \theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={t, r, \theta, \varphi}, position=independent).
+
+   ;::Symbol.
+
+   \partial{#}::PartialDerivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   deriv := \xi_{a ; b} -> \partial_{b}{\xi_{a}} - \Gamma^{c}_{a b} \xi_{c}.
+   lower := \xi_{a} -> g_{a b} \xi^{b}.
+
+   expr  := \xi_{a ; b} + \xi_{b ; a}.                  # cdb(ex-0609.100,expr)
+
+   substitute   (expr, deriv)                           # cdb(ex-0609.101,expr)
+   substitute   (expr, lower)                           # cdb(ex-0609.102,expr)
+   substitute   (expr, Gamma)                           # cdb(ex-0609.103,expr)
+   distribute   (expr)                                  # cdb(ex-0609.104,expr)
+   product_rule (expr)                                  # cdb(ex-0609.105,expr)
+   canonicalise (expr)                                  # cdb(ex-0609.106,expr)
+
+   # choose a vector
+
+   # Kvect := {\xi^{t} = 1}.
+   # Kvect := {\xi^{\varphi} = 1}.
+   Kvect := {\xi^{\theta} = \sin(\varphi), \xi^{\varphi} = \cos(\theta)/\sin(\theta) \cos(\varphi)}.
+   # Kvect := {\xi^{\theta} = \cos(\varphi), \xi^{\varphi} = - \cos(\theta)/\sin(\theta) \sin(\varphi)}.
+                                                         # cdb(ex-0609.107,Kvect)
+
+   gab := { g_{t t}            = -(1-2*m/r),
+            g_{r r}            = 1/(1-(2*m/r)),
+            g_{\theta\theta}   = r**2,
+            g_{\varphi\varphi} = r**2 \sin(\theta)**2}.  # cdb(ex-0609.108,gab)
+
+   complete   (gab, $g^{a b}$)                           # cdb(ex-0609.109,gab)
+
+   evaluate   (expr, gab+Kvect)                          # cdb(ex-0609.110,expr)
+\end{cadabra}
+
+\begin{dgroup*}
+   \Dmath*{[\xi^{a}] \hiderel{=} \Cdb*{ex-0609.107}}
+   \Dmath*{[g_{ab}] \hiderel{=} \Cdb*{ex-0609.108}}
+   \Dmath*{[g_{ab},g^{ab}] \hiderel{=} \Cdb*[\hfill\hskip2.5cm]{ex-0609.109}}
+   \Dmath*{\cdb{ex-0609.100} = \Cdb*{ex-0609.101}
+                             = \Cdb*{ex-0609.102}
+                             = \Cdb*{ex-0609.103}
+                             = \Cdb*{ex-0609.104}
+                             = \Cdb*{ex-0609.105}
+                             = \Cdb*{ex-0609.106}
+                             = \Cdb*{ex-0609.110}}
+\end{dgroup*}
+
+\end{document}

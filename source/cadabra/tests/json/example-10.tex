@@ -1,0 +1,55 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 10 The determinant of the metric}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+
+   d{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   json000A = cdblib.get ('json000','../expected/example-10.json')
+   json001A = cdblib.get ('json001','../expected/example-10.json')
+   json002A = cdblib.get ('json002','../expected/example-10.json')
+
+   # ---------------------------------------------
+   json000B = cdblib.get ('json000','../output/example-10.json')
+   json001B = cdblib.get ('json001','../output/example-10.json')
+   json002B = cdblib.get ('json002','../output/example-10.json')
+
+   # ---------------------------------------------
+   diff000 = check (json000A,json000B)   # cdb (ex-10.diff000,diff000)
+   diff001 = check (json001A,json001B)   # cdb (ex-10.diff001,diff001)
+   diff002 = check (json002A,json002B)   # cdb (ex-10.diff002,diff002)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-10.diff000}}
+   \Dmath*{\cdb*{ex-10.diff001}}
+   \Dmath*{\cdb*{ex-10.diff002}}
+\end{dgroup*}
+
+\end{document}

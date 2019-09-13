@@ -1,0 +1,51 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0103.101}{%
+\Gamma_{a b c} \rightarrow g_{a d} \Gamma^{d}{}_{b c}%
+}
+\cdbtag{ex-0103.102}{%
+\Gamma_{a b c} \rightarrow \frac{1}{2}g_{a d} g^{d e} \left(\partial_{b}{g_{e c}}+\partial_{c}{g_{b e}}-\partial_{e}{g_{b c}}\right)%
+}
+\cdbtag{ex-0103.103}{%
+\Gamma_{a b c} \rightarrow \frac{1}{2}g_{a d} g^{d e} \partial_{b}{g_{e c}}+\frac{1}{2}g_{a d} g^{d e} \partial_{c}{g_{b e}} - \frac{1}{2}g_{a d} g^{d e} \partial_{e}{g_{b c}}%
+}
+\cdbtag{ex-0103.104}{%
+\Gamma_{a b c} \rightarrow \frac{1}{2}g_{a}{}^{e} \partial_{b}{g_{e c}}+\frac{1}{2}g_{a}{}^{e} \partial_{c}{g_{b e}} - \frac{1}{2}g_{a}{}^{e} \partial_{e}{g_{b c}}%
+}
+\cdbtag{ex-0103.105}{%
+\Gamma_{a b c} \rightarrow \frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}}%
+}
+\cdbtag{ex-0103.201}{%
+\Gamma_{a b c}+\Gamma_{b a c}-\partial_{c}{g_{a b}}%
+}
+\cdbtag{ex-0103.202}{%
+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{c}{g_{a b}}%
+}
+\cdbtag{ex-0103.203}{%
+0%
+}
+\cdbtag{ex-0103.301}{%
+\Gamma_{a b c} \rightarrow g_{a d} \Gamma^{d}{}_{b c}%
+}
+\cdbtag{ex-0103.302}{%
+\frac{1}{2}g_{a}{}^{d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right) \rightarrow \frac{1}{2}g_{a d} g^{d e} \left(\partial_{b}{g_{e c}}+\partial_{c}{g_{b e}}-\partial_{e}{g_{b c}}\right)%
+}
+\cdbtag{ex-0103.303}{%
+\frac{1}{2}g_{a}{}^{d} \partial_{b}{g_{d c}}+\frac{1}{2}g_{a}{}^{d} \partial_{c}{g_{b d}} - \frac{1}{2}g_{a}{}^{d} \partial_{d}{g_{b c}} \rightarrow \frac{1}{2}g_{a d} g^{d e} \partial_{b}{g_{e c}}+\frac{1}{2}g_{a d} g^{d e} \partial_{c}{g_{b e}} - \frac{1}{2}g_{a d} g^{d e} \partial_{e}{g_{b c}}%
+}
+\cdbtag{ex-0103.304}{%
+\frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}} \rightarrow \frac{1}{2}g_{a}{}^{e} \partial_{b}{g_{e c}}+\frac{1}{2}g_{a}{}^{e} \partial_{c}{g_{b e}} - \frac{1}{2}g_{a}{}^{e} \partial_{e}{g_{b c}}%
+}
+\cdbtag{ex-0103.305}{%
+\frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}} \rightarrow \frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}}%
+}
+\cdbtag{ex-0103.401}{%
+\Gamma_{a b c}+\Gamma_{b a c}-\partial_{c}{g_{a b}}%
+}
+\cdbtag{ex-0103.402}{%
+\Gamma_{a b c}+\Gamma_{b a c}-\partial_{c}{g_{a b}}%
+}
+\cdbtag{ex-0103.403}{%
+\Gamma_{a b c}+\Gamma_{b a c}-\partial_{c}{g_{a b}}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

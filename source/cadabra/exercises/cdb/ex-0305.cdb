@@ -1,0 +1,13 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+
+expr :=   \nabla_{d}{\nabla_{c}{A_{a} B_{b}}}
+        - \nabla_{c}{\nabla_{d}{A_{a} B_{b}}}.
+
+product_rule (expr)
+distribute   (expr)
+product_rule (expr)
+factor_out   (expr,$A_{a?},B_{b?}$)
+
+

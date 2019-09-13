@@ -1,0 +1,31 @@
+{a,b,c,d,e,f,h#}::Indices.
+
+foo := B_{b} A_{a}.
+bah := A_{a} C_{c}.
+
+print("foo = "+str(foo))
+print("bah = "+str(bah)+"\n")
+
+print("type foo = "+str(type(foo)))
+print("type bah = "+str(type(bah))+"\n")
+
+print("id foo = "+str(id(foo)))
+print("id bah = "+str(id(bah))+"\n")
+
+bah = foo
+
+print("foo = "+str(foo))
+print("bah = "+str(bah)+"\n")
+
+sort_product (foo)
+
+print("bah = "+str(bah)+"\n")
+
+print("id foo = "+str(id(foo)))
+print("id bah = "+str(id(bah))+"\n")
+
+bah := @(foo).
+
+print("id foo = "+str(id(foo)))
+print("id bah = "+str(id(bah))+"\n")
+

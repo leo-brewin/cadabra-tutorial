@@ -1,0 +1,35 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.7 Selective kill}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   hide   := \partial_{c d}{g_{a b}} -> Z_{c d a b}.
+   reveal := Z_{c d a b} -> \partial_{c d}{g_{a b}}.
+
+   kill := \partial_{c}{g_{a b}} -> 0.
+
+   Aab := g_{a b} + \partial_{c}{g_{a b}} x^{c}
+                  + \partial_{c d}{g_{a b}} x^{c} x^{d}.    # cdb (ex-0207.101,Aab)
+
+   substitute (Aab,hide)                                    # cdb (ex-0207.102,Aab)
+   substitute (Aab,kill)                                    # cdb (ex-0207.103,Aab)
+   substitute (Aab,reveal)                                  # cdb (ex-0207.104,Aab)
+
+\end{cadabra}
+
+\begin{align*}
+   A_{ab} &= \Cdb{ex-0207.101}\\
+          &= \Cdb{ex-0207.102}\\
+          &= \Cdb{ex-0207.103}\\
+          &= \Cdb{ex-0207.104}
+\end{align*}
+
+\end{document}

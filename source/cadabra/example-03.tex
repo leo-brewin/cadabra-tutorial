@@ -1,0 +1,189 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-03.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 3a The Riemann curvature tensor}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2});
+
+   ;::Symbol;  # Suggsted by Kasper as a way to make use of ; legal
+               # see https://cadabra.science/qa/473/is-this-legal-syntax
+               # this code works with and without this trick
+
+   # rules for the first two covariant derivs of V^a
+
+   deriv1 := V^{a}_{; b}      -> \partial_{b}{V^{a}}
+                               + \Gamma^{a}_{c b} V^{c}.        # cdb (ex-03.101,deriv1)
+
+   deriv2 := V^{a}_{; b ; c}  -> \partial_{c}{V^{a}_{; b}}
+                               + \Gamma^{a}_{d c} V^{d}_{; b}
+                               - \Gamma^{d}_{b c} V^{a}_{; d}.  # cdb (ex-03.102,deriv2)
+
+   substitute (deriv2,deriv1)                   # cdb (ex-03.103, deriv2)
+
+   Vabc := V^{a}_{; b ; c} - V^{a}_{; c ; b}.   # cdb (ex-03.104, Vabc)
+
+   substitute (Vabc,deriv2)                     # cdb (ex-03.105, Vabc)
+
+   distribute     (Vabc)                        # cdb (ex-03.106, Vabc)
+   product_rule   (Vabc)                        # cdb (ex-03.107, Vabc)
+
+   sort_product   (Vabc)                        # cdb (ex-03.108, Vabc)
+   rename_dummies (Vabc)                        # cdb (ex-03.109, Vabc)
+   canonicalise   (Vabc)                        # cdb (ex-03.110, Vabc)
+
+   sort_sum       (Vabc)                        # cdb (ex-03.111, Vabc)
+   factor_out     (Vabc,$V^{a?}$)               # cdb (ex-03.112, Vabc)
+
+   json.append (Vabc)
+
+   # create rule for Riemann, export later (for use by lib/dgeom)
+
+   substitute (Vabc,$V^{a} -> -1$)              # cdb (ex-03.113, Vabc)
+                                                # note use of -1 to get correct
+                                                # signs when coupled with the rule
+                                                # for Rabcd (next statement)
+
+   Rabcd := R^{a}_{d b c} -> @(Vabc).           # cdb (ex-03.114, Rabcd) #
+
+   foo   := R^{a}_{b c d}.                      # cdb (ex-03.115, foo)
+   substitute (foo, Rabcd)                      # cdb (ex-03.116, foo)
+
+   # update rule to use nice indices
+
+   Rabcd := R^{a}_{b c d} -> @(foo).
+
+   json.append (Rabcd)
+
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\Cdb*{ex-03.101}}
+   \Dmath*{\Cdb*{ex-03.102}}
+   \Dmath*{\Cdb*{ex-03.103}}
+\end{dgroup*}
+%
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-03.104} = \Cdb*[\V{5pt}\hskip2.0cm\hfill]{ex-03.105}
+                           = \Cdb*[\V{5pt}\hskip2.0cm\hfill]{ex-03.106}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.107}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.108}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.109}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.110}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.111}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.112}
+                           = - R^{a}{}_{dbc} V^d\quad\text{(MTW)}}
+\end{dgroup*}
+
+\Dmath*{\cdb{ex-03.115} = \cdb{ex-03.116}}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 3b The Riemann curvature tensor}
+
+This differs from the above by not using the \verb|::TableauSymmetry| property.
+It gives the same results as above but it does require a little bit more
+housekeeping.
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   ;::Symbol;  # Suggsted by Kasper as a way to make use of ; legal
+               # see https://cadabra.science/qa/473/is-this-legal-syntax
+               # this code works with and without this trick
+
+   # rules for the first two covariant derivs of V^a
+
+   deriv1 := V^{a}_{; b}      -> \partial_{b}{V^{a}}
+                               + \Gamma^{a}_{c b} V^{c}.        # cdb (ex-03.301,deriv1)
+
+   deriv2 := V^{a}_{; b ; c}  -> \partial_{c}{V^{a}_{; b}}
+                               + \Gamma^{a}_{d c} V^{d}_{; b}
+                               - \Gamma^{d}_{b c} V^{a}_{; d}.  # cdb (ex-03.302,deriv2)
+
+   substitute (deriv2,deriv1)                    # cdb (ex-03.303, deriv2)
+
+   Vabc := V^{a}_{; b ; c} - V^{a}_{; c ; b}.    # cdb (ex-03.304, Vabc)
+
+   substitute (Vabc,deriv2)                      # cdb (ex-03.305, Vabc)
+
+   distribute     (Vabc)                         # cdb (ex-03.306, Vabc)
+   product_rule   (Vabc)                         # cdb (ex-03.307, Vabc)
+
+   # ------------------------------------------------------
+   # trick to obtain a symmetric connection
+
+   G_{a b}::Symmetric.
+
+   substitute     (Vabc,$\Gamma^{a}_{b c} ->  G^{a} G_{b c}$)
+   sort_product   (Vabc)                         # cdb (ex-03.308, Vabc)
+   rename_dummies (Vabc)                         # cdb (ex-03.309, Vabc)
+   canonicalise   (Vabc)                         # cdb (ex-03.310, Vabc)
+   substitute     (Vabc,$G^{a} G_{b c} -> \Gamma^{a}_{b c}$,repeat=True)
+   # ------------------------------------------------------
+
+   sort_product   (Vabc)
+   rename_dummies (Vabc)
+   canonicalise   (Vabc)
+
+   sort_sum       (Vabc)                         # cdb (ex-03.311, Vabc)
+   factor_out     (Vabc,$V^{a?}$)                # cdb (ex-03.312, Vabc)
+
+   json.append (Vabc)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\Cdb*{ex-03.301}}
+   \Dmath*{\Cdb*{ex-03.302}}
+   \Dmath*{\Cdb*{ex-03.303}}
+\end{dgroup*}
+%
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-03.304} = \Cdb*[\V{5pt}\hskip2.0cm\hfill]{ex-03.305}
+                           = \Cdb*[\V{5pt}\hskip2.0cm\hfill]{ex-03.306}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.307}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.308}
+                           = \Cdb*[\V{5pt}\hskip2.5cm\hfill]{ex-03.309}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.310}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.311}
+                           = \Cdb*[\V{5pt}\hfill]{ex-03.312}
+                           = - R^{a}{}_{dbc} V^d\quad\text{(MTW)}}
+\end{dgroup*}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

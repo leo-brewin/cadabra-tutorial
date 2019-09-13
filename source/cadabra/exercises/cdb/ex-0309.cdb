@@ -1,0 +1,43 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative;
+
+g_{a b}::Metric;
+g^{a b}::InverseMetric;
+
+dgab := \partial_{c}{g^{a b}} -> - g^{a e} g^{b f} \partial_{c}{g_{e f}}.
+
+Gamma := \Gamma^{a}_{b c} ->
+         (1/2) g^{a e} (   \partial_{b}{g_{e c}}
+                         + \partial_{c}{g_{b e}}
+                         - \partial_{e}{g_{b c}}).
+
+Rabcd := R^{a}_{b c d} ->
+         \partial_{c}{\Gamma^{a}_{b d}} + \Gamma^{a}_{e c} \Gamma^{e}_{b d}
+       - \partial_{d}{\Gamma^{a}_{b c}} - \Gamma^{a}_{e d} \Gamma^{e}_{b c}.
+
+FourRab := 4 R^{c}_{a c b}.
+
+substitute     (FourRab, Rabcd)
+substitute     (FourRab, Gamma)
+
+product_rule   (FourRab)
+distribute     (FourRab)
+
+substitute     (FourRab, dgab)
+
+sort_product   (FourRab)
+rename_dummies (FourRab)
+canonicalise   (FourRab)
+
+# sort so that g to appeares before dg
+
+substitute     (FourRab, $g^{a b} -> A^{a b}$)
+sort_product   (FourRab)
+rename_dummies (FourRab)
+substitute     (FourRab, $A^{a b} -> g^{a b}$)
+
+import cdblib
+cdblib.create ('ex-0309.json')
+cdblib.put ('FourRab',FourRab,'ex-0309.json')
+

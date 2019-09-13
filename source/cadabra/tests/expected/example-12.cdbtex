@@ -1,0 +1,263 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-12.100}{%
+\frac{1}{3}g^{a d} x^{e} \left(R_{b d c e}+R_{b e c d}\right)+\frac{1}{12}g^{a d} x^{e} x^{f} \left(-\nabla_{c}{R_{b e d f}}+\nabla_{d}{R_{b e c f}}+2\nabla_{e}{R_{b d c f}}+2\nabla_{e}{R_{b f c d}}-\nabla_{b}{R_{c e d f}}\right)+\frac{1}{40}g^{a d} x^{e} x^{f} x^{g} \left(-\nabla_{c e}{R_{b f d g}}-\nabla_{e c}{R_{b f d g}}+\nabla_{d e}{R_{b f c g}}+\nabla_{e d}{R_{b f c g}}+2\nabla_{e f}{R_{b d c g}}+2\nabla_{e f}{R_{b g c d}}-\nabla_{b e}{R_{c f d g}}-\nabla_{e b}{R_{c f d g}}\right)+\frac{1}{45}g^{a d} g^{e f} x^{g} x^{h} x^{i} \left(4R_{b e c g} R_{d h f i}+4R_{b g c e} R_{d h f i}-2R_{b d e g} R_{c h f i}-R_{b e d g} R_{c h f i}+R_{b g d e} R_{c h f i}-2R_{b g e h} R_{c d f i}-R_{b g e h} R_{c f d i}+R_{b g e h} R_{c i d f}\right)%
+}
+\cdbtag{ex-12.101}{%
+\frac{1}{3}z^{b} z^{c} x^{e} R_{b v c e}+\frac{1}{3}z^{b} z^{c} x^{e} R_{b e c v} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{c}{R_{b e v f}}+\frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{v}{R_{b e c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b v c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b f c v}} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{b}{R_{c e v f}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{c e}{R_{b f v g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e c}{R_{b f v g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{v e}{R_{b f c g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e v}{R_{b f c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b v c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b g c v}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{b e}{R_{c f v g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e b}{R_{c f v g}}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e c g} R_{v h f i}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g c e} R_{v h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b v e g} R_{c h f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e v g} R_{c h f i}%%
++\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g v e} R_{c h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c v f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c f v i}+\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c i v f}%
+}
+\cdbtag{ex-12.191}{%
+tmp_{v} \rightarrow \frac{1}{3}z^{b} z^{c} x^{e} R_{b v c e}+\frac{1}{3}z^{b} z^{c} x^{e} R_{b e c v} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{c}{R_{b e v f}}+\frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{v}{R_{b e c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b v c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b f c v}} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{b}{R_{c e v f}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{c e}{R_{b f v g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e c}{R_{b f v g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{v e}{R_{b f c g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e v}{R_{b f c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b v c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b g c v}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{b e}{R_{c f v g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e b}{R_{c f v g}}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e c g} R_{v h f i}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g c e} R_{v h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b v e g} R_{c h f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e v g} R_{c h f i}%%
++\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g v e} R_{c h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c v f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c f v i}+\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c i v f}%
+}
+\cdbtag{ex-12.192}{%
+tmp_{a}%
+}
+\cdbtag{ex-12.193}{%
+\frac{1}{3}z^{b} z^{c} x^{e} R_{b a c e}+\frac{1}{3}z^{b} z^{c} x^{e} R_{b e c a} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{c}{R_{b e a f}}+\frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{a}{R_{b e c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b a c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b f c a}} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{b}{R_{c e a f}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{c e}{R_{b f a g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e c}{R_{b f a g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{a e}{R_{b f c g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e a}{R_{b f c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b a c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b g c a}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{b e}{R_{c f a g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e b}{R_{c f a g}}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e c g} R_{a h f i}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g c e} R_{a h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b a e g} R_{c h f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e a g} R_{c h f i}%%
++\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g a e} R_{c h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c a f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c f a i}+\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c i a f}%
+}
+\cdbtag{ex-12.102}{%
+\frac{1}{3}z^{b} z^{c} x^{e} R_{b a c e}+\frac{1}{3}z^{b} z^{c} x^{e} R_{b e c a} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{c}{R_{b e a f}}+\frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{a}{R_{b e c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b a c f}}+\frac{1}{6}z^{b} z^{c} x^{e} x^{f} \nabla_{e}{R_{b f c a}} - \frac{1}{12}z^{b} z^{c} x^{e} x^{f} \nabla_{b}{R_{c e a f}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{c e}{R_{b f a g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e c}{R_{b f a g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{a e}{R_{b f c g}}+\frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e a}{R_{b f c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b a c g}}+\frac{1}{20}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e f}{R_{b g c a}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{b e}{R_{c f a g}} - \frac{1}{40}z^{b} z^{c} x^{e} x^{f} x^{g} \nabla_{e b}{R_{c f a g}}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e c g} R_{a h f i}+\frac{4}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g c e} R_{a h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b a e g} R_{c h f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b e a g} R_{c h f i}%%
++\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g a e} R_{c h f i} - \frac{2}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c a f i} - \frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c f a i}+\frac{1}{45}z^{b} z^{c} g^{e f} x^{g} x^{h} x^{i} R_{b g e h} R_{c i a f}%
+}
+\cdbtag{ex-12.103}{%
+\frac{1}{3}x^{b} z^{c} z^{d} R_{c a d b}+\frac{1}{3}x^{b} z^{c} z^{d} R_{c b d a}+\frac{1}{6}x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d a e c}} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{d b a c}}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{d b e c}}+\frac{1}{6}x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d c e a}} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{e b a c}}+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e a f d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f b}{R_{e c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b f}{R_{e c a d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{e c f d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{e c f d}}+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e d f a}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{f c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{f c a d}} - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g a b d} R_{h e c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g b a d} R_{h e c f}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g b h d}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d a b} R_{h e c f}%%
++\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g d h b} - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h a c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h c a f}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h f a c}%
+}
+\cdbtag{ex-12.200}{%
+\frac{1}{3}x^{b} z^{c} z^{d} R_{c a d b}+\frac{1}{3}x^{b} z^{c} z^{d} R_{c b d a}%
+}
+\cdbtag{ex-12.201}{%
+\frac{1}{6}x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d a e c}} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{d b a c}}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{d b e c}}+\frac{1}{6}x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d c e a}} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{e b a c}}%
+}
+\cdbtag{ex-12.202}{%
+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e a f d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f b}{R_{e c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b f}{R_{e c a d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{e c f d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{e c f d}}+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e d f a}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{f c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{f c a d}} - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g a b d} R_{h e c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g b a d} R_{h e c f}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g b h d}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d a b} R_{h e c f}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g d h b} - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h a c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h c a f}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h f a c}%
+}
+\cdbtag{ex-12.203}{%
+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e a f d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f b}{R_{e c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b f}{R_{e c a d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{e c f d}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{e c f d}}+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e d f a}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{f c a d}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{f c a d}}%
+}
+\cdbtag{ex-12.204}{%
+ - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g a b d} R_{h e c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g b a d} R_{h e c f}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g b h d}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d a b} R_{h e c f}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a e c f} R_{g d h b} - \frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h a c f} - \frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h c a f}+\frac{1}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{g d b e} R_{h f a c}%
+}
+\cdbtag{ex-12.300}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a c b d}%
+}
+\cdbtag{ex-12.301}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(4\nabla_{b}{R_{a d c e}}+2\nabla_{d}{R_{a b c e}}+\nabla_{a}{R_{b d c e}}\right)%
+}
+\cdbtag{ex-12.302}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(4\nabla_{b c}{R_{a e d f}}+2\nabla_{b e}{R_{a c d f}}+2\nabla_{e b}{R_{a c d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)%
+}
+\cdbtag{ex-12.303}{%
+\frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(4R_{a d b e} R_{c g f h}-2R_{a g b d} R_{c e f h}-R_{a d b g} R_{c e f h}+R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.304}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(4\nabla_{b c}{R_{a e d f}}+2\nabla_{b e}{R_{a c d f}}+2\nabla_{e b}{R_{a c d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(4R_{a d b e} R_{c g f h}-2R_{a g b d} R_{c e f h}-R_{a d b g} R_{c e f h}+R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.305}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a c b d}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(4\nabla_{b}{R_{a d c e}}+2\nabla_{d}{R_{a b c e}}+\nabla_{a}{R_{b d c e}}\right)+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(4\nabla_{b c}{R_{a e d f}}+2\nabla_{b e}{R_{a c d f}}+2\nabla_{e b}{R_{a c d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(4R_{a d b e} R_{c g f h}-2R_{a g b d} R_{c e f h}-R_{a d b g} R_{c e f h}+R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.400}{%
+z^{\nu} z^{\rho} \left(\frac{2}{3}R^{\mu}{}_{\nu \rho \sigma} x^{\sigma}+\frac{1}{12}\left(5\nabla_{\lambda}{R^{\mu}{}_{\nu \rho \sigma}}+\nabla_{\rho}{R^{\mu}{}_{\sigma \nu \lambda}}\right) x^{\sigma} x^{\lambda}+\frac{1}{6}\left(\frac{9}{10}\nabla_{\tau \lambda}{R^{\mu}{}_{\rho \nu \sigma}}+\frac{3}{20}\nabla_{\tau \rho}{R^{\mu}{}_{\sigma \nu \lambda}}+\frac{3}{20}\nabla_{\rho \tau}{R^{\mu}{}_{\sigma \nu \lambda}}+\frac{7}{20}R^{\mu}{}_{\lambda \xi \rho} R^{\xi}{}_{\sigma \nu \tau}+\frac{4}{5}R^{\mu}{}_{\xi \rho \lambda} R^{\xi}{}_{\sigma \nu \tau} - \frac{37}{60}R^{\mu}{}_{\sigma \xi \lambda} R^{\xi}{}_{\nu \rho \tau}\right) x^{\sigma} x^{\lambda} x^{\tau}\right)%
+}
+\cdbtag{ex-12.401}{%
+\frac{2}{3}z^{a} z^{b} R^{\mu}{}_{a b c} x^{c}+\frac{5}{12}z^{a} z^{b} \nabla_{d}{R^{\mu}{}_{a b c}} x^{c} x^{d}+\frac{1}{12}z^{b} z^{d} \nabla_{d}{R^{\mu}{}_{a b c}} x^{a} x^{c}+\frac{3}{20}z^{b} z^{a} \nabla_{d e}{R^{\mu}{}_{a b c}} x^{c} x^{e} x^{d}+\frac{1}{40}z^{b} z^{e} \nabla_{d e}{R^{\mu}{}_{a b c}} x^{a} x^{c} x^{d}+\frac{1}{40}z^{b} z^{d} \nabla_{d e}{R^{\mu}{}_{a b c}} x^{a} x^{c} x^{e}+\frac{7}{120}z^{e} z^{c} R^{\mu}{}_{a b c} R^{b}{}_{d e f} x^{d} x^{a} x^{f}+\frac{2}{15}z^{e} z^{b} R^{\mu}{}_{a b c} R^{a}{}_{d e f} x^{d} x^{c} x^{f} - \frac{37}{360}z^{d} z^{e} R^{\mu}{}_{a b c} R^{b}{}_{d e f} x^{a} x^{c} x^{f}%
+}
+\cdbtag{ex-12.402}{%
+\delta_{a \mu} \left(\frac{2}{3}z^{g} z^{b} R^{\mu}{}_{g b c} x^{c}+\frac{5}{12}z^{g} z^{b} \nabla_{d}{R^{\mu}{}_{g b c}} x^{c} x^{d}+\frac{1}{12}z^{b} z^{d} \nabla_{d}{R^{\mu}{}_{g b c}} x^{g} x^{c}+\frac{3}{20}z^{b} z^{g} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{c} x^{e} x^{d}+\frac{1}{40}z^{b} z^{e} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{g} x^{c} x^{d}+\frac{1}{40}z^{b} z^{d} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{g} x^{c} x^{e}+\frac{7}{120}z^{e} z^{c} R^{\mu}{}_{g b c} R^{b}{}_{d e f} x^{d} x^{g} x^{f}+\frac{2}{15}z^{e} z^{b} R^{\mu}{}_{g b c} R^{g}{}_{d e f} x^{d} x^{c} x^{f} - \frac{37}{360}z^{d} z^{e} R^{\mu}{}_{g b c} R^{b}{}_{d e f} x^{g} x^{c} x^{f}\right)%
+}
+\cdbtag{ex-12.403}{%
+\frac{2}{3}\delta_{a \mu} z^{g} z^{b} R^{\mu}{}_{g b c} x^{c}+\frac{5}{12}\delta_{a \mu} z^{g} z^{b} \nabla_{d}{R^{\mu}{}_{g b c}} x^{c} x^{d}+\frac{1}{12}\delta_{a \mu} z^{b} z^{d} \nabla_{d}{R^{\mu}{}_{g b c}} x^{g} x^{c}+\frac{3}{20}\delta_{a \mu} z^{b} z^{g} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{c} x^{e} x^{d}+\frac{1}{40}\delta_{a \mu} z^{b} z^{e} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{g} x^{c} x^{d}+\frac{1}{40}\delta_{a \mu} z^{b} z^{d} \nabla_{d e}{R^{\mu}{}_{g b c}} x^{g} x^{c} x^{e}+\frac{7}{120}\delta_{a \mu} z^{e} z^{c} R^{\mu}{}_{g b c} R^{b}{}_{d e f} x^{d} x^{g} x^{f}+\frac{2}{15}\delta_{a \mu} z^{e} z^{b} R^{\mu}{}_{g b c} R^{g}{}_{d e f} x^{d} x^{c} x^{f} - \frac{37}{360}\delta_{a \mu} z^{d} z^{e} R^{\mu}{}_{g b c} R^{b}{}_{d e f} x^{g} x^{c} x^{f}%
+}
+\cdbtag{ex-12.404}{%
+\frac{2}{3}z^{g} z^{b} R_{a g b c} x^{c}+\frac{5}{12}z^{g} z^{b} \nabla_{d}{R_{a g b c}} x^{c} x^{d}+\frac{1}{12}z^{b} z^{d} \nabla_{d}{R_{a g b c}} x^{g} x^{c}+\frac{3}{20}z^{b} z^{g} \nabla_{d e}{R_{a g b c}} x^{c} x^{e} x^{d}+\frac{1}{40}z^{b} z^{e} \nabla_{d e}{R_{a g b c}} x^{g} x^{c} x^{d}+\frac{1}{40}z^{b} z^{d} \nabla_{d e}{R_{a g b c}} x^{g} x^{c} x^{e}+\frac{7}{120}z^{e} z^{c} R_{a g b c} R^{b}{}_{d e f} x^{d} x^{g} x^{f}+\frac{2}{15}z^{e} z^{b} R_{a g b c} R^{g}{}_{d e f} x^{d} x^{c} x^{f} - \frac{37}{360}z^{d} z^{e} R_{a g b c} R^{b}{}_{d e f} x^{g} x^{c} x^{f}%
+}
+\cdbtag{ex-12.405}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a d c b}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{a c d b}}+\frac{5}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{c}{R_{a e d b}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}}+\frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}} - \frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} R^{g}{}_{e f c}+\frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} R^{g}{}_{c f d}+\frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} R^{g}{}_{b f c}%
+}
+\cdbtag{ex-12.406}{%
+ - \frac{2}{3}x^{b} z^{c} z^{d} R_{a d c b} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{a c d b}} - \frac{5}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{c}{R_{a e d b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}} - \frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}}+\frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} R^{g}{}_{e f c} - \frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} R^{g}{}_{c f d} - \frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} R^{g}{}_{b f c}%
+}
+\cdbtag{ex-12.407}{%
+ - \frac{2}{3}x^{b} z^{c} z^{d} R_{a d c b} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{a c d b}} - \frac{5}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{c}{R_{a e d b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}} - \frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}} - \frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} R^{g}{}_{e f c}+\frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} R^{g}{}_{c f d}+\frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} R^{g}{}_{b f c}%
+}
+\cdbtag{ex-12.408}{%
+ - \frac{2}{3}x^{b} z^{c} z^{d} R_{a d c b} - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{a c d b}} - \frac{5}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{c}{R_{a e d b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}} - \frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}} - \frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} g^{g h} R_{h e f c}+\frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} g^{g h} R_{h c f d}+\frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} g^{g h} R_{h b f c}%
+}
+\cdbtag{ex-12.500}{%
+ - \frac{2}{3}x^{b} z^{c} z^{d} R_{a d c b}%
+}
+\cdbtag{ex-12.501}{%
+ - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{e}{R_{a c d b}} - \frac{5}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{c}{R_{a e d b}}%
+}
+\cdbtag{ex-12.502}{%
+ - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}} - \frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}} - \frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} g^{g h} R_{h e f c}+\frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} g^{g h} R_{h c f d}+\frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} g^{g h} R_{h b f c}%
+}
+\cdbtag{ex-12.600}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a c b d}%
+}
+\cdbtag{ex-12.601}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}+5\nabla_{b}{R_{a d c e}}\right)%
+}
+\cdbtag{ex-12.602}{%
+ - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{f c}{R_{a d e b}} - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c f}{R_{a d e b}} - \frac{3}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{c d}{R_{a f e b}}%
+}
+\cdbtag{ex-12.603}{%
+ - \frac{37}{360}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g b} g^{g h} R_{h e f c}+\frac{2}{15}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a g e b} g^{g h} R_{h c f d}+\frac{7}{120}x^{b} x^{c} x^{d} z^{e} z^{f} R_{a d g e} g^{g h} R_{h b f c}%
+}
+\cdbtag{ex-12.604}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a c b d}%
+}
+\cdbtag{ex-12.605}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}+5\nabla_{b}{R_{a d c e}}\right)%
+}
+\cdbtag{ex-12.606}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}+6\nabla_{b c}{R_{a e d f}}\right)%
+}
+\cdbtag{ex-12.607}{%
+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(37R_{a d b e} R_{c g f h}-21R_{a d b g} R_{c e f h}+48R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.608}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}+6\nabla_{b c}{R_{a e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(37R_{a d b e} R_{c g f h}-21R_{a d b g} R_{c e f h}+48R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.409}{%
+\frac{2}{3}x^{b} z^{c} z^{d} R_{a c b d}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}+5\nabla_{b}{R_{a d c e}}\right)+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}+6\nabla_{b c}{R_{a e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(37R_{a d b e} R_{c g f h}-21R_{a d b g} R_{c e f h}+48R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.diff.100}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(4\nabla_{b}{R_{a d c e}}+2\nabla_{d}{R_{a b c e}}+\nabla_{a}{R_{b d c e}}\right)+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(4\nabla_{b c}{R_{a e d f}}+2\nabla_{b e}{R_{a c d f}}+2\nabla_{e b}{R_{a c d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{2}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(4R_{a d b e} R_{c g f h}-2R_{a g b d} R_{c e f h}-R_{a d b g} R_{c e f h}+R_{a b d g} R_{c e f h}\right) - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}+5\nabla_{b}{R_{a d c e}}\right) - \frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}+6\nabla_{b c}{R_{a e d f}}\right) - \frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(37R_{a d b e} R_{c g f h}-21R_{a d b g} R_{c e f h}+48R_{a b d g} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.diff.200}{%
+0%
+}
+\cdbtag{ex-12.diff.201}{%
+ - \frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{a d c e}}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{a b c e}}+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{b d c e}}%
+}
+\cdbtag{ex-12.diff.202}{%
+ - \frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}+\frac{3}{40}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}+\frac{1}{72}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}%
+}
+\cdbtag{ex-12.diff.203}{%
+ - \frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}%
+}
+\cdbtag{ex-12.diff.204}{%
+\frac{3}{40}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}+\frac{1}{72}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}%
+}
+\cdbtag{ex-12.diff.300}{%
+0%
+}
+\cdbtag{ex-12.diff.301}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}-\nabla_{b}{R_{a d c e}}+\nabla_{a}{R_{b d c e}}\right)%
+}
+\cdbtag{ex-12.diff.302}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}-2\nabla_{b c}{R_{a e d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)%
+}
+\cdbtag{ex-12.diff.303}{%
+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+27R_{a d b e} R_{c g f h}+5R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.diff.304}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}-2\nabla_{b c}{R_{a e d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+27R_{a d b e} R_{c g f h}+5R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.diff.305}{%
+\frac{1}{12}x^{b} x^{c} z^{d} z^{e} \left(\nabla_{d}{R_{a b c e}}-\nabla_{b}{R_{a d c e}}+\nabla_{a}{R_{b d c e}}\right)+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}-2\nabla_{b c}{R_{a e d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+27R_{a d b e} R_{c g f h}+5R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.701}{%
+x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{a b c e}}-x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{a d c e}}+x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{b d c e}}%
+}
+\cdbtag{ex-12.702}{%
+x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{a b c e}}-x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{a d c e}}+x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{b d c e}}%
+}
+\cdbtag{ex-12.711}{%
+\mu_{0} x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{a b c e}}-\mu_{1} x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{a d c e}}+\mu_{2} x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{b d c e}}%
+}
+\cdbtag{ex-12.712}{%
+ \ldots -\mu_{1} x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{a d c e}}+ \ldots %
+}
+\cdbtag{ex-12.713}{%
+ \ldots +\mu_{1} x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d a c e}}+ \ldots %
+}
+\cdbtag{ex-12.714}{%
+\mu_{0} x^{b} x^{c} z^{d} z^{e} \nabla_{d}{R_{a b c e}}+\mu_{0} x^{b} x^{c} z^{d} z^{e} \nabla_{b}{R_{d a c e}}+\mu_{0} x^{b} x^{c} z^{d} z^{e} \nabla_{a}{R_{b d c e}}%
+}
+\cdbtag{ex-12.715}{%
+0%
+}
+\cdbtag{ex-12.716}{%
+0%
+}
+\cdbtag{ex-12.diff.306}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+\nabla_{e b}{R_{a c d f}}-2\nabla_{b c}{R_{a e d f}}+\nabla_{a b}{R_{c e d f}}+\nabla_{b a}{R_{c e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+27R_{a d b e} R_{c g f h}+5R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.801}{%
+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}-18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+27g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h}+5g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.802}{%
+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}-18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+9x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+27g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h}+5g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.901}{%
+9\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}-18\mu_{2} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+9\mu_{3} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+9\mu_{4} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32\mu_{5} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+27\mu_{6} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h}+5\mu_{7} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{8} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.902}{%
+9\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}-18\mu_{2} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+9\mu_{4} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32\mu_{5} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+27\mu_{6} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h}+5\mu_{7} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{8} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.903}{%
+ \ldots +9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{e b}{R_{a c d f}}+ \ldots +9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{a b}{R_{c e d f}}+ \ldots %
+}
+\cdbtag{ex-12.904}{%
+ \ldots +9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b e}{R_{a c d f}}+g^{u v} R_{u a b e} R_{v c d f}+g^{u v} R_{u c b e} R_{a v d f}+g^{u v} R_{u d b e} R_{a c v f}+g^{u v} R_{u f b e} R_{a c d v}\right)+ \ldots +9\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \left(\nabla_{b a}{R_{c e d f}}+g^{u v} R_{u c b a} R_{v e d f}+g^{u v} R_{u e b a} R_{c v d f}+g^{u v} R_{u d b a} R_{c e v f}+g^{u v} R_{u f b a} R_{c e d v}\right)+ \ldots %
+}
+\cdbtag{ex-12.905}{%
+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+\frac{3}{40}x^{b} x^{c} x^{d} z^{e} z^{f} g^{u v} R_{a b e u} R_{c f d v} - \frac{3}{40}x^{b} x^{c} x^{d} z^{e} z^{f} g^{u v} R_{a b c u} R_{d e f v} - \frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+\frac{1}{20}x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+\frac{3}{40}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b e} R_{c g f h}+\frac{1}{72}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.diff.307}{%
+\frac{1}{40}x^{b} x^{c} x^{d} z^{e} z^{f} \left(2\nabla_{b e}{R_{a c d f}}-2\nabla_{b c}{R_{a e d f}}+2\nabla_{b a}{R_{c e d f}}\right)+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+32R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.910}{%
+18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}-18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.911}{%
+18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}-18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+18x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.912}{%
+18\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}-18\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+18\mu_{2} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32\mu_{3} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32\mu_{4} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{5} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.913}{%
+ \ldots -18\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{a e d f}}+ \ldots %
+}
+\cdbtag{ex-12.914}{%
+ \ldots +18\mu_{1} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e a d f}}+ \ldots %
+}
+\cdbtag{ex-12.915}{%
+18\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b e}{R_{a c d f}}+18\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b c}{R_{e a d f}}+18\mu_{0} x^{b} x^{c} x^{d} z^{e} z^{f} \nabla_{b a}{R_{c e d f}}-32\mu_{3} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32\mu_{4} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{5} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.916}{%
+-32\mu_{3} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32\mu_{4} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{5} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.917}{%
+ - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+\frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h} - \frac{4}{45}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.diff.308}{%
+\frac{1}{360}g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} \left(-32R_{a b d g} R_{c e f h}+32R_{a d b g} R_{c e f h}-32R_{a g b d} R_{c e f h}\right)%
+}
+\cdbtag{ex-12.921}{%
+-32\mu_{0} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}+32\mu_{1} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}-32\mu_{2} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.922}{%
+ \ldots +32\mu_{1} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d b g} R_{c e f h}+ \ldots %
+}
+\cdbtag{ex-12.923}{%
+ \ldots -32\mu_{1} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d g b} R_{c e f h}+ \ldots %
+}
+\cdbtag{ex-12.924}{%
+-32\mu_{0} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a b d g} R_{c e f h}-32\mu_{0} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a d g b} R_{c e f h}-32\mu_{0} g^{b c} x^{d} x^{e} x^{f} z^{g} z^{h} R_{a g b d} R_{c e f h}%
+}
+\cdbtag{ex-12.925}{%
+0%
+}
+\cdbtag{ex-12.926}{%
+0%
+}
+\cdbtag{ex-12.diff.309}{%
+0%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

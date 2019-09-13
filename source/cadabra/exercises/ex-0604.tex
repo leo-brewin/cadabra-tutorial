@@ -1,0 +1,56 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.4 Scalar curavture of a 2-sphere}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   R := R -> R_{e g} g^{e g}.
+
+   gab := { g_{\theta\theta}   = r**2,
+            g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-0604.101,gab)
+
+   complete   (gab, $g^{a b}$)                                # cdb(ex-0604.102,gab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+   substitute (R, Rab)
+
+   evaluate   (Gamma, gab, rhsonly=True)                      # cdb(ex-0604.103,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                      # cdb(ex-0604.104,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                      # cdb(ex-0604.105,Rab)
+   evaluate   (R,     gab, rhsonly=True)                      # cdb(ex-0604.106,R)
+\end{cadabra}
+
+\clearpage
+
+\begin{align*}
+   &\Cdb{ex-0604.101}\\[10pt]
+   &\Cdb{ex-0604.102}\\[10pt]
+   &\Cdb{ex-0604.103}\\[10pt]
+   &\Cdb{ex-0604.104}\\[10pt]
+   &\Cdb{ex-0604.105}\\[10pt]
+   &\Cdb{ex-0604.106}
+\end{align*}
+
+\end{document}

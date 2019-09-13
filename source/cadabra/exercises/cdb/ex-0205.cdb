@@ -1,0 +1,28 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+\partial{#}::PartialDerivative.
+
+# rules for covariant derivatives of v
+
+deriv1 := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}}
+                             + \Gamma^{b}_{d a} v^{d}.
+
+deriv2 := \nabla_{a}{\nabla_{b}{v^{c}}} -> \partial_{a}{\nabla_{b}{v^{c}}}
+                                         + \Gamma^{c}_{d a} \nabla_{b}{v^{d}}
+                                         - \Gamma^{d}_{b a} \nabla_{d}{v^{c}}.
+
+# second covariant derivative of v
+
+expr := v^{c}_{b a} -> \nabla_{a}{\nabla_{b}{v^{c}}}.
+save := @(expr).
+
+# apply the rules, then simplify
+
+substitute     (expr,deriv2)
+substitute     (expr,deriv1)
+distribute     (expr)
+product_rule   (expr)
+canonicalise   (expr)
+substitute     (expr,save)
+

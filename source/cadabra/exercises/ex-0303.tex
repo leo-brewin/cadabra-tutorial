@@ -1,0 +1,70 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.3 Computing $R_{abcd}$}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2}).
+   \Gamma_{a b c}::TableauSymmetry(shape={2}, indices={1,2}).
+
+   dgab := \partial_{c}{g_{a b}} ->   \Gamma^{d}_{a c} g_{d b}
+                                    + \Gamma^{d}_{b c} g_{a d}.      # cdb(dgab.000,dgab)
+
+   RabcdU := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                              - \partial_{d}{\Gamma^{a}_{b c}}
+                              + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                              - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.   # cdb(Rabcd.000,RabcdU)
+
+   GammaD := {g_{a e} \Gamma^{e}_{b c} -> \Gamma_{a b c},
+              g_{e a} \Gamma^{e}_{b c} -> \Gamma_{a b c}}.           # cdb(Gamma.010,GammaD)
+
+   RabcdD := R_{a b c d} -> g_{a e} R^{e}_{b c d}.                   # cdb(Rabcd.010,RabcdD)
+
+   gabDGamma := g_{a e} \partial_{c}{\Gamma^{e}_{b d}} ->
+                     \partial_{c}{g_{a e} \Gamma^{e}_{b d}}
+                   - \Gamma^{e}_{b d} \partial_{c}{g_{a e}}.         # cdb(gabDGamma.000,gabDGamma)
+
+   # this pair of rules needed to sort \Gamma_{a b c} to the very left
+   # this helps canonicalise spot the terms that cancel
+   bah := \Gamma_{a b c} -> A_{a b c}.
+   foo := A_{a b c} -> \Gamma_{a b c}.
+
+   expr := R_{a b c d}.                                              # cdb(ex-0303.101,expr)
+
+   substitute     (expr, RabcdD)                                     # cdb(ex-0303.102,expr)
+   substitute     (expr, RabcdU)                                     # cdb(ex-0303.103,expr)
+   distribute     (expr)                                             # cdb(ex-0303.104,expr)
+   substitute     (expr, gabDGamma)                                  # cdb(ex-0303.105,expr)
+   substitute     (expr, dgab)                                       # cdb(ex-0303.106,expr)
+   substitute     (expr, GammaD)                                     # cdb(ex-0303.107,expr)
+   distribute     (expr)                                             # cdb(ex-0303.109,expr)
+   substitute     (expr, bah)                                        # cdb(ex-0303.110,expr)
+   sort_product   (expr)                                             # cdb(ex-0303.111,expr)
+   rename_dummies (expr)                                             # cdb(ex-0303.112,expr)
+   substitute     (expr, foo)                                        # cdb(ex-0303.113,expr)
+   canonicalise   (expr)                                             # cdb(ex-0303.114,expr)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0303.101} = \Cdb*{ex-0303.102}
+                             = \Cdb*{ex-0303.103}
+                             = \Cdb*{ex-0303.104}
+                             = \Cdb*{ex-0303.105}
+                             = \Cdb*[\hskip 2cm\hfill]{ex-0303.106}
+                             = \Cdb*{ex-0303.107}
+                             = \Cdb*{ex-0303.109}
+                             = \Cdb*{ex-0303.110}
+                             = \Cdb*{ex-0303.111}
+                             = \Cdb*{ex-0303.112}
+                             = \Cdb*{ex-0303.113}
+                             = \Cdb*{ex-0303.114}}
+\end{dgroup*}
+
+\end{document}

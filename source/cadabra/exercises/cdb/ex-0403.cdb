@@ -1,0 +1,51 @@
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+def get_term (poly,n):
+
+    x^{a}::Weight(label=xnum).
+
+    foo := @(poly).
+    bah  = Ex("xnum = " + str(n))
+    keep_weight (foo,bah)
+
+    return foo
+
+def poly_product (p,q,n):
+
+    pq = Ex("0")
+
+    for i in range (0,n+1):
+       for j in range (0,i+1):
+          termA = get_term (p,j)
+          termB = get_term (q,i-j)
+          termAB := @(termA) @(termB).
+          pq = pq + termAB
+
+    sort_product   (pq)
+    rename_dummies (pq)
+    factor_out     (pq,$x^{a?}$)
+
+    return pq
+
+# ---------------------------------------------------------------
+
+# two polynomials
+
+polyA := c^{a}
+       + c^{a}_{b} x^b
+       + c^{a}_{b c} x^b x^c
+       + c^{a}_{b c d} x^b x^c x^d
+       + c^{a}_{b c d e} x^b x^c x^d x^e.
+
+polyB := d^{f}
+       + d^{f}_{b} x^b
+       + d^{f}_{b c} x^b x^c
+       + d^{f}_{b c d} x^b x^c x^d
+       + d^{f}_{b c d e} x^b x^c x^d x^e.
+
+# multiply polynomials and truncate
+
+polyAB = poly_product (polyA,polyB,3)
+
+

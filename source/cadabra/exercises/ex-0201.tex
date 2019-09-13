@@ -1,0 +1,100 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.1 Using Cadabra's own product rule}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # templates for covariant derivatives
+
+   deriv1 := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}}
+                                 + \Gamma^{b}_{c a} A?^{c}.
+
+   deriv2 := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}}
+                                 - \Gamma^{c}_{b a} A?_{c}.
+
+   # create an object
+
+   uv := \nabla_{a}{v_{b} u^{b}}
+       - \partial_{a}{v_{b} u^{b}}.      # cdb (ex-0201.101,uv)
+
+   # apply the rules, then simplify
+
+   product_rule   (uv)                   # cdb (ex-0201.102,uv)
+   substitute     (uv,deriv1)            # cdb (ex-0201.103,uv)
+   substitute     (uv,deriv2)            # cdb (ex-0201.104,uv)
+   distribute     (uv)                   # cdb (ex-0201.105,uv)
+   sort_product   (uv)                   # cdb (ex-0201.106,uv)
+   rename_dummies (uv)                   # cdb (ex-0201.107,uv)
+\end{cadabra}
+
+\begin{align}
+   \cdb{ex-0201.101} &= \Cdb{ex-0201.102}\\
+                     &= \Cdb{ex-0201.103}\\
+                     &= \Cdb{ex-0201.104}\\
+                     &= \Cdb{ex-0201.105}\\
+                     &= \Cdb{ex-0201.106}\\
+                     &= \Cdb{ex-0201.107}
+\end{align}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.1 Using hand crafted product rules}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # templates for covariant derivatives
+
+   deriv1 := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}}
+                                 + \Gamma^{b}_{c a} A?^{c}.
+
+   deriv2 := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}}
+                                 - \Gamma^{c}_{b a} A?_{c}.
+
+   # tempaltes for product rules
+
+   deriv3 := \nabla_{a}{A?_{b} B?^{c}} -> B?^{c} \nabla_{a}{A?_{b}}
+                                        + A?_{b} \nabla_{a}{B?^{c}}.
+
+   deriv4 := \partial_{a}{A?_{b} B?^{c}} -> B?^{c} \partial_{a}{A?_{b}}
+                                          + A?_{b} \partial_{a}{B?^{c}}.
+
+   # create an object
+
+   uv := \nabla_{a}{v_{b} u^{b}}
+       - \partial_{a}{v_{b} u^{b}}.      # cdb (ex-0201.201,uv)
+
+   # apply the rules, then simplify
+
+   substitute     (uv,deriv3)            # cdb (ex-0201.202,uv)
+   substitute     (uv,deriv4)            # cdb (ex-0201.203,uv)
+   substitute     (uv,deriv1)            # cdb (ex-0201.204,uv)
+   substitute     (uv,deriv2)            # cdb (ex-0201.205,uv)
+   distribute     (uv)                   # cdb (ex-0201.206,uv)
+   sort_product   (uv)                   # cdb (ex-0201.207,uv)
+   rename_dummies (uv)                   # cdb (ex-0201.208,uv)
+\end{cadabra}
+
+\begin{align}
+   \cdb{ex-0201.201} &= \Cdb{ex-0201.202}\\
+                     &= \Cdb{ex-0201.203}\\
+                     &= \Cdb{ex-0201.204}\\
+                     &= \Cdb{ex-0201.205}\\
+                     &= \Cdb{ex-0201.206}\\
+                     &= \Cdb{ex-0201.207}\\
+                     &= \Cdb{ex-0201.208}
+\end{align}
+
+\end{document}

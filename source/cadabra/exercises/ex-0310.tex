@@ -1,0 +1,33 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.10 Example of {\tt repeat=True} in a substitution}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
+
+   foo := A B + A B A B + A B A B A B + A B A B A B A B .   # cdb(ex-0310.foo.001,foo)
+   bah := @(foo).                                           # cdb(ex-0310.bah.001,bah)
+
+   substitute (foo,$A B -> A$)                              # cdb(ex-0310.foo.002,foo)
+   substitute (bah,$A B -> A$,repeat=True)                  # cdb(ex-0310.bah.002,bah)
+\end{cadabra}
+
+\vskip 1cm
+
+Without {\tt repeat=True} only the first match in a product will be susbstituted.
+\begin{align*}
+   &\cdb*{ex-0310.foo.001}\\
+   &\cdb*{ex-0310.foo.002}
+\end{align*}
+
+But with {\tt repeat=True} then all matches in a product will be susbstituted.
+\begin{align*}
+   &\cdb*{ex-0310.bah.001}\\
+   &\cdb*{ex-0310.bah.002}
+\end{align*}
+
+\end{document}

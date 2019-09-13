@@ -1,0 +1,52 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 6 Evaluating components}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   json000A = cdblib.get ('json000','../expected/example-06.json')
+   json001A = cdblib.get ('json001','../expected/example-06.json')
+   json002A = cdblib.get ('json002','../expected/example-06.json')
+
+   # ---------------------------------------------
+   json000B = cdblib.get ('json000','../output/example-06.json')
+   json001B = cdblib.get ('json001','../output/example-06.json')
+   json002B = cdblib.get ('json002','../output/example-06.json')
+
+   # ---------------------------------------------
+   diff000 = check (json000A,json000B)   # cdb (ex-06.diff000,diff000)
+   diff001 = check (json001A,json001B)   # cdb (ex-06.diff001,diff001)
+   diff002 = check (json002A,json002B)   # cdb (ex-06.diff002,diff002)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-06.diff000}}
+   \Dmath*{\cdb*{ex-06.diff001}}
+   \Dmath*{\cdb*{ex-06.diff002}}
+\end{dgroup*}
+
+\end{document}

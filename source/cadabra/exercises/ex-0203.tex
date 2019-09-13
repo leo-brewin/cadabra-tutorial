@@ -1,0 +1,54 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 2.3 Covariant derivative of $v^{a}{}_{b}$}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   # template for covariant derivative of a vector
+
+   derivU := \nabla_{a}{A?^{b}} -> \partial_{a}{A?^{b}} + \Gamma^{b}_{c a} A?^{c}.
+   derivD := \nabla_{a}{A?_{b}} -> \partial_{a}{A?_{b}} - \Gamma^{c}_{b a} A?_{c}.
+
+   vab := v^{a}_{b} -> A^{a} B_{b}.
+   iab := A^{a} B_{b} -> v^{a}_{b}.
+
+   pab := \partial_{a}{A^{b}} B_{c} -> \partial_{a}{A^{b} B_{c}} - A^{b} \partial_{a}{B_{c}}.
+
+   # create an object
+
+   Dvab := \nabla_{a}{v^{b}_{c}}.   # cdb (ex-0203.101,Dvab)
+
+   # apply the rule, then simplify
+
+   substitute     (Dvab,vab)        # cdb (ex-0203.102,Dvab)
+   product_rule   (Dvab)            # cdb (ex-0203.103,Dvab)
+   substitute     (Dvab,derivD)     # cdb (ex-0203.104,Dvab)
+   substitute     (Dvab,derivU)     # cdb (ex-0203.105,Dvab)
+   distribute     (Dvab)            # cdb (ex-0203.106,Dvab)
+   substitute     (Dvab,pab)        # cdb (ex-0203.107,Dvab)
+   canonicalise   (Dvab)            # cdb (ex-0203.108,Dvab)
+   substitute     (Dvab,iab)        # cdb (ex-0203.109,Dvab)
+   sort_product   (Dvab)            # cdb (ex-0203.110,Dvab)
+\end{cadabra}
+
+\begin{align}
+   \cdb{ex-0203.101} &= \Cdb{ex-0203.102}\\
+                     &= \Cdb{ex-0203.103}\\
+                     &= \Cdb{ex-0203.104}\\
+                     &= \Cdb{ex-0203.105}\\
+                     &= \Cdb{ex-0203.106}\\
+                     &= \Cdb{ex-0203.107}\\
+                     &= \Cdb{ex-0203.108}\\
+                     &= \Cdb{ex-0203.109}\\
+                     &= \Cdb{ex-0203.110}
+\end{align}
+
+\end{document}

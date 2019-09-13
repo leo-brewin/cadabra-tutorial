@@ -1,0 +1,11 @@
+{a,b,c,d,e,f,u,v,w}::Indices.
+
+\delta{#}::KroneckerDelta.
+
+expr := A_{a b c}.
+
+expr := \delta^{a}_{u} \delta^{b}_{v} \delta^{c}_{w} @(expr).
+
+eliminate_kronecker (expr)
+
+

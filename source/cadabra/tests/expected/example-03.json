@@ -1,0 +1,5 @@
+{
+  "json000": "-\\partial_{c}(\\Gamma^{a}_{b d}) + \\partial_{b}(\\Gamma^{a}_{c d}) + \\Gamma^{a}_{b e} \\Gamma^{e}_{c d}-\\Gamma^{a}_{c e} \\Gamma^{e}_{b d}",
+  "json001": "R^{a}_{b c d} -> -\\partial_{d}(\\Gamma^{a}_{c b}) + \\partial_{c}(\\Gamma^{a}_{d b}) + \\Gamma^{a}_{c e} \\Gamma^{e}_{d b}-\\Gamma^{a}_{d e} \\Gamma^{e}_{c b}",
+  "json002": "V^{d} (\\partial_{c}(\\Gamma^{a}_{b d})-\\partial_{b}(\\Gamma^{a}_{c d}) + \\Gamma^{a}_{b d} \\Gamma^{e}_{c e}-\\Gamma^{a}_{b e} \\Gamma^{e}_{c d})"
+}

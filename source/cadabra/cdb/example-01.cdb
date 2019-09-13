@@ -1,0 +1,30 @@
+import cdblib
+jsonfile = 'example-01.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+g_{a b}::Metric.
+g_{a}^{b}::KroneckerDelta.
+
+\partial{#}::PartialDerivative.
+
+Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                            + \partial_{c}{g_{b d}}
+                                            - \partial_{d}{g_{b c}} ).
+
+cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
+                                - g_{d b}\Gamma^{d}_{a c}.
+
+substitute          (cderiv, Gamma)
+distribute          (cderiv)
+eliminate_metric    (cderiv)
+eliminate_kronecker (cderiv)
+canonicalise        (cderiv)
+
+json.append (cderiv)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

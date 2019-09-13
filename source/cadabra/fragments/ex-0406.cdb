@@ -1,0 +1,1 @@
+expr := g_{a b} x^{a} x^{b} + \Gamma_{a b c} x^{a} x^{b} x^{c}

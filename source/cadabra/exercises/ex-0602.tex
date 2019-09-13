@@ -1,0 +1,27 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.2 Evaluate on an expression (not a rule)}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V  := { V_{\theta} = f(\theta,\varphi), V_{\varphi} = g(\theta,\varphi) }.  # cdb(ex-0602.100,V)
+   dV := \partial_{b}{V_{a}} + \partial_{a}{V_{b}}.                            # cdb(ex-0602.101,dV)
+
+   evaluate (dV, V)                                                            # cdb(ex-0602.102,dV)
+\end{cadabra}
+
+\begin{align*}
+   V_{a} &= \Cdb{ex-0602.100}\\[10pt]
+   & \Cdb{ex-0602.101}\\[10pt]
+   & \Cdb{ex-0602.102}
+\end{align*}
+
+\end{document}

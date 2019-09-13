@@ -1,0 +1,11 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z#}::Indices(position=independent).
+
+foo := A_{a} A^{a} + A^{a} A_{a}.
+
+sort_product (foo)
+
+substitute   (foo, $A^{a} -> Z^{a}$)
+sort_product (foo)
+substitute   (foo, $Z^{a} -> A^{a}$)
+
+

@@ -1,0 +1,2 @@
+V  := { V_{\theta} = f(\theta,\varphi), V_{\varphi} = g(\theta,\varphi) }.
+dV := \partial_{b}{V_{a}} + \partial_{a}{V_{b}}.

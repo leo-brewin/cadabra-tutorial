@@ -1,0 +1,23 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 5.1 Swap terms}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   expr := A_{a} (P^{b}+Q^{b}) + C_{a} V^{b}.                            # cdb (ex-0501.100,expr)
+
+   substitute (expr, $A_{a} B?? + C_{a} D?? -> A_{a} D?? + C_{a} B??$)   # cdb (ex-0501.101,expr)
+
+\end{cadabra}
+
+\begin{dgroup*}
+   \Dmath*{ \cdb*{ex-0501.100} }
+   \Dmath*{ \cdb*{ex-0501.101} }
+\end{dgroup*}
+
+\end{document}

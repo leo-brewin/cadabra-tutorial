@@ -1,0 +1,54 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.1 Evaluate -- without {\tt rhsonly = True}}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V  := { V_{\theta} = \varphi, V_{\varphi} = \sin(\theta) }.   # cdb(ex-0601.100,V)
+   dV := dV_{a b} -> \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.  # cdb(ex-0601.101,dV)
+
+   evaluate (dV, V)                                              # cdb(ex-0601.102,dV)
+\end{cadabra}
+
+Notice how {\tt evaluate} has been applied to both the left and right hand sides of the rule.
+
+\begin{align*}
+   V_{a} &= \Cdb{ex-0601.100}\\[10pt]
+   & \Cdb{ex-0601.101}\\[10pt]
+   & \Cdb{ex-0601.102}
+\end{align*}
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.1 Evaluate -- with {\tt rhsonly = True}}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V  := { V_{\theta} = \varphi, V_{\varphi} = \sin(\theta) }.   # cdb(ex-0601.200,V)
+   dV := dV_{a b} -> \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.  # cdb(ex-0601.201,dV)
+
+   evaluate (dV, V, rhsonly=True)                                # cdb(ex-0601.202,dV)
+\end{cadabra}
+
+This is an improvement, only the right hnd side has been expanded into components.
+
+\begin{align*}
+   V_{a} &= \Cdb{ex-0601.200}\\[10pt]
+   & \Cdb{ex-0601.201}\\[10pt]
+   & \Cdb{ex-0601.202}
+\end{align*}
+
+\end{document}

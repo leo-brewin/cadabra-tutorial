@@ -1,0 +1,81 @@
+import cdblib
+jsonfile = 'example-15.json'
+cdblib.create (jsonfile)
+json = []
+
+{a,b,c,d,e,f,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent,values={t,x,y,z}).
+{t,x,y,z}::Coordinate.
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+DBar{#}::Derivative.
+
+N::Depends(t,x,y,z).
+
+g_{a b}::Symmetric.
+g^{a b}::Symmetric.
+g_{a}^{b}::KroneckerDelta.
+g^{a}_{b}::KroneckerDelta.
+
+g_{a b}::Depends(t,x,y,z).
+g^{a b}::Depends(t,x,y,z).
+
+gBar_{a b}::Symmetric.
+gBar^{a b}::Symmetric.
+gBar_{a}^{b}::KroneckerDelta.
+gBar^{a}_{b}::KroneckerDelta.
+
+gBar_{a b}::Depends(t,x,y,z).
+gBar^{a b}::Depends(t,x,y,z).
+
+trK::LaTeXForm("K").
+detg::LaTeXForm("g").
+ABar{#}::LaTeXForm("{\bar{A}}").
+DBar{#}::LaTeXForm("{\bar{D}}").
+
+phi     := \phi -> (1/12) \log(detg).
+gdotK   := g^{i j} K_{i j} -> trK.
+DdetgDt := \partial_{t}{detg} -> detg g^{i j} \partial_{t}{g_{i j}}.
+
+DgijDt  := \partial_{t}{g_{i j}} -> -2 N K_{i j}.
+
+dlog    := \partial_{a?}{\log(A?)} -> (1/A?)\partial_{a?}{A?}.
+dexp    := \partial_{a?}{\exp(A?)} -> \exp(A?)\partial_{a?}{A?}.
+
+dotphi  := \partial_{t}{\phi}.
+
+substitute (dotphi, phi)
+substitute (dotphi, dlog)
+substitute (dotphi, DdetgDt)
+substitute (dotphi, DgijDt)
+substitute (dotphi, gdotK)
+map_sympy  (dotphi, "simplify")
+
+DphiDt := \partial_{t}{\phi} -> @(dotphi).
+
+json.append (dotphi)
+
+gBarij := gBar_{i j} -> \exp(-4\phi) g_{i j}.
+Kij    := K_{i j} -> A_{i j} + (1/3) g_{i j} trK.
+A2ABar := \exp(-4\phi) A_{i j} -> ABar_{i j}.
+ABar2A := ABar_{i j} -> \exp(-4\phi) A_{i j}.
+
+dotgBarij := \partial_{t}{gBar_{i j}}.
+
+substitute   (dotgBarij, gBarij)
+product_rule (dotgBarij)
+substitute   (dotgBarij, dexp)
+substitute   (dotgBarij, DgijDt)
+substitute   (dotgBarij, DphiDt)
+substitute   (dotgBarij, Kij)
+distribute   (dotgBarij)
+map_sympy    (dotgBarij, "simplify")
+substitute   (dotgBarij, A2ABar)
+
+DgBarijDt := \partial_{t}{gBar_{i j}} -> @(dotgBarij).
+
+json.append (dotgBarij)
+
+for i in range( len(json) ):
+   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+

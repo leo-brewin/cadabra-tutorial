@@ -1,0 +1,37 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 5.2 Leading factors forbidden in patterns}
+
+This exercise will raise a Cadabra run-time error -- the scale factor on the left
+hand side of the rule (3 in this case) is not allowed.
+
+\CdbSetup{action=verbatim}% the following code will raise a run time error
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   expr := 2 V_{a b} - 3 V_{b a}.                  # cdb (ex-0502.100,expr)
+
+   substitute (expr, $3 V_{b a} -> - 3 V_{a b}$)   # cdb (ex-0502.101,expr)
+
+\end{cadabra}
+
+\vskip 1cm
+\bgroup
+\lstset{numbers=none,backgroundcolor=\color{white}}
+\begin{lstlisting}
+   Traceback (most recent call last):
+     File "/usr/local/bin/cadabra2", line 248, in <module>
+       exec(cmp)
+     File "ex-0502.py", line 18, in <module>
+       substitute (expr, Ex(r'''3 V_{b a} -> - 3 V_{a b}''', False))
+   RuntimeError: substitute: Index error in replacement rule.
+                 substitute: No numerical pre-factors allowed on lhs of replacement rule.
+\end{lstlisting}
+\egroup
+
+\end{document}

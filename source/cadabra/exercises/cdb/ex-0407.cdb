@@ -1,0 +1,51 @@
+{a,b,c,d,e,f,g,h,i,j,k,l#}::Indices(position=independent).
+
+# ---------------------------------------------------------------
+# this function uses in-place changes for obj
+
+def tidy (obj):
+
+    sort_product   (obj)
+    rename_dummies (obj)
+    canonicalise   (obj)
+
+foo := C^{f} B^{a} A_{f a}.
+tidy (foo)
+
+# ---------------------------------------------------------------
+# this function creates new objects,
+# it will not give the correct result
+
+def tidy (obj):
+
+    bah := @(obj).
+
+    sort_product   (bah)
+    rename_dummies (bah)
+    canonicalise   (bah)
+
+    obj := @(bah).
+
+foo := C^{f} B^{a} A_{f a}.
+tidy (foo)
+
+# ---------------------------------------------------------------
+# this function uses a return statement
+# it will give the correct result
+
+def tidy (obj):
+
+    bah := @(obj).
+
+    sort_product   (bah)
+    rename_dummies (bah)
+    canonicalise   (bah)
+
+    obj := @(bah).
+
+    return obj
+
+foo := C^{f} B^{a} A_{f a}.
+foo = tidy (foo)
+
+

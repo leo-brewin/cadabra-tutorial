@@ -1,0 +1,43 @@
+\documentclass[12pt]{pylatex}
+
+\begin{document}
+
+Expand $\sqrt{-g}$ in powers of $R,\nabla R$ etc.
+
+\begin{python}
+   from sympy import *
+
+   eps, a, b, c, d = symbols('\epsilon a b c d')
+
+   ans = sqrt(1+a*eps**2+b*eps**3+c*eps**4+d*eps**5)   # py(ans.001,ans)
+   ans = ans.series(eps, 0, 6)                         # py(ans.002,ans)
+   ans = simplify(ans)                                 # py(ans.003,ans)
+
+\end{python}
+
+\begin{dgroup*}
+   \begin{dmath*} \py*{ans.001} \end{dmath*}
+   \begin{dmath*} \py*{ans.002} \end{dmath*}
+   \begin{dmath*} \py*{ans.003} \end{dmath*}
+\end{dgroup*}
+
+And while we're here, let's also expand $\log(-g)$ in powers of $R,\nabla R$ etc.
+
+\begin{python}
+   from sympy import *
+
+   eps, a, b, c, d = symbols('\epsilon a b c d')
+
+   ans = log(1+a*eps**2+b*eps**3+c*eps**4+d*eps**5)    # py(ans.101,ans)
+   ans = ans.series(eps, 0, 6)                         # py(ans.102,ans)
+   ans = simplify(ans)                                 # py(ans.103,ans)
+
+\end{python}
+
+\begin{dgroup*}
+   \begin{dmath*} \py*{ans.101} \end{dmath*}
+   \begin{dmath*} \py*{ans.102} \end{dmath*}
+   \begin{dmath*} \py*{ans.103} \end{dmath*}
+\end{dgroup*}
+
+\end{document}

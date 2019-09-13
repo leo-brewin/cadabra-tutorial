@@ -1,0 +1,62 @@
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+\nabla{#}::Derivative.
+
+def get_term (obj,n):
+
+    x^{a}::Weight(label=xnum).
+
+    foo := @(obj).
+    bah  = Ex("xnum = " + str(n))
+    keep_weight (foo,bah)
+
+    return foo
+
+def reformat (obj,scale):
+
+    {x^{a},A_{a},B_{a},A_{a b},B_{a b},C_{a b},C_{a b c},g^{a b}}::SortOrder.
+
+    foo  = Ex(str(scale))
+    bah := @(foo) @(obj).
+
+    distribute     (bah)
+    sort_product   (bah)
+    rename_dummies (bah)
+    canonicalise   (bah)
+    factor_out     (bah,$x^{a?}$)
+
+    ans := @(bah) / @(foo).
+
+    return ans
+
+# ---------------------------------------------------------------
+
+# a messy unformatted expression
+
+expr :=    (1/7) A_{e} x^{e}
+        -  (1/3) B_{f} x^{f}
+        +  (1/3) A_{a b} x^{a} x^{b}
+        +  (1/9) B_{e c} x^{c} x^{e}
+        -  (1/5) C_{p c} B_{d q} g^{c d} x^{p} x^{q}
+        +  (3/7) A_{a b c} x^{a} x^{b} x^{c}
+        -  (1/5) B_{a b} C_{c d e} g^{c d} x^{a} x^{b} x^{e}
+        + (7/11) B_{a b} B_{c d} C_{e f g} g^{b c} g^{d f} x^{a} x^{e} x^{g}.
+
+# split the expression into seprate terms
+
+term1 = get_term (expr,1)
+term2 = get_term (expr,2)
+term3 = get_term (expr,3)
+
+# reformat terms and tidy fractions
+
+term1 = reformat (term1, 21)
+term2 = reformat (term2, 45)
+term3 = reformat (term3,385)
+
+# rebuild the expression
+
+expr := @(term1) + @(term2) + @(term3).
+
+

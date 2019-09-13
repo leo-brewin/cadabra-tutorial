@@ -1,0 +1,24 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-01.101}{%
+\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right)%
+}
+\cdbtag{ex-01.102}{%
+\partial_{c}{g_{a b}}-g_{a d} \Gamma^{d}{}_{b c}-g_{d b} \Gamma^{d}{}_{a c}%
+}
+\cdbtag{ex-01.103}{%
+\partial_{c}{g_{a b}} - \frac{1}{2}g_{a d} g^{d e} \left(\partial_{b}{g_{e c}}+\partial_{c}{g_{b e}}-\partial_{e}{g_{b c}}\right) - \frac{1}{2}g_{d b} g^{d e} \left(\partial_{a}{g_{e c}}+\partial_{c}{g_{a e}}-\partial_{e}{g_{a c}}\right)%
+}
+\cdbtag{ex-01.104}{%
+\partial_{c}{g_{a b}} - \frac{1}{2}g_{a d} g^{d e} \partial_{b}{g_{e c}} - \frac{1}{2}g_{a d} g^{d e} \partial_{c}{g_{b e}}+\frac{1}{2}g_{a d} g^{d e} \partial_{e}{g_{b c}} - \frac{1}{2}g_{d b} g^{d e} \partial_{a}{g_{e c}} - \frac{1}{2}g_{d b} g^{d e} \partial_{c}{g_{a e}}+\frac{1}{2}g_{d b} g^{d e} \partial_{e}{g_{a c}}%
+}
+\cdbtag{ex-01.105}{%
+\partial_{c}{g_{a b}} - \frac{1}{2}g_{a}{}^{e} \partial_{b}{g_{e c}} - \frac{1}{2}g_{a}{}^{e} \partial_{c}{g_{b e}}+\frac{1}{2}g_{a}{}^{e} \partial_{e}{g_{b c}} - \frac{1}{2}g_{b}{}^{e} \partial_{a}{g_{e c}} - \frac{1}{2}g_{b}{}^{e} \partial_{c}{g_{a e}}+\frac{1}{2}g_{b}{}^{e} \partial_{e}{g_{a c}}%
+}
+\cdbtag{ex-01.106}{%
+\frac{1}{2}\partial_{c}{g_{a b}} - \frac{1}{2}\partial_{c}{g_{b a}}%
+}
+\cdbtag{ex-01.107}{%
+0%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

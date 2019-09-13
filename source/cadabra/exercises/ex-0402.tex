@@ -1,0 +1,43 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 4.2 Inconsistent free indices}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
+
+   def deriv (poly):
+
+       \delta^{a}::Weight(label=\epsilon).
+
+       bah := @(poly).
+
+       substitute     (bah,$x^{a} -> x^{a} + \delta^{a}$)
+       distribute     (bah)
+
+       foo := @(bah) - @(poly).
+
+       keep_weight    (foo, $\epsilon = 1$)
+       substitute     (foo, $\delta^{a} -> 1$)
+
+       return foo
+
+   # ---------------------------------------------------------------
+
+   poly := c^{a}
+         + c^{a}{}_{b} x^b
+         + c^{a}{}_{b c} x^b x^c.    # cdb (ex-0402.100,poly)
+
+   dpoly = deriv (poly)              # cdb (ex-0402.101,dpoly)
+
+\end{cadabra}
+
+\begin{dgroup*}
+   \Dmath*{  p = \Cdb*{ex-0402.100} }
+   \Dmath*{ dp = \Cdb*{ex-0402.101} }
+\end{dgroup*}
+
+\end{document}

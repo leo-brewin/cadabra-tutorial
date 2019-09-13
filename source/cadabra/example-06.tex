@@ -1,0 +1,279 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{examples}
+
+\begin{document}
+
+% ============================================================================================
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   jsonfile = 'example-06.json'
+   cdblib.create (jsonfile)
+   json = []
+\end{cadabra}
+\egroup
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 6-01 Evaluating components}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V  := { V_{\theta} = \varphi, V_{\varphi} = \sin(\theta) }.   # cdb(ex-06.100,V)
+   dV := \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.              # cdb(ex-06.101,dV)
+
+   evaluate (dV, V)   # cdb(ex-06.102,dV)
+\end{cadabra}
+
+\begin{align*}
+             V_{a} &= \Cdb{ex-06.100}\\[10pt]
+   \cdb{ex-06.101} &= \Cdb{ex-06.102}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 6-02 Ricci tensor of a 2-sphere}
+
+% curvature of a 2-sphere
+
+% LCB: successive use of ::Coordinate will extend the list of coordinates
+%      this will have the effect of increasing the dimensionality of the space. whoops...
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   gab := { g_{\theta\theta}   = r**2,
+            g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-06.201,gab)
+
+   iab := { g^{\theta\theta}   = 1/r**2,
+            g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.  # cdb(ex-06.202,iab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+
+   evaluate   (Gamma, gab+iab, rhsonly=True)                  # cdb(ex-06.203,Gamma)
+   evaluate   (Rabcd, gab+iab, rhsonly=True)                  # cdb(ex-06.204,Rabcd)
+   evaluate   (Rab,   gab+iab, rhsonly=True)                  # cdb(ex-06.205,Rab)
+
+   Riem := R^{d}_{e f g}.
+   substitute (Riem, Rabcd)
+   evaluate   (Riem, gab+iab)                                 # cdb(ex-06.206,Riem)
+
+   expr := R_{a b}.
+   substitute (expr, Rab)
+   evaluate   (expr, gab+iab)
+
+   # cdbBeg(print.ex-06.02)
+   print ('Rab = ' + str(Rab.input_form())+'\n')  # reveals Cadabra's internal structure for storing Rab
+
+   print ('Rab[0] = ' + str(Rab[0]))
+   print ('Rab[1] = ' + str(Rab[1])+'\n')
+
+   print ('Rab[1][0] = ' + str(Rab[1][0]))
+   print ('Rab[1][1] = ' + str(Rab[1][1]))
+   print ('Rab[1][2] = ' + str(Rab[1][2])+'\n')
+
+   print ('Rab[1][2][0] = ' + str(Rab[1][2][0]))
+   print ('Rab[1][2][0][0] = ' + str(Rab[1][2][0][0]))
+   print ('Rab[1][2][0][1] = ' + str(Rab[1][2][0][1]))
+   # cdbEnd(print.ex-06.02)
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-06.201}\\[10pt]
+   &\Cdb{ex-06.202}\\[10pt]
+   &\Cdb{ex-06.203}\\[10pt]
+   &\Cdb{ex-06.204}\\[10pt]
+   &\Cdb{ex-06.205}\\[10pt]
+   &\Cdb{ex-06.206}
+\end{align*}
+
+\IfFileExists{example-06-1.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{example-06-1.cdbcopy}}%
+{Where is {\tt example-06-1.cdbcopy}?}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 6-03 Using \emph{complete} to compute the inverse metric}
+
+This version uses \verb|complete| to compute the inverse metric.
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
+
+   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
+                                              + \partial_{f}{g_{b g}}
+                                              - \partial_{b}{g_{f g}} ).
+
+   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
+                             - \partial_{g}{\Gamma^{d}_{e f}}
+                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
+                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+
+   Rab := R_{a b} -> R^{c}_{a c b}.
+
+   gab := { g_{\theta\theta}   = r**2,
+            g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-06.301,gab)
+
+   complete   (gab, $g^{a b}$)                                # cdb(ex-06.302,gab)
+
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
+
+   evaluate   (Gamma, gab, rhsonly=True)                      # cdb(ex-06.303,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                      # cdb(ex-06.304,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                      # cdb(ex-06.305,Rab)
+
+   Riem := R^{d}_{e f g}.
+   substitute (Riem, Rabcd)
+   evaluate   (Riem, gab)                                     # cdb(ex-06.306,Riem)
+
+\end{cadabra}
+
+\begin{align*}
+   &\Cdb{ex-06.301}\\[10pt]
+   &\Cdb{ex-06.302}\\[10pt]
+   &\Cdb{ex-06.303}\\[10pt]
+   &\Cdb{ex-06.304}\\[10pt]
+   &\Cdb{ex-06.305}\\[10pt]
+   &\Cdb{ex-06.306}
+\end{align*}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 6-04 Components by scalar projection}
+
+This example shows how one component of the metric tensor can be computed using a scalar
+projection.
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   theta{#}::LaTeXForm{"\theta"}.
+   varphi{#}::LaTeXForm{"\varphi"}.
+
+   gab := { g_{\theta \theta}   = r**2,
+            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-06.400,gab)
+
+   # obtain components by contracting with basis vectors
+
+   basis := {theta^{\theta} = 1, varphi^{\varphi} = 1}.
+
+   compt := g_{a b} varphi^{a} varphi^{b}.                  # cdb(ex-06.401,compt)
+
+   evaluate (compt,gab+basis)                               # cdb(ex-06.402,compt)
+
+   gphiphi = compt._sympy_()
+
+   # cdbBeg(print.ex-06.04)
+   print ('type compt   = ' + str(type(compt)))      # shows that compt is a Cadabra object
+   print ('type gphiphi = ' + str(type(gphiphi)))    # shows that gphiphi is a Python object
+   print ('     compt   = ' + str(compt))            # will contain LaTeX markup
+   print ('     gphiphi = ' + str(gphiphi))          # will be pure Python/SymPy
+   # cdbEnd(print.ex-06.04)
+
+   json.append (compt)
+\end{cadabra}
+
+\begin{align*}
+   g_{\varphi\varphi} &= \Cdb{ex-06.401}\\
+                      &= \Cdb{ex-06.402}
+\end{align*}
+
+\IfFileExists{example-06-2.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{example-06-2.cdbcopy}}%
+{Where is {\tt example-06-2.cdbcopy}?}
+
+\clearpage
+
+% ============================================================================================
+\section*{Example 6-05 Components by selection}
+
+This example shows how one component of the metric tensor can be computed by indexing
+the result of a call to \verb|evaluate|.
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   theta{#}::LaTeXForm{"\theta"}.
+   varphi{#}::LaTeXForm{"\varphi"}.
+
+   gab := { g_{\theta \theta}   = r**2,
+            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-06.500,gab)
+
+   metric := g_{a b}.
+
+   evaluate (metric,gab)
+
+   indcs = metric[2][1][0]                                  # cdb(ex-06.501,indcs)
+   compt = metric[2][1][1]                                  # cdb(ex-06.502,compt)
+
+   # cdbBeg(print.ex-06.05)
+   print ('metric = ' + str(metric.input_form())+'\n')  # reveals Cadabra's internal structure for storing metric
+
+   print ('metric[0] = ' + str(metric[0]))
+   print ('metric[1] = ' + str(metric[1]))
+   print ('metric[2] = ' + str(metric[2])+'\n')
+
+   print ('metric[2][1] = '+ str(metric[2][1]))
+   print ('metric[2][1][0] = '+ str(metric[2][1][0]))
+   print ('metric[2][1][1] = '+ str(metric[2][1][1]))
+   # cdbEnd(print.ex-06.05)
+
+   json.append (indcs)
+   json.append (compt)
+\end{cadabra}
+
+\begin{align*}
+   g_{\varphi\varphi} &= g_{\Cdb{ex-06.501}}\\
+                      &= \Cdb{ex-06.502}
+\end{align*}
+
+\IfFileExists{example-06-3.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{example-06-3.cdbcopy}}%
+{Where is {\tt example-06-3.cdbcopy}?}
+
+\clearpage
+
+% ============================================================================================
+% export to json format
+
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(json) ):
+      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+\end{cadabra}
+\egroup
+
+\end{document}

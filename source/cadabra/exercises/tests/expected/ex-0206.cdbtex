@@ -1,0 +1,21 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0206.101}{%
+\nabla_{a}\left(\nabla_{b}{\phi}\right)-\nabla_{b}\left(\nabla_{a}{\phi}\right)%
+}
+\cdbtag{ex-0206.102}{%
+\nabla_{a}\left(\partial_{b}{\phi}\right)-\nabla_{b}\left(\partial_{a}{\phi}\right)%
+}
+\cdbtag{ex-0206.103}{%
+\nabla_{a}{w_{b}}-\nabla_{b}{w_{a}}%
+}
+\cdbtag{ex-0206.104}{%
+\partial_{a}{w_{b}}-\Gamma^{c}{}_{b a} w_{c}-\partial_{b}{w_{a}}+\Gamma^{c}{}_{a b} w_{c}%
+}
+\cdbtag{ex-0206.105}{%
+\partial_{a b}{\phi}-\Gamma^{c}{}_{b a} \partial_{c}{\phi}-\partial_{b a}{\phi}+\Gamma^{c}{}_{a b} \partial_{c}{\phi}%
+}
+\cdbtag{ex-0206.106}{%
+-\Gamma^{c}{}_{b a} \partial_{c}{\phi}+\Gamma^{c}{}_{a b} \partial_{c}{\phi}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

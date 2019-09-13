@@ -1,0 +1,21 @@
+{a,b,c,d,e,f#}::Indices.
+C{#}::Symmetric.
+
+foo := A_{a} B_{b} + C_{ab}.
+bah := B_{b} A_{a} + C_{ba}.
+meh := @(foo) - @(bah)
+
+if meh == 0:
+   print ("meh is zero, and all is good")
+      success = True.
+else:
+   print ("meh is not zero, oops")
+      success = False.
+
+canonicalise (meh).
+sort_product (meh);
+
+{\alpha\beta\gamma}::Indices.
+
+foo := Ex ("A_{ab} - A_{a b}");
+bah := Ex ("A_{\alpha\beta} - A_{\alpha \beta}");

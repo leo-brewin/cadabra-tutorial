@@ -1,0 +1,46 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 1 The metric connection}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+   g_{a b}::Metric.
+   g_{a}^{b}::KroneckerDelta.
+
+   \partial{#}::PartialDerivative.
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   json000A = cdblib.get ('json000','../expected/example-01.json')
+
+   # ---------------------------------------------
+   json000B = cdblib.get ('json000','../output/example-01.json')
+
+   # ---------------------------------------------
+   diff000 = check (json000A,json000B)   # cdb (ex-01.diff000,diff000)
+
+\end{cadabra}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-01.diff000}}
+\end{dgroup*}
+
+\end{document}

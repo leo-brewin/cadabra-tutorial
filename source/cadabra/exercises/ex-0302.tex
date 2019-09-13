@@ -1,0 +1,55 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 3.2 Riemann tensor from commutation of $\nabla$}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+   \partial{#}::PartialDerivative.
+
+   \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2});
+
+   # rules for the first two covariant derivs of V^a
+
+   deriv1 := \nabla_{a}{V^{b}} -> \partial_{a}{V^{b}}
+                                + \Gamma^{b}_{d a} V^{d}.          # cdb (ex-0302.101,deriv1)
+
+   deriv2 := \nabla_{a}{\nabla_{b}{V^{c}}} -> \partial_{a}{\nabla_{b}{V^{c}}}
+                                            + \Gamma^{c}_{d a} \nabla_{b}{V^{d}}
+                                            - \Gamma^{d}_{b a} \nabla_{d}{V^{c}}.
+                                                                   # cdb (ex-0302.102,deriv2)
+
+   Vabc :=   \nabla_{c}{\nabla_{b}{V^{a}}}
+           - \nabla_{b}{\nabla_{c}{V^{a}}}.                        # cdb (ex-0302.103, Vabc)
+
+   substitute (Vabc,deriv2)                                        # cdb (ex-0302.104, Vabc)
+   substitute (Vabc,deriv1)                                        # cdb (ex-0302.105, Vabc)
+
+   distribute     (Vabc)                                           # cdb (ex-0302.106, Vabc)
+   product_rule   (Vabc)                                           # cdb (ex-0302.107, Vabc)
+
+   sort_product   (Vabc)                                           # cdb (ex-0302.108, Vabc)
+   rename_dummies (Vabc)                                           # cdb (ex-0302.109, Vabc)
+   canonicalise   (Vabc)                                           # cdb (ex-0302.110, Vabc)
+   factor_out     (Vabc,$V^{a?}$)                                  # cdb (ex-0302.111, Vabc)
+\end{cadabra}
+
+\begin{dgroup*}[spread={3pt}]
+   \Dmath*{\cdb{ex-0302.103} = \Cdb*[\hskip2.0cm\hfill]{ex-0302.104}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0302.105}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0302.106}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0302.107}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0302.108}
+                             = \Cdb*[\hskip2.0cm\hfill]{ex-0302.109}
+                             = \Cdb*{ex-0302.110}
+                             = \Cdb*{ex-0302.111}
+                             = - R^{a}{}_{dbc} V^d}
+\end{dgroup*}
+
+This result agrees with Misner, Thorne and Wheeler. pg. 266.
+\end{document}

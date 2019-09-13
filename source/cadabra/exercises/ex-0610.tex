@@ -1,0 +1,72 @@
+\documentclass[12pt]{cdblatex}
+\usepackage{exercises}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.10a A problem with {\tt evaluate} }
+
+\CdbSetup{action=verbatim}% the following code will raise a run time error
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V_{a}::Depends(\theta,\varphi,\partial{#}).
+
+   dVrule := { \partial_{\theta}{V_{\varphi}} = \sin(\theta),
+               \partial_{\varphi}{V_{\theta}} = \cos(\theta)}.  # cdb(ex-0610.101,dVrule)
+   dV := \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.             # cdb(ex-0610.102,dV)
+
+   evaluate (dV, dVrule)                                        # cdb(ex-0610.103,dV)
+\end{cadabra}
+
+\vskip 1cm
+\bgroup
+\lstset{numbers=none,backgroundcolor=\color{white}}
+\begin{lstlisting}
+   Traceback (most recent call last):
+     File "/usr/local/bin/cadabra2", line 248, in <module>
+       exec(cmp)
+     File "ex-0610.py", line 27, in <module>
+       evaluate (dV, dVrule)
+   RuntimeError: Dependencies on derivatives are not yet handled in the SymPy bridge
+\end{lstlisting}
+\egroup
+
+\clearpage
+
+% --------------------------------------------------------------------------------------------
+\section*{Exercise 6.10b A work around}
+
+\CdbSetup{action=show}
+
+\begin{cadabra}
+   {\theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+
+   \partial{#}::PartialDerivative.
+
+   V_{a}::Depends(\theta,\varphi,\partial{#}).
+
+   hide := \partial_{a}{V_{b}} -> dV_{a b}.
+
+   dVrule := { dV_{\theta\varphi} = \sin(\theta),
+               dV_{\varphi\theta} = \cos(\theta)}.              # cdb(ex-0610.201,dVrule)
+   dV := \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.             # cdb(ex-0610.202,dV)
+
+   substitute (dV, hide)                                        # cdb(ex-0610.212,dV)
+   evaluate (dV, dVrule)                                        # cdb(ex-0610.203,dV)
+\end{cadabra}
+
+The workaround here is to to hide the derivatives before calling {\tt evaluate}.
+
+\begin{align*}
+   \Cdb{ex-0610.212}\\
+   dV_{a b} &= \Cdb{ex-0610.202}\\[10pt]
+            &= \Cdb{ex-0610.203}\\[10pt]
+\end{align*}
+
+\end{document}

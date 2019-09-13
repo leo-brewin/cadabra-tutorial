@@ -1,0 +1,16 @@
+{a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
+
+g_{a b}::Metric.
+
+\partial{#}::PartialDerivative.
+
+Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                                            + \partial_{c}{g_{b d}}
+                                            - \partial_{d}{g_{b c}} ).
+
+diff := \Gamma^{a}_{b c} - \Gamma^{a}_{c b}.
+
+substitute    (diff, Gamma)
+distribute    (diff)
+canonicalise  (diff)
+

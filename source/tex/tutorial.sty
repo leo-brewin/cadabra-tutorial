@@ -123,9 +123,7 @@
 % Thus if there are no errors on this run then any errors (from previous versions)
 % will remain in the .errors file.
 % The only way I know to fix this is to write anything to the file.
-% Note that TeX primatives such as \% and \relax can *not* be expanded and will
-% be written as is.
-\immediate\write\errorfile{-- should be empty, see \jobname.log for line numbers --}
+\immediate\write\errorfile{\@percentchar\space should be empty, see \jobname.log for line numbers}
 %
 %-------------------------------------------------------------------------------
 % macros for label & ref of listings' line numbers

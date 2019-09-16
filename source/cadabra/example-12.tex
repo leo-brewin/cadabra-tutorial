@@ -23,8 +23,8 @@ The following calculations show that my results for the RNC connection agree wit
 
 Note that I take $\nabla_{ab}$ to be $\nabla_a\left(\nabla_b\right)$.
 
-Note also that $(LCB)\>R_{abcd} = - (Calzetta)\> R_{abcd}$. Consequently, I have replaced $R_{abcd}$ with
-$-R_{abcd}$ in the Calzetta expressions.
+Note also that $(LCB)\>R_{abcd} = - (Calzetta)\> R_{abcd}$. Consequently, I replace $R_{abcd}$ with
+$-R_{abcd}$ in the Calzetta expressions (done as a Cadabra substitution rule).
 
 This is relatively straightforward. We just apply a few carefully chosen applications of the first and second Bianchi identities.
 
@@ -125,6 +125,8 @@ This is relatively straightforward. We just apply a few carefully chosen applica
    import cdblib
    Gamma  = cdblib.get ('Gamma','example-11.json')                # cdb(ex-12.100,Gamma)
 
+   # note that the next two lines require careful inspection of the free indices on Gamma
+   # expecting Gamma = \Gamma^{a}_{bc}
    Gamma := z^{b} z^{c} @(Gamma).
 
    # lower index ^{a} to _{v}

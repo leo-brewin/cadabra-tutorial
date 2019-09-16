@@ -157,14 +157,14 @@ results against Calzetta do take note of this flipped sign in $R_{abcd}$.
    # compute negative detg rather than det g, note 1/3! included in eps
    Ndetg := @(eps) gx_{p a} gx_{q b} gx_{r c} g^{i p} g^{j q} g^{k r}.   # cdb (ex-10.Ndetg.001,Ndetg)
 
-   substitute     (Ndetg,gxab)                                           # cdb (ex-10.Ndetg.002,Ndetg)
-   distribute     (Ndetg)                                                # cdb (ex-10.Ndetg.003,Ndetg)
+   substitute       (Ndetg,gxab)                                         # cdb (ex-10.Ndetg.002,Ndetg)
+   distribute       (Ndetg)                                              # cdb (ex-10.Ndetg.003,Ndetg)
    Ndetg = truncate (Ndetg,4)                                            # cdb (ex-10.Ndetg.004,Ndetg)
-   substitute     (Ndetg,$g^{a b} g_{b c} -> d^{a}_{c}$,repeat=True)     # cdb (ex-10.Ndetg.005,Ndetg)
+   substitute       (Ndetg,$g^{a b} g_{b c} -> d^{a}_{c}$,repeat=True)   # cdb (ex-10.Ndetg.005,Ndetg)
    eliminate_kronecker (Ndetg)                                           # cdb (ex-10.Ndetg.006,Ndetg)
-   sort_product   (Ndetg)                                                # cdb (ex-10.Ndetg.007,Ndetg)
-   rename_dummies (Ndetg)                                                # cdb (ex-10.Ndetg.008,Ndetg)
-   canonicalise   (Ndetg)                                                # cdb (ex-10.Ndetg.009,Ndetg)
+   sort_product     (Ndetg)                                              # cdb (ex-10.Ndetg.007,Ndetg)
+   rename_dummies   (Ndetg)                                              # cdb (ex-10.Ndetg.008,Ndetg)
+   canonicalise     (Ndetg)                                              # cdb (ex-10.Ndetg.009,Ndetg)
 
    # introduce the Ricci tensor
 

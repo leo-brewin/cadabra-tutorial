@@ -20,12 +20,15 @@ re_latex_comment   = re.compile (r'(^ *%)')
 re_cadabra_comment = re.compile (r'(^ *#)')
 re_cadabra_markup  = re.compile (r'(# *(cdb\s*\(|cdbBeg\s*\(|cdbEnd))')
 re_hidden_markup   = re.compile (r'(^ *#.*#\s*(cdb\s*\(|cdbBeg\s*\(|cdbEnd))')
+re_pure_markup     = re.compile (r'(^\s*#\s*(cdb\s*\(|cdbBeg\s*\(|cdbEnd))')
 re_capture         = re.compile (r'(# *((cdbBeg|cdbEnd)\s*\(\s*([a-zA-Z0-9_.-]+)\)))')
 re_beg_capture     = re.compile (r'(# *(cdbBeg\s*\(\s*([a-zA-Z0-9_.-]+)\)))')
 re_end_capture     = re.compile (r'(# *(cdbEnd\s*(\(\s*([a-zA-Z0-9_.-]+)\))?))')
 re_cdb_tag         = re.compile (r'(# *(cdb\s*\(\s*([a-zA-Z0-9_.-]+)\s*(,\s*([a-zA-Z0-9]+)\s*)?\)))')
+                                # Allow two forms of tag, py(foo,bah) and py(bah).
+                                # In both cases bah must be a valid Cadabra expression.
 
-re_inline_comment  = re.compile (r'(.*?)( +#)')  # any text terminated by " #"
+re_inline_comment  = re.compile (r'(.*?)( +#)')  # any text followed by " #"
 
 re_algorithm       = re.compile (r'(^\s*)('
                                 +r'asym|canonicalise|collect_factors|collect_terms|combine|complete|'
@@ -102,8 +105,18 @@ def has_cadabra_markup (this_line):
 def not_hidden_markup (this_line):
     return not re_hidden_markup.search (this_line)
 
-def not_cadabra_capture (this_line):
-    return not re_capture.search (this_line)
+def not_pure_cadabra_markup (this_line):
+    return not re_pure_markup.search (this_line)
+
+def filter_inline_comment (this_line):
+    if len(this_line) == 0:
+       return ""
+    else:
+       the_beg,the_end,found = grep (this_line,re_inline_comment,2)
+       if the_beg > 0 :
+          return this_line[0:the_beg].rstrip(" ")
+       else:
+          return this_line.rstrip("\n")
 
 def filter_cadabra_markup (this_line):
     if len(this_line) == 0:
@@ -118,24 +131,13 @@ def filter_cadabra_markup (this_line):
        else:
           return this_line.rstrip("\n")
 
-def filter_inline_comments (this_line):
-    if len(this_line) == 0:
-       return ""
-    else:
-       if not_cadabra_comment (this_line):
-          the_beg,the_end,found = grep (this_line,re_inline_comment,2)
-          if the_beg > 0 :
-             return this_line[0:the_beg].rstrip(" ")
-          else:
-             return this_line.rstrip("\n")
-       else:
-          return this_line.rstrip("\n")
-
 # -----------------------------------------------------------------------------
 # 1st pass: copy Cadabra source from source.tex to source.cdb file
 #           leave in-line comments in place, these will be removed in pass2
 
 def pass1 (src_file_name, out_file_name, the_file_name):
+
+   global num_head_lines
 
    in_latex_document = False
    in_cadabra_environ = False
@@ -192,6 +194,9 @@ def pass1 (src_file_name, out_file_name, the_file_name):
 
    with open (src_file_name,"r") as src:
       with open (out_file_name,"w") as out:
+
+         num_head_lines = 10  # used later when cleaning out all markup
+                              # must match exactly the number of header lines
 
          out.write ("# ----------------------------------------------\n")
          out.write ("# auto-generated from " + src_file_name + "\n")
@@ -424,25 +429,25 @@ def pass2 (src_file_name, out_file_name, idx_file_name):
 
                   else:
 
-                     out.write (filter_inline_comments (this_line)+"\n")
+                     out.write (filter_inline_comment (this_line)+"\n")
 
                else:
 
-                  out.write (filter_inline_comments (this_line)+"\n")
+                  out.write (filter_inline_comment (this_line)+"\n")
 
    # copy the temporary file back to the source with in-line comments removed
    # note: this clean copy is just for reference, it's never used
 
    num_line = 0 # use num_line to help skip header text added in pass 1
-                # there are exactly 10 lins in the header text
+                # there are exactly num_head_lines in the header text
 
    with open (tmp_file_name,"r") as tmp:
       with open (src_file_name,"w") as src:
          for this_line in tmp:
             num_line = num_line + 1
-            if num_line > 10:
-               if not_cadabra_capture (this_line):
-                  src.write (filter_inline_comments (this_line)+"\n")
+            if num_line > num_head_lines:
+               if not_pure_cadabra_markup (this_line):
+                  src.write (filter_inline_comment (this_line)+"\n")
 
 # -----------------------------------------------------------------------------
 # the main code

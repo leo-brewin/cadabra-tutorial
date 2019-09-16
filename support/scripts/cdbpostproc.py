@@ -103,12 +103,12 @@ import argparse
 parser = argparse.ArgumentParser(description="Post-process Cadabra output")
 parser.add_argument("-i", dest="input", metavar="source", help="LaTeX-Cadabra source file (without .tex file extension)", required=True)
 parser.add_argument("-I", dest="sty", metavar="include", help="Full path to LaTeX-Cadabra cdbmacros.sty file")
-parser.add_argument("-W", dest="warn", action='store_true', help="Report errors for missing output")
+parser.add_argument("-N", dest="nowarn", action='store_true', help="Do not report errors for missing output")
 
 the_file_name = parser.parse_args().input
 sty_file_name = parser.parse_args().sty
 
-report_errors = parser.parse_args().warn
+report_errors = not parser.parse_args().nowarn
 
 # ----------------------------------------------------------------------------
 # include the Cadabra macros in the .cdbtex file?

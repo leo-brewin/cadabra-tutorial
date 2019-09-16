@@ -29,6 +29,5 @@ if [[ $file = "<none>" ]]; then
    exit 1;
 fi;
 
-rm -rf comment.cut
 rm -rf .merged.tex .tmp.txt
 rm -rf $file.log $file.out $file.py $file"_.cdb" $file.cdbidx $file.cdbtxt

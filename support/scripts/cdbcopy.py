@@ -99,7 +99,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Post-process Cadabra output")
 parser.add_argument("-i", dest="input",  metavar="source",    help="LaTeX-Cadabra source file (without .tex file extension)", required=True)
-parser.add_argument("-o", dest="output", metavar="copied",    help="Where to save the copied text, full file name.)", required=True)
+parser.add_argument("-o", dest="output", metavar="output",    help="Where to save the copied text, full file name.", required=True)
 parser.add_argument("-t", dest="tag",    metavar="target",    help="Target tag, copy the text of this tag.", required=True)
 parser.add_argument("-W", dest="warn",   action='store_true', help="Report errors for missing output")
 
@@ -131,6 +131,8 @@ tag_found  = [False]  # ditto
 tag_output = [[]]     # ditto
 num_tag    = 0
 tag_index  = 0
+
+target = 1 # default is the first tag
 
 with open(idx_file_name, "r") as idx:
    for this_line in idx:

@@ -1,6 +1,5 @@
 #-------------------------------------------------------------------------------
 SHELL = /bin/bash
-SED   = /usr/local/bin/sed
 #-------------------------------------------------------------------------------
 .PHONY: all clean veryclean
 #-------------------------------------------------------------------------------
@@ -13,8 +12,6 @@ all:
 %:
 	@ echo "> cdblatex.sh $* ..."
 	@ cdblatex.sh -skx -i $* &> $*.cdblog
-	@ $(SED) -e 's!\\,_!\{\}_!g' $*.cdbtex > tmp.del; if [[ $$? = 0 ]]; then cp -f tmp.del $*.cdbtex; else exit 3; fi; rm -rf tmp.del
-	@ $(SED) -e 's!\\,^!\{\}^!g' $*.cdbtex > tmp.del; if [[ $$? = 0 ]]; then cp -f tmp.del $*.cdbtex; else exit 3; fi; rm -rf tmp.del
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> $*.cdblog
 #-------------------------------------------------------------------------------
 summary:

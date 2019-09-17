@@ -87,12 +87,22 @@ def parse (this_line):
 def append_text (this_line, index):
    tag_output[index].append(this_line.rstrip("\n"))
 
+import re
+
+re_subscript   = re.compile (r'\\,_')
+re_superscript = re.compile (r'\\,\^')
+
 def tex_macro (tex, index):
    the_lines = tag_output [index]
    tex.write ("\cdbtag{"+tag_name[index]+"}{%\n")
    for i in range (0,len(the_lines)):
       if not empty_line (the_lines[i]):
-         tex.write (the_lines[i]+"%\n")
+         # Cadabra's LaTeX inserts \, between mixed sub/super scripts
+         # I prefer to use {} as this keeps the sub/super scripts closer together
+         tmp0 = the_lines[i]
+         tmp1 = re_subscript.sub ("{}_",tmp0)
+         tmp2 = re_superscript.sub ("{}^",tmp1)
+         tex.write (tmp2+"%\n")
    tex.write("}\n")
 
 # -----------------------------------------------------------------------------

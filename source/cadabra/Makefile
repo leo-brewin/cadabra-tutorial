@@ -98,7 +98,7 @@ veryclean:
 	  do \
 		  rm -rf $${file}.cdb $${file}_.cdb; \
 		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
-		  rm -rf $${file}.py $${file}.pytxt $${file}.pylog; \
+		  rm -rf $${file}.py; \
 	  done
 #-------------------------------------------------------------------------------
 pristine:

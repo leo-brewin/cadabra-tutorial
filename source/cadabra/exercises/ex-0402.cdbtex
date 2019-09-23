@@ -1,9 +1,0 @@
-\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
-\catcode`\#=11			             % set catcode for hash to be a letter (11)
-\cdbtag{ex-0402.100}{%
-c^{a}+c^{a}{}_{b} x^{b}+c^{a}{}_{b c} x^{b} x^{c}%
-}
-\cdbtag{ex-0402.101}{%
-c^{a}{}_{b}+c^{a}{}_{b c} x^{b}+c^{a}{}_{b c} x^{c}%
-}
-\catcode`\#=\thehashcode          % restore original catcode for hash

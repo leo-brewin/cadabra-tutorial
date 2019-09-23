@@ -1,0 +1,3 @@
+{
+  "check000": "c^{a} + c^{a}_{b} x^{b} + c^{a}_{b c} x^{b} x^{c} + c^{a}_{b c d} x^{b} x^{c} x^{d}"
+}

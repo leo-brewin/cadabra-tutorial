@@ -1,0 +1,5 @@
+{
+  "check000": "(r)**2 (\\sin(\\theta))**2",
+  "check001": "{\\varphi, \\varphi}",
+  "check002": "(r)**2 (\\sin(\\theta))**2"
+}

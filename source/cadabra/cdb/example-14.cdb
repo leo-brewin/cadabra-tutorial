@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-14.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-14.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (position=independent).
 
@@ -102,9 +102,9 @@ sort_product   (diff)
 rename_dummies (diff)
 canonicalise   (diff)
 
-json.append (baseC)
-json.append (confC)
+checkpoint.append (baseC)
+checkpoint.append (confC)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

@@ -1,3 +1,0 @@
-{
-  "FourRab": "-2g^{c d} g^{e f} \\partial_{a}(g_{b c}) \\partial_{e}(g_{d f})-2g^{c d} g^{e f} \\partial_{b}(g_{a c}) \\partial_{e}(g_{d f}) + 2g^{c d} g^{e f} \\partial_{c}(g_{a b}) \\partial_{e}(g_{d f}) + 2g^{c d} \\partial_{a c}(g_{b d}) + 2g^{c d} \\partial_{b c}(g_{a d})-2g^{c d} \\partial_{c d}(g_{a b}) + g^{c d} g^{e f} \\partial_{a}(g_{b c}) \\partial_{d}(g_{e f}) + g^{c d} g^{e f} \\partial_{b}(g_{a c}) \\partial_{d}(g_{e f})-g^{c d} g^{e f} \\partial_{c}(g_{a b}) \\partial_{d}(g_{e f}) + g^{c d} g^{e f} \\partial_{a}(g_{c e}) \\partial_{b}(g_{d f})-2g^{c d} \\partial_{a b}(g_{c d})-2g^{c d} g^{e f} \\partial_{c}(g_{a e}) \\partial_{f}(g_{b d}) + 2g^{c d} g^{e f} \\partial_{c}(g_{a e}) \\partial_{d}(g_{b f})"
-}

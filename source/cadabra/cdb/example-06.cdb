@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-06.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-06.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {\theta, \varphi}::Coordinate.
 {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
@@ -122,7 +122,7 @@ print ('type gphiphi = ' + str(type(gphiphi)))
 print ('     compt   = ' + str(compt))
 print ('     gphiphi = ' + str(gphiphi))
 
-json.append (compt)
+checkpoint.append (compt)
 
 {\theta, \varphi}::Coordinate.
 {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
@@ -150,9 +150,9 @@ print ('metric[2][1] = '+ str(metric[2][1]))
 print ('metric[2][1][0] = '+ str(metric[2][1][0]))
 print ('metric[2][1][1] = '+ str(metric[2][1][1]))
 
-json.append (indcs)
-json.append (compt)
+checkpoint.append (indcs)
+checkpoint.append (compt)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

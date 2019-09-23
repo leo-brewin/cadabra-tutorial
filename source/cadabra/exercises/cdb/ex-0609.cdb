@@ -30,7 +30,6 @@ canonicalise (expr)
 # Kvect := {\xi^{\varphi} = 1}.
 Kvect := {\xi^{\theta} = \sin(\varphi), \xi^{\varphi} = \cos(\theta)/\sin(\theta) \cos(\varphi)}.
 # Kvect := {\xi^{\theta} = \cos(\varphi), \xi^{\varphi} = - \cos(\theta)/\sin(\theta) \sin(\varphi)}.
-                                                      # cdb(ex-0609.107,Kvect)
 
 gab := { g_{t t}            = -(1-2*m/r),
          g_{r r}            = 1/(1-(2*m/r)),

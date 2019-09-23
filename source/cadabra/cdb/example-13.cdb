@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-13.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-13.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {x,y,z}::Coordinate.
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (values={x,y,z},position=independent).
@@ -127,6 +127,6 @@ sort_product   (Cxyxz)
 rename_dummies (Cxyxz)
 canonicalise   (Cxyxz)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

@@ -42,9 +42,9 @@ foo bah tmp:
 	@ cp -f $*.pdf pdf/.
 	@ cp -f $*.cdb cdb/.
 	@ cp -f $*.cdbtex tests/output/.
-	@ if [[ -e $*-rab.c ]]; then cp -f $*-*.c tests/output/.; fi
+	@ if [[ -e $*-rab.c ]];     then cp -f $*-*.c tests/output/.;       fi
 	@ if [[ -e $*-1.cdbcopy ]]; then cp -f $*-*.cdbcopy tests/output/.; fi
-	@ if [[ -e $*.json ]]; then cp -f $*.json tests/output/.; fi
+	@ if [[ -e $*.json ]];      then cp -f $*.json tests/output/.;      fi
 	@ touch .$*
 #-------------------------------------------------------------------------------
 expected:
@@ -60,6 +60,10 @@ rm-dot:
 	     rm -rf .$${file}; \
 	  done
 	@ rm -rf .[a-z]*.lb
+#-------------------------------------------------------------------------------
+rm-tests-output:
+	@ rm -rf tests/output/*
+	@ rm -rf tests/semantic/output/*
 #-------------------------------------------------------------------------------
 rm-output:
 	@ rm -rf cdb/*
@@ -104,17 +108,16 @@ pristine:
 github:
 	@ make pristine
 	@ make all
-	@ (rm -rf tmppdf; cp -rf pdf tmppdf)
-	@ (rm -rf tmpcdb; cp -rf cdb tmpcdb)
 	@ make expected
+	@ make rm-tests-output
 	@ make rm-dot
-	@ make rm-output
 	@ make veryclean
-	@ for file in $(TARGETS) examples; \
+gitfoo:
+	@ rm -rf examples.pdf
+	@ for file in $(TARGETS); \
 	  do \
-	     rm -rf $${file}.pdf; \
-		  rm -rf $${file}.json $${file}*-*.c; \
-		  rm -rf $${file}.cdbtex $${file}*-*.cdbcopy; \
+		  if [[ -e $${file}.json ]];      then mv -f $${file}.json      lib/.; fi ; \
+		  if [[ -e $${file}.cdbtex ]];    then mv -f $${file}.cdbtex    lib/.; fi ; \
+		  if [[ -e $${file}-rab.c ]];     then mv -f $${file}-*.c       lib/.; fi ; \
+		  if [[ -e $${file}-1.cdbcopy ]]; then mv -f $${file}-*.cdbcopy lib/.; fi ; \
 	  done
-	@ (rm -rf pdf; mv tmppdf pdf)
-	@ (rm -rf cdb; mv tmpcdb cdb)

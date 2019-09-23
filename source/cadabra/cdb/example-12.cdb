@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-12.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-12.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,u,v#}::Indices("latin",position=independent).
 {\mu,\nu,\rho,\sigma,\tau,\lambda,\xi#}::Indices("greek",position=independent).
@@ -97,6 +97,8 @@ def reformat (obj,scaleA,scaleB):
 import cdblib
 Gamma  = cdblib.get ('Gamma','example-11.json')
 
+# note that the next two lines require careful inspection of the free indices on Gamma
+# expecting Gamma = \Gamma^{a}_{bc}
 Gamma := z^{b} z^{c} @(Gamma).
 
 # lower index ^{a} to _{v}
@@ -117,7 +119,7 @@ Gamma := @(bah).
 
 product_sort (Gamma)
 
-json.append (Gamma)
+checkpoint.append (Gamma)
 
 gam1  = get_xterm (Gamma,1)
 gam2  = get_xterm (Gamma,2)
@@ -136,7 +138,7 @@ gam3 := @(gam30) + @(gam31).
 
 Gamma := @(gam1) + @(gam2) + @(gam3).
 
-json.append (Gamma)
+checkpoint.append (Gamma)
 
 
 # ==========================================================================
@@ -153,7 +155,6 @@ GammaBar := z^{\nu} z^{\rho} (
                      + (1/60) (  21 R^{\mu}_{\lambda\xi\rho} R^{\xi}_{\sigma\nu\tau}
                                + 48 R^{\mu}_{\xi\rho\lambda} R^{\xi}_{\sigma\nu\tau}
                                - 37 R^{\mu}_{\sigma\xi\lambda} R^{\xi}_{\nu\rho\tau} ) ) x^{\sigma} x^{\lambda} x^{\tau} ).
-                                                               # cdb(ex-12.400,GammaBar)
 
 # convert from Greek to Latin indices
 
@@ -170,7 +171,7 @@ eliminate_kronecker (GammaBar)
 
 product_sort (GammaBar)
 
-json.append (GammaBar)
+checkpoint.append (GammaBar)
 
 # Replace R with - R (Calzetta uses the non-MTW convention for Riemann)
 
@@ -185,7 +186,7 @@ cal3 = get_xterm (GammaBar,3)
 
 cal1 = reformat (cal1,3,1)
 cal2 = reformat (cal2,12,1)
-# cal3 = reformat (cal3,360,1)                                   # cdb(ex-12.602,cal3)
+# cal3 = reformat (cal3,360,1)
 
 cal30 = get_gterm (cal3,0)
 cal31 = get_gterm (cal3,1)
@@ -200,7 +201,7 @@ cal3 := @(cal30) + @(cal31).
 
 GammaBar := @(cal1) + @(cal2) + @(cal3).
 
-json.append (GammaBar)
+checkpoint.append (GammaBar)
 
 
 def reformat_diff (obj):
@@ -351,6 +352,6 @@ diff := @(diff1) + @(diff2) + @(diff3).
 
 diff  = reformat_diff (diff)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

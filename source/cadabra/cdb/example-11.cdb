@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-11.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-11.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
 
@@ -67,11 +67,11 @@ def truncate (obj,n):
 
     return ans
 
-json.append (Gamma)
+checkpoint.append (Gamma)
 
-# sort_product   (Gamma)  # 52.3 sec, 49 Mbyte
-# rename_dummies (Gamma)  # 58.6 sec, 51 Mbyte
-# canonicalise   (Gamma)  # killed after 20 mins and over 500 Mbyte
+# sort_product   (Gamma)
+# rename_dummies (Gamma)
+# canonicalise   (Gamma)
 
 Gamma = truncate (Gamma,3)
 
@@ -79,7 +79,7 @@ sort_product   (Gamma)
 rename_dummies (Gamma)
 canonicalise   (Gamma)
 
-json.append (Gamma)
+checkpoint.append (Gamma)
 
 # ==========================================================================
 # the remaining code is just for pretty printing
@@ -149,11 +149,13 @@ gam32 = reformat (gam32, 45)
 Gamma  := @(gam1) + @(gam2) + @(gam31) + @(gam32).
 Scaled := 360 @(Gamma).
 
-json.append (Gamma)
+checkpoint.append (Gamma)
 
 
+jsonfile = 'example-11.json'
+cdblib.create (jsonfile)
 cdblib.put ('Gamma',Gamma,jsonfile)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

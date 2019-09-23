@@ -1,0 +1,65 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 12 Checking the 2nd and 3rd order terms of Calzetta etal.}
+
+\CdbSetup{action=hide}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,u,v#}::Indices("latin",position=independent).
+   {\mu,\nu,\rho,\sigma,\tau,\lambda,\xi#}::Indices("greek",position=independent).
+
+   \nabla{#}::Derivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   \delta{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   check000A = cdblib.get ('check000','expected/example-12.json')
+   check001A = cdblib.get ('check001','expected/example-12.json')
+   check002A = cdblib.get ('check002','expected/example-12.json')
+   check003A = cdblib.get ('check003','expected/example-12.json')
+
+   # ---------------------------------------------
+   check000B = cdblib.get ('check000','output/example-12.json')
+   check001B = cdblib.get ('check001','output/example-12.json')
+   check002B = cdblib.get ('check002','output/example-12.json')
+   check003B = cdblib.get ('check003','output/example-12.json')
+
+   # ---------------------------------------------
+   diff000 = check (check000A,check000B)   # cdb (ex-12.diff000,diff000)
+   diff001 = check (check001A,check001B)   # cdb (ex-12.diff001,diff001)
+   diff002 = check (check002A,check002B)   # cdb (ex-12.diff002,diff002)
+   diff003 = check (check003A,check003B)   # cdb (ex-12.diff003,diff003)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.diff000}}
+   \Dmath*{\cdb*{ex-12.diff001}}
+   \Dmath*{\cdb*{ex-12.diff002}}
+   \Dmath*{\cdb*{ex-12.diff002}}
+\end{dgroup*}
+
+\end{document}

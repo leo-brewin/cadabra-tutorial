@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-03.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-03.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
 
@@ -38,7 +38,7 @@ canonicalise   (Vabc)
 sort_sum       (Vabc)
 factor_out     (Vabc,$V^{a?}$)
 
-json.append (Vabc)
+checkpoint.append (Vabc)
 
 # create rule for Riemann, export later (for use by lib/dgeom)
 
@@ -56,7 +56,7 @@ substitute (foo, Rabcd)
 
 Rabcd := R^{a}_{b c d} -> @(foo).
 
-json.append (Rabcd)
+checkpoint.append (Rabcd)
 
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
@@ -104,8 +104,8 @@ canonicalise   (Vabc)
 sort_sum       (Vabc)
 factor_out     (Vabc,$V^{a?}$)
 
-json.append (Vabc)
+checkpoint.append (Vabc)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

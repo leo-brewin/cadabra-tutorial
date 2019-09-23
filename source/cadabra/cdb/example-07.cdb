@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-07.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-07.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 def write_code (obj,name,filename,rank):
 
@@ -64,6 +64,6 @@ write_code (Gamma[1],'myGamma','example-07-gamma.c',3)
 write_code (Rabcd[1],'myRabcd','example-07-rabcd.c',4)
 write_code (Rab[1],  'myRab',  'example-07-rab.c',2)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

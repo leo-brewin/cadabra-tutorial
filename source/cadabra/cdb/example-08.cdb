@@ -1,3 +1,8 @@
+import cdblib
+checkpoint_file = 'tests/semantic/output/example-08.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
+
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
 
 def create (file_name):
@@ -69,4 +74,7 @@ bah = get ('g^ab',lib_name)
 
 tmp := @(gab) - @(foo).
 tmp := @(iab) - @(bah).
+
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

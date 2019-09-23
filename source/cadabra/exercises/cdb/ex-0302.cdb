@@ -13,7 +13,6 @@ deriv1 := \nabla_{a}{V^{b}} -> \partial_{a}{V^{b}}
 deriv2 := \nabla_{a}{\nabla_{b}{V^{c}}} -> \partial_{a}{\nabla_{b}{V^{c}}}
                                          + \Gamma^{c}_{d a} \nabla_{b}{V^{d}}
                                          - \Gamma^{d}_{b a} \nabla_{d}{V^{c}}.
-                                                                # cdb (ex-0302.102,deriv2)
 
 Vabc :=   \nabla_{c}{\nabla_{b}{V^{a}}}
         - \nabla_{b}{\nabla_{c}{V^{a}}}.

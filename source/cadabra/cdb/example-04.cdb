@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-04.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-04.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
 
@@ -36,8 +36,8 @@ Quartic := c^{a}
 
 Cubic = truncate (Quartic,3)
 
-json.append (Cubic)
+checkpoint.append (Cubic)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

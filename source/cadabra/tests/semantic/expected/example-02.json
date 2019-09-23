@@ -1,0 +1,5 @@
+{
+  "check000": "\\partial_{a}(v^{b}) + \\Gamma^{b c}_{a} v_{c}",
+  "check001": "\\partial_{a}(v^{b}) + \\Gamma^{b}_{c a} v^{c}",
+  "check002": "\\partial_{a}(u^{b}) + \\Gamma^{b}_{c a} u^{c} + \\partial_{a}(v^{b}) + \\Gamma^{b}_{c a} v^{c}"
+}

@@ -1,0 +1,74 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 11 The RNC connection.}
+
+\CdbSetup{action=hide}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
+
+   D{#}::PartialDerivative.
+   \nabla{#}::Derivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   \delta{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+
+   def truncate (obj,n):
+
+       ans = Ex("0")
+
+       for i in range (0,n+1):
+          foo := @(obj).
+          bah  = Ex("xnum = " + str(i))
+          distribute  (foo)
+          keep_weight (foo, bah)
+          ans = ans + foo
+
+       return ans
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   check000A = truncate ( cdblib.get ('check000','expected/example-11.json'), 3)
+   check001A = truncate ( cdblib.get ('check001','expected/example-11.json'), 3)
+   check002A = truncate ( cdblib.get ('check002','expected/example-11.json'), 3)
+
+   # ---------------------------------------------
+   check000B = truncate ( cdblib.get ('check000','output/example-11.json'), 3)
+   check001B = truncate ( cdblib.get ('check001','output/example-11.json'), 3)
+   check002B = truncate ( cdblib.get ('check002','output/example-11.json'), 3)
+
+   # ---------------------------------------------
+   diff000 = check (check000A,check000B)   # cdb (ex-11.diff000,diff000)
+   diff001 = check (check001A,check001B)   # cdb (ex-11.diff001,diff001)
+   diff002 = check (check002A,check002B)   # cdb (ex-11.diff002,diff002)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-11.diff000}}
+   \Dmath*{\cdb*{ex-11.diff001}}
+   \Dmath*{\cdb*{ex-11.diff002}}
+\end{dgroup*}
+
+\end{document}

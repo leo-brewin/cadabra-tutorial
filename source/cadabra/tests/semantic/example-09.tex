@@ -1,0 +1,52 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 9 The Gauss equation}
+
+\CdbSetup{action=hide}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+   \nabla{#}::Derivative.
+
+   K_{a b}::Symmetric.
+   g^{a}_{b}::KroneckerDelta.
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   check000A = cdblib.get ('check000','expected/example-09.json')
+   check001A = cdblib.get ('check001','expected/example-09.json')
+
+   # ---------------------------------------------
+   check000B = cdblib.get ('check000','output/example-09.json')
+   check001B = cdblib.get ('check001','output/example-09.json')
+
+   # ---------------------------------------------
+   diff000 = check (check000A,check000B)   # cdb (ex-09.diff000,diff000)
+   diff001 = check (check001A,check001B)   # cdb (ex-09.diff001,diff001)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-09.diff000}}
+   \Dmath*{\cdb*{ex-09.diff001}}
+\end{dgroup*}
+
+\end{document}

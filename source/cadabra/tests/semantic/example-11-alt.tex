@@ -1,0 +1,66 @@
+\documentclass[12pt]{cdblatex}
+
+\begin{document}
+
+% ============================================================================================
+\section*{Example 11-alt The RNC connection.}
+
+\CdbSetup{action=hide}
+
+\begin{cadabra}
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u#}::Indices(position=independent).
+
+   D{#}::PartialDerivative.
+   \nabla{#}::Derivative.
+
+   g_{a b}::Metric.
+   g^{a b}::InverseMetric.
+
+   \delta{#}::KroneckerDelta.
+
+   R_{a b c d}::RiemannTensor.
+
+   def truncate (obj,n):
+
+       ans = Ex("0")
+
+       for i in range (0,n+1):
+          foo := @(obj).
+          bah  = Ex("xnum = " + str(i))
+          distribute  (foo)
+          keep_weight (foo, bah)
+          ans = ans + foo
+
+       return ans
+
+   def check (objA,objB):
+
+       tmp := @(objA) - @(objB).
+
+       distribute     (tmp)
+       sort_product   (tmp)
+       rename_dummies (tmp)
+       canonicalise   (tmp)
+
+       return tmp
+
+   import cdblib
+
+   # ---------------------------------------------
+   check000A = truncate ( cdblib.get ('check000','expected/example-11-alt.json'), 3)
+
+   # ---------------------------------------------
+   check000B = truncate ( cdblib.get ('check000','output/example-11-alt.json'), 3)
+
+   # ---------------------------------------------
+   diff000 = check (check000A,check000B)   # cdb (ex-11-alt.diff000,diff000)
+
+\end{cadabra}
+
+% \clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-11-alt.diff000}}
+\end{dgroup*}
+
+\end{document}

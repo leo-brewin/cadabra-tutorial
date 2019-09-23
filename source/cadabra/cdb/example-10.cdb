@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-10.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-10.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
 
@@ -55,14 +55,14 @@ asym (eps,$^{a},^{b},^{c}$)
 # compute negative detg rather than det g, note 1/3! included in eps
 Ndetg := @(eps) gx_{p a} gx_{q b} gx_{r c} g^{i p} g^{j q} g^{k r}.
 
-substitute     (Ndetg,gxab)
-distribute     (Ndetg)
+substitute       (Ndetg,gxab)
+distribute       (Ndetg)
 Ndetg = truncate (Ndetg,4)
-substitute     (Ndetg,$g^{a b} g_{b c} -> d^{a}_{c}$,repeat=True)
+substitute       (Ndetg,$g^{a b} g_{b c} -> d^{a}_{c}$,repeat=True)
 eliminate_kronecker (Ndetg)
-sort_product   (Ndetg)
-rename_dummies (Ndetg)
-canonicalise   (Ndetg)
+sort_product     (Ndetg)
+rename_dummies   (Ndetg)
+canonicalise     (Ndetg)
 
 # introduce the Ricci tensor
 
@@ -75,7 +75,6 @@ substitute (Ndetg,$\nabla_{a b}{R_{c d e f}} g^{c e} -> \nabla_{a b}{R_{d f}}$,r
 sqrtNdetg := 1/2 + (1/2) @(Ndetg)
             - (1/8) (1/9) R_{a b} R_{c d} x^{a} x^{b} x^{c} x^{d}
             - (1/4) (1/18) R_{a b} \nabla_{c}{R_{d e}} x^{a} x^{b} x^{c} x^{d} x^{e}.
-                                                                      # cdb (ex-10.sqrtNdetg.001,sqrtNdetg)
 
 sort_product   (sqrtNdetg)
 rename_dummies (sqrtNdetg)
@@ -84,7 +83,6 @@ canonicalise   (sqrtNdetg)
 logNdetg := -1 + @(Ndetg)
            - (1/2) (1/9) R_{a b} R_{c d} x^{a} x^{b} x^{c} x^{d}
            - (1/18) R_{a b} \nabla_{c}{R_{d e}} x^{a} x^{b} x^{c} x^{d} x^{e}.
-                                                                      # cdb (ex-10.logNdetg.001,logNdetg)
 
 sort_product   (logNdetg)
 rename_dummies (logNdetg)
@@ -201,11 +199,11 @@ Rterm4 = reformat (Rterm4,180)
 
 logNdetg := @(Rterm0) + @(Rterm1) + @(Rterm2) + @(Rterm3) + @(Rterm4).
 
-json.append (Ndetg)
-json.append (sqrtNdetg)
-json.append (logNdetg)
+checkpoint.append (Ndetg)
+checkpoint.append (sqrtNdetg)
+checkpoint.append (logNdetg)
 
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

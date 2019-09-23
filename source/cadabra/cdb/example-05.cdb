@@ -1,7 +1,7 @@
 import cdblib
-jsonfile = 'example-05.json'
-cdblib.create (jsonfile)
-json = []
+checkpoint_file = 'tests/semantic/output/example-05.json'
+cdblib.create (checkpoint_file)
+checkpoint = []
 
 {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
 
@@ -11,7 +11,7 @@ zoom (expr,$B_{a} Q??$)
 substitute (expr, $v^{a} -> w^{a}$)
 unzoom (expr)
 
-json.append (expr)
+checkpoint.append (expr)
 
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
 
@@ -41,8 +41,8 @@ unzoom     (expr)
 
 expr = clear_tags (expr,'\\mu')
 
-json.append (expr)
+checkpoint.append (expr)
 
-for i in range( len(json) ):
-   cdblib.put ('json%03d'%(i),json[i],jsonfile)
+for i in range( len(checkpoint) ):
+   cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 

@@ -16,7 +16,6 @@ pruleDD := DD_{e f}{A_{a} B_{b} C_{c} D_{d}} -> DD_{e f}{A_{a}} B_{b} C_{c} D_{d
                                               + A_{a} DD_{e f}{B_{b}} C_{c} D_{d}
                                               + A_{a} B_{b} DD_{e f}{C_{c}} D_{d}
                                               + A_{a} B_{b} C_{c} DD_{e f}{D_{d}}.
-                                                       # cdb(pruleDD.000,pruleDD)
 
 expr :=   \nabla_{f}{\nabla_{e}{R_{a b c d}}}
         - \nabla_{e}{\nabla_{f}{R_{a b c d}}}.

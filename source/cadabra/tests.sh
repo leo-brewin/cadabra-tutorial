@@ -13,5 +13,5 @@ echo "  diff *.cdbtex"
 tests-cdbcopy.sh
 
 echo "---------------------------------------------------------"
-echo "  checkpoint files, results in tests/semantic/gallery.pdf"
+echo "  checkpoint files, results in tests/semantic/summary.pdf"
 tests-semantic.sh

@@ -55,12 +55,13 @@ tests:
 	@ tests.sh
 #-------------------------------------------------------------------------------
 rm-dot:
-	@ for file in $(TARGETS) examples; \
+	@ for file in $(TARGETS); \
 	  do \
 	     rm -rf .$${file}; \
 	  done
 	@ rm -rf .[a-z]*.lb
 	@ rm -rf .merged.tex .tmp.txt
+	@ rm -rf .examples
 #-------------------------------------------------------------------------------
 rm-tests-output:
 	@ rm -rf tests/output/*

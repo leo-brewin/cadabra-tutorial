@@ -29,6 +29,8 @@ summary:
 	@ echo "> pdflatex summary ..."
 	@ pdflatex -halt-on-error -interaction=batchmode summary &> summary.log
 	@ touch .summary
+.redo-summary:
+	@ touch .redo-summary
 #-------------------------------------------------------------------------------
 rm-dot:
 	@ for file in $(TARGETS) summary; \
@@ -37,6 +39,7 @@ rm-dot:
 	  done
 	@ rm -rf .[a-z]*.lb
 	@ rm -rf .summary .redo-summary
+	@ rm -rf .merged.tex .tmp.txt
 #-------------------------------------------------------------------------------
 rm-output:
 	@ rm -rf output/*
@@ -58,7 +61,6 @@ veryclean:
 		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
 		  rm -rf $${file}.cdbtex $${file}.txt; \
 		  rm -rf $${file}.py; \
-		  rm -rf $${file}.pdf; \
 	  done
 #-------------------------------------------------------------------------------
 pristine:

@@ -1,3 +1,0 @@
-Attached property PartialDerivative to \partial(#).
-Attached property Metric to g_{a b}.
-Attached property TableauSymmetry to g^{a b}.

@@ -1,0 +1,36 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0302.101}{%
+\nabla_{a}{V^{b}} \rightarrow \partial_{a}{V^{b}}+\Gamma^{b}{}_{d a} V^{d}%
+}
+\cdbtag{ex-0302.102}{%
+\nabla_{a}\left(\nabla_{b}{V^{c}}\right) \rightarrow \partial_{a}\left(\nabla_{b}{V^{c}}\right)+\Gamma^{c}{}_{d a} \nabla_{b}{V^{d}}-\Gamma^{d}{}_{b a} \nabla_{d}{V^{c}}%
+}
+\cdbtag{ex-0302.103}{%
+\nabla_{c}\left(\nabla_{b}{V^{a}}\right)-\nabla_{b}\left(\nabla_{c}{V^{a}}\right)%
+}
+\cdbtag{ex-0302.104}{%
+\partial_{c}\left(\nabla_{b}{V^{a}}\right)+\Gamma^{a}{}_{d c} \nabla_{b}{V^{d}}-\Gamma^{d}{}_{b c} \nabla_{d}{V^{a}}-\partial_{b}\left(\nabla_{c}{V^{a}}\right)-\Gamma^{a}{}_{d b} \nabla_{c}{V^{d}}+\Gamma^{d}{}_{c b} \nabla_{d}{V^{a}}%
+}
+\cdbtag{ex-0302.105}{%
+\partial_{c}\left(\partial_{b}{V^{a}}+\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \left(\partial_{b}{V^{d}}+\Gamma^{d}{}_{e b} V^{e}\right)-\Gamma^{d}{}_{b c} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)-\partial_{b}\left(\partial_{c}{V^{a}}+\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \left(\partial_{c}{V^{d}}+\Gamma^{d}{}_{e c} V^{e}\right)+\Gamma^{d}{}_{c b} \left(\partial_{d}{V^{a}}+\Gamma^{a}{}_{e d} V^{e}\right)%
+}
+\cdbtag{ex-0302.106}{%
+\partial_{c b}{V^{a}}+\partial_{c}\left(\Gamma^{a}{}_{d b} V^{d}\right)+\Gamma^{a}{}_{d c} \partial_{b}{V^{d}}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}\left(\Gamma^{a}{}_{d c} V^{d}\right)-\Gamma^{a}{}_{d b} \partial_{c}{V^{d}}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-0302.107}{%
+\partial_{c b}{V^{a}}+\partial_{c}{\Gamma^{a}{}_{d b}} V^{d}+\Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b} V^{e}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-\Gamma^{d}{}_{b c} \Gamma^{a}{}_{e d} V^{e}-\partial_{b c}{V^{a}}-\partial_{b}{\Gamma^{a}{}_{d c}} V^{d}-\Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c} V^{e}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+\Gamma^{d}{}_{c b} \Gamma^{a}{}_{e d} V^{e}%
+}
+\cdbtag{ex-0302.108}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}{\Gamma^{a}{}_{d b}}+V^{e} \Gamma^{a}{}_{d c} \Gamma^{d}{}_{e b}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-V^{e} \Gamma^{a}{}_{e d} \Gamma^{d}{}_{b c}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}{\Gamma^{a}{}_{d c}}-V^{e} \Gamma^{a}{}_{d b} \Gamma^{d}{}_{e c}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+V^{e} \Gamma^{a}{}_{e d} \Gamma^{d}{}_{c b}%
+}
+\cdbtag{ex-0302.109}{%
+\partial_{c b}{V^{a}}+V^{d} \partial_{c}{\Gamma^{a}{}_{d b}}+V^{d} \Gamma^{a}{}_{e c} \Gamma^{e}{}_{d b}-\Gamma^{d}{}_{b c} \partial_{d}{V^{a}}-V^{d} \Gamma^{a}{}_{d e} \Gamma^{e}{}_{b c}-\partial_{b c}{V^{a}}-V^{d} \partial_{b}{\Gamma^{a}{}_{d c}}-V^{d} \Gamma^{a}{}_{e b} \Gamma^{e}{}_{d c}+\Gamma^{d}{}_{c b} \partial_{d}{V^{a}}+V^{d} \Gamma^{a}{}_{d e} \Gamma^{e}{}_{c b}%
+}
+\cdbtag{ex-0302.110}{%
+V^{d} \partial_{c}{\Gamma^{a}{}_{b d}}+V^{d} \Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}-V^{d} \partial_{b}{\Gamma^{a}{}_{c d}}-V^{d} \Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}%
+}
+\cdbtag{ex-0302.111}{%
+V^{d} \left(\partial_{c}{\Gamma^{a}{}_{b d}}+\Gamma^{a}{}_{c e} \Gamma^{e}{}_{b d}-\partial_{b}{\Gamma^{a}{}_{c d}}-\Gamma^{a}{}_{b e} \Gamma^{e}{}_{c d}\right)%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

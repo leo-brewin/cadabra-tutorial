@@ -1,0 +1,33 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0202.101}{%
+\nabla_{a}{v_{b c}}%
+}
+\cdbtag{ex-0202.102}{%
+\nabla_{a}\left(A_{b} B_{c}\right)%
+}
+\cdbtag{ex-0202.103}{%
+\nabla_{a}{A_{b}} B_{c}+A_{b} \nabla_{a}{B_{c}}%
+}
+\cdbtag{ex-0202.104}{%
+\left(\partial_{a}{A_{b}}-\Gamma^{d}{}_{b a} A_{d}\right) B_{c}+A_{b} \left(\partial_{a}{B_{c}}-\Gamma^{d}{}_{c a} B_{d}\right)%
+}
+\cdbtag{ex-0202.105}{%
+\left(\partial_{a}{A_{b}}-\Gamma^{d}{}_{b a} A_{d}\right) B_{c}+A_{b} \left(\partial_{a}{B_{c}}-\Gamma^{d}{}_{c a} B_{d}\right)%
+}
+\cdbtag{ex-0202.106}{%
+\partial_{a}{A_{b}} B_{c}-\Gamma^{d}{}_{b a} A_{d} B_{c}+A_{b} \partial_{a}{B_{c}}-A_{b} \Gamma^{d}{}_{c a} B_{d}%
+}
+\cdbtag{ex-0202.107}{%
+\partial_{a}\left(A_{b} B_{c}\right)-\Gamma^{d}{}_{b a} A_{d} B_{c}-A_{b} \Gamma^{d}{}_{c a} B_{d}%
+}
+\cdbtag{ex-0202.108}{%
+\partial_{a}\left(A_{b} B_{c}\right)-\Gamma^{d}{}_{b a} A_{d} B_{c}-A_{b} \Gamma^{d}{}_{c a} B_{d}%
+}
+\cdbtag{ex-0202.109}{%
+\partial_{a}{v_{b c}}-\Gamma^{d}{}_{b a} v_{d c}-v_{b d} \Gamma^{d}{}_{c a}%
+}
+\cdbtag{ex-0202.110}{%
+\partial_{a}{v_{b c}}-\Gamma^{d}{}_{b a} v_{d c}-\Gamma^{d}{}_{c a} v_{b d}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

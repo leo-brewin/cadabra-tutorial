@@ -39,8 +39,8 @@ foo bah tmp:
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ # can't use wildcard with -e so test on one file
-	@ cp -f $*.pdf pdf/.
-	@ cp -f $*.cdb cdb/.
+	@ cp -f $*.pdf    pdf/.
+	@ cp -f $*.cdb    cdb/.
 	@ cp -f $*.cdbtex tests/output/.
 	@ if [[ -e $*-rab.c ]];     then cp -f $*-*.c tests/output/.;       fi
 	@ if [[ -e $*-1.cdbcopy ]]; then cp -f $*-*.cdbcopy tests/output/.; fi
@@ -60,6 +60,7 @@ rm-dot:
 	     rm -rf .$${file}; \
 	  done
 	@ rm -rf .[a-z]*.lb
+	@ rm -rf .merged.tex .tmp.txt
 #-------------------------------------------------------------------------------
 rm-tests-output:
 	@ rm -rf tests/output/*
@@ -112,7 +113,6 @@ github:
 	@ make rm-tests-output
 	@ make rm-dot
 	@ make veryclean
-gitfoo:
 	@ rm -rf examples.pdf
 	@ for file in $(TARGETS); \
 	  do \

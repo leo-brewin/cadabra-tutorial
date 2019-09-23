@@ -10,7 +10,8 @@ L.~Brewin, {A brief introduction to Cadabra: a tool for tensor computations in
 D.~S. Kulyabov, A.~V. Korolkova, and L.~A. Sevastianov, New features in the
   second version of the cadabra computer algebra system,
   \href{http://dx.doi.org/10.1134/s0361768819020063}{{\em Programming and
-  Computer Software} {\bf 45} (2019) no.~2, 58--64}.
+  Computer Software} {\bf 45} (2019) no.~2, 58--64},
+  \href{http://arxiv.org/abs/arXiv:1906.02599}{{\tt arXiv:1906.02599}}.
   \url{http://dx.doi.org/10.1134/S0361768819020063}.
 
 \bibitem{grtensorIII:2017-01}

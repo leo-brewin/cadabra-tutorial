@@ -1,0 +1,21 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0407.101}{%
+C^{f} B^{a} A_{f a}%
+}
+\cdbtag{ex-0407.102}{%
+A_{a b} B^{b} C^{a}%
+}
+\cdbtag{ex-0407.201}{%
+C^{f} B^{a} A_{f a}%
+}
+\cdbtag{ex-0407.202}{%
+C^{f} B^{a} A_{f a}%
+}
+\cdbtag{ex-0407.301}{%
+C^{f} B^{a} A_{f a}%
+}
+\cdbtag{ex-0407.302}{%
+A_{a b} B^{b} C^{a}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

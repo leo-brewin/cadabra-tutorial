@@ -1,0 +1,45 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0104.100}{%
+C^{f} w^{e} B^{d} v^{c} A^{b} u^{a}%
+}
+\cdbtag{ex-0104.101}{%
+A^{b} B^{d} C^{f} u^{a} v^{c} w^{e}%
+}
+\cdbtag{ex-0104.200}{%
+\Omega_{f} \gamma_{e} \Pi_{d} \beta_{c} \Gamma_{b} \alpha_{a}%
+}
+\cdbtag{ex-0104.201}{%
+\Gamma_{b} \Omega_{f} \Pi_{d} \alpha_{a} \beta_{c} \gamma_{e}%
+}
+\cdbtag{ex-0104.300}{%
+C^{f} w^{e} B^{d} v^{c} A^{b} u^{a} \Omega_{f} \gamma_{e} \Pi_{d} \beta_{c} \Gamma_{b} \alpha_{a}%
+}
+\cdbtag{ex-0104.301}{%
+A^{b} B^{d} C^{f} \Gamma_{b} \Omega_{f} \Pi_{d} \alpha_{a} \beta_{c} \gamma_{e} u^{a} v^{c} w^{e}%
+}
+\cdbtag{ex-0104.400}{%
+\partial_{f}{C^{f}} w^{l} \partial_{d}{B^{d}} v^{k} \partial_{b}{A^{b}} u^{j} \Omega_{i} \partial^{e}{\gamma_{e}} \Pi_{h} \partial^{c}{\beta_{c}} \Gamma_{g} \partial^{a}{\alpha_{a}}%
+}
+\cdbtag{ex-0104.401}{%
+\Gamma_{g} \Omega_{i} \Pi_{h} \partial_{b}{A^{b}} \partial_{d}{B^{d}} \partial_{f}{C^{f}} \partial^{a}{\alpha_{a}} \partial^{c}{\beta_{c}} \partial^{e}{\gamma_{e}} u^{j} v^{k} w^{l}%
+}
+\cdbtag{ex-0104.500}{%
+\partial{C} w \partial{B} v \partial{A} u \Omega \partial{\gamma} \Pi \partial{\beta} \Gamma \partial{\alpha}%
+}
+\cdbtag{ex-0104.501}{%
+\Gamma \Omega \Pi \partial{A} \partial{B} \partial{C} \partial{\alpha} \partial{\beta} \partial{\gamma} u v w%
+}
+\cdbtag{ex-0104.600}{%
+A_{b} A_{a} A_{c d e} A_{f g}%
+}
+\cdbtag{ex-0104.601}{%
+A_{a} A_{b} A_{f g} A_{c d e}%
+}
+\cdbtag{ex-0104.700}{%
+A_{a} A^{a}+A^{a} A_{a}%
+}
+\cdbtag{ex-0104.701}{%
+A_{a} A^{a}+A^{a} A_{a}%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

@@ -6,7 +6,7 @@ SHELL = /bin/bash
 TARGETS = $(patsubst %.tex,%,$(wildcard ex-[0-9][0-9][0-9][0-9]*.tex))
 #-------------------------------------------------------------------------------
 all:
-	@ mkdir -p cdb pdf tests/output tests/expected
+	@ mkdir -p cdb pdf lib tests/output tests/expected
 	@ for file in $(TARGETS); do make .$${file}; done;
 	@ make exercises
 #-------------------------------------------------------------------------------
@@ -42,11 +42,12 @@ foo bah tmp:
      fi
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
-	@ cp -f $*.pdf pdf/.
-	@ cp -f $*.cdb cdb/.
+	@ cp -f $*.pdf    pdf/.
+	@ cp -f $*.cdb    cdb/.
 	@ cp -f $*.cdbtex tests/output/.
-	@ if [[ -e $*.c    ]]; then cp -f $*.c    tests/output/.; fi
-	@ if [[ -e $*.json ]]; then cp -f $*.json tests/output/.; fi
+	@ if [[ -e $*.c       ]]; then cp -f $*.c       tests/output/.; fi
+	@ if [[ -e $*.json    ]]; then cp -f $*.json    tests/output/.; fi
+	@ if [[ -e $*.cdbcopy ]]; then cp -f $*.cdbcopy tests/output/.; fi
 	@ touch .$*
 #-------------------------------------------------------------------------------
 expected:
@@ -61,6 +62,10 @@ rm-dot:
 	     rm -rf .$${file}; \
 	  done
 	@ rm -rf .[a-z]*.lb
+	@ rm -rf .merged.tex .tmp.txt
+#-------------------------------------------------------------------------------
+rm-tests-output:
+	@ rm -rf tests/output/*
 #-------------------------------------------------------------------------------
 rm-output:
 	@ rm -rf cdb/*
@@ -101,17 +106,15 @@ pristine:
 github:
 	@ make pristine
 	@ make all
-	@ (rm -rf tmppdf; cp -rf pdf tmppdf)
-	@ (rm -rf tmpcdb; cp -rf cdb tmpcdb)
 	@ make expected
+	@ make rm-tests-output
 	@ make rm-dot
-	@ make rm-output
 	@ make veryclean
-	@ for file in $(TARGETS) exercises; \
+	@ rm -rf examples.pdf
+	@ for file in $(TARGETS); \
 	  do \
-	     rm -rf $${file}.pdf $${file}.txt; \
-		  rm -rf $${file}.json $${file}*.c; \
-		  rm -rf $${file}.cdbtex $${file}.cdbcopy; \
+		  if [[ -e $${file}.json ]];    then mv -f $${file}.json    lib/.; fi ; \
+		  if [[ -e $${file}.cdbtex ]];  then mv -f $${file}.cdbtex  lib/.; fi ; \
+		  if [[ -e $${file}-rab.c ]];   then mv -f $${file}*.c      lib/.; fi ; \
+		  if [[ -e $${file}.cdbcopy ]]; then mv -f $${file}.cdbcopy lib/.; fi ; \
 	  done
-	@ (rm -rf pdf; mv tmppdf pdf)
-	@ (rm -rf cdb; mv tmpcdb cdb)

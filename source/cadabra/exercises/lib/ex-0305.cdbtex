@@ -1,0 +1,18 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-0305.100}{%
+\nabla_{d}\left(\nabla_{c}\left(A_{a} B_{b}\right)\right)-\nabla_{c}\left(\nabla_{d}\left(A_{a} B_{b}\right)\right)%
+}
+\cdbtag{ex-0305.101}{%
+\nabla_{d}\left(\nabla_{c}{A_{a}} B_{b}+A_{a} \nabla_{c}{B_{b}}\right)-\nabla_{c}\left(\nabla_{d}{A_{a}} B_{b}+A_{a} \nabla_{d}{B_{b}}\right)%
+}
+\cdbtag{ex-0305.102}{%
+\nabla_{d}\left(\nabla_{c}{A_{a}} B_{b}\right)+\nabla_{d}\left(A_{a} \nabla_{c}{B_{b}}\right)-\nabla_{c}\left(\nabla_{d}{A_{a}} B_{b}\right)-\nabla_{c}\left(A_{a} \nabla_{d}{B_{b}}\right)%
+}
+\cdbtag{ex-0305.103}{%
+\nabla_{d}\left(\nabla_{c}{A_{a}}\right) B_{b}+A_{a} \nabla_{d}\left(\nabla_{c}{B_{b}}\right)-\nabla_{c}\left(\nabla_{d}{A_{a}}\right) B_{b}-A_{a} \nabla_{c}\left(\nabla_{d}{B_{b}}\right)%
+}
+\cdbtag{ex-0305.104}{%
+B_{b} \left(\nabla_{d}\left(\nabla_{c}{A_{a}}\right)-\nabla_{c}\left(\nabla_{d}{A_{a}}\right)\right)+A_{a} \left(\nabla_{d}\left(\nabla_{c}{B_{b}}\right)-\nabla_{c}\left(\nabla_{d}{B_{b}}\right)\right)%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

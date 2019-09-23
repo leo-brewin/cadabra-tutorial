@@ -1,0 +1,12 @@
+Rab = R_{a b} -> \components_{a b}({{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1})
+
+Rab[0] = R_{a b}
+Rab[1] = \components_{a b}({{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1})
+
+Rab[1][0] = a
+Rab[1][1] = b
+Rab[1][2] = {{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1}
+
+Rab[1][2][0] = {\varphi, \varphi} = (\sin(\theta))**2
+Rab[1][2][0][0] = {\varphi, \varphi}
+Rab[1][2][0][1] = (\sin(\theta))**2

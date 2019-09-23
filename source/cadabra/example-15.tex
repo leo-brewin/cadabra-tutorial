@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-15.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-15.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -83,7 +83,7 @@ The code for the full set of BSSN equations can be found at
 
    DphiDt := \partial_{t}{\phi} -> @(dotphi).
 
-   json.append (dotphi)
+   checkpoint.append (dotphi)
 \end{cadabra}
 
 \begin{align*}
@@ -120,7 +120,7 @@ The code for the full set of BSSN equations can be found at
 
    DgBarijDt := \partial_{t}{gBar_{i j}} -> @(dotgBarij).
 
-   json.append (dotgBarij)
+   checkpoint.append (dotgBarij)
 \end{cadabra}
 
 \begin{align*}
@@ -143,8 +143,8 @@ The code for the full set of BSSN equations can be found at
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

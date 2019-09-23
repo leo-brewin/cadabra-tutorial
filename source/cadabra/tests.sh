@@ -13,5 +13,5 @@ echo "  diff *.cdbtex"
 tests-cdbcopy.sh
 
 echo "---------------------------------------------------------"
-echo "  checking *.json files, results in tests/json/gallery.pdf"
-tests-json.sh
+echo "  checkpoint files, results in tests/semantic/gallery.pdf"
+tests-semantic.sh

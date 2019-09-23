@@ -1,31 +1,28 @@
 #-------------------------------------------------------------------------------
 SHELL = /bin/bash
 #-------------------------------------------------------------------------------
-.PHONY: all pdf tests
+.PHONY: all tests
 #-------------------------------------------------------------------------------
 TARGETS = $(patsubst %.tex,%,$(wildcard ex-[0-9][0-9][0-9][0-9]*.tex))
 #-------------------------------------------------------------------------------
 all:
-	@ mkdir -p pdf cdb tests/output tests/expected
+	@ mkdir -p cdb pdf tests/output tests/expected
 	@ for file in $(TARGETS); do make .$${file}; done;
 	@ make exercises
-#-------------------------------------------------------------------------------
-pdf:
-	@ mkdir -p pdf
-	@ for file in $(TARGETS); do make $${file}.pdf; done;
 #-------------------------------------------------------------------------------
 exercises:
 	@ make .exercises
 .exercises: ex-[0-9][0-9][0-9][0-9]*.pdf
 	@ echo "pdflatex exercises ..."
-	@ pdflatex -halt-on-error -interaction=batchmode exercises &> exercises.log
+	@ pdflatex -halt-on-error -interaction=batchmode exercises &> /dev/null
+	@ cp -f exercises.pdf pdf/.
 	@ touch .exercises
 #-------------------------------------------------------------------------------
 foo bah tmp:
 	@ echo "cdblatex.sh $@ ..."
 	@ cdblatex.sh -T -sx -i $@ &> $@.cdblog
 	@ # echo " -->"`cdbstats -i $@.cdblog`
-	@ pdflatex -halt-on-error -interaction=batchmode $@ &> $@.cdblog
+	@ pdflatex -halt-on-error -interaction=batchmode $@ &> /dev/null
 	@ open $@.pdf
 #-------------------------------------------------------------------------------
 %:
@@ -43,25 +40,17 @@ foo bah tmp:
 	@ if [[ $* = ex-0606 ]]; then \
 	     cdbcopy.py -i ex-0606 -t print.0606 -o ex-0606.cdbcopy; \
      fi
-	@ pdflatex -halt-on-error -interaction=batchmode $* &> $*.cdblog
+	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
+	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
+	@ cp -f $*.pdf pdf/.
 	@ cp -f $*.cdb cdb/.
 	@ cp -f $*.cdbtex tests/output/.
 	@ if [[ -e $*.c    ]]; then cp -f $*.c    tests/output/.; fi
 	@ if [[ -e $*.json ]]; then cp -f $*.json tests/output/.; fi
 	@ touch .$*
 #-------------------------------------------------------------------------------
-%.pdf: %.tex
-	@ echo "pdflatex $* ..."
-	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null || exit 1
-	@ cp -f $*.pdf pdf/.
-#-------------------------------------------------------------------------------
 expected:
-	@ for file in $(TARGETS); \
-	  do \
-	     cp -f $${file}.pdf pdf/.; \
-	  done
 	@ cp -f tests/output/* tests/expected/.
-	@ cp -f exercises.pdf pdf/.
 #-------------------------------------------------------------------------------
 tests:
 	@ tests.sh
@@ -74,10 +63,9 @@ rm-dot:
 	@ rm -rf .[a-z]*.lb
 #-------------------------------------------------------------------------------
 rm-output:
-	@ rm -rf pdf/*.pdf
-	@ rm -rf tests/output/*.c
-	@ rm -rf tests/output/*.json
-	@ rm -rf tests/output/*.*tex
+	@ rm -rf cdb/*
+	@ rm -rf pdf/*
+	@ rm -rf tests/output/*
 #-------------------------------------------------------------------------------
 rm-expected:
 	@ rm -rf tests/expected/*
@@ -92,8 +80,9 @@ veryclean:
 	@ make clean
 	@ for file in $(TARGETS) exercises; \
 	  do \
-		  rm -rf $${file}.cdb $${file}_.cdb $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog $${file}*.cdbcopy; \
-		  rm -rf $${file}.py $${file}.pytxt $${file}.pylog; \
+		  rm -rf $${file}.cdb $${file}_.cdb; \
+		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
+		  rm -rf $${file}.py; \
 	  done
 #-------------------------------------------------------------------------------
 pristine:
@@ -105,13 +94,24 @@ pristine:
 	  do \
 	     rm -rf $${file}.pdf $${file}.txt; \
 		  rm -rf $${file}.json $${file}*.c; \
-		  rm -rf $${file}.pytex $${file}.cdbtex; \
+		  rm -rf $${file}.cdbtex $${file}.cdbcopy; \
 	  done
 #-------------------------------------------------------------------------------
 # prepare files for github
 github:
 	@ make pristine
 	@ make all
+	@ (rm -rf tmppdf; cp -rf pdf tmppdf)
+	@ (rm -rf tmpcdb; cp -rf cdb tmpcdb)
 	@ make expected
-	@ make veryclean
+	@ make rm-dot
 	@ make rm-output
+	@ make veryclean
+	@ for file in $(TARGETS) exercises; \
+	  do \
+	     rm -rf $${file}.pdf $${file}.txt; \
+		  rm -rf $${file}.json $${file}*.c; \
+		  rm -rf $${file}.cdbtex $${file}.cdbcopy; \
+	  done
+	@ (rm -rf pdf; mv tmppdf pdf)
+	@ (rm -rf cdb; mv tmpcdb cdb)

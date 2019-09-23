@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-12.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-12.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -147,7 +147,7 @@ This is relatively straightforward. We just apply a few carefully chosen applica
 
    product_sort (Gamma)                                           # cdb(ex-12.103,Gamma)
 
-   json.append (Gamma)
+   checkpoint.append (Gamma)
 
    gam1  = get_xterm (Gamma,1)                                    # cdb(ex-12.200,gam1)
    gam2  = get_xterm (Gamma,2)                                    # cdb(ex-12.201,gam2)
@@ -166,7 +166,7 @@ This is relatively straightforward. We just apply a few carefully chosen applica
 
    Gamma := @(gam1) + @(gam2) + @(gam3).                          # cdb(ex-12.305,Gamma)
 
-   json.append (Gamma)
+   checkpoint.append (Gamma)
 
 \end{cadabra}
 
@@ -233,7 +233,7 @@ This is relatively straightforward. We just apply a few carefully chosen applica
 
    product_sort (GammaBar)                                        # cdb(ex-12.405,GammaBar)
 
-   json.append (GammaBar)
+   checkpoint.append (GammaBar)
 
    # Replace R with - R (Calzetta uses the non-MTW convention for Riemann)
 
@@ -263,7 +263,7 @@ This is relatively straightforward. We just apply a few carefully chosen applica
 
    GammaBar := @(cal1) + @(cal2) + @(cal3).                       # cdb(ex-12.409,GammaBar)
 
-   json.append (GammaBar)
+   checkpoint.append (GammaBar)
 
 \end{cadabra}
 
@@ -596,8 +596,8 @@ It's now time to compute the difference $\Gamma-\GammaBar$. Here it is.
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

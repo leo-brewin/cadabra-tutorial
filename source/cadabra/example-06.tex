@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-06.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-06.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -201,7 +201,7 @@ projection.
    print ('     gphiphi = ' + str(gphiphi))          # will be pure Python/SymPy
    # cdbEnd(print.ex-06.04)
 
-   json.append (compt)
+   checkpoint.append (compt)
 \end{cadabra}
 
 \begin{align*}
@@ -250,8 +250,8 @@ the result of a call to \verb|evaluate|.
    print ('metric[2][1][1] = '+ str(metric[2][1][1]))
    # cdbEnd(print.ex-06.05)
 
-   json.append (indcs)
-   json.append (compt)
+   checkpoint.append (indcs)
+   checkpoint.append (compt)
 \end{cadabra}
 
 \begin{align*}
@@ -271,8 +271,8 @@ the result of a call to \verb|evaluate|.
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

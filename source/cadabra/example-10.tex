@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-10.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-10.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -303,9 +303,9 @@ results against Calzetta do take note of this flipped sign in $R_{abcd}$.
 
    logNdetg := @(Rterm0) + @(Rterm1) + @(Rterm2) + @(Rterm3) + @(Rterm4).  # cdb (ex-10.logNdetg.901,logNdetg)
 
-   json.append (Ndetg)
-   json.append (sqrtNdetg)
-   json.append (logNdetg)
+   checkpoint.append (Ndetg)
+   checkpoint.append (sqrtNdetg)
+   checkpoint.append (logNdetg)
 
 \end{cadabra}
 
@@ -348,8 +348,8 @@ Apart from the signs, this matches exactly the expression given by Calzetta etal
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

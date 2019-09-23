@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-05.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-05.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -28,7 +28,7 @@
    substitute (expr, $v^{a} -> w^{a}$)               # cdb (ex-05.102,expr)
    unzoom (expr)                                     # cdb (ex-05.103,expr)
 
-   json.append (expr)
+   checkpoint.append (expr)
 \end{cadabra}
 
 \begin{align*}
@@ -71,7 +71,7 @@
 
    expr = clear_tags (expr,'\\mu')                   # cdb (ex-05.205,expr)
 
-   json.append (expr)
+   checkpoint.append (expr)
 \end{cadabra}
 
 \begin{align*}
@@ -90,8 +90,8 @@
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

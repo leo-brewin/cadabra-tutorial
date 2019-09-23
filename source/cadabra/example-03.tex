@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-03.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-03.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -55,7 +55,7 @@
    sort_sum       (Vabc)                        # cdb (ex-03.111, Vabc)
    factor_out     (Vabc,$V^{a?}$)               # cdb (ex-03.112, Vabc)
 
-   json.append (Vabc)
+   checkpoint.append (Vabc)
 
    # create rule for Riemann, export later (for use by lib/dgeom)
 
@@ -73,7 +73,7 @@
 
    Rabcd := R^{a}_{b c d} -> @(foo).
 
-   json.append (Rabcd)
+   checkpoint.append (Rabcd)
 
 \end{cadabra}
 
@@ -152,7 +152,7 @@ housekeeping.
    sort_sum       (Vabc)                         # cdb (ex-03.311, Vabc)
    factor_out     (Vabc,$V^{a?}$)                # cdb (ex-03.312, Vabc)
 
-   json.append (Vabc)
+   checkpoint.append (Vabc)
 \end{cadabra}
 
 \begin{dgroup*}[spread={3pt}]
@@ -181,8 +181,8 @@ housekeeping.
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

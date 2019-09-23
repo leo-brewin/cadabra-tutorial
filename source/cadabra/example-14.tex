@@ -8,9 +8,9 @@
 \CdbSetup{action=hide}
 \begin{cadabra}
    import cdblib
-   jsonfile = 'example-14.json'
-   cdblib.create (jsonfile)
-   json = []
+   checkpoint_file = 'tests/semantic/output/example-14.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
 \end{cadabra}
 \egroup
 
@@ -124,8 +124,8 @@ or equally $\overline{C}_{a b c d} = \phi C_{a b c d}$.
    rename_dummies (diff)
    canonicalise   (diff)  # cdb (ex-14.diff.400,diff)
 
-   json.append (baseC)
-   json.append (confC)
+   checkpoint.append (baseC)
+   checkpoint.append (confC)
 \end{cadabra}
 
 \clearpage
@@ -194,8 +194,8 @@ or equally $\overline{C}_{a b c d} = \phi C_{a b c d}$.
 \bgroup
 \CdbSetup{action=hide}
 \begin{cadabra}
-   for i in range( len(json) ):
-      cdblib.put ('json%03d'%(i),json[i],jsonfile)
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
 \end{cadabra}
 \egroup
 

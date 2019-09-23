@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 SHELL = /bin/bash
 #-------------------------------------------------------------------------------
-.PHONY: all pdf tests
+.PHONY: all
 #-------------------------------------------------------------------------------
 TARGETS = $(patsubst %.tex,%,$(wildcard tutorial.tex))
 #-------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ rm-dot:
 	@ rm -rf .[a-z]*.lb
 #-------------------------------------------------------------------------------
 clean:
-	@ for file in $(TARGETS) examples; \
+	@ for file in $(TARGETS); \
 	  do \
 	     rm -rf $${file}.log $${file}.out $${file}.synctex.gz; \
 	     rm -rf $${file}.errors $${file}.exnum $${file}.lstnum $${file}.blg; \
@@ -35,7 +35,7 @@ clean:
 #-------------------------------------------------------------------------------
 veryclean:
 	@ make clean
-	@ for file in $(TARGETS) examples; \
+	@ for file in $(TARGETS); \
 	  do \
 	     rm -rf $${file}.aux; \
 		  rm -rf $${file}.cdb $${file}_.cdb; \
@@ -46,7 +46,7 @@ veryclean:
 pristine:
 	@ make rm-dot
 	@ make veryclean
-	@ for file in $(TARGETS) examples; \
+	@ for file in $(TARGETS); \
 	  do \
 	     rm -rf $${file}.pdf; \
 	  done

@@ -4,17 +4,17 @@
 \begin{document}
 
 % ============================================================================================
-% \bgroup
-% \CdbSetup{action=hide}
-% \begin{cadabra}
-%    import cdblib
-%    jsonfile = 'example-08.json'
-%    cdblib.create (jsonfile)
-%    json = []
-% \end{cadabra}
-% \egroup
-%
-% \clearpage
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   import cdblib
+   checkpoint_file = 'tests/semantic/output/example-08.json'
+   cdblib.create (checkpoint_file)
+   checkpoint = []
+\end{cadabra}
+\egroup
+
+\clearpage
 
 % ============================================================================================
 \section*{Example 8 Importing and exporting Cadabra expressions}
@@ -113,12 +113,12 @@
 % ============================================================================================
 % export to json format
 
-% \bgroup
-% \CdbSetup{action=hide}
-% \begin{cadabra}
-%    for i in range( len(json) ):
-%       cdblib.put ('json%03d'%(i),json[i],jsonfile)
-% \end{cadabra}
-% \egroup
+\bgroup
+\CdbSetup{action=hide}
+\begin{cadabra}
+   for i in range( len(checkpoint) ):
+      cdblib.put ('check{:03d}'.format(i),checkpoint[i],checkpoint_file)
+\end{cadabra}
+\egroup
 
 \end{document}

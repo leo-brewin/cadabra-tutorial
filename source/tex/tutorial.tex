@@ -1,10 +1,5 @@
 \pdfoutput=1% forces arxiv to use pdflatex
 % --------------------------------------------------------------------------------------------
-% pdflatex paper
-% biber --decodecharsset=null paper
-% pdflatex paper
-% pdflatex paper
-% --------------------------------------------------------------------------------------------
 \def\Title{Using Cadabra for tensor computations in General Relativity.}
 \def\Author{Leo Brewin}
 % --------------------------------------------------------------------------------------------
@@ -12,17 +7,17 @@
 %
 % biber will replace LaTeX accented characters like \'{e} with utf-8 characters.
 % The utf-8 characters are written to the .bbl and this causes problems with pdflatex.
-%    First  solution use: biber paper and \usepackage[latin1]{inputenc}
-%    Second solution use: biber --decodecharsset=null paper
+%    First  solution use: biber tutorial and \usepackage[latin1]{inputenc}
+%    Second solution use: biber --decodecharsset=null tutorial
+\usepackage[style=numeric,
+            sorting=none,
+            sortcites=true]{biblatex}
 % \usepackage[style=numeric,
 %             sorting=none,
-%             sortcites=true]{biblatex}
-% % \usepackage[style=numeric,
-% %             sorting=none,
-% %             sortcites=true,
-% %             bibencoding=ascii,
-% %             backend=biber]{biblatex}
-% \addbibresource{bibdata.bib}
+%             sortcites=true,
+%             bibencoding=ascii,
+%             backend=biber]{biblatex}
+\addbibresource{bibdata.bib}
 %
 \usepackage{cdblatex}
 \usepackage{hyperref}
@@ -102,8 +97,6 @@ version 2.0 syntax it does not contain any of the extensive additions introduced
 2.0. It should be noted that version 1.0 of Cadabra is no longer supported and all users are
 encouraged to migrate to version 2.0. Note also the version 2.0 syntax is not backward
 compatible with that of version 1.0.
-
-For another recent tutorial on Cadabra2 please see \cite{kulyabov:2019-01}.
 
 \clearpage
 
@@ -3203,7 +3196,7 @@ details on Riemann normal coordinates, their derivation and use, see
 \cite{chavel:2006-01},
 \cite{eisenhart:1926-01},
 \cite{gray:1973-01}, \cite{willmore:1996-01}.
-See also the website \url{https://github.com/leo-brewin/riemann-normal-coordinates/} for an
+See also the website \url{https://github.com/leo-brewin/riemann-normal-coords/} for an
 extensive set of Cadabra programs for developing Riemann normal expansions (this includes
 the code used to generate the above expressions for the metric and its inverse).
 
@@ -4548,7 +4541,7 @@ int his tutorial. It also contains similar tools for LaTeX sources with embedded
 Mathematica, Matlab and Python code. Some people may find these tools useful beyond their
 use in this tutorial.
 
-\url{https://github.com/leo-brewin/riemann-normal-coordinates}\Break
+\url{https://github.com/leo-brewin/riemann-normal-coords}\Break
 This site contains all of the Cadabra code used to the authors' paper on Riemann Normal
 Coordinates \cite{brewin:2009-02}.
 
@@ -4575,14 +4568,14 @@ These are excellent resources for learning how to use SymPy.
 % ============================================================================================
 \section*{Notebooks}
 
-The Cadabra2 source code includes a wealth of sample notebooks. These can be found in
-the directory \verb|cadabra2/examples|.
+The Cadabra2 source code includes a wealth of sample notebook in the directory
+\verb|cadabra2/examples|.
 
 % ============================================================================================
-% \printbibliography  % create the bibliography using biblatex & biber
+\printbibliography  % create the bibliography using biblatex & biber
 
 % ============================================================================================
-\bibliographystyle{bibdata}  % create the bibliography using bibtex
-\bibliography{bibdata}
+% \bibliographystyle{bibdata}  % create the bibliography using bibtex
+% \bibliography{bibdata}
 
 \end{document}

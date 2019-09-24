@@ -24,7 +24,6 @@
 private
 sync.sh
 diff.sh
-build.sh
 sync-exclude
 TO-DO.txt
 __pycache__

@@ -18,11 +18,22 @@ Full details on how to install Cadabra can be found on the [Cadabra repository][
 
 If you chose not to use the Hybrid-Latex tools then there is no installation required (apart from Cadabra).
 
-If you do choose to use the Hybrid-LaTeX tools you will need to copy a few files into appropriate places. The tools include Bash and Python shell scripts (`support/shell`), Python libraries (`support/python`) and LaTeX style files (`support/latex`). Each file can be copied to wherever their respective program expects to find them. For example, the shell scripts could be sudo copied to `/usr/local/bin` (for access by all users) or to `~/bin` (for your personal access). The Python libraries should be copied to a place that can be found in `PYTHONPATH` while the LaTeX style files should be copied to wherever they will be visible to LaTeX (see [this discussion][4] on tex.stackexchange for useful suggestions). If you place the files in non-standard locations you may need to adjust your `PATH`, `PYTHONPATH` and `TEXINPUT` environment variables accordingly.
+If you do choose to use the Hybrid-LaTeX tools you will need to copy a few files into appropriate places. The tools include Bash and Python shell scripts (`support/scripts`), Python libraries (`support/python`) and LaTeX style files (`support/latex`). Each file can be copied to wherever their respective program expects to find them. For example, the shell scripts could be sudo copied to `/usr/local/bin` (for access by all users) or to `~/bin` (for your personal access). The Python libraries should be copied to a place that can be found in `PYTHONPATH` while the LaTeX style files should be copied to wherever they will be visible to LaTeX. If you place the files in non-standard locations you may need to adjust your `PATH`, `PYTHONPATH` and `TEXINPUT` environment variables accordingly.
 
 ## Running the examples
 
-If you want to recreate the output for `source/cadabra/example-03` (for example) you should execute the following commands
+To build everything from scratch just run
+
+    $ build.sh
+
+form the top directory. This will run Cadabra and LaTeX on each of the sources in `source/cadabra/` and `source/tex/`. Some of the Cadabra codes will take a few minutes to run (see `source/cadabra/TIME.txt` for a list of approximate times).
+
+Makefiles are also provided so you can build individual codes, for example `source/cadabra/example-03`, using
+
+    $ cd source/cadabra
+    $ make example-03
+
+You can also compile `source/cadabra/example-03` without using `make` by executing
 
     $ cd source/cadabra
     $ cdblatex.sh -i example-03
@@ -47,7 +58,7 @@ You could also copy and paste `example-03.cdb` into the Cadabra2 gui.
 
 ## Testing
 
-You can check your installation by open running (from the command line)
+You can check your installation by running (from the command line)
 
     $ cd source/cadabra/
     $ make
@@ -55,7 +66,6 @@ You can check your installation by open running (from the command line)
 
 If all goes well then you should see a few lines like
 
-      diff *.cdbtex
     > diff example-01.cdbtex
     > diff example-02.cdbtex
     > diff example-03.cdbtex
@@ -67,10 +77,9 @@ There are similar tests for the exercises (see `source/cadabra/exercises/`).
 
 ## License
 
-All files in this collection are distributed under the [MIT][5] license. See the file LICENSE.txt for the full details.
+All files in this collection are distributed under the [MIT][4] license. See the file LICENSE.txt for the full details.
 
   [1]: https://cadabra.science
   [2]: https://github.com/leo-brewin/hybrid-latex
   [3]: https://github.com/kpeeters/cadabra2
-  [4]: https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te
-  [5]: https://opensource.org/licenses/MIT
+  [4]: https://opensource.org/licenses/MIT

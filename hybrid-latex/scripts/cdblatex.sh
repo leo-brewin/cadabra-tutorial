@@ -40,7 +40,7 @@ do
          echo "           -T : report detailed cpu time plus memory usage"
          echo "           -x : don't call latex"
          echo "           -N : don't warn if errors found in the output for some tags"
-         echo "           -h : this help messag"
+         echo "           -h : this help message"
          echo "example : cdblatex.sh -i file"
          exit                ;;
    ?)    echo "cdblatex.sh : Unknown option specified."

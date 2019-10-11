@@ -119,6 +119,8 @@ Verify that $0=g_{ab;c}$ given
 $\Gamma^{a}{}_{bc} = \frac{1}{2}g^{ad}\left(g_{dc,b} + g_{bd,c} - g_{bc,d}\right)$.
 \end{description}
 
+\Note{Maybe rewrite this paragraph to make clear that Cadabra can do item 2 and 3 above?}
+
 What tools are available to perform these computations? For the first example, it is hard to
 envisage \emph{not} using a computer to do the job. The second example is one which could
 easily be done by hand or on a computer (using, for example, GRTensorIII
@@ -536,7 +538,6 @@ statements.
 \begin{cadabra}[numbers=none]
    foo = bah                 # valid
    foo = simplify (bah)      # valid
-   bah = truncate (foo,3);   # invalid, ; not allowed here
    bah := derive (foo)       # invalid, use = not := for Python assignment
 \end{cadabra}
 A Cadabra statement can be terminated using either a dot \verb|.|, a semi-colon \verb|;|
@@ -567,8 +568,7 @@ the Miscellaneous section of Part 4.
 Identifiers can be built using standard alphanumeric characters (excluding the special
 characters like \verb|!@#$%^$| etc.). Python allows underscore characters but as they are
 also used by LaTeX to introduce subscripts it is best to \emph{not} use an underscore in a
-Cadabra identifier (it is allowed but it can cause confusion for the reader). Cadabra also
-allows the standard LaTeX symbol names (e.g.,\verb|\Gamma|) to be used as identifiers. In
+Cadabra identifier (it is allowed but it can cause confusion for the reader). In
 this tutorial all identifiers will be built from the alphanumeric characters (a to z, A to Z
 and 0 to 9) and occasionally LaTeX symbol names.
 
@@ -592,7 +592,7 @@ required if the string contained any slashes (e.g., a LaTeX symbol like \verb|\G
 function \verb|Ex| is very useful when building expressions from smaller pieces (see for
 example the function \verb|truncate| in Example \ref{sec:ex-04}).
 
-It must be noted that identifiers carry now residual information about their origins. Once
+It must be noted that identifiers carry no residual information about their origins. Once
 an identifier is created (using \verb|=| or \verb|:=|) it carries no residual information
 about its creator (\verb|=| or \verb|:=|). Thus any statement like \verb|bah = foo| will
 have the usual Python meaning, namely, that \verb|bah| and \verb|foo| share one copy of the
@@ -669,49 +669,100 @@ Cadabra allows \emph{expressions} to be split across one or more lines such as
 However, it does \emph{not} allow property lists or anonymous rules (i.e., \verb|$...$|) to
 be split. Thus each of the following statements will raise an error.
 \begin{cadabra}
-   {\alpha,\beta,\gamme,\delta,
-    \mu,\nu,\sigma,\rho,\tau,\theta}::Indices.
+   {a, b, c, d,
+    e, f, g, h, i, j}::Indices.
 
-   {R_{\alpha\beta\gamm\delta},
-    \partial_{\mu}{R_{\alpha\beta\gamm\delta}}}::SortOrder.
+   {R_{a b c d},
+    \partial_{e}{R_{a b c d}}}::SortOrder.
 
-    substitute (foo, $R -> R_{\mu\nu} g^{\mu\nu},
-                      R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}$)
+    substitute (foo, $R -> R_{a b} g^{a b},
+                      R_{a b} -> R_{a c b d} g^{c d}$)
 \end{cadabra}
 For property lists the preferred solution is to use one line (no matter how long it might
 be). Thus you would use
 \begin{cadabra}
-   {\alpha,\beta,\gamme,\delta,\mu,\nu,\sigma,\rho,\tau,\theta}::Indices.
+   {a, b, c, d, e, f, g, h, i, j}::Indices.
 
-   {R_{\alpha\beta\gamm\delta},\partial_{\mu}{R_{\alpha\beta\gamm\delta}}}::SortOrder.
+   {R_{a b c d},\partial_{e}{R_{a b c d}}}::SortOrder.
 \end{cadabra}
 See the discussion on line splitting in Part 3 below for an alternative solution.
 
-\Note{I think there is a bug when adding rules that contain single elements.
-      See {\tts ../cadabra/bugs/lcb11}}
+But for rules there is a better solution -- they can be given names and they can
+be concatenated. Here is a simple example of a named substitution rule
+\begin{cadabra}
+   RFromGamma  := R -> g^{a b} g^{c d} (    \partial_{c}{\Gamma_{a b d}}
+                                          - \partial_{d}{\Gamma_{a b c}}
+                                          + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                          - \Gamma_{e a c} \Gamma^{e}_{b d} ).
+\end{cadabra}
+And here is that rule in action
+\begin{cadabra}
+   RicciScalar := R.
+   substitute (RicciScalar, RFromGamma)
+\end{cadabra}
+You can also create a \emph{list} of rules using
+\begin{cadabra}
+   RFromGamma := { R -> R_{a b} g^{a b},
+                   R_{a b} -> R_{a c b d} g^{c d},
+                   R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                                  - \partial_{d}{\Gamma_{a b c}}
+                                  + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                  - \Gamma_{e a c} \Gamma^{e}_{b d} }.
+\end{cadabra}
+This rule contains three simple rules, delimited by commas and wrapped in braces (so it is a
+Python list). To achieve the same result as above you could use
+\begin{cadabra}
+   RicciScalar := R.
+   substitute (RicciScalar, RFromGamma)
+   substitute (RicciScalar, RFromGamma)
+   substitute (RicciScalar, RFromGamma)
+\end{cadabra}
+Now you might well ask -- Why are there three calls to \verb|substitute|? In the first call
+only the first rule \verb|R -> R_{a b} g^{a b}| will be matched. The second and third calls
+are needed to match the terms introduced in the previous calls. Having to call
+\verb|substitute| many times is a bit tedious but the good news is that Cadabra provides a
+short cut by allowing you to write
+\begin{cadabra}
+   RicciScalar := R.
+   substitute (RicciScalar, RFromGamma, repeat=True)
+\end{cadabra}
+The \verb|repeat=True| clause will force Cadabra to keep applying rules until the expression
+settles down (i.e., no changes from one substitution to the next).
 
-But for rules there is a better solution -- they can be given names and they can be
-concatenated. Thus you could write
+Lists of rules can be concatenated with other rules using the addition operator. Thus you
+can also write
 \begin{cadabra}
-   Ricci := R -> R_{\mu\nu} g^{\mu\nu}.
-   Riemann := R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}.
-   BothRules := Ricci + Riemann.
-   substitute (foo, BothRules)           # good
-   substitute (bah, Ricci + Riemann)     # okay too
+   RFromRab := R -> R_{a b} g^{a b}.
+   RabFromGamma := { R_{a b} -> R_{a c b d} g^{c d},
+                     R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                                    - \partial_{d}{\Gamma_{a b c}}
+                                    + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                    - \Gamma_{e a c} \Gamma^{e}_{b d} }.
+   RFromGamma = RFromRab + RabFromGamma
 \end{cadabra}
-You can also split named rules across lines, for example
+
+There is one caveat that must be noted -- the current version of Cadabra\footnote{Cadabra
+2.2.7 (build 2166.d9aace25f4 dated 2019-09-21)} does not allow the addition of rules that
+each contains just a single rule (as single rules are not \emph{lists}). A simple hack is to
+convert each single rule to a list by adding a trivial rule, (e.g., replace \verb|foo->bah|
+with \verb|{foo->bah,x->x}|).
+
+Finally, you can also split named rules across lines, for example
 \begin{cadabra}
-   Ricci := R ->
-            R_{\mu\nu} g^{\mu\nu}.
-   Riemann := R_{\mu\nu} ->
-              R_{\alpha\mu\beta\nu} g^{\alpha\beta}.
-   BothRules =   Ricci \
-               + Riemann
-   substitute (foo, BothRules)
+   RFromRab := R ->
+               R_{a b} g^{a b}.
+   RabFromGamma := { R_{a b} ->
+                     R_{a c b d} g^{c d},
+                     R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                                    - \partial_{d}{\Gamma_{a b c}}
+                                    + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                    - \Gamma_{e a c} \Gamma^{e}_{b d} }.
+   RFromGamma = RFromRab \
+              + RabFromGamma
 \end{cadabra}
-Though it must be admitted that this second version is an overkill (in this case).
-Note also the slash used in the pair of lines used to build \verb|BothRules|. This is
-standard Python syntax (without the slash Python will report an indentation error).
+Though it must be admitted that this is an overkill (in this case). Note also the slash used
+in the pair of lines used to build \verb|RFromGamma|. This is standard Python syntax
+(without the slash Python will report an indentation error).
 
 % \clearpage
 
@@ -1313,7 +1364,7 @@ fortune. However, any ambiguity (on Cadabra's part) can be avoided by using
 There remains one issue (before looking at the complete code) -- How can Cadabra be informed
 that the connection is symmetric? Cadabra does support the \verb|::Symmetric| and
 \verb|::AntiSymmetric| properties but these apply to \emph{all} of the indices of
-the attached objects. For the caee of $\Gamma^{a}{}_{bc}$, which is symmetric only on the
+the attached objects. For the case of $\Gamma^{a}{}_{bc}$, which is symmetric only on the
 lower pair of indices, Cadabra provides a more sophisticated property as follows
 \begin{cadabra}[numbers=none]
    \Gamma^{a}_{b c}::TableauSymmetry(shape={2}, indices={1,2});
@@ -1423,6 +1474,7 @@ $c$ are counted as 1 and 2 and they are assigned to the two cells of the Young d
 details on using tableaux as a way to describe tensor symmetries can be found in the Cadabra
 manual.
 
+% --------------------------------------------------------------------------------------------
 \subsection{A cheap hack for a symmetric connection}
 \label{sec:cheap-hack}
 
@@ -1740,8 +1792,7 @@ thus covering the range \verb|i=0,1,2,...n|.
 
 The function could be called as follows
 \begin{cadabra}[numbers=none]
-   Cubic = truncate
-   (Quartic,3)
+   Cubic = truncate (Quartic,3)
 \end{cadabra}
 with the final result exactly as expected -- the leading cubic part of the original quartic polynomial.
 
@@ -2018,7 +2069,7 @@ original form. The challenge is to persuade Cadabra to swap the indices on the s
 This suggests a substitution like the following
 \begin{cadabra}[numbers=none]
    expr := 2 V_{a b} - 3 V_{b a}.
-   substitute (expr, $3 V_{b a} -> - 3 V_{b a})
+   substitute (expr, $3 V_{a b} -> - 3 V_{a b})
 \end{cadabra}
 Alas, this too will fail as Cadabra will report a runtime error -- numerical factors on
 the left of a rule, such as 3 in the above code, are not allowed. A similar problem arises
@@ -2026,7 +2077,7 @@ when trying to use \verb|zoom| to shift the focus. Thus the following code
 \begin{cadabra}[numbers=none]
    expr := 2 V_{a b} - 3 V_{b a}.
    zoom       (expr, $3 V_{b a})
-   substitute (expr, $V_{b a} -> - V_{b a})
+   substitute (expr, $V_{a b} -> - V_{a b})
 \end{cadabra}
 will produce a similar runtime error.
 
@@ -2085,15 +2136,16 @@ The corresponding output is as follows.
                    &= \cdb{ex-05.204}\tag*{\lstref{ex-05.204}}\\
                    &= \cdb{ex-05.205}\tag*{\lstref{ex-05.205}}
 \end{align*}
-The main objection to this method is that it requires explicit knowledge of the left to right
-order of the terms in an expression. Consider for example a working code that uses the above
-functions and that at some point targets the $\mu_7$ term. If some changes are made to the
-code then that term may no longer be matched to $\mu_7$. The re-ordering of the terms might
-now find the target term matched with $\mu_4$. This would require corresponding changes to
-the calls to \verb|zoom|. It is also possible that this same problem could arise, not through
-any change of the users code, but by changes made by the Cadabra team to the internal
-workings of its own functions. The bottom lines is that the user must take care when using
-these functions -- careful scrutiny of the output should be standard practice!
+The main objection to this method is that it requires explicit knowledge of the left to
+right order of the terms in an expression. Consider for example an expression that happens
+to have say 10 terms and that the tag function have been used to target the $\mu_7$ term. If
+some changes are made to the code preceeding that expression then it is possible that that
+term may no longer be matched to $\mu_7$. The re-ordering of the terms might now find the
+target term matched with $\mu_4$. This would require corresponding changes to the calls to
+\verb|zoom|. It is also possible that this same problem could arise, not through any change
+of the users code, but by changes made by the Cadabra team to the internal workings of its
+own functions. The bottom lines is that the user must take care when using these functions
+-- careful scrutiny of the output should be standard practice!
 
 % \clearpage
 
@@ -2818,6 +2870,7 @@ those declared in the host code? (e.g., an object declared as symmetric in \verb
 might be imported by \verb|bah.cdb| where it is (incorrectly) declared as
 anti-symmetric).
 
+% --------------------------------------------------------------------------------------------
 \subsection{Importing Cadabra code}
 \label{sec:ImportNotebooks}
 
@@ -2828,7 +2881,8 @@ content
    {a,b,c,d,e,f,g,h}::Indices(position=independent).
    R_{a b c d}::RiemannTensor.
 \end{cadabra}
-Then another Cadabra program (not necessarily a notebook) can import the above code as in this example
+Then another Cadabra program (not necessarily a notebook) can import the above code as in
+this example
 \begin{cadabra}[numbers=none]
    from foo import *
    expr := R_{a b c d} + R_{a b d c}.
@@ -2846,6 +2900,7 @@ collection. However, this still leaves the problem of sharing results between on
 programs. One solution, as described in the following section, is to use basic Python IO to
 read and write the data as required.
 
+% --------------------------------------------------------------------------------------------
 \subsection{Basic data I/O}
 \label{sec:DataIO}
 
@@ -2908,6 +2963,7 @@ Finally, here is the proof that the new and old objects agree
    g^{ab}(x) - {\bar{g}}^{ab}(x) &= \cdb{ex-08-02.106}
 \end{align*}
 
+% --------------------------------------------------------------------------------------------
 \subsection{Importing code from plain text files}
 \label{sec:ImportPlainText}
 
@@ -2935,7 +2991,7 @@ The output file, \verb|foo.py|, with some minor handmade changes (as explained b
 consists of the following statements
 \begin{cadabra}
    import cadabra2                                  |\lstlabel{ex:8.01}|
-   from cadabra2 import *                           |\lstlabel{ex:8.02}|
+   from cadabra2_defaults import *                  |\lstlabel{ex:8.02}|
    __cdbkernel__ = cadabra2.__cdbkernel__           |\lstlabel{ex:8.03}|
 
    tmp = Indices(Ex(r'{a,b,c,d,e,f,g,h}'), Ex(r'position=independent)') ) |\lstlabel{ex:8.04}|
@@ -2951,6 +3007,23 @@ that Python knows how to resolve the function calls (to \verb|Ex|, \verb|Indices
 \verb|cadabra2.Ex| as per standard Python syntax). Lines \lstref*{ex:8.04} and
 \lstref*{ex:8.05} have been cleaned up slightly by replacing triple-quotes with single quotes
 and substituting \verb|tmp| for \verb|__cdbtemp__|.
+
+If you would prefer not to tinker with the \verb|foo.py| file you can include
+the three additional lines in the original \verb|foo.cdb| source. These will be passed
+unchanged by \verb|cadabra2python| to \verb|foo.py|. The file \verb|foo.cdb| would now
+contain
+\begin{cadabra}
+   import cadabra2
+   from cadabra2_defaults import *
+   __cdbkernel__ = cadabra2.__cdbkernel__
+   {a,b,c,d,e,f,g,h}::Indices(position=independent).
+   R_{a b c d}::RiemannTensor.
+\end{cadabra}
+After processing \verb|foo.cdb| with \verb|cadabra2python| the above code could be imported
+into another Cadabra code, say \verb|bah.cdb|, by adding the following line to \verb|bah.cdb|
+\begin{cadabra}
+   from foo import *
+\end{cadabra}
 
 \clearpage
 
@@ -3932,9 +4005,6 @@ used to derive the BSSN equations from the ADM equations. The calculations are n
 so only the first two of the five evolution equations will be derived here. The derivation
 of the full set of equations (including the constraint equations) can be found on the
 website \url{https://github.com/leo-brewin/adm-bssn-equations}
-\Note{Check: Do I derive all the constraint equations? No, not as a single file but I have
-used versions of the Hamiltonian in eqtns11.tex and eqtns12.tex. I will create a new file
-just for the Hamiltonian.}
 
 It should be noted that the equations given above (\ref{eqn:bssn01}-\ref{eqn:bssn12}) are a
 subset of the full set of BSSN equations. For full details see
@@ -4028,11 +4098,12 @@ The corresponding output is
                    &=\cdb{ex-15-03.109}\tag*{\lstref{ex-15-03.109}}
 \end{align*}
 
+% --------------------------------------------------------------------------------------------
 \subsection{A numerical code}
 
 The website \url{https://github.com/leo-brewin/adm-bssn-equations} contains all of the
 Cadabra code for a complete derivation the BSSN equations (with zero shift) from the ADM
-equations. A companion website, \url{https://github.com/leo-brewin/adm-bssn-numerical-code},
+equations. A companion website, \url{https://github.com/leo-brewin/adm-bssn-numerical},
 contains further Cadabra code that converts the BSSN equations into a working numerical code.
 
 All of the tools in that second website are based on material already covered in this tutorial
@@ -4159,6 +4230,16 @@ demonstrating various ways to encounter this error.
    In most cases the right hand side of \verb|foo| and \verb|bah| will be
    substantially more complicated than that given above.
 
+   \vskip 10pt
+
+   % -----------------------------------------------------------------------------------------
+   \Item{\bf Upstairs/downstairs index clash}\\[5pt]
+   The free indices in an expression must be consistent with regards to being upstairs or
+   downstairs when using \verb|Indices(position=independent)|. Thus the following code snippet
+   will cause grief for Cadabra.
+   \begin{cadabra}
+      foo := A_{a} + B^{a}.
+   \end{cadabra}
 \end{enumerate}
 
 % ============================================================================================
@@ -4335,8 +4416,8 @@ demonstrating various ways to encounter this error.
 
    % -----------------------------------------------------------------------------------------
    \Item{\bf Syntax error}\\[5pt]
-   This covers a whole raft of errors and in most cases the fix will be obvious. Here are a few
-   things to look for.
+   This covers a whole raft of errors and in most cases the fix will be obvious. Here are a
+   few things to look for.
    \begin{itemize}
       \item Check the termination character -- a dot, a semi-colon or the closing parenthesis
             of a function call. The dot and semi-colon are only used on Cadabra statements.
@@ -4351,8 +4432,8 @@ demonstrating various ways to encounter this error.
    If you want to specify the LaTeX form for an object that carries indices you
    must use \verb|{#}|, otherwise do not use \verb|{#}|. Here are two simple example.
    \begin{cadabra}
-      foo{#}::LaTeXForm{"{\bar \alpha}"}.    # matches objects foo with indices
-      bah::LaTeXForm{"{\hat \beta}"}.        # matches objects bah without indices
+      foo{#}::LaTeXForm{"{\bar\alpha}"}.    # matches objects foo with indices
+      bah::LaTeXForm{"{\hat\beta}"}.        # matches objects bah without indices
    \end{cadabra}
 
    % -----------------------------------------------------------------------------------------
@@ -4407,9 +4488,10 @@ demonstrating various ways to encounter this error.
        substitute (foo, Ex(r'''R -> R_{\mu\nu} g^{\mu\nu},R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}''', False))
    \end{cadabra}
    This does not seem like much of an improvement but the good news is that as most of the
-   text is written as strings the issue of line breaking is now trivial -- strings are easily
-   split across lines. This is also a good time to do a bit tidying up (replacing triple quotes
-   with single quotes and \verb|__cdbtmp__| with \verb|tmp|). The tidied version of
+   text is written as strings the issue of line breaking is now trivial -- strings are
+   easily split across lines. This is also a good time to do a bit tidying up (replacing
+   triple quotes with single quotes and \verb|__cdbtmp__| with \verb|tmp|). The tidied
+   version of
    \verb|foo.py| is now
    \begin{cadabra}
       tmp = Indices(Ex(r'{\alpha,\beta,\gamma,\delta,'+
@@ -4421,9 +4503,10 @@ demonstrating various ways to encounter this error.
       substitute (foo, Ex(r'R -> R_{\mu\nu} g^{\mu\nu},'+
                           r'R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}', False))
    \end{cadabra}
-   This code fragment will be happily accepted by Cadabra (though it is a matter of opinion
-   whether the aesthetics of this version are an improvement over the original single-line
-   statements).
+   This code fragment can be cut-and-pasted into an existing Cadabra code (or to replace the
+   original code in \verb|foo.cdb|). The new code will be happily accepted by Cadabra
+   (though it is a matter of opinion whether the aesthetics of this version are an
+   improvement over the original single-line statements).
 
    After running a few experiments you should be able to infer the basic actions of
    \verb|cadabra2python|. For a typical property like
@@ -4460,7 +4543,7 @@ demonstrating various ways to encounter this error.
    argument in the \verb|substitute (foo,Ex(...))| call both appear to serve no purpose and
    can be deleted.
 
-   \Note{Is the above statement correct?}
+   \Note{Check the lastest version of Cadabra to see if the above still applies.}
 
 \end{enumerate}
 
@@ -4546,24 +4629,25 @@ This site contains all of the Cadabra code used to the authors' paper on Riemann
 Coordinates \cite{brewin:2009-02}.
 
 \url{https://github.com/leo-brewin/adm-bssn-equations}\Break
-This site contains the full derivation of the BSSN equations from the ADM equations (for a
-zero shift vector). This extends the limited discussion given in Example \ref{sec:ex-15}
-(where only two equations were derived).
+This site contains the full derivation of the BSSN equations from the ADM equations (for
+vacuum spacetimes and a zero shift vector). This extends the limited discussion given
+in Example \ref{sec:ex-15} (where only two equations were derived).
 
-\url{https://github.com/leo-brewin/adm-bssn-numerical-code}\Break
+\url{https://github.com/leo-brewin/adm-bssn-numerical}\Break
 This site contains a full 3+1 evolution code (written in Ada) for a Kasner $T^3$ cosmology.
-This includes the Cadabra code used to convert the BSSN equations into computer code suitable
-for use in the numerical integrators.
+This includes the Cadabra code used to convert the BSSN equations into computer code
+suitable for use in the numerical integrators. Two codes are provided, one for the ADM
+system and another for the BSSN system.
 
 \url{https://docs.python.org/3/}\Break
 \url{https://docs.python.org/3/reference/index.html}\Break
 \url{https://docs.python.org/3/tutorial/index.html#tutorial-index}\Break
-The are the official sites for Python. They provide excellent information on all matters
+These are the official sites for Python. They provide excellent information on all matters
 Python.
 
 \url{https://www.sympy.org/en/index.html}\Break
 \url{https://docs.sympy.org/latest/tutorial/index.html}\Break
-These are excellent resources for learning how to use SymPy.
+This is a great place to start when learning how to use SymPy.
 
 % ============================================================================================
 \section*{Notebooks}

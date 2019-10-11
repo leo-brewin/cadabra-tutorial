@@ -455,8 +455,8 @@ def pass2 (src_file_name, out_file_name, idx_file_name):
 import argparse
 
 parser = argparse.ArgumentParser(description="Pre-process LaTeX-Cadabra source")
-parser.add_argument("-i", dest="input", metavar="input", help="LaTeX-Cadabra source file (without file extension)", required=True)
-parser.add_argument("-m", dest="name", metavar="name", help="Merged LaTeX-Cadabra source file (without file extension)")
+parser.add_argument("-i", dest="input", metavar="input", help="LaTeX-Cadabra source file (without .tex file extension)", required=True)
+parser.add_argument("-m", dest="name", metavar="name", help="Merged LaTeX-Cadabra source file (without .tex file extension)")
 
 src_file_name = parser.parse_args().input
 mrg_file_name = parser.parse_args().name

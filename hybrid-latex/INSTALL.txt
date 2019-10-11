@@ -1,23 +1,26 @@
-support/latex
----------------
+latex
+-----
 
    Copy these files to a location that is visible to LaTeX.
    i.e., visible on your TEXINPUTS environment variable.
 
-support/python
----------------
+python
+------
 
    Copy these files to a location that is visible on your PYTHONPATH environment
    variable.
 
-support/scripts
----------------
+scripts
+-------
 
    Copy these files to a location that is visible on your PATH environment
    variable.
 
    If necessary, make these scripts executable using
 
-      chmod ugo+x cdb*.sh
-      chmod ugo+x cdb*.py
-      chmod ugo+x merge-tex.py
+      chmod ugo+x *.sh
+      chmod ugo+x *.py
+
+The latest versions of latex/* and scripts/* can be found at
+
+https://github.com/leo-brewin/hybrid-latex/tree/master/cadabra

@@ -4,7 +4,7 @@
 
 [Cadabra][1] is an open access program ideally suited to complex tensor commutations in General Relativity. Tensor expressions are written in LaTeX while an enhanced version of Python is used to control the computations. This tutorial assumes no prior knowledge of Cadabra. It consists of a series of examples covering a range of topics from basic syntax such as declarations, functions, program control, component computations, input and output through to complete computations including a derivation of the BSSN equations from the ADM equations. Numerous exercises are included along with complete solutions.
 
-All of the sources for the tutorial (including the examples and exercises) are written with the Cadabra sources embedded in a LaTeX documents. Simple tools are used to extract and execute the embedded Cadabra source while also capturing the output and making it available elsewhere in the LaTeX document. These tools have been cloned from the [hybrid-latex][2] project and can be found in the `support/` directory. A copy of the documentation for the Hybrid-LaTeX project is included in the `pdf/` directory.
+All of the sources for the tutorial (including the examples and exercises) are written with the Cadabra sources embedded in LaTeX documents. Simple tools are used to extract and execute the embedded Cadabra source while also capturing the output and making it available elsewhere in the LaTeX document. These tools have been cloned from the [Hybrid-LaTeX][2] project and can be found in the `hybrid-latex/` directory. A copy of the documentation for the Hybrid-LaTeX project is also included in the `hybrid-latex/` directory.
 
 Note that the hybrid LaTeX tools are not essential in order to work through the project. The raw Cadabra files (stripped bare of any of the Hybrid-Latex markup) are also included (e.g., `foo.cdb` is the Cadabra source extracted from the LaTeX file `foo.tex`). These can be run either at the command line or copied into the Cadabra2 gui. Though taking this approach does mean that the formatting of the Cadabra output will not appear exactly as shown in the tutorial's pdf files (in `pdf/`).
 
@@ -18,7 +18,7 @@ Full details on how to install Cadabra can be found on the [Cadabra repository][
 
 If you chose not to use the Hybrid-Latex tools then there is no installation required (apart from Cadabra).
 
-If you do choose to use the Hybrid-LaTeX tools you will need to copy a few files into appropriate places. The tools include Bash and Python shell scripts (`support/scripts`), Python libraries (`support/python`) and LaTeX style files (`support/latex`). Each file can be copied to wherever their respective program expects to find them. For example, the shell scripts could be sudo copied to `/usr/local/bin` (for access by all users) or to `~/bin` (for your personal access). The Python libraries should be copied to a place that can be found in `PYTHONPATH` while the LaTeX style files should be copied to wherever they will be visible to LaTeX. If you place the files in non-standard locations you may need to adjust your `PATH`, `PYTHONPATH` and `TEXINPUT` environment variables accordingly.
+If you do choose to use the Hybrid-LaTeX tools you will need to copy a few files into appropriate places. The tools include Bash and Python shell scripts (`hybrid-latex/scripts`), Python libraries (`hybrid-latex/python`) and LaTeX style files (`hybrid-latex/latex`). Each file can be copied to wherever their respective program expects to find them. For example, the shell scripts could be sudo copied to `/usr/local/bin` (for access by all users) or to `~/bin` (for your personal access). The Python libraries should be copied to a place that can be found in `PYTHONPATH` while the LaTeX style files should be copied to wherever they will be visible to LaTeX. If you place the files in non-standard locations you may need to adjust your `PATH`, `PYTHONPATH` and `TEXINPUT` environment variables accordingly.
 
 ## Running the examples
 
@@ -26,7 +26,7 @@ To build everything from scratch just run
 
     $ build.sh
 
-form the top directory. This will run Cadabra and LaTeX on each of the sources in `source/cadabra/` and `source/tex/`. Some of the Cadabra codes will take a few minutes to run (see `source/cadabra/TIME.txt` for a list of approximate times).
+from the top directory. This will run Cadabra and LaTeX on each of the sources in `source/cadabra/` and `source/tex/`. Some of the Cadabra codes will take a few minutes to run (see `source/cadabra/TIME.txt` for a list of approximate times).
 
 Makefiles are also provided so you can build individual codes, for example `source/cadabra/example-03`, using
 

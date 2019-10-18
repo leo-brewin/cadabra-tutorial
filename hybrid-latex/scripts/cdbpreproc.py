@@ -419,7 +419,12 @@ def pass2 (src_file_name, out_file_name, idx_file_name):
 
                      tag_index = tag_index + 1
 
-                     out.write (         get_src   (this_line) + "\n")
+                   # cadabra2python does not like inline comments
+                   # so we strip all comments, including tags
+
+                     tmp_line = filter_inline_comment (this_line)
+
+                     out.write (         get_src   (tmp_line)  + "\n")
                      out.write (indent + beg_tag   (tag_index) + "\n")
                      out.write (indent + wrt_latex (this_line) + "\n")
                      out.write (indent + end_tag   (tag_index) + "\n")

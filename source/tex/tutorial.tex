@@ -54,7 +54,8 @@ School of Mathematical Sciences\\%
 Monash University, 3800\\%
 Australia}
 % \date{20-Jun-2018}% 1st version started
-\date{10-Sep-2019}% 1st version finished
+% \date{10-Sep-2019}% 1st version finished
+\date{28-Oct-2019}% 2nd version finished
 % \reference{Preprint: arXiv:0903.5365\\[5pt]
 %            Journal: {\it Phys.Rev.D.} {\bf 80} 084030 (2009)}
 \reference{Preprint}
@@ -79,10 +80,11 @@ code for the examples, exercises and solutions are available on GitHub.
 \label{sec:intro}
 
 The main goal in writing this tutorial was to provide the reader with sufficient knowledge
-so that they can use Cadabra to do meaningful computations in general relativity. It was
-written for readers with no prior knowledge of Cadabra and is presented as a series of
-examples using familiar computations (such as verifying that the Levi-Civita connection is a
-metric connection) as vehicles to present the various elements of Cadabra.
+so that they can use Cadabra \cite{peeters:2017-01,peeters:2017-02} to do meaningful
+computations in general relativity. It was written for readers with no prior knowledge of
+Cadabra and is presented as a series of examples using familiar computations (such as
+verifying that the Levi-Civita connection is a metric connection) as vehicles to present the
+various elements of Cadabra.
 
 The tutorial contains many exercises (with complete solutions) that allow the reader to test
 their understanding as well to explore some of the side issues raised in the main thread of
@@ -120,24 +122,22 @@ Verify that $0=g_{ab;c}$ given
 $\Gamma^{a}{}_{bc} = \frac{1}{2}g^{ad}\left(g_{dc,b} + g_{bd,c} - g_{bc,d}\right)$.
 \end{description}
 
-\Note{Maybe rewrite this paragraph to make clear that Cadabra can do item 2 and 3 above?}
-
 What tools are available to perform these computations? For the first example, it is hard to
 envisage \emph{not} using a computer to do the job. The second example is one which could
 easily be done by hand or on a computer (using, for example, GRTensorIII
-\cite{grtensorIII:2017-01}). The third examples is so simple that most people would use
-traditional pencil and paper methods. However, there are many other tensor
-computations in General Relativity that are particular tedious to push through by hand
-(e.g., developing higher order Riemann normal expansions of the metric or performing
-perturbation expansions of the vacuum field equations). So there is very good reason to seek
-help by way of a computer program designed specially to manipulate tensor expressions. This
-article will provide a brief introduction to one such program, Cadabra, and how it can be
-used in General Relativity.
+\cite{grtensorIII:2017-01}, Maxima \cite{maxima:2014-01} or Cadabra, the subject of this
+tutorial). The third examples is so simple that most people would use traditional pencil and
+paper methods. However, there are many other tensor computations in General Relativity that
+are particular tedious to push through by hand (e.g., developing higher order Riemann normal
+expansions of the metric or performing perturbation expansions of the vacuum field
+equations). So there is very good reason to seek help by way of a computer program designed
+specially to manipulate tensor expressions. This tutorial will provide a brief introduction
+to one such program, Cadabra, and how it can be used in General Relativity.
 
 Besides Cadabra, there are a number of other programs that, to varying degrees,
 can manipulate tensor expressions, including
 GRTensorIII \cite{grtensorIII:2017-01},
-MathTensor \cite{mathtensor:2008-01},
+Maxima \cite{maxima:2014-01},
 Canon \cite{manssur:2004-01},
 Riemann \cite{portugal:1997-01} and
 xAct \cite{xact:2008-01}.
@@ -494,17 +494,16 @@ simple there is a very important and subtle detail that must be noted. The subst
 \verb|Gamma| as given above was for $\Gamma^{a}{}_{bc}$ yet the expression for \verb|cderiv|
 requires $\Gamma^{d}{}_{bc}$ and $\Gamma^{d}{}_{ac}$. Cadabra handles this index
 manipulation by relabelling dummy indices in such a way as to avoid index clashes. This
-feature also exists in MathTensor and xAct. % (but not so in GRTensorIII).
+feature also exists in xAct. % (but not so in GRTensorIII).
 
-% \Note{Is this true of Mathematica? Ask Paul. And do I need this statement in full?}
-% In this simple example separate statements were used to create and later execute the rules.
-% This ability to defer the application of substitution rules at the users discretion is one
-% of Cadabra's main features. In other algebraic software, such as Maple and Mathematica,
-% assignments are propagated forward from the point at which they are declared. They will also
-% be imposed indirectly on existing expressions. Cadabra, in contrast, allows the user to
-% choose when a rule should be applied as well as on which expressions the rule will be
-% applied to. This gives the user considerable freedom in developing a strategy to achieve a
-% desired computational goal.
+% In this simple example separate statements were used to create and later execute the
+% rules. This ability to defer the application of substitution rules at the users
+% discretion is one of Cadabra's main features. In other algebraic software, such as
+% Maple, assignments are propagated forward from the point at which they are declared.
+% They will also be imposed indirectly on existing expressions. Cadabra, in contrast,
+% allows the user to choose when a rule should be applied as well as on which
+% expressions the rule will be applied to. This gives the user considerable freedom in
+% developing a strategy to achieve a desired computational goal.
 
 The remaining few statements
 

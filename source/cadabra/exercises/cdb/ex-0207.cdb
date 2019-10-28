@@ -2,16 +2,40 @@
 
 \partial{#}::PartialDerivative.
 
-hide   := \partial_{c d}{g_{a b}} -> Z_{c d a b}.
-reveal := Z_{c d a b} -> \partial_{c d}{g_{a b}}.
+hide   := \partial_{d}{\Gamma^{a}_{b c}} -> Z_{d a b c}.
+reveal := Z_{d a b c} -> \partial_{d}{\Gamma^{a}_{b c}}.
 
-kill := \partial_{c}{g_{a b}} -> 0.
+kill := \Gamma^{a}_{b c} -> 0.
 
-Aab := g_{a b} + \partial_{c}{g_{a b}} x^{c}
-               + \partial_{c d}{g_{a b}} x^{c} x^{d}.
+Gamma := \Gamma^{a}_{b c}
+       + x^{d} \partial_{d}{\Gamma^{a}_{b c}}.
 
-substitute (Aab,hide)
+substitute (Gamma,hide)
+substitute (Gamma,kill)
+substitute (Gamma,reveal)
+
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::Derivative.
+
+kill := \Gamma^{a}_{b c} -> 0.
+
+Gamma := \Gamma^{a}_{b c}
+       + x^{d} \partial_{d}{\Gamma^{a}_{b c}}.
+
+substitute (Gamma,kill)
+
+
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+\partial{#}::PartialDerivative.
+
+kill := \partial_{c}{A_{a b}} -> 0.
+
+Aab := A_{a b} + x^{c} \partial_{c}{A_{a b}}
+               + x^{c} x^{d} \partial_{d}{\partial_{c}{A_{a b}}}.
+
 substitute (Aab,kill)
-substitute (Aab,reveal)
 
 

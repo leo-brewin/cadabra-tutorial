@@ -18,13 +18,6 @@ examples:
 	@ cp -f examples.pdf pdf/.
 	@ touch .examples
 #-------------------------------------------------------------------------------
-foo bah tmp:
-	@ echo "cdblatex.sh $@ ..."
-	@ cdblatex.sh -T -sx -i $@ &> $@.cdblog
-	@ # echo " -->"`cdbstats -i $@.cdblog`
-	@ pdflatex -halt-on-error -interaction=batchmode $@ &> /dev/null
-	@ open $@.pdf
-#-------------------------------------------------------------------------------
 %:
 	@ make .$*
 .%:	%.tex

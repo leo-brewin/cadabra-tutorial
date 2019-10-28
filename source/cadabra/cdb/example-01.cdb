@@ -3,20 +3,32 @@ checkpoint_file = 'tests/semantic/output/example-01.json'
 cdblib.create (checkpoint_file)
 checkpoint = []
 
+# Define some properties
+
 {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
 
 g_{a b}::Metric.
 g_{a}^{b}::KroneckerDelta.
 
+\nabla{#}::Derivative.
 \partial{#}::PartialDerivative.
+
+# Define rules for covariant derivative and the Christoffel symbol
+
+nabla := \nabla_{c}{g_{a b}} -> \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
+                                                      - g_{d b}\Gamma^{d}_{a c}.
 
 Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
                                             + \partial_{c}{g_{b d}}
                                             - \partial_{d}{g_{b c}} ).
 
-cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
-                                - g_{d b}\Gamma^{d}_{a c}.
+# Start with a simple expression
 
+cderiv := \nabla_{c}{g_{a b}}.
+
+# Do the computations
+
+substitute          (cderiv, nabla)
 substitute          (cderiv, Gamma)
 distribute          (cderiv)
 eliminate_metric    (cderiv)

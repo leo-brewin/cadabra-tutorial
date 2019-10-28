@@ -69,7 +69,7 @@ Relativity. Tensor expressions are written in LaTeX while an enhanced version of
 used to control the computations. This tutorial assumes no prior knowledge of Cadabra. It
 consists of a series of examples covering a range of topics from basic syntax such as
 declarations, functions, program control, component computations, input and output through
-to complete computations including a derivation of the BSSN equations from the ADM
+to complete computations including a derivation of two of the BSSN equations from the ADM
 equations. Numerous exercises are included along with complete solutions. All of the source
 code for the examples, exercises and solutions are available on GitHub.
 \end{abstract}
@@ -88,7 +88,8 @@ The tutorial contains many exercises (with complete solutions) that allow the re
 their understanding as well to explore some of the side issues raised in the main thread of
 the tutorial.
 
-The LaTeX and Cadabra sources for the tutorial can be found on the author's GitHib site
+The LaTeX and Cadabra sources for the tutorial can be found on the
+\href{https://github.com/leo-brewin/cadabra-tutorial}{author's GitHib} site
 (see Part 4 for the relevant URL).
 
 This tutorial is a significantly extended version of a similar tutorial written in 2009
@@ -138,8 +139,8 @@ can manipulate tensor expressions, including
 GRTensorIII \cite{grtensorIII:2017-01},
 MathTensor \cite{mathtensor:2008-01},
 Canon \cite{manssur:2004-01},
-Riemann \cite{portugal:1997-01},
-xAct \cite{xact:2008-01}
+Riemann \cite{portugal:1997-01} and
+xAct \cite{xact:2008-01}.
 No attempt will be made here to provide even a cursory review of the above programs
 (however, see the recent review by MacCallum \cite{maccallum:2018-01}). Instead, the
 intention in this tutorial will be to show how Cadabra can be used to do useful work in
@@ -167,11 +168,12 @@ The following examples were deliberately constructed so as to require little mat
 development (for the current audience) while being of sufficient complexity to allow
 Cadabra's features to be properly showcased. For the majority of this tutorial no
 assumptions will be made about the dimensionality of the space other than in Example
-\ref{sec:ex-10} (4 dimensions) and Example \ref{sec:ex-13} (3 dimensions). No assumptions
-will be made about the metric (other than it being non-singular) while the connection will
-be assumed to be metric compatible (i.e., the Levi-Civita connection). Abstract index
-notation will be used but on the odd occasion where an explicit component based equation is
-given, the components will be given in a coordinate basis.
+\ref{sec:ex-10} (4 dimensions) and Example \ref{sec:ex-13} (3 dimensions). The
+Misner-Thorne-Wheeler (MTW \cite{mtw:1973-01}) conventions will be used for the metric
+signature and the Riemann tensor. The connection will be assumed to be metric compatible
+(i.e., the Levi-Civita connection). Abstract index notation will be used but on the odd
+occasion where an explicit component based equation is given, the components will be given
+in a coordinate basis.
 
 % ============================================================================================
 \section*{The Cadabra software}
@@ -257,7 +259,7 @@ Here is a small fragment of a larger Cadabra code (drawn from Example \ref{sec:e
    substitute (expr, $v^{a} -> w^{a}$);                |\lstlabel{ex-05.662}|
    unzoom     (expr)                                   |\lstlabel{ex-05.663}|
 \end{cadabra}
-For the moment try to ignore the code and focus instead on the small line numbers in the
+Try to ignore the code (for the moment) and focus instead on the small line numbers in the
 left hand margin. These numbers are not part of the Cadabra syntax but have been added here
 so that individual lines of code can be identified. They are also used as tags to match
 against the Cadabra output which, in this case, just happens to be (have faith)
@@ -280,8 +282,8 @@ given by \lstref{ex-05.662}.
 
 \input{../cadabra/lib/example-01.cdbtex}
 
-How might Cadabra be used to verify that $0=g_{ab;c}$ given $\Gamma^{a}{}_{bc} =
-\frac{1}{2}g^{ad}\left(g_{dc,b} + g_{bd,c} - g_{bc,d}\right)$?
+How might Cadabra be used to verify that $0=\nabla_{c}g_{ab}$ given $2\Gamma^{a}{}_{bc} =
+g^{ad}\left(\partial_{b}g_{dc} + \partial_{c} g_{bd} - \partial_{d} g_{bc}\right)$?
 
 This may seem an odd way to start but here is the full Cadabra code.
 
@@ -293,45 +295,55 @@ This may seem an odd way to start but here is the full Cadabra code.
    g_{a b}::Metric.                                                          |\lstlabel{ex-01.02}|
    g_{a}^{b}::KroneckerDelta.                                                |\lstlabel{ex-01.03}|
 
-   \partial{#}::PartialDerivative.                                           |\lstlabel{ex-01.04}|
+   \nabla{#}::Derivative.                                                    |\lstlabel{ex-01.04}|
+   \partial{#}::PartialDerivative.                                           |\lstlabel{ex-01.05}|
 
-   # Define a rule for the Christoffel symbol                                |\lstlabel{ex-01.c2}|
+   # Define rules for covariant derivative and the Christoffel symbol        |\lstlabel{ex-01.c2}|
 
-   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}       |\lstlabel{ex-01.05}|
-                                               + \partial_{c}{g_{b d}}       |\lstlabel{ex-01.06}|
-                                               - \partial_{d}{g_{b c}} );    |\lstlabel{ex-01.07}|
+   nabla := \nabla_{c}{g_{a b}} -> \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}    |\lstlabel{ex-01.06}|
+                                                         - g_{d b}\Gamma^{d}_{a c};   |\lstlabel{ex-01.07}|
 
-   # Define the covariant derivative of the metric                           |\lstlabel{ex-01.c3}|
+   Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}       |\lstlabel{ex-01.08}|
+                                               + \partial_{c}{g_{b d}}       |\lstlabel{ex-01.09}|
+                                               - \partial_{d}{g_{b c}} );    |\lstlabel{ex-01.10}|
 
-   cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}                 |\lstlabel{ex-01.08}|
-                                   - g_{d b}\Gamma^{d}_{a c};                |\lstlabel{ex-01.09}|
+   # Start with a simple expression                                          |\lstlabel{ex-01.c3}|
+
+   cderiv := \nabla_{c}{g_{a b}};                                            |\lstlabel{ex-01.11}|
 
    # Do the computations                                                     |\lstlabel{ex-01.c4}|
 
-   substitute          (cderiv, Gamma);                                      |\lstlabel{ex-01.10}|
-   distribute          (cderiv);                                             |\lstlabel{ex-01.11}|
-   eliminate_metric    (cderiv);                                             |\lstlabel{ex-01.12}|
-   eliminate_kronecker (cderiv);                                             |\lstlabel{ex-01.13}|
-   canonicalise        (cderiv);                                             |\lstlabel{ex-01.14}|
+   substitute          (cderiv, nabla);                                      |\lstlabel{ex-01.12}|
+   substitute          (cderiv, Gamma);                                      |\lstlabel{ex-01.13}|
+   distribute          (cderiv);                                             |\lstlabel{ex-01.14}|
+   eliminate_metric    (cderiv);                                             |\lstlabel{ex-01.15}|
+   eliminate_kronecker (cderiv);                                             |\lstlabel{ex-01.16}|
+   canonicalise        (cderiv);                                             |\lstlabel{ex-01.17}|
 \end{cadabra}
 
 The output from the above code is
 
-\begin{dgroup*}[compact,spread={0pt}]
-   \Dmath*{\cdb{ex-01.101}\hfill\lstref{ex-01.05}}
-   \Dmath*{g_{ab;c} = \cdb{ex-01.102}\hfill\lstref{ex-01.08}
-                    = \cdb{ex-01.103}\hfill\lstref{ex-01.10}
-                    = \cdb{ex-01.104}\hfill\lstref{ex-01.11}
-                    = \cdb{ex-01.105}\hfill\lstref{ex-01.12}
-                    = \cdb{ex-01.106}\hskip12cm\hfill\V{15pt}\lstref{ex-01.13}
-                    = \cdb{ex-01.107}\hfill\lstref{ex-01.14}}
+\begin{dgroup*}[compact,spread={2pt}]
+   \Dmath*{\cdb{nabla.100}\hfill\lstref{ex-01.06}}
+   \Dmath*{\cdb{Gamma.100}\hfill\lstref{ex-01.08}}
+\end{dgroup*}
+
+\begin{dgroup*}[compact,spread={2pt}]
+   % \Dmath*{\cdb{nabla.100}\hfill\lstref{ex-01.06}}
+   % \Dmath*{\cdb{Gamma.100}\hfill\lstref{ex-01.08}}
+   \Dmath*{\cdb{ex-01.100} = \cdb{ex-01.101}\hfill\lstref{ex-01.12}
+                           = \cdb{ex-01.102}\hfill\lstref{ex-01.13}
+                           = \cdb{ex-01.103}\hfill\lstref{ex-01.14}
+                           = \cdb{ex-01.104}\hfill\lstref{ex-01.15}
+                           = \cdb{ex-01.105}\hskip11cm\hfill\V{12pt}\lstref{ex-01.16}
+                           = \cdb{ex-01.106}\hfill\lstref{ex-01.17}}
 \end{dgroup*}
 
 Each of these line shows selected stages of processing by Cadabra. The zero in the final
-line shows that $g_{ab;c}$ is indeed zero for the given choice of $\Gamma^{a}{}_{bc}$.
+line shows that $\nabla_{c} g_{ab}$ is indeed zero for the given choice of $\Gamma^{a}{}_{bc}$.
 
-Note that the only part of the above output that was written by Cadabra is the part between
-the equals sign and the (apparent) equation number on the far right. Everything else was
+Note that for each line of output shown above, Cadabra wrote only the part between the equals
+sign and the (apparent) equation number on the far right. Everything else was
 added by the author to put the Cadabra output into context. The number on the far right
 matches the line number in the source while the text to the left of the equals sign
 identifies the object associated with the Cadabra output. So though the above output is not
@@ -349,16 +361,16 @@ Statements in the Cadabra grammar fall into a number of distinct categories:
 category that consists of any valid Python statement. Comments in Cadabra are single lines
 that begin with one or more spaces (or tabs) followed by the \verb|#| character. Any text
 after the \verb|#| will be treated as a comment. There are four comments in the above
-example (lines \lstref*{ex-01.c1}, \lstref*{ex-01.c2}, \lstref*{ex-01.c3},
-\lstref*{ex-01.c4}). The statements in lines \lstref*{ex-01.01} to \lstref*{ex-01.04} assign
-\emph{properties} to some symbols, while those in lines \lstref*{ex-01.05} to
-\lstref*{ex-01.09} define two \emph{expressions} named \verb|Gamma| and \verb|cderiv|. The
-remaining statements apply \emph{algorithms} to the expressions (i.e., they perform the
-computations). Note that \emph{algorithms} are, in the eyes of Python, ordinary Python
-functions. Python functions can also be applied to Cadabra objects and thus could also be
-described as algorithms. But as this may lead to some confusion the convention adopted in
-this tutorial is that the term \emph{algorithm} will be reserved exclusively for Cadabra's
-own functions.
+example (lines \lstref*{ex-01.c1}, \lstref*{ex-01.c2}, \lstref*{ex-01.c3} and
+\lstref*{ex-01.c4}). The statements in lines \lstref*{ex-01.01} to \lstref*{ex-01.05} assign
+\emph{properties} to some symbols, while those in lines \lstref*{ex-01.06} to
+\lstref*{ex-01.11} define three \emph{expressions} named \verb|nabla|, \verb|Gamma| and
+\verb|cderiv|. The remaining statements apply \emph{algorithms} to the expressions (i.e.,
+they perform the computations). Note that \emph{algorithms} are, in the eyes of Python,
+ordinary Python functions. Python functions can also be applied to Cadabra objects and thus
+could also be described as algorithms. But as this may lead to some confusion the convention
+adopted in this tutorial is that the term \emph{algorithm} will be reserved exclusively for
+Cadabra's own functions.
 
 Cadabra statements can consist of one or more lines of text. Thus Cadabra sets clear rules
 about how a statement can be constructed from a series of lines. It will read its input,
@@ -388,7 +400,17 @@ allowed. If you prefer to work with Greek indices then you could declare
    {\alpha,\beta,\gamma,\mu,\nu,\theta,\phi#}::Indices.
 \end{cadabra}
 Note that all of the usual LaTeX Greek symbols are understood by Cadabra. They can be used as
-indices or symbols (e.g., \verb|\Gamma| can be used to denote a Christoffel symbol).
+indices or symbols (e.g., \verb|\Gamma| can be used to denote a Christoffel symbol). However,
+they can not be used as identifiers (i.e., they can not appear on the left hand side of an
+assignment). Thus the following statement will raise a syntax error
+\bgroup
+\begin{cadabra}[numbers=none]
+   \Gamma := (1/2) g^{a d} (  \partial_{b}{g_{d c}}
+                            + \partial_{c}{g_{b d}}
+                            - \partial_{d}{g_{b c}} );
+
+\end{cadabra}
+\egroup
 
 The next pair of statements
 \bgroup
@@ -401,34 +423,41 @@ The next pair of statements
 declares that \verb|g_{a b}| represents a (symmetric) metric and that $g_a{}^b$ is the usual
 Kronecker delta (i.e., $g_a{}^b = \delta_a^b$).
 
-The fourth statement
+The following pair of statements
 \bgroup
 \lstset{firstnumber=8}
 \begin{cadabra}
+   \nabla{#}::Derivative.
    \partial{#}::PartialDerivative.
 \end{cadabra}
 \egroup
-assigns to the symbol \verb|\partial| a derivative property. Note that the \verb|#| in
-\verb|\partial{#}| signifies that any number of indices (up or down) are allowed. That is
-both \verb|\partial{a}| and \verb|\partial{a b c d}| will be seen by Cadabra as derivative
+assigns a derivative property to the symbols \verb|\nabla| and \verb|\partial|. The
+distinction between the \verb|::Derivative| and \verb|::PartialDerivative| properties is that
+only those derivative operators declared as \verb|::PartialDerivative| will be taken as
+self-commuting ($\partial_a \partial_b = \partial_b \partial_a$). Note that the \verb|#| in
+each declaration signifies that any number of indices (up or down) are allowed. That is both
+\verb|\partial{a}| and \verb|\partial{a b c d}| will be seen by Cadabra as derivative
 operators. This interpretation of \verb|{#}| carries over to other declarations, for example
 \verb|\delta{#}::KroneckerDelta| declares \verb|\delta| to be a Kronecker delta with any
 number of upper or lower indices (and in any order).
 
-The next two statements define two expressions, \verb|Gamma| and \verb|cderiv|.
+The next three statements define three expressions, \verb|nabla|, \verb|Gamma| and
+\verb|cderiv|.
 \bgroup
-\lstset{firstnumber=10}
+\lstset{firstnumber=11}
 \begin{cadabra}
-   # Define a rule for the Christoffel symbol
+   # Define rules for covariant derivative and the Christoffel symbol
+
+   nabla := \nabla_{c}{g_{a b}} -> \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
+                                                         - g_{d b}\Gamma^{d}_{a c};
 
    Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
                                                + \partial_{c}{g_{b d}}
                                                - \partial_{d}{g_{b c}} );
 
-   # Define the covariant derivative of the metric
+   # Start with a simple expression
 
-   cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
-                                   - g_{d b}\Gamma^{d}_{a c};
+   cderiv := \nabla_{c}{g_{a b}};
 \end{cadabra}
 \egroup
 The name of the expression appears to the left of the `\verb|:=|' characters while the
@@ -444,36 +473,43 @@ Note carefully the braces around the metric term in \verb|\partial_{c}{g_{a b}}|
 essential -- the symbol \verb|\partial| is an operator and thus needs an argument to act on,
 namely, the argument contained inside the pair of braces.
 
-There is one very important operational difference between the pair of expressions
-\verb|cderiv| and \verb|Gamma|. The expression \verb|cderiv| defines a Cadabra object that
-will be manipulated in stages towards the final result (in line \lstref*{ex-01.14}). These
-changes are obtained by applying Cadabra's algorithms (lines \lstref*{ex-01.10} to
-\lstref*{ex-01.14}) to \verb|cderiv|. The other expression, \verb|Gamma|, defines a
-substitution rule that informs Cadabra how to replace any instance of $\Gamma^{a}{}_{b c}$
-with the appropriate combination of the metric and its derivatives.
+There is one very important operational difference between the expressions for \verb|cderiv|
+and those for \verb|nabla| and \verb|Gamma|. The expression \verb|cderiv| defines a Cadabra
+object that will be manipulated in stages towards the final result (in line
+\lstref*{ex-01.17}). These changes are obtained by applying Cadabra's algorithms (lines
+\lstref*{ex-01.12} to \lstref*{ex-01.17}) to \verb|cderiv|. The other expressions,
+\verb|nabla| and \verb|Gamma|, are known as substitution rules and each are of the form
+\begin{cadabra}[numbers=none]
+   rule := target -> replacement;
+\end{cadabra}
+They provide Cadabra with all the information needed to replace any instances of $\nabla_{c}
+g_{ab}$ and $\Gamma^{a}{}_{bc}$ with the appropriate combination of the metric and its
+derivatives. The application of these rules can be seen in lines \lstref*{ex-01.12} and
+\lstref*{ex-01.13} with each call to \verb|substitute| applying a rule to the expression
+\verb|cderiv|.
 
-Though Cadabra now knows how to make that substitution it will hold fire until told do so --
-which in this example just happens to be the very next statement, the \verb|substitute|
-algorithm in line \lstref*{ex-01.10}. This ability to defer the application of substitution
-rules at the users discretion is one of Cadabra's main features. In other algebraic
-software, such as Maple and Mathematica, substitutions are propagated forward from the point
-at which they are declared. They will also be imposed indirectly on existing expressions.
-Cadabra, in contrast, allows the user to choose when a rule should be applied as well as on
-which expressions the rule will be applied to. This gives the user considerable freedom in
-developing a strategy to achieve a desired computational goal.
+After Cadabra has executed the calls to \verb|substitute|, the object \verb|cderiv| will
+consist solely of terms built from the metric and its derivatives. Though this may look
+simple there is a very important and subtle detail that must be noted. The substitution rule
+\verb|Gamma| as given above was for $\Gamma^{a}{}_{bc}$ yet the expression for \verb|cderiv|
+requires $\Gamma^{d}{}_{bc}$ and $\Gamma^{d}{}_{ac}$. Cadabra handles this index
+manipulation by relabelling dummy indices in such a way as to avoid index clashes. This
+feature also exists in MathTensor and xAct. % (but not so in GRTensorIII).
 
-The upshot is that after Cadabra has executed the \verb|substitute| algorithm, the object
-\verb|cderiv| will consist solely of terms built from the metric and its derivatives. Though
-this may look simple there is a very important and subtle detail that must be noted. The
-substitution rule \verb|Gamma| as given above was for $\Gamma^{a}{}_{bc}$ yet the expression
-for \verb|cderiv| requires $\Gamma^{d}{}_{bc}$ and $\Gamma^{d}{}_{ac}$. Cadabra handles this
-index manipulation by relabelling dummy indices in such a way as to avoid index clashes.
-This feature also exists in MathTensor and xAct. % (but not so in GRTensorIII).
+% \Note{Is this true of Mathematica? Ask Paul. And do I need this statement in full?}
+% In this simple example separate statements were used to create and later execute the rules.
+% This ability to defer the application of substitution rules at the users discretion is one
+% of Cadabra's main features. In other algebraic software, such as Maple and Mathematica,
+% assignments are propagated forward from the point at which they are declared. They will also
+% be imposed indirectly on existing expressions. Cadabra, in contrast, allows the user to
+% choose when a rule should be applied as well as on which expressions the rule will be
+% applied to. This gives the user considerable freedom in developing a strategy to achieve a
+% desired computational goal.
 
 The remaining few statements
 
 \bgroup
-\lstset{firstnumber=16}
+\lstset{firstnumber=28}
 \begin{cadabra}
    distribute          (cderiv);
    eliminate_metric    (cderiv);
@@ -489,11 +525,11 @@ Cadabra objects. The algorithm \verb|distribute| is used to expand products, it 
 \verb|a (b+c)| into \verb|a b + a c|. In line \lstref*{ex-01.02} of the code the property
 \verb|::Metric| was given to \verb|g_{a b}|. This is used by the \verb|eliminate_metric|
 algorithm to convert combinations such as \verb|g_{a c} g^{c b}| into a Kronecker-delta
-$\delta^b_a$ which (not surprisingly) is eliminated by the \verb|eliminate_kronecker|
+$\delta^b{}_a$ which (not surprisingly) is eliminated by the \verb|eliminate_kronecker|
 algorithm. The \verb|canonicalise| algorithm is one of Cadabra's most useful algorithms (on
 a par with \verb|substitute|) as it can apply a wide range of simplifications and general
 housekeeping. In this case it makes use of the symmetric property of the metric to complete
-the final step of the calculation. The result in line \lstref{ex-01.14} is zero as expected.
+the final step of the calculation. The result in line \lstref{ex-01.17} is zero as expected.
 
 % --------------------------------------------------------------------------------------------
 \subsection{Cadabra syntax summary}
@@ -561,7 +597,7 @@ expressions such as \verb|foo := A_{a} B_{b}.| \emph{can} be split across more t
 by including line breaks as needed and with proper termination (e.g., a dot or a
 semi-colon). Note that Python's indentation rules apply only to the first line of a group --
 the remaining lines can be indented to suit. See also the discussion on very long lines in
-the Miscellaneous section of Part 4.
+the Miscellaneous section of \hyperlink{link2part3}{Part 3}.
 
 % --------------------------------------------------------------------------------------------
 {\bf Identifiers}\\[5pt]
@@ -592,16 +628,14 @@ required if the string contained any slashes (e.g., a LaTeX symbol like \verb|\G
 function \verb|Ex| is very useful when building expressions from smaller pieces (see for
 example the function \verb|truncate| in Example \ref{sec:ex-04}).
 
-It must be noted that identifiers carry no residual information about their origins. Once
-an identifier is created (using \verb|=| or \verb|:=|) it carries no residual information
-about its creator (\verb|=| or \verb|:=|). Thus any statement like \verb|bah = foo| will
-have the usual Python meaning, namely, that \verb|bah| and \verb|foo| share one copy of the
-data pointed to by \verb|foo|. There are many occasions were a second distinct copy of the
-data is required. Copies of pure Cadabra objects (i.e., created using \verb|:=| or
-\verb|Ex|) can be made using statements like \verb|bah := @(foo);|. The \verb|@(...)| is
-simply a function that returns a copy of the given Cadabra object. This construction will be
-used many times in this tutorial (the first instance can be seen in Exercise
-\exref{ex:1.07}).
+It must be noted that identifiers carry no residual information about their origins
+(\verb|=| or \verb|:=|). Thus any statement like \verb|bah = foo| will have the usual Python
+meaning, namely, that \verb|bah| and \verb|foo| share one copy of the data pointed to by
+\verb|foo|. There are many occasions were a second distinct copy of the data is required.
+Copies of pure Cadabra objects (i.e., created using \verb|:=| or \verb|Ex|) can be made
+using statements like \verb|bah := @(foo);|. The \verb|@(...)| is simply a function that
+returns a copy of the given Cadabra object. This construction will be used many times in
+this tutorial (the first instance can be seen in Exercise \exref{ex:1.07}).
 
 % --------------------------------------------------------------------------------------------
 {\bf Comment character}\\[5pt]
@@ -616,8 +650,12 @@ moment what these mean, just accept that they are valid Cadabra statements)
 \end{cadabra}
 This dual use of the hash character forces a compromise to be made -- comments are not
 allowed as trailing text on a pure Cadabra line (e.g., on the end of a property
-declaration). Other comments, for example lines that begin with a hash or as trailing text
-on a pure Python line, are allowed.
+declaration). Despite this restriction, there are a few occasions in this tutorial were
+trailing comments are used for convenience and to save space. These trailing comments would
+need to be removed before passing the code to Cadabra\footnote{This task is handled
+automatically by the \cdbverb{hybrid-latex} scripts, see
+\url{https://github.com/leo-brewin/hybrid-latex}}. Other comments, for example lines that
+begin with a hash or as trailing text on a pure Python line, are allowed.
 
 % --------------------------------------------------------------------------------------------
 {\bf Indentation}\\[5pt]
@@ -658,9 +696,107 @@ exceptions are the function \verb|Ex| and the use of uppercase LaTeX names for i
 such as \verb|\Gamma|.
 
 % --------------------------------------------------------------------------------------------
+{\bf Substitution rules}\\[5pt]
+Cadabra's \verb|substitute| algorithm works its magic on an expression under the control
+of a substitution rule (or a list of rules, see below). The rules can be specified either
+as a named rule, for example,
+\begin{cadabra}[numbers=none]
+   foo := A^{a b} -> B^{a} C^{b}.
+   substitute (bah, foo)
+\end{cadabra}
+or as an anonymous rule, for example,
+\goodbreak
+\begin{cadabra}[numbers=none]
+   substitute (bah, $A^{a b} -> B^{a} C^{b}$)
+\end{cadabra}
+Both of these examples do the same job -- replacing $A^{ab}$ in \verb|bah| with
+$B^{a} C^{b}$.
+
+Rules can also be built using an equal sign rather than the forward arrow \verb|->|.
+Thus the above examples could be written as
+\begin{cadabra}[numbers=none]
+   foo := A^{a b} = B^{a} C^{b}.
+   substitute (bah, foo)
+\end{cadabra}
+and
+\begin{cadabra}[numbers=none]
+   substitute (bah, $A^{a b} = B^{a} C^{b}$)
+\end{cadabra}
+The end result will be exactly as before (replacing $A^{ab}$ with $B^{a} C^{b}$). There is
+one important difference between these two constructions. Rules built using the equal sign
+must have identical free indices on either side of the equal sign. In contrast, rules built
+using \verb|->| are are not bound by this rule. This gives the programmer great flexibility
+in manipulating the index structure of an expression -- it also opens the door for making a
+complete mess of the expression (with great power comes great responsibility :). See items
+\itref{it:SubRuleChoices} and \itref{it:SubRuleDanger} in Part 3 for more details on this
+point.
+
+Anonymous rules are convenient for one-off substitutions (and are used extensively in the
+\hyperlink{GaussEqtn}{Gauss equation} example). They also provide data locality -- the rule
+is in plain sight making clear the changes that are about to be applied. In contrast, a
+named rule may be defined far away from its use thus forcing the reader to hunt through the
+code for the definition. Named rules are useful when that rule is likely to be used many
+times (for example a rule for a covariant derivative) or when the rule has an important
+meaning (e.g., a rule for the Riemann tensor). Named rules, unlike anonymous rules, can also
+be split across one or more lines, for example
+\begin{cadabra}[numbers=none]
+   RFromGamma  := R -> g^{a b} g^{c d} (    \partial_{c}{\Gamma_{a b d}}
+                                          - \partial_{d}{\Gamma_{a b c}}
+                                          + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                          - \Gamma_{e a c} \Gamma^{e}_{b d} ).
+\end{cadabra}
+
+You can also create a \emph{list} of rules using
+\begin{cadabra}[numbers=none]
+   RFromGamma := { R -> R_{a b} g^{a b},
+                   R_{a b} -> R_{a c b d} g^{c d},
+                   R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                                  - \partial_{d}{\Gamma_{a b c}}
+                                  + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                  - \Gamma_{e a c} \Gamma^{e}_{b d} }.
+\end{cadabra}
+This rule contains three simple rules, delimited by commas and wrapped in braces (so it is a
+Python list). To properly apply this rule you would need to use
+\begin{cadabra}[numbers=none]
+   RicciScalar := R.
+   substitute (RicciScalar, RFromGamma)
+   substitute (RicciScalar, RFromGamma)
+   substitute (RicciScalar, RFromGamma)
+\end{cadabra}
+Now you might well ask -- Why are there three calls to \verb|substitute|? In the first call
+only the first rule \verb|R -> R_{a b} g^{a b}| will be matched. The second and third calls
+are needed to match the terms introduced in the previous calls. Having to call
+\verb|substitute| many times is a bit tedious but the good news is that Cadabra provides a
+short cut by allowing you to write
+\begin{cadabra}[numbers=none]
+   RicciScalar := R.
+   substitute (RicciScalar, RFromGamma, repeat=True)
+\end{cadabra}
+The \verb|repeat=True| clause will force Cadabra to keep applying rules until the expression
+settles down (i.e., no changes from one substitution to the next).
+
+Lists of rules can be concatenated with other rules using the addition operator. Thus you
+can also write
+\begin{cadabra}[numbers=none]
+   RFromRab := R -> R_{a b} g^{a b}.
+   RabFromGamma := { R_{a b} -> R_{a c b d} g^{c d},
+                     R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
+                                    - \partial_{d}{\Gamma_{a b c}}
+                                    + \Gamma_{e a d} \Gamma^{e}_{b c}
+                                    - \Gamma_{e a c} \Gamma^{e}_{b d} }.
+   RFromGamma = RFromRab + RabFromGamma
+\end{cadabra}
+
+There is one caveat that must be noted -- the version of Cadabra\footnote{\CdbVersion} used
+in this tutorial does not allow the addition of rules that \emph{each} contains just a
+\emph{simple} rule (as simple rules are not \emph{lists}). A simple hack is to convert each
+simple rule to a list by adding a trivial rule, (e.g., replace \verb|foo->bah| with
+\verb|{foo->bah,x->x}|).
+
+% --------------------------------------------------------------------------------------------
 {\bf Line splitting}\\[5pt]
 Cadabra allows \emph{expressions} to be split across one or more lines such as
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    Rabcd := R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
                            - \partial_{d}{\Gamma_{a b c}}
                            + \Gamma_{e a d} \Gamma^{e}_{b c}
@@ -668,7 +804,7 @@ Cadabra allows \emph{expressions} to be split across one or more lines such as
 \end{cadabra}
 However, it does \emph{not} allow property lists or anonymous rules (i.e., \verb|$...$|) to
 be split. Thus each of the following statements will raise an error.
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    {a, b, c, d,
     e, f, g, h, i, j}::Indices.
 
@@ -680,89 +816,15 @@ be split. Thus each of the following statements will raise an error.
 \end{cadabra}
 For property lists the preferred solution is to use one line (no matter how long it might
 be). Thus you would use
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    {a, b, c, d, e, f, g, h, i, j}::Indices.
 
    {R_{a b c d},\partial_{e}{R_{a b c d}}}::SortOrder.
 \end{cadabra}
-See the discussion on line splitting in Part 3 below for an alternative solution.
+The easiest solution for anonymous rules is to replace them with a named rule.
 
-But for rules there is a better solution -- they can be given names and they can
-be concatenated. Here is a simple example of a named substitution rule
-\begin{cadabra}
-   RFromGamma  := R -> g^{a b} g^{c d} (    \partial_{c}{\Gamma_{a b d}}
-                                          - \partial_{d}{\Gamma_{a b c}}
-                                          + \Gamma_{e a d} \Gamma^{e}_{b c}
-                                          - \Gamma_{e a c} \Gamma^{e}_{b d} ).
-\end{cadabra}
-And here is that rule in action
-\begin{cadabra}
-   RicciScalar := R.
-   substitute (RicciScalar, RFromGamma)
-\end{cadabra}
-You can also create a \emph{list} of rules using
-\begin{cadabra}
-   RFromGamma := { R -> R_{a b} g^{a b},
-                   R_{a b} -> R_{a c b d} g^{c d},
-                   R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
-                                  - \partial_{d}{\Gamma_{a b c}}
-                                  + \Gamma_{e a d} \Gamma^{e}_{b c}
-                                  - \Gamma_{e a c} \Gamma^{e}_{b d} }.
-\end{cadabra}
-This rule contains three simple rules, delimited by commas and wrapped in braces (so it is a
-Python list). To achieve the same result as above you could use
-\begin{cadabra}
-   RicciScalar := R.
-   substitute (RicciScalar, RFromGamma)
-   substitute (RicciScalar, RFromGamma)
-   substitute (RicciScalar, RFromGamma)
-\end{cadabra}
-Now you might well ask -- Why are there three calls to \verb|substitute|? In the first call
-only the first rule \verb|R -> R_{a b} g^{a b}| will be matched. The second and third calls
-are needed to match the terms introduced in the previous calls. Having to call
-\verb|substitute| many times is a bit tedious but the good news is that Cadabra provides a
-short cut by allowing you to write
-\begin{cadabra}
-   RicciScalar := R.
-   substitute (RicciScalar, RFromGamma, repeat=True)
-\end{cadabra}
-The \verb|repeat=True| clause will force Cadabra to keep applying rules until the expression
-settles down (i.e., no changes from one substitution to the next).
-
-Lists of rules can be concatenated with other rules using the addition operator. Thus you
-can also write
-\begin{cadabra}
-   RFromRab := R -> R_{a b} g^{a b}.
-   RabFromGamma := { R_{a b} -> R_{a c b d} g^{c d},
-                     R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
-                                    - \partial_{d}{\Gamma_{a b c}}
-                                    + \Gamma_{e a d} \Gamma^{e}_{b c}
-                                    - \Gamma_{e a c} \Gamma^{e}_{b d} }.
-   RFromGamma = RFromRab + RabFromGamma
-\end{cadabra}
-
-There is one caveat that must be noted -- the current version of Cadabra\footnote{Cadabra
-2.2.7 (build 2166.d9aace25f4 dated 2019-09-21)} does not allow the addition of rules that
-each contains just a single rule (as single rules are not \emph{lists}). A simple hack is to
-convert each single rule to a list by adding a trivial rule, (e.g., replace \verb|foo->bah|
-with \verb|{foo->bah,x->x}|).
-
-Finally, you can also split named rules across lines, for example
-\begin{cadabra}
-   RFromRab := R ->
-               R_{a b} g^{a b}.
-   RabFromGamma := { R_{a b} ->
-                     R_{a c b d} g^{c d},
-                     R_{a b c d} ->   \partial_{c}{\Gamma_{a b d}}
-                                    - \partial_{d}{\Gamma_{a b c}}
-                                    + \Gamma_{e a d} \Gamma^{e}_{b c}
-                                    - \Gamma_{e a c} \Gamma^{e}_{b d} }.
-   RFromGamma = RFromRab \
-              + RabFromGamma
-\end{cadabra}
-Though it must be admitted that this is an overkill (in this case). Note also the slash used
-in the pair of lines used to build \verb|RFromGamma|. This is standard Python syntax
-(without the slash Python will report an indentation error).
+See the discussion on line splitting in \hyperlink{link2part3}{Part 3} below for an
+alternative solutions for property lists and anonymous rules.
 
 % \clearpage
 
@@ -783,6 +845,10 @@ in the pair of lines used to build \verb|RFromGamma|. This is standard Python sy
       Then apply that rule to the expression $\Gamma^{a}{}_{bc} - \Gamma^{a}{}_{cb}$ and
       finally use suitable Cadabra algorithms to simplify the result.
    \end{Exercise}
+
+   % this pushes to the footnote to the bottom of the page
+   % \hrule height 0pt% probably not needed
+   % \vfill% this does the trick
 
    \begin{Exercise}
       \exlabel{ex:1.02}%
@@ -862,7 +928,7 @@ in the pair of lines used to build \verb|RFromGamma|. This is standard Python sy
       result (after \verb|sort_product|) would have been $2 A_{a} Z^{a}$. This should give
       you a clue as to how the first expression (involving just $A$) can be sorted to give
       $2A_{a} A^{a}$. Write a code that does the job. An extension of this idea will
-      be devloped later in Exercise \exref{ex:4.06}.
+      be developed later in Exercise \exref{ex:4.06}.
    \end{Exercise}
 
    \begin{Exercise}
@@ -1058,7 +1124,7 @@ and then define a rule for the actual covariant derivative
    deriv := \nabla_{a}{v^{b}} -> \partial_{a}{v^{b}} + \Gamma^{b}_{c a} v^{c}.
 \end{cadabra}
 This rule could then be used to replace any instances of $\nabla_{b} v^a$ in a Cadabra
-expression such as \verb|foo| with the appropriate partial derivatives and Christofell
+expression such as \verb|foo| with the appropriate partial derivatives and Christoffel
 symbols using
 \begin{cadabra}[numbers=none]
    substitute (foo,deriv)
@@ -1121,10 +1187,10 @@ ideal).
 
 The above discussion also explains why \verb|(position=independent)| was required in
 Exercise \exref{ex:1.03}. Without it Cadabra will treat \verb|\Gamma_{a b c}| and
-\verb|\Gamma^{a}{}_{b c}| as one and the same. Thus any attempt to apply a substitution on
-\verb|\Gamma^{a}{}_{b c}| in the rule
+\verb|\Gamma^{a}_{b c}| as one and the same. Thus any attempt to apply a substitution on
+\verb|\Gamma^{a}_{b c}| in the rule
 \Break
-\verb|\Gamma_{a b c} -> g_{a d}\Gamma^{d}{}_{b c}|
+\verb|\Gamma_{a b c} -> g_{a d}\Gamma^{d}_{b c}|
 will actually be applied to both \verb|\Gamma| terms. This removes all trace of
 \verb|\Gamma| from the rule (you can verify this by making small changes to your code from
 Exercise \exref{ex:1.03}). See also Exercise \exref{ex:2.08} for more adventures with
@@ -1252,18 +1318,17 @@ $\nabla_a u^b + \nabla_a v^b$.
    \begin{Exercise}
       \exlabel{ex:2.07}%
       A popular strategy in proving various theorems in differential geometry is to first
-      assume that coordinates have been chosen so that partial derivatives of the
-      metric vanish at some (arbitrarily) chosen point. This step kills a whole raft of
+      assume that coordinates have been chosen so that the metric connection
+      vanishes at some (arbitrarily) chosen point. This step kills a whole raft of
       terms and from there the theorem becomes almost trivial to prove. Suppose that this
-      step, of setting $\partial g = 0$, is to be applied to the following expression
+      step, of setting $\Gamma = 0$, is to be applied to the following expression
       (this is not part of any deep theorem it was invented just to set the scene)
       \begin{align*}
-         A_{ab} = g_{ab}
-                + \partial_{c} g_{ab} x^{c}
-                + \partial_{cd} g_{ab} x^{c} x^{d}
+         \Gamma^{a}{}_{bc}(x) = \Gamma^{a}{}_{b c}
+                            + x^{d} \partial_{d}{\Gamma^{a}{}_{b c}}
       \end{align*}
-      Write a Cadabra code that uses a substitution rule to set the first partial
-      derivatives to zero. Be sure to kill only the first derivatives.
+      Write a Cadabra code that uses a substitution rule to set $\Gamma = 0$ while
+      retaining the partial derivative.
    \end{Exercise}
 
    \begin{Exercise}
@@ -1459,6 +1524,10 @@ The final pair of lines in the above code massages the Cadabra output into a fam
    \Dmath*{\cdb{ex-03.104} = \cdb{ex-03.111}\hfill\lstref{ex-03.111}
                            = \cdb{ex-03.112}\hfill\lstref{ex-03.112}}
 \end{dgroup*}
+
+% --------------------------------------------------------------------------------------------
+\subsection{Symmetry and Young diagrams}
+\label{sec:young-diagrams}
 
 As noted above, the syntax involving the \verb|::TableauSymmetry| does require some (limited)
 explanation. Cadabra uses sophisticated algorithms to handle tensor symmetries based on
@@ -1706,24 +1775,24 @@ Since Cadabra's core language is built on Python (and implemented in \verb|C++| 
 efficiency) it inherits all of the functionality of Python including the use of functions.
 Here is a simple example of a function in Cadabra
 \begin{cadabra}
-   def Tidy (expr):
+   def tidy (expr):
       sort_product   (expr)
       rename_dummies (expr)
       canonicalise   (expr)
       return expr
 \end{cadabra}
 This function takes a single argument \verb|expr|, applies a sequence of Cadabra algorithms
-to \verb|expr| and finally returns the updated version of \verb|expr|. Since \verb|Tidy| is
+to \verb|expr| and finally returns the updated version of \verb|expr|. Since \verb|tidy| is
 a Python function, it must conform to all of Python's rules governing functions in
 particular the use of a consistent indentation in the body of the function. The function can
 be called using
 \begin{cadabra}[numbers=none]
-   foo = Tidy (bah)
+   foo = tidy (bah)
 \end{cadabra}
-This applies \verb|Tidy| to \verb|bah| and saves the result in \verb|foo|. Note that this is
+This applies \verb|tidy| to \verb|bah| and saves the result in \verb|foo|. Note that this is
 a pure Python statement and thus the assignment is made using \verb|=| rather than
 \verb|:=|. This also explains the absence of a Cadabra statement terminator (such as
-\verb|;|) -- it is a Python statement and thus it should conform to the Python's rules for
+\verb|.|) -- it is a Python statement and thus it should conform to the Python's rules for
 statement termination.
 
 As a more involved example consider the situation where you are asked to extract the cubic
@@ -1745,7 +1814,7 @@ Here is a Cadabra function that does the job.
 \begin{cadabra}
    def truncate (poly,n):
 
-       # define the weight and give it a label
+       # assign a weight to x^{a} and give it a label
        x^{a}::Weight(label=\epsilon).             |\lstlabel{ex-04.001}|
 
        # start with an empty expression
@@ -2138,14 +2207,14 @@ The corresponding output is as follows.
 \end{align*}
 The main objection to this method is that it requires explicit knowledge of the left to
 right order of the terms in an expression. Consider for example an expression that happens
-to have say 10 terms and that the tag function have been used to target the $\mu_7$ term. If
-some changes are made to the code preceeding that expression then it is possible that that
-term may no longer be matched to $\mu_7$. The re-ordering of the terms might now find the
-target term matched with $\mu_4$. This would require corresponding changes to the calls to
-\verb|zoom|. It is also possible that this same problem could arise, not through any change
-of the users code, but by changes made by the Cadabra team to the internal workings of its
-own functions. The bottom lines is that the user must take care when using these functions
--- careful scrutiny of the output should be standard practice!
+to have say 10 terms and assume that the tag function have been used to target the $\mu_7$
+term. If some changes are made to the code preceding that expression then it is possible
+that the term of interest may no longer be matched to $\mu_7$. The re-ordering of the terms
+might now find the target term matched with $\mu_4$. This would require corresponding
+changes to the calls to \verb|zoom|. It is also possible that this same problem could arise,
+not through any change of the users code, but by changes made by the Cadabra team to the
+internal workings of its own functions. The bottom line is that the user must take care
+when using these functions -- careful scrutiny of the output should be standard practice!
 
 % \clearpage
 
@@ -2246,11 +2315,11 @@ commonly used in research articles in General Relativity to make clear the disti
 between an abstract expression for a tensor and its components in a given frame (known as
 the Penrose abstract index notation). Note also that only two coordinates were declared in
 the first line -- this implies that the tensors live in a two dimensional space. The
-components of $V_{a}$ are described in line \lstref{ex-06.100} as an explicit list of
+components of $V_{a}$ are described in line \lstref*{ex-06.100} as an explicit list of
 values. Each entry in the list is of the form \verb|foo = bah| where \verb|foo| is one of
 the components of a tensor (in this case $V_{a}$) while \verb|bah| is a scalar expression
 (i.e., an expression that does not contain any free indices, there are other restrictions as
-noted below). Line \lstref{ex-06.101} informs Cadabra how to compute $dV_{a b}$ from $V_{a}$
+noted below). Line \lstref*{ex-06.101} informs Cadabra how to compute $dV_{a b}$ from $V_{a}$
 while the final line completes the job -- it evaluates each of the components of $dV_{a b}$.
 The output from the above code is
 \begin{align*}
@@ -2288,13 +2357,13 @@ In contrast, each of the following definitions will be rejected by Cadabra.
    V := { V_{\theta} = \varphi^2, V_{\varphi} = \theta }.  # use ** for powers
 \end{cadabra}
 
-One other notable exception is that Cadabra does not (yet) support the use of derivative
-operators on the left hand side of the component rules. The following code fragment will
-raise a Cadabra run time error.
+One other notable exception is that Cadabra\footnote{\CdbVersion} does not (yet) support the
+use of derivative operators on the left hand side of the component rules. The following code
+fragment will raise a Cadabra run time error.
 \begin{cadabra}[numbers=none]
    \partial{#}::PartialDerivative.
    V_{a}::Depends(\theta,\varphi,\partial{#}).
-   V := { \partial{\theta}{V_{\varphi}} = \cos(\theta) }.  # partial derivatives not supported
+   V := { \partial{\theta}{V_{\varphi}} = \cos(\theta) }.  # partial derivs not supported
 \end{cadabra}
 A workaround for problems like this is given later in Exercise \exref{ex:6.10}.
 
@@ -2302,10 +2371,11 @@ A workaround for problems like this is given later in Exercise \exref{ex:6.10}.
 \subsection{Ricci curvature of a 2-sphere}
 
 This approach can be easily extended to a somewhat more realistic example -- computing the
-Ricci tensor for a 2-sphere. The starting point in this case is the metric of a 2-sphere,
-which in polar coordinates $(\theta,\varphi)$ can be written as
+Ricci tensor for a 2-sphere\footnote{This example is adapted from the Cadabra web page
+\url{https://cadabra.science/notebooks/sphere.html}}. The starting point in this case is the
+metric of a 2-sphere, which in polar coordinates $(\theta,\varphi)$ can be written as
 \begin{align*}
-   ds^2 = r^2\left(d\theta^2 + \sin^2\theta d\varphi^2\right)
+   ds^2 = r^2\left(d\theta^2 + \sin^2\theta\, d\varphi^2\right)
 \end{align*}
 The metric components are described in Cadabra by a list of non-zero components
 \begin{cadabra}[numbers=none]
@@ -2333,7 +2403,7 @@ form $ds^2 = du^2 + 2uv dudv + dv^2$ the components must be specified using
             g_{v u} = uv, g_{v v} = 1 }.
 \end{cadabra}
 
-Here is the complete code that does the job.
+Here is the complete code for the Ricci tensor for the 2-sphere.
 
 \begin{cadabra}
    {\theta, \varphi}::Coordinate.
@@ -2540,6 +2610,7 @@ using
 where \verb|compt| is the result obtained above using the projection method. The first line
 is needed only when \verb|gphiphi| will be subsequently processed by SymPy operations. Note
 that the usual Python line
+\goodbreak
 \begin{cadabra}[numbers=none]
    from sympy import *
 \end{cadabra}
@@ -2692,9 +2763,9 @@ This produces the following output
 
    \begin{Exercise}
       \exlabel{ex:6.10}%
-      At present Cadabra does not support component rules that include derivative
-      operators in the targets of the component definitions. Thus code like the
-      following will raise a run time error.
+      The current version of Cadabra\footnote{\CdbVersion} does not support component rules
+      that include derivative operators in the targets of the component definitions. Thus
+      code like the following will raise a run time error.
       \begin{cadabra}
          {\theta, \varphi}::Coordinate.
          {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
@@ -2742,7 +2813,7 @@ the previous examples. The final stage of this workflow, where the C-code is cre
 easily implemented using the Codegen package from Python/Sympy. The basic idea is to iterate
 over a list of expressions, passing each expression to Codegen and then saving the results
 to a file. Here is a short Python code that writes raw C-code for a single
-tensor\footnote{An extended vesrion of the function, suitable for use with tensors and scalars, can be found in {\tt\footnotesize support/python/writecode.py}}.
+tensor\footnote{An extended version of the function, suitable for use with tensors and scalars, can be found in {\tt\footnotesize hybrid-latex/python/writecode.py}}.
 
 \begin{cadabra}
    def write_code (obj,name,filename,rank):
@@ -2773,15 +2844,15 @@ tensor\footnote{An extended vesrion of the function, suitable for use with tenso
 \end{cadabra}
 
 The function \verb|write_code| takes four arguments. The first, \verb|obj|, is a list of
-components of the tensor created in a prior call to \verb|evaluate|. The second, \verb|name|,
-is a string representing the C-array name. Entries in this array will be the C-code for the
-corresponding tensor component and its indices will match exactly those of the tensor
-represented by \verb|obj|. The third argument is simply the filename while the final
+components of the tensor created in a prior call to \verb|evaluate|. The second,
+\verb|name|, is a string representing the C-array name. Entries in this array will be the
+C-code for the corresponding tensor component with indices matching exactly those of the
+tensor represented by \verb|obj|. The third argument is simply the filename while the final
 argument, \verb|rank|, equals the number of free indices on the tensor.
 
-The function also applies basic optimisation of the C-code by looking for common
-subexpressions and writes these (as assignments to variables like \verb|x0|, \verb|x1|,
-\verb|x2| ...) to the file ahead of the tensor components.
+The function \verb|write_code| also applies basic optimisation of the C-code by looking for
+common subexpressions and writes these (as assignments to variables like \verb|x0|,
+\verb|x1|, \verb|x2| ...) to the file ahead of the tensor components.
 
 The argument \verb|obj| is assumed to be the result of a call to \verb|evaluate|. As noted
 in Example \ref{sec:ex-06} (on the 2-sphere) there are two ways to call \verb|evaluate|, the
@@ -2837,9 +2908,10 @@ a \verb|#include|) into a separate C-program.
       labelled \verb|x,y,z|.
 
       {\bf Hint:} You may need to refer back to Exercise \exref{ex:6.10} to hide the first
-                  and second partial derivatives of $g_{ab}$. You will also need to add
-                  \verb|simplify=False| to the argument list in the call to
-                  \verb|evaluate|.
+                  and second partial derivatives of $g_{ab}$. You could also need to add
+                  \verb|simplify=False| to the argument list in the call to \verb|evaluate|.
+                  The function \verb|write_code| will optimise the C-code so there is not a
+                  great deal to be gained by asking Sympy to also optimise its output.
    \end{Exercise}
 
 \end{Exercises}
@@ -2887,7 +2959,7 @@ this example
    from foo import *
    expr := R_{a b c d} + R_{a b d c}.
 \end{cadabra}
-The result of this simple example is zero (since $R_{abcd} = - R_abdc$).
+The result of this simple example is zero (since $R_{abcd} = - R_{abdc}$).
 
 Note the restriction to notebooks - these are written in Cadabra's native format used by the
 {\tts cadabra2-gtk} gui (though see section \ref{sec:ImportPlainText} below for a trick that
@@ -2897,16 +2969,17 @@ A good use of this method would be to include all of the common properties from 
 of codes in one notebook. Each code in the collection would then import this one notebook.
 This saves the programmer time and also ensures consistent definitions across the
 collection. However, this still leaves the problem of sharing results between one or more
-programs. One solution, as described in the following section, is to use basic Python IO to
+programs. One solution, as described in the following section, is to use basic Python I/O to
 read and write the data as required.
 
 % --------------------------------------------------------------------------------------------
 \subsection{Basic data I/O}
 \label{sec:DataIO}
 
-The basic idea is to store Cadabra objects as strings in a Python dictionary which in
-turn is stored as a file in \verb|JSON| format. The code consists of three simple Python
-functions with the following headers
+The basic idea is to store Cadabra objects as strings in a Python dictionary which in turn
+is stored as a file in \verb|JSON| format. The Python code
+\verb|hybrid-latex/python/cdblib.py| consists of three simple Python functions with the
+following headers
 \begin{cadabra}
    def create (file_name):                 # create a library or clear an exiting library
    def put    (key_name,object,file_name): # add an object to the library
@@ -2914,9 +2987,9 @@ functions with the following headers
 \end{cadabra}
 
 The implementation of these functions is not all that important here (see the source code in
-\verb|cadabra2/python| for full details). Note that there are no explicit functions to open
-or close the library as such actions are handled internally in the \verb|put| and \verb|get|
-functions.
+\verb|hybrid-latex/python| for full details). Note that there are no explicit functions to
+open or close the library as such actions are handled internally in the \verb|put| and
+\verb|get| functions.
 
 Here is a simple example that demonstrates the use of these functions. It creates two
 expressions, writes them to a library, reads them back in but with new names and finally
@@ -2938,11 +3011,11 @@ checks that the new objects agree with the originals.
    put ('g_ab',gab,lib_name)
    put ('g^ab',iab,lib_name)
 
-   foo = get ('g_ab',lib_name)
-   bah = get ('g^ab',lib_name)
+   gBar = get ('g_ab',lib_name)
+   iBar = get ('g^ab',lib_name)
 
-   tmp := @(gab) - @(foo).
-   tmp := @(iab) - @(bah).
+   tmp := @(gab) - @(gBar).
+   tmp := @(iab) - @(iBar).
 \end{cadabra}
 
 The output from the above code is as follows. First, the two original objects, $g_{ab}$ and
@@ -2994,8 +3067,8 @@ consists of the following statements
    from cadabra2_defaults import *                  |\lstlabel{ex:8.02}|
    __cdbkernel__ = cadabra2.__cdbkernel__           |\lstlabel{ex:8.03}|
 
-   tmp = Indices(Ex(r'{a,b,c,d,e,f,g,h}'), Ex(r'position=independent)') ) |\lstlabel{ex:8.04}|
-   tmp = RiemannTensor(Ex(r'R_{a b c d}'), Ex(r'') )                      |\lstlabel{ex:8.05}|
+   tmp = Indices(Ex(r'{a,b,c,d,e,f,g,h}'), Ex(r'position=independent') ) |\lstlabel{ex:8.04}|
+   tmp = RiemannTensor(Ex(r'R_{a b c d}'), Ex(r'') )                     |\lstlabel{ex:8.05}|
 \end{cadabra}
 This file could then be used instead of the notebook as the target of the \verb|import|
 statement (as in the second part of Example \ref{sec:ImportNotebooks} above).
@@ -3042,6 +3115,10 @@ only for such simple calculations. The examples in this second part were chosen 
 such notions -- they are non-trivial calculations and demonstrate that Cadabra is more than
 capable of handling serious computations in general relativity.
 
+The discussion in each of the following examples will not be as detailed as that given in
+Part 1. Also, as there are no exercises in this part the reader is encouraged to experiment
+with the source code (in \verb|source/cadabra/examples/|).
+
 \clearpage
 
 % ============================================================================================
@@ -3051,16 +3128,16 @@ capable of handling serious computations in general relativity.
 
 \input{../cadabra/lib/example-09.cdbtex}
 
-In this example Cadabra will be used to derive the Gauss equation which relates the induced
-and ambient curvatures of a hypersurface in an $n-$dimensional Riemannian manifold.
+\hypertarget{GaussEqtn}{In this example} Cadabra will be used to derive the Gauss equation
+which relates the induced and ambient curvatures of a hypersurface in an $n-$dimensional
+Riemannian manifold.
 
 The basics of the underlying mathematics are as follows. Suppose $\Sigma$ is an
 $(n-1)-$dimensional subspace of an $n-$dimensional space $M$. Suppose $M$ is equipped with
 Riemannian metric $g$ and a metric compatible derivative operator $\nabla$. The subspace
-$\Sigma$ will, by way of its embedding in $M$, inherit a metric and derivative operator
-which will be denoted by $h$ and $D$ respectively (note this use of $D$ differs from that in
-the previous sections, here $D$ is a differential operator). Let $n^a$ be the oriented unit
-normal to $\Sigma$. Then the metrics of $\Sigma$ and $M$ are related by
+$\Sigma$ will, by way of its embedding in $M$, inherit a metric and a derivative operator
+which will be denoted by $h$ and $D$ respectively. Let $n^a$ be the oriented unit normal to
+$\Sigma$. Then the metrics of $\Sigma$ and $M$ are related by
 \begin{align*}
    g_{a b} = h_{a b} + n_{a} n_{b}
 \end{align*}
@@ -3073,7 +3150,7 @@ tensor for $(\Sigma,h,D)$ can then be obtained by computing $\left(D_{c} D_{b}-D
 D_{c}\right) v_{a}$. This is all very standard and can be found in most textbooks on
 differential geometry (see \cite{chavel:2006-01}).
 
-Translating these equations into Cadabra code is very straightforward and follows a now
+Translating these equations into Cadabra code is straightforward and follows a now
 familiar pattern. Unlike the previous examples, the discussion will begin by considering the
 fragments of code needed to express the basic mathematical relations as just given. These
 code fragments will later be glued together to form a complete Cadabra program.
@@ -3097,9 +3174,9 @@ $\left(D_{r}D_{q} - D_{q}D_{r} \right)v_{p}$ which will be written as \verb|vpqr
    substitute (vpqr,vpq)
 \end{cadabra}
 
-The code will also need to contain some standard substitutions to simplify and tidy the
-result. Note that all of the previous definitions and the following substitutions are exactly
-what would normally be done if these calculations were done by hand. For example, the lines
+Some standard substitutions will also be needed to simplify and tidy the result. These
+substitutions (and all of the previous definitions) are exactly what would normally be used
+if these calculations were done by hand. For example, the lines
 \begin{cadabra}[numbers=none]
    substitute (vpqr,$h^{a}_{b} n^{b} -> 0$)
    substitute (vpqr,$h^{a}_{b} n_{a} -> 0$)
@@ -3265,8 +3342,8 @@ where $g_{ab}$, $g^{ab}$, $R_{abcd}$ and its derivatives are evaluated at the or
 expansions are valid inside a suitably chosen neighbourhood of the origin. Note that it is
 customary to choose $g_{ab}={\rm diag}(-1,1,1,1)$ for Lorentzian spacetimes. For more
 details on Riemann normal coordinates, their derivation and use, see
-\cite{chern-chen-lam:2000-01},
 \cite{chavel:2006-01},
+\cite{chern-chen-lam:2000-01},
 \cite{eisenhart:1926-01},
 \cite{gray:1973-01}, \cite{willmore:1996-01}.
 See also the website \url{https://github.com/leo-brewin/riemann-normal-coords/} for an
@@ -3294,8 +3371,8 @@ following simple expression for the metric determinant
                  g^{ip}      g^{jq}      g^{kr}      g^{ls}
 \end{align*}
 
-Implementing the above in Cadabra is quite straightforward though there a two minor points
-worth noting. First, Cadabra provides an algorithm, \verb|asym|, that can be used to impose
+Implementing the above in Cadabra is straightforward though there a two minor points worth
+noting. First, Cadabra provides an algorithm, \verb|asym|, that can be used to impose
 antisymmetry on chosen objects. This can be used to create $\epsilon^{abcd}_{pqrs}$ using
 code similar to
 \begin{cadabra}
@@ -3340,7 +3417,7 @@ from $\ngab{0}_{a b}$, $\ndetg{1}$ to be computed form $\ngab{0}_{a b}$ and $\ng
 etc.
 
 Despite the clear advantage of this second scheme the code given in the
-\verb|cadabar2/examples/| directory uses the previous lazy method. Why? For the simple
+\verb|source/cadabra/examples/| directory uses the previous lazy method. Why? For the simple
 reason that it was easy to write and it gave results in a reasonable time (similar to most
 of the other codes in this tutorial). It is certain that this lazy code will be too
 expensive for higher order expansions (or in higher dimensions).
@@ -3392,22 +3469,22 @@ The starting point is the familiar equation for the connection
                                                      -\partial_{d}{g_{b c}}\right)
 \end{align*}
 where $g_{ab}(x)$ and $g^{ab}(x)$ are given by (\ref{ex-10:rncgab}) and (\ref{ex-10:rnciab})
-respectively. The proliferation of terms will arise first through the product rule acting on
+respectively. A proliferation of terms will arise first through the product rule acting on
 the individual terms and second through the expansion of $g^{ab}(x)$ and its coupling with
 the derivative terms. It is also clear that at some point the result will need to be
 truncated to an order consistent with that of the metric.
 
 An obvious strategy (to minimise computational cost) is to avoid introducing unnecessary
 terms. One clear case of this occurs when computing the derivatives of terms such as
-$\partial_{a}{R_{bcde} x^{x} x^{e}}$. Since the $R_{abcd}$ are constants (evaluated at the
+$\partial_{a}(R_{bcde} x^{x} x^{e})$. Since the $R_{abcd}$ are constants (evaluated at the
 origin of the RNC) it follows that
 \begin{align}
-   \partial_{a}{R_{bcde} x^{x} x^{e}} = R_{bcde} \partial_{a}{x^{x} x^{e}}
+   \partial_{a}(R_{bcde} x^{x} x^{e}) = R_{bcde} \partial_{a}(x^{x} x^{e})
    \label{ex-11:simple}
 \end{align}
-How is this simple step implemented in Cadabra? One (naive) option is invoke a product rule
-then set the derivatives of $R_{abcd}$ to zero. A better option is to inform Cadabra ahead
-of time which objects are non-constant. Here is a short fragment that does the job.
+How is this simple step implemented in Cadabra? One (naive) option is to invoke a product
+rule then set the derivatives of $R_{abcd}$ to zero. A better option is to inform Cadabra
+ahead of time which objects are non-constant. Here is a short fragment that does the job.
 \begin{cadabra}
    \partial{#}::PartialDerivative.                 |\lstlabel{ex-11.00}|
    x{#}::Depends{\partial}.                        |\lstlabel{ex-11.01}|
@@ -3448,8 +3525,8 @@ main body of the code (excluding the rules for the metric and its inverse) is
 \end{cadabra}
 At this point the expression for $\Gamma^{a}{}_{b c}(x)$ will contain terms beyond
 3rd-order\footnote{Why focus on 3rd order? Because the metric and its inverse are known only
-to 4th-order and the $\Gamma^{a}{}_{b c}(x)$ requires one derivative in $x^{a}$.} in $x^{a}$.
-A key question is then -- when should this truncation be imposed? A good choice is to
+to 4th-order and the $\Gamma^{a}{}_{b c}(x)$ requires one derivative in $x^{a}$.} in
+$x^{a}$. This is a good time to revisit the question of truncation. A good choice is to
 truncate \emph{before} applying the housekeeping as in the following code
 \begin{cadabra}[numbers=none]
    Gamma = truncate (Gamma,3)
@@ -3485,8 +3562,8 @@ magic across all of the terms in \verb|Gamma| which for a 4th-order metric is ap
 canonicalise) will naturally target each power of $x^{a}$. Thus a better approach would be
 to decompose \verb|Gamma| into separate powers of $x^{a}$, do the housekeeping on each power
 then rebuild \verb|Gamma|. That will work but it is a silly solution as there is no point in
-doing any housekeeping on the higher order terms as they are discarded in the later call to
-\verb|truncate|. The main point in this variation is to show how simple changes (without
+doing any housekeeping on the higher order terms as they will be discarded in the later call
+to \verb|truncate|. The main point in this variation is to show how simple changes (without
 thought) can dramatically blow out the computational cost. The advice given earlier, to keep
 as few terms as needed, is well worth remembering.
 
@@ -3577,7 +3654,7 @@ for both $\Gamma$ and $\GammaBar$. Further changes include lowering indices so t
 Riemann term is of the form $R_{abcd}$ and sorting all products into a consistent order
 $g,x,z,R,\nabla R,\nabla\nabla R$. The goal in making these changes is simply to maximise
 the opportunity to use known Riemann symmetries and to spot the terms that cancel. These
-basic preconditioning steps are loosely implemented in Cadabra as follows.
+basic preconditioning steps are implemented in Cadabra as follows.
 
 Converting the Greek indices on $\GammaBar$ to Latin indices can be done in Cadabra by
 first declaring a named pair of index sets
@@ -3714,8 +3791,8 @@ zero (and thus that the Weyl tensor must also be zero).
 % --------------------------------------------------------------------------------------------
 \subsection{Proof by brute force}
 
-The computational steps are quite straightforward. First start with basic definitions for the
-connection, the Riemann, Ricci and Weyl tensors.
+The computational steps are straightforward. First start with basic definitions for the
+connection and the Riemann, Ricci and Weyl tensors.
 \begin{cadabra}
    GammaU := \Gamma^{a}_{b c} ->  1/2 g^{a d} (   \partial_{b}{g_{d c}}
                                                 + \partial_{c}{g_{b d}}
@@ -3879,7 +3956,7 @@ transformations of the metric. That is, if two metrics, $g$ and $\overline{g}$, 
 by a conformal transformation, $\overline{g} = \phi g$ for some scalar function $\phi$, then
 their corresponding Weyl tensors are equal, $\overline{C}^{a}{}_{bcd} = C^{a}{}_{bcd}$. This
 simple result can be shown by direct computation. Though this result is true in any number
-of dimensions the specific case of four dimensions (in this example) is sufficient to
+of dimensions, the specific case of four dimensions (in this example) is sufficient to
 demonstrate the ideas behind a general proof. Note that the following computation is based
 on the related expression $\overline{C}_{abcd} = \phi C_{abcd}$.
 
@@ -3935,8 +4012,9 @@ form as
 They can also be recast in the form of a Cauchy initial value problem in which a
 3-dimensional metric is evolved forward in time from a given set of initial conditions. One
 such formulation is due to Arnowitt, Deser and Misner, widely known as the ADM 3+1
-formulation. In one of its simplest forms\footnote{That is, for vacuum spacetimes using
-coordinates with a zero shift vector.}, the ADM 3+1 evolution equations can be written as
+formulation (see \cite{mtw:1973-01}). In one of its simplest forms\footnote{That is, for
+vacuum spacetimes using coordinates with a zero shift vector.}, the ADM 3+1 evolution
+equations can be written as
 \begin{align}
    \ddt{g_{i j}} &= -2 N K_{i j}\\[5pt]
    \ddt{K_{i j}} &= -D_{i j}{N} + N (R_{i j} + \trK K_{i j} - 2 K_{i m} K_{j n} g^{m n})
@@ -3946,7 +4024,7 @@ tensor, $D$ is the metric compatible covariant derivative and finally, $N$ is th
 function (which can be freely specified though subject to $N>0$).
 
 For many years the ADM 3+1 equations were the cornerstone of computational general
-relativity. Unfortunately they proved to be less than ideal for long term evolutions of one
+relativity. Unfortunately, they proved to be less than ideal for long term evolutions of one
 or more black holes (the evolutions were highly unstable). In recent times an alternative
 set of equations, first proposed by Shibata and Nakamura \cite{shibata:1995-01} and later
 popularised by Baumgarte and Shapiro \cite{baumgarte:1998-01}, now known as the BSSN
@@ -4106,8 +4184,8 @@ Cadabra code for a complete derivation the BSSN equations (with zero shift) from
 equations. A companion website, \url{https://github.com/leo-brewin/adm-bssn-numerical},
 contains further Cadabra code that converts the BSSN equations into a working numerical code.
 
-All of the tools in that second website are based on material already covered in this tutorial
-(in particular, Example \ref{sec:ex-07} for exporting tensor expression as C-code).
+All of the tools in that second website are based on material already covered in this
+tutorial (in particular, Example \ref{sec:ex-07} for exporting tensor expressions as C-code).
 
 Using a symbolic package (in this case Cadabra) to turn a set of partial differential
 equations (the BSSN equations) into a numerical code has great advantages. It frees the
@@ -4144,9 +4222,6 @@ If you have never encountered the Cadabra runtime error
 
 consider yourself lucky. For those who have (author included) here are some examples
 demonstrating various ways to encounter this error.
-
-\newcount\mynum\mynum=0%
-\def\Item{\advance\mynum1\item[\bf\the\mynum.]}
 
 \bgroup
 \lstset{numbers=none,gobble=5}
@@ -4235,8 +4310,9 @@ demonstrating various ways to encounter this error.
    % -----------------------------------------------------------------------------------------
    \Item{\bf Upstairs/downstairs index clash}\\[5pt]
    The free indices in an expression must be consistent with regards to being upstairs or
-   downstairs when using \verb|Indices(position=independent)|. Thus the following code snippet
-   will cause grief for Cadabra.
+   downstairs when using either \verb|Indices(position=fixed)| or
+   \verb|Indices(position=independent)|. Thus the following code snippet will cause grief
+   for Cadabra.
    \begin{cadabra}
       foo := A_{a} + B^{a}.
    \end{cadabra}
@@ -4245,7 +4321,7 @@ demonstrating various ways to encounter this error.
 % ============================================================================================
 \section*{Problems with derivatives}
 
-\mynum=5
+\ItemNum=6
 
 \begin{enumerate}
 
@@ -4281,20 +4357,18 @@ demonstrating various ways to encounter this error.
    \begin{cadabra}
       foo := A_{a} \partial_{b}{B^{a}};
    \end{cadabra}
-   might result in index raising/lowering of the dummy index \verb|a|.
-   In general relativity this would not be allowed (except for the trivial
-   case where the metric components are constants). One way to avoid this
-   problem is to use either \verb|Indices(position=fixed)| or
-   \verb|Indices(position=independent)|. This will force
-   \verb|canonicalise| to leave the indices as is. Another option (if possible)
-   is to only use metric compatible derivative operators.
+   might result in index raising/lowering of the dummy index \verb|a|. In general relativity
+   this would not be allowed (except for the trivial case where the metric components are
+   constants). One way to avoid this problem is to use \verb|Indices(position=independent)|.
+   This will force \verb|canonicalise| to leave the indices as is. Another option (if
+   possible) is to only use metric compatible derivative operators.
 
 \end{enumerate}
 
 % ============================================================================================
 \section*{Problems with substitution rules}
 
-\mynum=8
+\ItemNum=9
 
 \begin{enumerate}
 
@@ -4323,6 +4397,7 @@ demonstrating various ways to encounter this error.
 
    % -----------------------------------------------------------------------------------------
    \Item{\bf Only use \verb|->| to change index structure}\\[5pt]
+   \itlabel{it:SubRuleChoices}
    There are occasions where indices need to added or deleted from expressions.
    Doing so using an equality rule like \verb|A_{a b} = A_{a}| will raise a runtime error.
    For example, the following code
@@ -4345,6 +4420,7 @@ demonstrating various ways to encounter this error.
 
    % -----------------------------------------------------------------------------------------
    \Item{\bf Use care when using \verb|->| to change index structure}\\[5pt]
+   \itlabel{it:SubRuleDanger}
    Changing the index structure of an expression can cause runtime errors. Here is a simple
    example.
    \begin{cadabra}
@@ -4399,8 +4475,8 @@ demonstrating various ways to encounter this error.
    collection at the end of Example \ref{sec:ex-01}. Note that in this case
    \verb|rename_dummies| did not align the \verb|x| indices. That job fell to
    \verb|canonicalise|. The combination of \verb|sort_product|, \verb|rename_dummies| and
-   \verb|canoniclaise| appears throughout this tutorial in the examples and exercises. It is a
-   very standard combination.
+   \verb|canoniclaise| appears throughout this tutorial in the examples and exercises. It is
+   a very standard combination.
 
    The take home point here is that careful inspection of the expression is required before
    operations that alter the index structure are applied.
@@ -4410,7 +4486,7 @@ demonstrating various ways to encounter this error.
 % ============================================================================================
 \section*{Miscellaneous}
 
-\mynum=11
+\ItemNum=12
 
 \begin{enumerate}
 
@@ -4420,7 +4496,7 @@ demonstrating various ways to encounter this error.
    few things to look for.
    \begin{itemize}
       \item Check the termination character -- a dot, a semi-colon or the closing parenthesis
-            of a function call. The dot and semi-colon are only used on Cadabra statements.
+            of a function call.
       \item Check the assignment operator, use \verb|:=| for Cadabra and \verb|=| for Python.
       \item Do not use underscores in symbol names.
       \item Use standard LaTeX names such as \verb|\alpha,\beta,\mu| etc.
@@ -4456,7 +4532,8 @@ demonstrating various ways to encounter this error.
 
    % -----------------------------------------------------------------------------------------
    \Item{\bf Excessively long lines}\\[5pt]
-   Each statement in the following fragment will raise a Cadabra syntax error.
+   \hypertarget{link2part3}{Each} statement in the following fragment will raise a Cadabra
+   syntax error.
    \begin{cadabra}
       {\alpha,\beta,\gamma,\delta,
        \mu,\nu,\sigma,\rho,\tau,\theta}::Indices.
@@ -4481,11 +4558,11 @@ demonstrating various ways to encounter this error.
    \egroup
    The file \verb|foo.py| will contain the following lines
    \begin{cadabra}
-      __cdbtmp__ = Indices(Ex(r'''{\alpha,\beta,\gamma,\delta,\mu,\nu,\sigma,\rho,\tau,\theta}'''), Ex(r'''''') )
+      __cdbtmp__ = Indices(Ex(r'''{\alpha,\beta,\gamma,\delta,\mu,\nu,\sigma,\rho,\tau,\theta}'''), Ex(r''))
 
-      __cdbtmp__ = SortOrder(Ex(r'''{R_{\alpha\beta\gamma\delta},\partial_{\mu}{R_{\alpha\beta\gamma\delta}}}'''), Ex(r'''''') )
+      __cdbtmp__ = SortOrder(Ex(r'''{R_{\alpha\beta\gamma\delta},\partial_{\mu}{R_{\alpha\beta\gamma\delta}}}'''), Ex(r''))
 
-       substitute (foo, Ex(r'''R -> R_{\mu\nu} g^{\mu\nu},R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}''', False))
+      substitute (foo, Ex(r'''R -> R_{\mu\nu} g^{\mu\nu}, R_{\mu\nu} -> R_{\alpha\mu\beta\nu} g^{\alpha\beta}''', False))
    \end{cadabra}
    This does not seem like much of an improvement but the good news is that as most of the
    text is written as strings the issue of line breaking is now trivial -- strings are
@@ -4526,24 +4603,9 @@ demonstrating various ways to encounter this error.
       Algorithm (foo, Ex(r'a substitution rule', False))
    \end{lstlisting}
 
-   Note that the conversion can introduce some odd artefacts. For example, the following
-   fragment
-   \begin{cadabra}
-      {a,b,c}::Indices(position=indpendent).
-
-      substitute (foo, $A->B$)
-   \end{cadabra}
-   will be converted as
-   \begin{cadabra}
-      tmp = Indices(Ex(r'{a,b,c}'), Ex(r'position=independent)') )
-
-      substitute (foo, Ex(r'''A->B''', False))
-   \end{cadabra}
-   The stray closing parenthesis in \verb|Ex(r'position=indpendent)')| and the \verb|False|
-   argument in the \verb|substitute (foo,Ex(...))| call both appear to serve no purpose and
-   can be deleted.
-
-   \Note{Check the lastest version of Cadabra to see if the above still applies.}
+   Note that the \verb|False| argument in the \verb|substitute (foo,Ex(...,False))| call
+   appears to serve no purpose and can be deleted (though, if in doubt, just leave it
+   as it stands).
 
 \end{enumerate}
 
@@ -4558,6 +4620,10 @@ demonstrating various ways to encounter this error.
 \vskip 4cm
 {\Huge\bf Part 4 Further reading.}
 \vskip 2cm
+The content of this tutorial reflects mainly the author's own interests. It is thus a highly
+selective sample of topics in Cadabra. There is vastly more to Cadabra than has been
+conveyed in this tutorial. The following few pages contain links to a wide variety of
+(mostly) on-line resources for Cadabra.
 
 \lstset{numbers=none}
 
@@ -4620,8 +4686,8 @@ all of which can be obtained from the authors GitHub site (i.e., the very next w
 
 \url{https://github.com/leo-brewin/hybrid-latex}\Break
 This site contains all the tools needed to process the hybrid LaTeX/Cadabra files used
-int his tutorial. It also contains similar tools for LaTeX sources with embedded Maple,
-Mathematica, Matlab and Python code. Some people may find these tools useful beyond their
+in this tutorial. It also contains similar tools for LaTeX sources with embedded Maple,
+Mathematica, Matlab and Python code. Some readers may find these tools useful beyond their
 use in this tutorial.
 
 \url{https://github.com/leo-brewin/riemann-normal-coords}\Break

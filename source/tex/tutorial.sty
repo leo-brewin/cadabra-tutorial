@@ -1,6 +1,8 @@
 %-------------------------------------------------------------------------------
 \parindent=0pt
 \parskip=8pt plus 2pt minus 1pt
+% --------------------------------------------------------------------------------------------
+\IfFileExists{version.tex}{\input{version.tex}}{}
 %-------------------------------------------------------------------------------
 % \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 % \setcounter{footnote}{0}% may need this in body of .tex to force LaTeX to return to
@@ -134,7 +136,7 @@
 \immediate\openout\lstnumfile=./\jobname.lstnum%
 %
 \def\lstlabel#1{%
-\expandafter\xdef\csname lst@num@#1\endcsname{\arabic{lstnumber}}% can also use \the\vlaue{...} for \arabic{...}
+\expandafter\xdef\csname lst@num@#1\endcsname{\arabic{lstnumber}}% can also use \the\value{...} for \arabic{...}
 \immediate\write\lstnumfile{%
 \noexpand\expandafter\noexpand\xdef\noexpand\csname ex@num@#1\noexpand\endcsname{\arabic{lstnumber}}}}%
 %
@@ -152,11 +154,29 @@
 \immediate\openout\exnumfile=./\jobname.exnum%
 %
 \def\exlabel#1{%
-\expandafter\xdef\csname ex@num@#1\endcsname{\arabic{section}.\arabic{ExerciseNum}}% can also use \the\vlaue{...} for \arabic{...}
+\expandafter\xdef\csname ex@num@#1\endcsname{\arabic{section}.\arabic{ExerciseNum}}% can also use \the\value{...} for \arabic{...}
 \immediate\write\exnumfile{%
 \noexpand\expandafter\noexpand\xdef\noexpand\csname ex@num@#1\noexpand\endcsname{\arabic{section}.\arabic{ExerciseNum}}}}%
 %
 \def\exref#1{\hbox{\normalfont\color{blue} \ifcsname ex@num@#1\endcsname\csname ex@num@#1\endcsname\else ?#1?\MyWarning{Undefined exercise: #1}\fi}}
+%
+%-------------------------------------------------------------------------------
+% macros for label & ref of items in enumerate environment
+%
+\newcount\ItemNum\ItemNum=0%
+\def\Item{\advance\ItemNum1\item[\bf\the\ItemNum.]}
+%
+\IfFileExists{./\jobname.itnum}{\input ./\jobname.itnum\relax}{}
+%
+\newwrite\itnumfile%
+\immediate\openout\itnumfile=./\jobname.itnum%
+%
+\def\itlabel#1{%
+\expandafter\xdef\csname it@num@#1\endcsname{\the\ItemNum}% can also use \the\value{...} for \arabic{...}
+\immediate\write\itnumfile{%
+\noexpand\expandafter\noexpand\xdef\noexpand\csname it@num@#1\noexpand\endcsname{\the\ItemNum}}}%
+%
+\def\itref#1{\hbox{\normalfont\color{blue} \ifcsname it@num@#1\endcsname\csname it@num@#1\endcsname\else ?#1?\MyWarning{Undefined item: #1}\fi}}
 %
 %-------------------------------------------------------------------------------
 % for the BSSN stuff

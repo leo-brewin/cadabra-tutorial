@@ -6,6 +6,7 @@ SHELL = /bin/bash
 TARGETS = $(patsubst %.tex,%,$(wildcard tutorial.tex))
 #-------------------------------------------------------------------------------
 all:
+	@ version.sh
 	@ for file in $(TARGETS); \
 	  do \
 	     if ! [[ -e $${file}.aux ]]; then \
@@ -44,7 +45,7 @@ clean:
 	  do \
 	     rm -rf $${file}.log $${file}.out $${file}.tmplog $${file}.synctex.gz; \
 		  rm -rf $${file}.bcf $${file}.blg $${file}.run.xml; \
-	     rm -rf $${file}.errors $${file}.exnum $${file}.lstnum $${file}.blg; \
+	     rm -rf $${file}.errors $${file}.exnum $${file}.itnum $${file}.lstnum $${file}.blg; \
 	  done
 #-------------------------------------------------------------------------------
 veryclean:

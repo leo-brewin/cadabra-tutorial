@@ -7,10 +7,10 @@
 U_{a} V_{b}%
 }
 \cdbtag{ex-0603.102}{%
-\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\theta}{}_{\theta}&= \varphi U_{\theta}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}&= U_{\theta} \sin{\theta}\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}&= \varphi U_{\varphi}\\[-.5ex]%
-\square{}_{\varphi}{}_{\varphi}&= U_{\varphi} \sin{\theta}\\[-.5ex]%
+\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\theta}{}_{\theta}& = \varphi U_{\theta}\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = U_{\theta} \sin{\theta}\\[-.5ex]%
+\square{}_{\varphi}{}_{\theta}& = \varphi U_{\varphi}\\[-.5ex]%
+\square{}_{\varphi}{}_{\varphi}& = U_{\varphi} \sin{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

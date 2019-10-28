@@ -10,8 +10,8 @@
 dV_{b a}-dV_{a b}%
 }
 \cdbtag{ex-0610.203}{%
-\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}&= \sin{\theta}-\cos{\theta}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}&= -\sin{\theta}+\cos{\theta}\\[-.5ex]%
+\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \sin{\theta}-\cos{\theta}\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = -\sin{\theta}+\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

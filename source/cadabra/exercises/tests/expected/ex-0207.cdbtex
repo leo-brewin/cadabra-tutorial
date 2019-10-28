@@ -1,15 +1,27 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0207.101}{%
-g_{a b}+\partial_{c}{g_{a b}} x^{c}+\partial_{c d}{g_{a b}} x^{c} x^{d}%
+\Gamma^{a}{}_{b c}+x^{d} \partial_{d}{\Gamma^{a}{}_{b c}}%
 }
 \cdbtag{ex-0207.102}{%
-g_{a b}+\partial_{c}{g_{a b}} x^{c}+Z_{c d a b} x^{c} x^{d}%
+\Gamma^{a}{}_{b c}+x^{d} Z_{d a b c}%
 }
 \cdbtag{ex-0207.103}{%
-g_{a b}+Z_{c d a b} x^{c} x^{d}%
+x^{d} Z_{d a b c}%
 }
 \cdbtag{ex-0207.104}{%
-g_{a b}+\partial_{c d}{g_{a b}} x^{c} x^{d}%
+x^{d} \partial_{d}{\Gamma^{a}{}_{b c}}%
+}
+\cdbtag{ex-0207.201}{%
+\Gamma^{a}{}_{b c}+x^{d} \partial_{d}{\Gamma^{a}{}_{b c}}%
+}
+\cdbtag{ex-0207.202}{%
+0%
+}
+\cdbtag{ex-0207.301}{%
+A_{a b}+x^{c} \partial_{c}{A_{a b}}+x^{c} x^{d} \partial_{d c}{A_{a b}}%
+}
+\cdbtag{ex-0207.302}{%
+A_{a b}+x^{c} x^{d} \partial_{d c}{A_{a b}}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

@@ -20,25 +20,37 @@
 \section*{Example 1 The metric connection}
 
 \begin{cadabra}
+   # Define some properties
+
    {a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices.
 
    g_{a b}::Metric.
    g_{a}^{b}::KroneckerDelta.
 
+   \nabla{#}::Derivative.
    \partial{#}::PartialDerivative.
+
+   # Define rules for covariant derivative and the Christoffel symbol
+
+   nabla := \nabla_{c}{g_{a b}} -> \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
+                                                         - g_{d b}\Gamma^{d}_{a c}.   # cdb (nabla.100,nabla)
 
    Gamma := \Gamma^{a}_{b c} -> (1/2) g^{a d} (  \partial_{b}{g_{d c}}
                                                + \partial_{c}{g_{b d}}
-                                               - \partial_{d}{g_{b c}} ).   # cdb (ex-01.101,Gamma)
+                                               - \partial_{d}{g_{b c}} ).   # cdb (Gamma.100,Gamma)
 
-   cderiv := \partial_{c}{g_{a b}} - g_{a d}\Gamma^{d}_{b c}
-                                   - g_{d b}\Gamma^{d}_{a c}.               # cdb (ex-01.102,cderiv)
+   # Start with a simple expression
 
-   substitute          (cderiv, Gamma)                                      # cdb (ex-01.103,cderiv)
-   distribute          (cderiv)                                             # cdb (ex-01.104,cderiv)
-   eliminate_metric    (cderiv)                                             # cdb (ex-01.105,cderiv)
-   eliminate_kronecker (cderiv)                                             # cdb (ex-01.106,cderiv)
-   canonicalise        (cderiv)                                             # cdb (ex-01.107,cderiv)
+   cderiv := \nabla_{c}{g_{a b}}.                                           # cdb (ex-01.100,cderiv)
+
+   # Do the computations
+
+   substitute          (cderiv, nabla)                                      # cdb (ex-01.101,cderiv)
+   substitute          (cderiv, Gamma)                                      # cdb (ex-01.102,cderiv)
+   distribute          (cderiv)                                             # cdb (ex-01.103,cderiv)
+   eliminate_metric    (cderiv)                                             # cdb (ex-01.104,cderiv)
+   eliminate_kronecker (cderiv)                                             # cdb (ex-01.105,cderiv)
+   canonicalise        (cderiv)                                             # cdb (ex-01.106,cderiv)
 
    checkpoint.append (cderiv)
 \end{cadabra}
@@ -46,13 +58,17 @@
 \clearpage
 
 \begin{align*}
-    \Gamma &=\Cdb{ex-01.101}\\
-   g_{ab;c}&=\Cdb{ex-01.102}\\
-           &=\Cdb{ex-01.103}\\
-           &=\Cdb{ex-01.104}\\
-           &=\Cdb{ex-01.105}\\
-           &=\Cdb{ex-01.106}\\
-           &=\Cdb{ex-01.107}
+   &\Cdb{nabla.100}\\
+   &\Cdb{Gamma.100}
+\end{align*}
+
+\begin{align*}
+   \cdb{ex-01.100} &= \Cdb{ex-01.101}\\
+                   &= \Cdb{ex-01.102}\\
+                   &= \Cdb{ex-01.103}\\
+                   &= \Cdb{ex-01.104}\\
+                   &= \Cdb{ex-01.105}\\
+                   &= \Cdb{ex-01.106}
 \end{align*}
 
 \clearpage

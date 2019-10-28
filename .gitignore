@@ -9,6 +9,7 @@
 *.blg
 *.errors
 *.exnum
+*.itnum
 *.lstnum
 *_.cdb
 *.cdbidx

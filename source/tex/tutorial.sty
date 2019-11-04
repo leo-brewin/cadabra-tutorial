@@ -1,3 +1,7 @@
+\usepackage[toc]{multitoc}
+\renewcommand*{\multicolumntoc}{2}
+\setlength{\columnseprule}{0pt}
+\setlength{\columnsep}{25pt}
 %-------------------------------------------------------------------------------
 \parindent=0pt
 \parskip=8pt plus 2pt minus 1pt
@@ -76,6 +80,11 @@
 \vskip 0pt plus 0.1\vsize\penalty-500\vskip 0pt plus-0.1\vsize%
 \nobreak}
 \def\Break{\hfill\break}
+%-------------------------------------------------------------------------------
+\def\ResetCounters{%
+\setcounter{ExerciseNum}{0}%
+\lstset{firstnumber=1}%
+}
 %-------------------------------------------------------------------------------
 \newcounter{ExerciseNum}
 \setcounter{ExerciseNum}{0}

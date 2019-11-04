@@ -62,7 +62,7 @@ You can check your installation by running (from the command line)
 
     $ cd source/cadabra/
     $ make
-    $ tests.sh
+    $ make tests
 
 If all goes well then you should see a few lines like
 
@@ -71,7 +71,7 @@ If all goes well then you should see a few lines like
     > diff example-03.cdbtex
     > diff example-04.cdbtex
 
-There will be more lines (from the other examples). The key thing to observe is that each `diff` command produces no output. There are also some tests that do not use the `diff` command. These tests are run by Cadabra. It reads in the expected results and compares them with the actual results printing out any differences (this allows for non-important differences in expressions to be ignored, for example reordering a sum). The results of those (semantic) tests are recorded in `source/cadabra/tests/json/summary.pdf`.
+There will be more lines (from the other examples). The key thing to observe is that each `diff` command produces no output. There are also some tests that do not use the `diff` command. These tests are run by Cadabra. It reads in the expected results and compares them with the actual results printing out any differences (this allows for non-important differences in expressions to be ignored, for example reordering a sum). The results of those (semantic) tests are recorded in `source/cadabra/tests/semantic/summary.pdf`.
 
 There are similar tests for the exercises (see `source/cadabra/exercises/`).
 

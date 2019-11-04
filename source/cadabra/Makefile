@@ -107,7 +107,7 @@ github:
 	@ make rm-tests-output
 	@ make rm-dot
 	@ make veryclean
-	@ rm -rf examples.pdf
+	@ rm -rf example-*.pdf
 	@ for file in $(TARGETS); \
 	  do \
 		  if [[ -e $${file}.json ]];      then mv -f $${file}.json      lib/.; fi ; \

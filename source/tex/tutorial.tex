@@ -1,6 +1,6 @@
 \pdfoutput=1% forces arxiv to use pdflatex
 % --------------------------------------------------------------------------------------------
-\def\Title{Using Cadabra for tensor computations in General Relativity.}
+\def\Title{Using Cadabra for tensor computations in\\ General Relativity.}
 \def\Author{Leo Brewin}
 % --------------------------------------------------------------------------------------------
 \documentclass[a4paper,12pt]{article}
@@ -74,6 +74,17 @@ to complete computations including a derivation of two of the BSSN equations fro
 equations. Numerous exercises are included along with complete solutions. All of the source
 code for the examples, exercises and solutions are available on GitHub.
 \end{abstract}
+
+% ============================================================================================
+% \bgroup
+% \parskip=0pt plus 0pt minus 0pt
+%
+% \tableofcontents
+%
+% \vfill
+% \egroup
+%
+% \clearpage
 
 % ============================================================================================
 \section*{Introduction}
@@ -220,26 +231,54 @@ observe method should reveal most of the menu actions in a short time.
 \clearpage
 
 % ============================================================================================
-% Part 1. Getting started. With whimsical section headings.
-% ============================================================================================
-\hrule height 0pt
-\vskip 4cm
-{\Huge\bf Part 1 Essential elements}
-\vskip 2cm
+\section*{The tutorial sources}
 
-This first part of the tutorial consists of a set of examples that are intended for readers
-with little or no experience with Cadabra. Each section is built around a simple example
-based on some familiar elements of general relativity. These context based examples are used
-to introduce the essential elements of Cadabra required for routine tensor computations.
+The complete set of LaTeX and Cadabra sources can be obtained by cloning from the GitHub
+site.
 
-The second part of this tutorial switches the focus from introducing Cadabra to applying
-Cadabra to more substantial questions (which once again cover well known topics in general
-relativity). The examples are a hotchpotch reflecting the research interest of the author.
+\bgroup
+\lstset{numbers=none}
+\begin{lstlisting}
+   git clone https://github.com/leo-brewin/cadabra-tutorial
+\end{lstlisting}
+\egroup
 
-The examples are supported by many exercises with full solutions. The exercises are not
-essential for progression through the later examples but they do help the reader to test
-their understanding of basic aspects of Cadabra. They also explore aspects of Cadabra not
-otherwise covered in the main thread of this tutorial.
+This will create a directory {\tts cadabra-tutorial} containing all of the sources. Here is a brief description of the main directories and their contents.
+
+\def\atMYn{\vrule height  0pt depth  5pt width 0pt}
+\def\atMYm{\vrule height 15pt depth  5pt width 0pt}
+\def\atMYN{\vrule height 15pt depth  0pt width 0pt}
+\def\Box#1{\parbox[t]{0.60\textwidth}{\sloppy \atMYN#1\atMYn}}
+
+\begin{tabular}{ll}
+   {\tts pdf/}&\Box{This document as well as the {\tts .pdf} files for the
+   exercises and examples.}\\
+   {\tts source/tex/}&\Box{The LaTeX source for this document.}\\
+   {\tts source/cadabra/example*.tex}&%
+   \Box{The LaTeX/Cadabra source for each of the examples in
+   this document. These are written in the hybrid-latex format in which the Cadabra
+   code is embeded in a LaTeX document. The tools to process these files are provided
+   in the {\tts hybrid-latex} directory.}\\
+   {\tts source/cadabra/cdb/}&%
+   \Box{The raw Cadabra sources extracted from the hybrid-latex
+   files in {\tts source/cadabra/example*.tex}. These are in {\tts .cdb} format and are
+   provided for readers who like to copy-paste the Cadabra code into a {\tts cadabra2-gtk}
+   window.}\\
+   {\tts source/cadabra/exercises/}&%
+   \Box{This directory contains the worked solutions for all of the exercises.}\\
+   {\tts source/cadabra/fragments/}&%
+   \Box{Some of the exercises asks the reader to use specific fragments of code. Those
+   fragments can be found in this directory -- saving the reader from the tedium of
+   writing the code by hand.}\\
+   {\tts source/cadabra/tests/}&%
+   \Box{This directory is used only when running tests (quelle surprise). To check that
+   everything is working correctly just run {\tts make tests} from the {\tts source/cadabra}
+   directory. See the main {\tts README.md} file for more details.}\\
+   {\tts hybrid-latex/}&%
+   \Box{This directory contains all the tools needed to process the hybrid-latex files.
+   See the file {\tts hybrid-latex/INSTALL.txt} for instructions on where to copy
+   theses files.}
+\end{tabular}
 
 \clearpage
 
@@ -276,9 +315,33 @@ given by \lstref{ex-05.662}.
 \clearpage
 
 % ============================================================================================
+% Part 1. Getting started. With whimsical section headings.
+% ============================================================================================
+\hrule height 0pt
+\vskip 4cm
+{\Huge\bf Part 1 Essential elements}
+\vskip 2cm
+
+This first part of the tutorial consists of a set of examples that are intended for readers
+with little or no experience with Cadabra. Each section is built around a simple example
+based on some familiar elements of general relativity. These context based examples are used
+to introduce the essential elements of Cadabra required for routine tensor computations.
+
+The second part of this tutorial switches the focus from introducing Cadabra to applying
+Cadabra to more substantial questions (which once again cover well known topics in general
+relativity). The examples are a hotchpotch reflecting the research interest of the author.
+
+The examples are supported by many exercises with full solutions. The exercises are not
+essential for progression through the later examples but they do help the reader to test
+their understanding of basic aspects of Cadabra. They also explore aspects of Cadabra not
+otherwise covered in the main thread of this tutorial.
+
+\clearpage
+
+% ============================================================================================
 \section{Hello metric connection}
 \label{sec:ex-01}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-01.cdbtex}
 
@@ -1098,7 +1161,7 @@ alternative solutions for property lists and anonymous rules.
 % ============================================================================================
 \section{Covariant differentiation}% LCB: something better please ?
 \label{sec:ex-02}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-02.cdbtex}
 
@@ -1385,7 +1448,7 @@ tutorial. For full details see \url{https://cadabra.science/notebooks/ref_progra
 % ============================================================================================
 \section{To Riemann and beyond}
 \label{sec:ex-03}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-03.cdbtex}
 
@@ -1766,7 +1829,7 @@ point is explored further in Exercise \exref{ex:3.10} below.
 % ============================================================================================
 \section{Feel the Function}
 \label{sec:ex-04}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-04.cdbtex}
 
@@ -1879,7 +1942,7 @@ with the final result exactly as expected -- the leading cubic part of the origi
    \end{align*}
    where the coefficients $c^{a}$, $c^{a}{}_{b}$, $c^{a}{}_{b c}$ etc. may vary from one
    polynomial to another. The restriction to quartics is just to avoid the complexities that
-   might otherwise arise.
+   might otherwise arise with highr order polynomials.
 
    \begin{Exercise}
       \exlabel{ex:4.01}%
@@ -2051,7 +2114,7 @@ with the final result exactly as expected -- the leading cubic part of the origi
 % ============================================================================================
 \section{Stay focused}
 \label{sec:ex-05}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-05.cdbtex}
 
@@ -2280,7 +2343,7 @@ when using these functions -- careful scrutiny of the output should be standard 
 % ============================================================================================
 \section{Full disclosure}
 \label{sec:ex-06}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-06.cdbtex}
 
@@ -2364,13 +2427,13 @@ fragment will raise a Cadabra run time error.
    V_{a}::Depends(\theta,\varphi,\partial{#}).
    V := { \partial{\theta}{V_{\varphi}} = \cos(\theta) }.  # partial derivs not supported
 \end{cadabra}
-A workaround for problems like this is given later in Exercise \exref{ex:6.10}.
+A workaround for problems like this is given later in Exercise \exref{ex:6.08}.
 
 % --------------------------------------------------------------------------------------------
-\subsection{Ricci curvature of a 2-sphere}
+\subsection{Riemann curvature of a 2-sphere}
 
 This approach can be easily extended to a somewhat more realistic example -- computing the
-Ricci tensor for a 2-sphere\footnote{This example is adapted from the Cadabra web page
+Riemann tensor for a 2-sphere\footnote{This example is adapted from the Cadabra web page
 \url{https://cadabra.science/notebooks/sphere.html}}. The starting point in this case is the
 metric of a 2-sphere, which in polar coordinates $(\theta,\varphi)$ can be written as
 \begin{align*}
@@ -2381,8 +2444,8 @@ The metric components are described in Cadabra by a list of non-zero components
    gab := { g_{\theta\theta}   = r**2,
             g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.
 \end{cadabra}
-Since the Ricci tensor also depends on the inverse metric $g^{a b}$ the $g^{a b}$ must also
-be known to Cadabra before computing the Ricci tensor. In this simple example it is easy
+Since the Riemann tensor also depends on the inverse metric $g^{a b}$ the $g^{a b}$ must also
+be known to Cadabra before computing the Riemann tensor. In this simple example it is easy
 compute the inverse by hand and then provide a list such as
 \begin{cadabra}[numbers=none]
    iab := { g^{\theta\theta}   = 1/r**2,
@@ -2402,7 +2465,7 @@ form $ds^2 = du^2 + 2uv dudv + dv^2$ the components must be specified using
             g_{v u} = uv, g_{v v} = 1 }.
 \end{cadabra}
 
-Here is the complete code for the Ricci tensor for the 2-sphere.
+Here is the complete code for the Riemann tensor for the 2-sphere.
 
 \begin{cadabra}
    {\theta, \varphi}::Coordinate.
@@ -2410,16 +2473,14 @@ Here is the complete code for the Ricci tensor for the 2-sphere.
 
    \partial{#}::PartialDerivative.
 
-   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                              + \partial_{f}{g_{b g}}
-                                              - \partial_{b}{g_{f g}} ).
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
 
-   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                             - \partial_{g}{\Gamma^{d}_{e f}}
-                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
-
-   Rab := R_{a b} -> R^{c}_{a c b}.
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
    gab := { g_{\theta\theta}   = r**2,                       |\lstlabel{ex-06.201}|
             g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.
@@ -2427,12 +2488,10 @@ Here is the complete code for the Ricci tensor for the 2-sphere.
    iab := { g^{\theta\theta}   = 1/r**2,                     |\lstlabel{ex-06.202}|
             g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
 
-   substitute (Rabcd, Gamma)
-   substitute (Rab, Rabcd)
+   substitute (Rabcd, Gamma)                                 |\lstlabel{ex-06.203}|
 
-   evaluate   (Gamma, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.203}|
-   evaluate   (Rabcd, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.204}|
-   evaluate   (Rab,   gab+iab, rhsonly=True)                 |\lstlabel{ex-06.205}|
+   evaluate   (Gamma, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.204}|
+   evaluate   (Rabcd, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.205}|
 \end{cadabra}
 There are two minor aspects of the above code that should be noted. First, each call to
 \verb|evaluate| acts on a Cadabra rule and thus the argument \verb|rhsonly=True| is used
@@ -2446,7 +2505,6 @@ The output from the above code is as follows
    &\cdb{ex-06.202}\tag*{\lstref{ex-06.202}}
 \end{align*}
 \begin{align*}
-   &\cdb{ex-06.203}\tag*{\lstref{ex-06.203}}\\[10pt]
    &\cdb{ex-06.204}\tag*{\lstref{ex-06.204}}\\[10pt]
    &\cdb{ex-06.205}\tag*{\lstref{ex-06.205}}
 \end{align*}
@@ -2454,28 +2512,27 @@ The above results are mostly self-explanatory. However, the notation used in dis
 Riemann components does require a brief explanation. Note that the order of the indices on
 the left and right hand sides do not match. Despite this fact, the indices do maintain a
 strict one-to-one correspondence. For example, the component
-$R^\theta{}_{\varphi\theta\varphi}$ has indices $d=\theta,e=\varphi,f=\theta$ and
-$g=\varphi$ which, on the right hand side, corresponds to
+$R^\theta{}_{\varphi\theta\varphi}$ has indices $a=\theta,b=\varphi,c=\theta$ and
+$d=\varphi$ which, on the right hand side, corresponds to
 $\square{}_{\varphi\varphi}{}^{\theta}{}_{\theta}$. Thus $R^\theta{}_{\varphi\theta\varphi}
 = \square{}_{\varphi\varphi}{}^{\theta}{}_{\theta} = \sin^2\theta$.
 
-There is one small variation on the above code that is worth noting. Consider the following
-small addition to the code
-
-\begin{cadabra}[numbers=none]
-   Riem := R^{d}_{e f g}.
-   substitute (Riem, Rabcd)
-   evaluate   (Riem, gab+iab)
+There is one small variation on the above code that is worth noting. Suppose that
+\verb|Rabcd| had been declared as
+\lstset{firstnumber=10}
+\begin{cadabra}
+   Rabcd :=   \partial_{c}{\Gamma^{a}_{b d}}
+            - \partial_{d}{\Gamma^{a}_{b c}}
+            + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+            - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 \end{cadabra}
-
-The object \verb|Riem| is no longer a substitution rule but rather a simple Cadabra
+The object \verb|Rabcd| is no longer a substitution rule but rather a simple Cadabra
 expression. Thus there is no need in this case for the \verb|rhsonly=True| argument in the
 call to \verb|evaluate|. The output from the above code is
 \begin{align*}
-   \cdb{ex-06.206}
+   &\cdb{ex-06.206}
 \end{align*}
-which no longer contains the informative left hand side, that is, $R^{d}{}_{e f g}
-\rightarrow$.
+which no longer contains the informative left hand side, that is, $R^{a}{}_{bcd}\rightarrow$.
 So when writing code it may be useful to apply the \verb|evaluate| algorithm to a rule (if
 convenient) rather than a simple expression. The advantage in doing so is that the left hand
 side of the rule retains a useful reminder of how the indices map to the components on the
@@ -2486,110 +2543,59 @@ right hand side.
 
 Calls to \verb|evaluate| will return a Cadabra object that contains all of the non-zero
 components. This raises a simple question -- How can individual components of a tensor be
-found? There are two simple answers, the first takes a sideways step by using
-\verb|evaluate| to compute a scalar function that matches the desired component while the
-second is a direct method that extracts the target component from the full list of
-components.
-
-So, how can the $\varphi\varphi$ component of the metric tensor $g_{a b}$ of the 2-sphere be
-found? The direct approach is to compute the projection of the tensor onto the appropriate
-basis vectors, in this case $g_{ab}$ on $e_{\varphi}=\partial_{\varphi}$. That is, compute
-$g_{ab} e^{a}_{\varphi} e^{b}_{\varphi}$. In the following code Cadabra is asked to
-\verb|evalaute| the scalar function $g_{ab} e^{a}_{\varphi} e^{b}_{\varphi}$.
+found? The simplest answer is to call the Cadabra function \verb|get_component|. The
+$R^{\theta}{}_{\varphi\theta\varphi}$ component of the Riemann tensor $R^{a}{}_{b c d}$ can
+be obtained using the following code (appended to the above code)
+\lstset{firstnumber=25}
 \begin{cadabra}
-   {\theta, \varphi}::Coordinate.
-   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+   from cdb.core.component import *
 
-   theta{#}::LaTeXForm{"\theta"}.
-   varphi{#}::LaTeXForm{"\varphi"}.
+   Riem := R^{a}_{b c d}.
+   substitute (Riem, Rabcd)    # convert from a rule to a simple expression
 
-   gab := { g_{\theta \theta}   = r**2,
-            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
-
-   # obtain components by contracting with basis vectors
-
-   basis := {theta^{\theta} = 1, varphi^{\varphi} = 1}.
-
-   compt := g_{a b} varphi^{a} varphi^{b}.   |\lstlabel{ex-06.401}|
-
-   evaluate (compt,gab+basis)                |\lstlabel{ex-06.402}|
+   RiemCompt = get_component (Riem, $\theta, \varphi, \theta, \varphi$) |\lstlabel{ex-06.207}|
 \end{cadabra}
-The output from the above code is
+This will return
 \begin{align*}
-   g_{\varphi\varphi} &= \cdb{ex-06.401}\tag*{\lstref{ex-06.401}}\\
-                      &= \cdb{ex-06.402}\tag*{\lstref{ex-06.402}}
+   R^\theta{}_{\varphi\theta\varphi} &= \cdb{ex-06.207} \tag*{\lstref{ex-06.207}}
 \end{align*}
 
-Now consider the second approach where the desired component is to be extracted
-after a call to \verb|evaluate|. A starting point for the code might be
-\begin{cadabra}
-   {\theta, \varphi}::Coordinate.
-   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+The same results can also be obtained by projecting the tensor onto a suitable combination
+of basis elements. Thus $R^{\theta}{}_{\varphi\theta\varphi}$ can be computed using
+$R^{a}{}_{bcd} e^\theta_{a} e^{b}_{\varphi} e^{c}_{\theta} e^{d}_{\varphi} e$
+where $e_{\theta} = \partial_{\theta}$ and $e_{\varphi}=\partial_{\varphi}$ are the standard
+basis for the coordinates $(\theta,\varphi)$. The following code fragment will do the job.
 
+\begin{cadabra}[numbers=none]
    theta{#}::LaTeXForm{"\theta"}.
    varphi{#}::LaTeXForm{"\varphi"}.
 
    gab := { g_{\theta \theta}   = r**2,
             g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
 
-   metric := g_{a b}.
+   iab := { g^{\theta\theta}   = 1/r**2,
+            g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
 
-   evaluate (metric,gab)
-\end{cadabra}
-What is missing from this code is the crucial lines that extracts the target from
-\verb|metric|.
+   # define the basis for vectors and dual vectors
 
-Since Cadabra is intimately coupled to Python it is not surprising that it inherits Python's
-array-indexing notation. Thus if \verb|foo| is a Cadabra object then elements of that object
-can be accessed using notation like \verb|foo[0]|, \verb|foo[1]|, \verb|foo[2]| etc. Deeper
-probing into \verb|foo| is allowed using notation like \verb|foo[2][1]|, \verb|foo[2][1][3]|
-etc. This is standard Python notation for Python arrays. However, Cadabra has its own way of
-storing the elements of its objects. For the metric of the 2-sphere Cadabra needs to store
-not just the components of $g_{a b}$ but also the index pairs for each component, the free
-indices and information describing the position of each index (up or down). For this
-discussion, the bulk of that data can be summarised as a list like
-\begin{lstlisting}[numbers=none]
-  metric = {a,b,{{\theta, \theta} = (r)**2,
-                 {\varphi, \varphi} = (r)**2 (\sin(\theta))**2}}
-\end{lstlisting}
-Note that the line break is just for presentation (it has no syntactic meaning). Note also
-that this format is just for discussion -- it is neither correct Python notation nor is it a
-literal copy of Cadabra's own representation. The list (after \verb|metric =|) begins with
-the free indices, \verb|a,b|. It then contains a sub-list of terms of the form
-\verb|foo=bah| where \verb|foo| records an index pair and where \verb|bah| is the
-corresponding component. Note that the sub-list of components counts as one item in the main
-list. Finally, each entry like \verb|foo=bah| is treated as a list with \verb|foo| and
-\verb|bah| taken as elements 0 and 1 respectively. This is all that needs be known in order
-to access the elements of this list. Thus
-\begin{lstlisting}[numbers=none]
-   metric[0] = a
-   metric[1] = b
-   metric[2] = {{\theta, \theta} = (r)**2,
-                {\varphi, \varphi} = (r)**2 (\sin(\theta))**2}
-   metric[2][1] = {\varphi, \varphi} = (r)**2 (\sin(\theta))**2
-   metric[2][1][0] = {\varphi, \varphi}
-   metric[2][1][1] = (r)**2 (\sin(\theta))**2
-\end{lstlisting}
-and so on. Thus in this case the one extra line required in the above code to extract
-the target component is simply
-\bgroup
-\lstset{firstnumber=last}
-\begin{cadabra}
-   compnt = metric[2][1][1]
+   basis := {theta^{\theta} = 1, varphi^{\varphi} = 1}.
+   dual  := {theta_{\theta} = 1, varphi_{\varphi} = 1}.
+
+   # obtain components by contracting with basis
+
+   compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.
+   substitute (compt, Rabcd)
+
+   evaluate (compt, gab+iab+basis+dual)
 \end{cadabra}
-\egroup
-The one important caveat with this method is that it may require a spot of detective work to
-find the target item. The lists that Cadabra uses are not ordered lists as there is no unique
-way to map the multi-dimensional set of indices to a single dimension (the position in the
-list). Thus for other tensors, say \verb|Aab := A_{a b}|, the $\varphi\varphi$ component
-might actually be found at \verb|Aab[2][0][1]|. So tread carefully when using this method. If
-in doubt, either repeat the above exercise (of stepping through the indices) or revert to the
-first method (projection onto the basis vectors).
+This fragment will require all the usual property definitions but more importantly it
+requires a definition of the tensor \verb|Rabcd|. This can be taken from either line
+\lstref*{ex-06.203} or \lstref*{ex-06.205} of the 2-sphere example given above.
 
 % --------------------------------------------------------------------------------------------
 \subsection{Components in pure Python/SymPy}
 
-It is quite likely that one of the reasons for extracting one or more components of tensor
+It is quite likely that one of the reasons for extracting one or more components of a tensor
 is that some numerical values are sought (e.g., for plotting or for use in a separate
 numerical simulation).
 
@@ -2683,32 +2689,6 @@ This produces the following output
 
    \begin{Exercise}
       \exlabel{ex:6.05}%
-      Look back at the black magic that revealed how to access the $\varphi\varphi$ component
-      of the metric tensor. That showed that \verb|metric[2][1][1]| gave the desired
-      component, namely $g_{\varphi\varphi}$. But when \verb|evaluate| is applied to a
-      \emph{rule} a different indexing is required. Use carefully chosen
-      \verb|print(metric[...])| commands to find the new black magic for such a case.
-
-      {\bf Note.} You will need to modify the code slightly so that \verb|evaluate| acts on
-                  a rule rather than a simple expression.
-
-      {\bf Hint:} Start with something simple like \verb|print(metric[0])| and
-                  \verb|print(metric[1])|. Observe the output and then refine the choice of
-                  indices to reach the target.
-   \end{Exercise}
-
-   \begin{Exercise}
-      \exlabel{ex:6.06}%
-      Repeat the previous exercise but this time extract the $R_{\varphi\varphi}$ component
-      of the Ricci tensor. Look carefully at the indices. You may think that an index
-      selection like \verb|[2][1][1]| will apply for both $g_{a b}$ and $R_{a b}$, after all,
-      they do share the same index structure so surely Cadabra will store the components in
-      exactly the same order. But do remember that the lists that Cadabra uses to store the
-      components are not sorted -- thus the entries could appear in any order. Caveat emptor.
-   \end{Exercise}
-
-   \begin{Exercise}
-      \exlabel{ex:6.07}%
       Verify that the Schwarzschild metric in isotropic coordinates
       \begin{align*}
          ds^2 = - \left(\frac{2r-m}{2r+m}\right)^2 dt^2
@@ -2719,7 +2699,7 @@ This produces the following output
    \end{Exercise}
 
    \begin{Exercise}
-      \exlabel{ex:6.08}%
+      \exlabel{ex:6.06}%
       Compute the Ricci tensor $R_{ab}$ for the Kasner metric
       \begin{align*}
          ds^2 = -dt^2 + t^{2p_1} dx^2 + t^{2p_2} dy^2 + t^{2p_3} dz^2
@@ -2731,7 +2711,7 @@ This produces the following output
    \end{Exercise}
 
    \begin{Exercise}
-      \exlabel{ex:6.09}%
+      \exlabel{ex:6.07}%
       Consider the Schwarzschild metric in Schwarzschild coordinates
       \begin{align*}
          ds^2 = - f(r) dt^2
@@ -2761,7 +2741,7 @@ This produces the following output
    \end{Exercise}
 
    \begin{Exercise}
-      \exlabel{ex:6.10}%
+      \exlabel{ex:6.08}%
       The current version of Cadabra\footnote{\CdbVersion} does not support component rules
       that include derivative operators in the targets of the component definitions. Thus
       code like the following will raise a run time error.
@@ -2794,7 +2774,7 @@ This produces the following output
 % ============================================================================================
 \section{Escape to C}
 \label{sec:ex-07}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-07.cdbtex}
 
@@ -2906,7 +2886,7 @@ a \verb|#include|) into a separate C-program.
       components of $R_{ab}$. Assume a generic 3d-metric and assume the coordinates are
       labelled \verb|x,y,z|.
 
-      {\bf Hint:} You may need to refer back to Exercise \exref{ex:6.10} to hide the first
+      {\bf Hint:} You may need to refer back to Exercise \exref{ex:6.08} to hide the first
                   and second partial derivatives of $g_{ab}$. You could also need to add
                   \verb|simplify=False| to the argument list in the call to \verb|evaluate|.
                   The function \verb|write_code| will optimise the C-code so there is not a
@@ -2921,7 +2901,7 @@ a \verb|#include|) into a separate C-program.
 % ============================================================================================
 \section{Expressions of interest}
 \label{sec:ex-08}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-08.cdbtex}
 
@@ -2945,31 +2925,38 @@ anti-symmetric).
 \subsection{Importing Cadabra code}
 \label{sec:ImportNotebooks}
 
-Cadabra allows complete \emph{notebooks} to be imported as a way to share content between
-sibling codes. For example, suppose \verb|foo.cnb| is a Cadabra notebook with the following
-content
+Cadabra supports the usual Python constructs for importing code from other sources. This make
+it rather easy for sibling codes to share content. For example, suppose \verb|foo.cdb| is a
+plain text file with the following content
 \begin{cadabra}[numbers=none]
    {a,b,c,d,e,f,g,h}::Indices(position=independent).
    R_{a b c d}::RiemannTensor.
 \end{cadabra}
-Then another Cadabra program (not necessarily a notebook) can import the above code as in
-this example
+Then another Cadabra program can import the above code as in this example
 \begin{cadabra}[numbers=none]
    from foo import *
    expr := R_{a b c d} + R_{a b d c}.
 \end{cadabra}
 The result of this simple example is zero (since $R_{abcd} = - R_{abdc}$).
 
-Note the restriction to notebooks - these are written in Cadabra's native format used by the
-{\tts cadabra2-gtk} gui (though see section \ref{sec:ImportPlainText} below for a trick that
-allows imports from plain files, such as \verb|bah.cdb|).
-
 A good use of this method would be to include all of the common properties from a collection
-of codes in one notebook. Each code in the collection would then import this one notebook.
+of codes in one file. Each code in the collection would then import this shared library.
 This saves the programmer time and also ensures consistent definitions across the
 collection. However, this still leaves the problem of sharing results between one or more
 programs. One solution, as described in the following section, is to use basic Python I/O to
 read and write the data as required.
+
+Note that the assumption that \verb|foo.cdb| is a plain text file is not essential as this
+method works equally well with Cadabra notebooks such as \verb|foo.cnb|.
+
+Be aware that there is a little trap that might catch the unwary. Whenever Cadabra is asked
+to import a library (either from an explict call in your code or during Cadabra's startup) it
+will go on a merry hunt looking for the first matching library -- and that may not be the
+library you had expected. For example, during startup Cadabra will import various standard
+libraries including \verb|sympy|. If you happen to have your own version of \verb|sympy.cdb|
+then Cadabra will use your version rather than the system version -- and that would not play
+well down the track. The simple solution is to ensure that all of your library names do not
+clash with any Cadabra or Python libraries.
 
 % --------------------------------------------------------------------------------------------
 \subsection{Basic data I/O}
@@ -2979,7 +2966,7 @@ The basic idea is to store Cadabra objects as strings in a Python dictionary whi
 is stored as a file in \verb|JSON| format. The Python code
 \verb|hybrid-latex/python/cdblib.py| consists of three simple Python functions with the
 following headers
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    def create (file_name):                 # create a library or clear an exiting library
    def put    (key_name,object,file_name): # add an object to the library
    def get    (key_name,file_name):        # retrieve an object from the library
@@ -2994,7 +2981,7 @@ Here is a simple example that demonstrates the use of these functions. It create
 expressions, writes them to a library, reads them back in but with new names and finally
 checks that the new objects agree with the originals.
 
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    lib_name = 'example-08.json'
 
    create (lib_name)
@@ -3035,68 +3022,6 @@ Finally, here is the proof that the new and old objects agree
    g^{ab}(x) - {\bar{g}}^{ab}(x) &= \cdb{ex-08-02.106}
 \end{align*}
 
-% --------------------------------------------------------------------------------------------
-\subsection{Importing code from plain text files}
-\label{sec:ImportPlainText}
-
-Given that \verb|import| and friends are native Python constructs it is reasonable to expect
-that Cadabra should be able to import code from plain text files. How can this be achieved?
-The trick lies in the format of the plain text -- it should be written in pure Python. This
-leads to the obvious question -- How can statements unique to Cadabra be rewritten as Python
-statements? That is the job of the command line tool \verb|cadabra2python|. It will create a
-pure Python code from the Cadabra source. Suppose, for example, that the file \verb|foo.cdb|
-contains the following statements
-\begin{cadabra}[numbers=none]
-   {a,b,c,d,e,f,g,h}::Indices(position=independent).
-   R_{a b c d}::RiemannTensor.
-\end{cadabra}
-This is exactly as per the notebook in Example \ref{sec:ImportNotebooks} above.
-
-The corresponding Python code, \verb|foo.py|, can be generated using
-\bgroup
-\lstset{numbers=none}
-\begin{lstlisting}
-   cadabra2python foo.cdb foo.py
-\end{lstlisting}
-\egroup
-The output file, \verb|foo.py|, with some minor handmade changes (as explained below)
-consists of the following statements
-\begin{cadabra}
-   import cadabra2                                  |\lstlabel{ex:8.01}|
-   from cadabra2_defaults import *                  |\lstlabel{ex:8.02}|
-   __cdbkernel__ = cadabra2.__cdbkernel__           |\lstlabel{ex:8.03}|
-
-   tmp = Indices(Ex(r'{a,b,c,d,e,f,g,h}'), Ex(r'position=independent') ) |\lstlabel{ex:8.04}|
-   tmp = RiemannTensor(Ex(r'R_{a b c d}'), Ex(r'') )                     |\lstlabel{ex:8.05}|
-\end{cadabra}
-This file could then be used instead of the notebook as the target of the \verb|import|
-statement (as in the second part of Example \ref{sec:ImportNotebooks} above).
-
-Note that the first three lines in \verb|foo.py| where added by hand. They are required so
-that Python knows how to resolve the function calls (to \verb|Ex|, \verb|Indices| and
-\verb|RiemannTensor|). Lines \lstref*{ex:8.01} and \lstref*{ex:8.03} are mandatory while line
-\lstref*{ex:8.02} is optional (without it the call to \verb|Ex| would need to be written as
-\verb|cadabra2.Ex| as per standard Python syntax). Lines \lstref*{ex:8.04} and
-\lstref*{ex:8.05} have been cleaned up slightly by replacing triple-quotes with single quotes
-and substituting \verb|tmp| for \verb|__cdbtemp__|.
-
-If you would prefer not to tinker with the \verb|foo.py| file you can include
-the three additional lines in the original \verb|foo.cdb| source. These will be passed
-unchanged by \verb|cadabra2python| to \verb|foo.py|. The file \verb|foo.cdb| would now
-contain
-\begin{cadabra}
-   import cadabra2
-   from cadabra2_defaults import *
-   __cdbkernel__ = cadabra2.__cdbkernel__
-   {a,b,c,d,e,f,g,h}::Indices(position=independent).
-   R_{a b c d}::RiemannTensor.
-\end{cadabra}
-After processing \verb|foo.cdb| with \verb|cadabra2python| the above code could be imported
-into another Cadabra code, say \verb|bah.cdb|, by adding the following line to \verb|bah.cdb|
-\begin{cadabra}
-   from foo import *
-\end{cadabra}
-
 \clearpage
 
 % ============================================================================================
@@ -3116,14 +3041,14 @@ capable of handling serious computations in general relativity.
 
 The discussion in each of the following examples will not be as detailed as that given in
 Part 1. Also, as there are no exercises in this part the reader is encouraged to experiment
-with the source code (in \verb|source/cadabra/examples/|).
+with the source code (in \verb|source/cadabra/|).
 
 \clearpage
 
 % ============================================================================================
 \section{The Gauss equation}
 \label{sec:ex-09}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-09.cdbtex}
 
@@ -3159,7 +3084,7 @@ and its use in defining $D$ in terms of $\nabla$. The symbol \verb|hab| will be 
 record the projection operator and \verb|vpq| to record the covariant derivative $D_{q}v_p$.
 Thus the code will contain the lines
 
-\begin{cadabra}
+\begin{cadabra}[numbers=none]
    hab:=h^{a}_{b} -> g^{a}_{b} - n^{a} n_{b}:
    vpq:=v_{p q} -> h^{a}_{p} h^{b}_{q} \nabla_{b}{v_{a}}:
 \end{cadabra}
@@ -3308,7 +3233,7 @@ which is the standard textbook form for the Gauss equation.
 % ============================================================================================
 \section{The metric determinant in Riemann normal coordinates}
 \label{sec:ex-10}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-10.cdbtex}
 
@@ -3416,7 +3341,7 @@ from $\ngab{0}_{a b}$, $\ndetg{1}$ to be computed form $\ngab{0}_{a b}$ and $\ng
 etc.
 
 Despite the clear advantage of this second scheme the code given in the
-\verb|source/cadabra/examples/| directory uses the previous lazy method. Why? For the simple
+\verb|source/cadabra/example-10| uses the previous lazy method. Why? For the simple
 reason that it was easy to write and it gave results in a reasonable time (similar to most
 of the other codes in this tutorial). It is certain that this lazy code will be too
 expensive for higher order expansions (or in higher dimensions).
@@ -3451,7 +3376,7 @@ The final result for $\det g$, to fourth order in $x^{a}$, is
 % ============================================================================================
 \section{The metric connection in Riemann normal coordinates}
 \label{sec:ex-11}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-11.cdbtex}
 
@@ -3571,7 +3496,7 @@ as few terms as needed, is well worth remembering.
 % ============================================================================================
 \section{The third order terms of Calzetta etal.}
 \label{sec:ex-12}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-12.cdbtex}
 
@@ -3762,7 +3687,7 @@ above. The result is that $\Delta\Gamma_{a}=0$, that is $\Gamma=\GammaBar$.
 % ============================================================================================
 \section{The Weyl tensor vanishes in 3-dimensions}
 \label{sec:ex-13}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-13.cdbtex}
 
@@ -3946,7 +3871,7 @@ that $\CHat_{xyxz}=0$.
 % ============================================================================================
 \section{Conformal invariance of the Weyl tensor}
 \label{sec:ex-14}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-14.cdbtex}
 
@@ -3999,7 +3924,7 @@ to simplify the expression \verb|diff|. The result is zero (as expected).
 % ============================================================================================
 \section{The BSSN equations}
 \label{sec:ex-15}
-\setcounter{ExerciseNum}{0}
+\ResetCounters
 
 \input{../cadabra/lib/example-15.cdbtex}
 
@@ -4179,7 +4104,7 @@ The corresponding output is
 \subsection{A numerical code}
 
 The website \url{https://github.com/leo-brewin/adm-bssn-equations} contains all of the
-Cadabra code for a complete derivation the BSSN equations (with zero shift) from the ADM
+Cadabra code for a complete derivation of the BSSN equations (with zero shift) from the ADM
 equations. A companion website, \url{https://github.com/leo-brewin/adm-bssn-numerical},
 contains further Cadabra code that converts the BSSN equations into a working numerical code.
 
@@ -4191,9 +4116,9 @@ equations (the BSSN equations) into a numerical code has great advantages. It fr
 researcher from the tedium of writing extensive code (try writing a code for $R_{ab}$ from
 the metric by hand), it minimises the risk of coding errors and it allows for much quicker
 development of new codes as changes are made in the underlying mathematics (e.g., shifting
-from the ADM to the BSSN equations). This approach is quite common in the computational general
-relativity community, see for example the papers by Husa etal. \cite{husa:2006-01} and
-Ruchlin etal. \cite{ruchlin:2018-01}.
+from the ADM to the BSSN equations). This approach is quite common in the computational
+general relativity community, see for example the papers by Husa etal. \cite{husa:2006-01}
+and Ruchlin etal. \cite{ruchlin:2018-01}.
 
 \clearpage
 
@@ -4640,19 +4565,19 @@ This will create a \verb|cadabra2| directory containing the complete source code
 contains full instructions on how to compile and install the code (see
 \verb|cadabra2/README.rst|).
 
-\url{https://cadabra.science/qa/questions}\Break
-This is a popular site for posting Cadabra questions and answers. Anyone can read the
-questions and answers but to post to the site you will need to register.
-
-\url{https://cadabra.science/man.html}\Break
-This site describes every property and algorithm supported by Cadabra. It is the
-first place to go when looking for information about a property or an algorithm.
-
 \url{https://cadabra.science/help.html}\Break
 This is the main online reference for Cadabra. It is written as series of short tutorials
 each covering a key aspect of Cadabra. Topics covered include basic syntax for writing
 expressions, properties and algorithms, basic input/output, how to manipulate expressions and
 an introduction to programming in Cadabra.
+
+\url{https://cadabra.science/man.html}\Break
+This site describes every property and algorithm supported by Cadabra. It is the
+first place to go when looking for information about a property or an algorithm.
+
+\url{https://cadabra.science/qa/questions}\Break
+This is a popular site for posting Cadabra questions and answers. Anyone can read the
+questions and answers but to post to the site you will need to register.
 
 \url{https://cadabra.science/notebooks/ref_patterns.html}\Break
 This topic in the reference guide provides full details on how use the \verb|?| and

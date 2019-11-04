@@ -4,59 +4,50 @@
 \begin{document}
 
 % --------------------------------------------------------------------------------------------
-\section*{Exercise 6.5 Digging into Cadabra's datastructure}
+\section*{Exercise 6.5 Schwarzschild spacetime in isotropic coordinates}
 
 \begin{cadabra}
-   {\theta, \varphi}::Coordinate.
-   {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+   {t, r, \theta, \varphi}::Coordinate.
+   {a,b,c,d,e,f,g,h#}::Indices(values={t, r, \theta, \varphi}, position=independent).
 
-   theta{#}::LaTeXForm{"\theta"}.
-   varphi{#}::LaTeXForm{"\varphi"}.
+   \partial{#}::PartialDerivative.
 
-   gab := { g_{\theta \theta}   = r**2,
-            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-0605.100,gab)
+   g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
 
-   metric := g_{a b} -> g_{a b}.  # a trivial rule :)
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
 
-   evaluate (metric,gab,rhsonly=True)
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
-   indcs = metric[1][2][1][0]                               # cdb(ex-0605.101,indcs)
-   compt = metric[1][2][1][1]                               # cdb(ex-0605.102,compt)
+   Rab := R_{a b} -> R^{c}_{a c b}.
 
-   # cdbBeg(print.0605)
-   print ('metric = ' + str(metric.input_form())+'\n')  # reveals Cadabra's internal structure for storing metric
+   gab := { g_{t t}            = -((2*r-m)/(2*r+m))**2,
+            g_{r r}            = (1+m/(2*r))**4,
+            g_{\theta\theta}   = r**2 (1+m/(2*r))**4,
+            g_{\varphi\varphi} = r**2 \sin(\theta)**2 (1+m/(2*r))**4}.  # cdb(ex-0605.101,gab)
 
-   print ('metric[0] = ' + str(metric[0]))
-   print ('metric[1] = ' + str(metric[1])+'\n')
+   complete   (gab, $g^{a b}$)                                          # cdb(ex-0605.102,gab)
 
-   print ('metric[1][0] = ' + str(metric[1][0]))
-   print ('metric[1][1] = ' + str(metric[1][1]))
-   print ('metric[1][2] = ' + str(metric[1][2])+'\n')
+   substitute (Rabcd, Gamma)
+   substitute (Rab, Rabcd)
 
-   print ('metric[1][2][1] = '+ str(metric[1][2][1]))
-   print ('metric[1][2][1][0] = '+ str(metric[1][2][1][0]))
-   print ('metric[1][2][1][1] = '+ str(metric[1][2][1][1]))
-   # cdbEnd(print.0605)
+   evaluate   (Gamma, gab, rhsonly=True)                                # cdb(ex-0605.103,Gamma)
+   evaluate   (Rabcd, gab, rhsonly=True)                                # cdb(ex-0605.104,Rabcd)
+   evaluate   (Rab,   gab, rhsonly=True)                                # cdb(ex-0605.105,Rab)
 \end{cadabra}
 
 \clearpage
 
-\begin{align*}
-   &\Cdb{ex-0605.101}\\[10pt]
-   &\Cdb{ex-0605.102}
-\end{align*}
-
-\begin{align*}
-   g_{\varphi\varphi} &= g_{\Cdb{ex-0605.101}}\\
-                      &= \Cdb{ex-0605.102}
-\end{align*}
-
-\vskip 1cm
-
-\bgroup
-\IfFileExists{ex-0605.cdbcopy}%
-{\lstinputlisting[backgroundcolor=\color{white}]{ex-0605.cdbcopy}}%
-{Where is {\tt ex-0605.cdbcopy}?}
-\egroup
+\begin{dgroup*}
+   \Dmath*{\Cdb*{ex-0605.101}}
+   \Dmath*{\Cdb*[\hskip3cm\hfill]{ex-0605.102}}
+   \Dmath*{\Cdb*{ex-0605.103}}
+   \Dmath*{\Cdb*{ex-0605.104}}
+   \Dmath*{\Cdb*{ex-0605.105}}
+\end{dgroup*}
 
 \end{document}

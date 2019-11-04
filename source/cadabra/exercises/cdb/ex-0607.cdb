@@ -1,32 +1,42 @@
 {t, r, \theta, \varphi}::Coordinate.
 {a,b,c,d,e,f,g,h#}::Indices(values={t, r, \theta, \varphi}, position=independent).
 
+;::Symbol.
+
 \partial{#}::PartialDerivative.
 
+g_{a b}::Metric.
 g^{a b}::InverseMetric.
 
 Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
                                            + \partial_{f}{g_{b g}}
                                            - \partial_{b}{g_{f g}} ).
 
-Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                          - \partial_{g}{\Gamma^{d}_{e f}}
-                          + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                          - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+deriv := \xi_{a ; b} -> \partial_{b}{\xi_{a}} - \Gamma^{c}_{a b} \xi_{c}.
+lower := \xi_{a} -> g_{a b} \xi^{b}.
 
-Rab := R_{a b} -> R^{c}_{a c b}.
+expr  := \xi_{a ; b} + \xi_{b ; a}.
 
-gab := { g_{t t}            = -((2*r-m)/(2*r+m))**2,
-         g_{r r}            = (1+m/(2*r))**4,
-         g_{\theta\theta}   = r**2 (1+m/(2*r))**4,
-         g_{\varphi\varphi} = r**2 \sin(\theta)**2 (1+m/(2*r))**4}.
+substitute   (expr, deriv)
+substitute   (expr, lower)
+substitute   (expr, Gamma)
+distribute   (expr)
+product_rule (expr)
+canonicalise (expr)
+
+# choose a vector
+
+# Kvect := {\xi^{t} = 1}.
+# Kvect := {\xi^{\varphi} = 1}.
+Kvect := {\xi^{\theta} = \sin(\varphi), \xi^{\varphi} = \cos(\theta)/\sin(\theta) \cos(\varphi)}.
+# Kvect := {\xi^{\theta} = \cos(\varphi), \xi^{\varphi} = - \cos(\theta)/\sin(\theta) \sin(\varphi)}.
+
+gab := { g_{t t}            = -(1-2*m/r),
+         g_{r r}            = 1/(1-(2*m/r)),
+         g_{\theta\theta}   = r**2,
+         g_{\varphi\varphi} = r**2 \sin(\theta)**2}.
 
 complete   (gab, $g^{a b}$)
 
-substitute (Rabcd, Gamma)
-substitute (Rab, Rabcd)
-
-evaluate   (Gamma, gab, rhsonly=True)
-evaluate   (Rabcd, gab, rhsonly=True)
-evaluate   (Rab,   gab, rhsonly=True)
+evaluate   (expr, gab+Kvect)
 

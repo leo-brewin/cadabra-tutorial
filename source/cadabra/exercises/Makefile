@@ -27,12 +27,6 @@ exercises:
 	@ if [[ $* = ex-0107 ]]; then \
 	     cdbcopy.py -i ex-0107 -t print.0107 -o ex-0107.cdbcopy; \
      fi
-	@ if [[ $* = ex-0605 ]]; then \
-	     cdbcopy.py -i ex-0605 -t print.0605 -o ex-0605.cdbcopy; \
-     fi
-	@ if [[ $* = ex-0606 ]]; then \
-	     cdbcopy.py -i ex-0606 -t print.0606 -o ex-0606.cdbcopy; \
-     fi
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ cp -f $*.pdf    pdf/.
@@ -103,7 +97,7 @@ github:
 	@ make rm-tests-output
 	@ make rm-dot
 	@ make veryclean
-	@ rm -rf examples.pdf
+	@ rm -rf ex-*.pdf
 	@ for file in $(TARGETS); \
 	  do \
 		  if [[ -e $${file}.json ]];    then mv -f $${file}.json    lib/.; fi ; \

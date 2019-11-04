@@ -1,36 +1,17 @@
-{t, x, y, z}::Coordinate.
-{a,b,c,d,e,f,g,h#}::Indices(values={t, x, y, z}, position=independent).
+
+{\theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
 
 \partial{#}::PartialDerivative.
 
-p1::LaTeXForm("p_1").
-p2::LaTeXForm("p_2").
-p3::LaTeXForm("p_3").
+V_{a}::Depends(\theta,\varphi,\partial{#}).
 
-g^{a b}::InverseMetric.
+hide := \partial_{a}{V_{b}} -> dV_{a b}.
 
-Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                           + \partial_{f}{g_{b g}}
-                                           - \partial_{b}{g_{f g}} ).
+dVrule := { dV_{\theta\varphi} = \sin(\theta),
+            dV_{\varphi\theta} = \cos(\theta)}.
+dV := \partial_{b}{V_{a}} - \partial_{a}{V_{b}}.
 
-Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                          - \partial_{g}{\Gamma^{d}_{e f}}
-                          + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                          - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
-
-Rab := R_{a b} -> R^{c}_{a c b}.
-
-gab := { g_{t t} = -1,
-         g_{x x} = t**(2*p1),
-         g_{y y} = t**(2*p2),
-         g_{z z} = t**(2*p3)}.
-
-complete   (gab, $g^{a b}$)
-
-substitute (Rabcd, Gamma)
-substitute (Rab, Rabcd)
-
-evaluate   (Gamma, gab, rhsonly=True)
-evaluate   (Rabcd, gab, rhsonly=True)
-evaluate   (Rab,   gab, rhsonly=True)
+substitute (dV, hide)
+evaluate (dV, dVrule)
 

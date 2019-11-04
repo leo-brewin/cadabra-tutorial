@@ -39,12 +39,10 @@
 \clearpage
 
 % ============================================================================================
-\section*{Example 6-02 Ricci tensor of a 2-sphere}
+\section*{Example 6-02 Riemann tensor of a 2-sphere}
 
-% curvature of a 2-sphere
-
-% LCB: successive use of ::Coordinate will extend the list of coordinates
-%      this will have the effect of increasing the dimensionality of the space. whoops...
+% LCB: the dimensionality of the space is inferred from the number of distinct coordinates
+%      so use just two symbols for the coordinates
 
 \begin{cadabra}
    {\theta, \varphi}::Coordinate.
@@ -52,16 +50,14 @@
 
    \partial{#}::PartialDerivative.
 
-   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                              + \partial_{f}{g_{b g}}
-                                              - \partial_{b}{g_{f g}} ).
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
 
-   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                             - \partial_{g}{\Gamma^{d}_{e f}}
-                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
-
-   Rab := R_{a b} -> R^{c}_{a c b}.
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
    gab := { g_{\theta\theta}   = r**2,
             g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-06.201,gab)
@@ -69,54 +65,37 @@
    iab := { g^{\theta\theta}   = 1/r**2,
             g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.  # cdb(ex-06.202,iab)
 
-   substitute (Rabcd, Gamma)
-   substitute (Rab, Rabcd)
+   substitute (Rabcd, Gamma)                                  # cdb(ex-06.203,Gamma)
 
-   evaluate   (Gamma, gab+iab, rhsonly=True)                  # cdb(ex-06.203,Gamma)
-   evaluate   (Rabcd, gab+iab, rhsonly=True)                  # cdb(ex-06.204,Rabcd)
-   evaluate   (Rab,   gab+iab, rhsonly=True)                  # cdb(ex-06.205,Rab)
+   evaluate   (Gamma, gab+iab, rhsonly=True)                  # cdb(ex-06.204,Gamma)
+   evaluate   (Rabcd, gab+iab, rhsonly=True)                  # cdb(ex-06.205,Rabcd)
 
-   Riem := R^{d}_{e f g}.
-   substitute (Riem, Rabcd)
-   evaluate   (Riem, gab+iab)                                 # cdb(ex-06.206,Riem)
+   # convert from a rule to a simple expression
+   Riem := R^{a}_{b c d}.
+   substitute (Riem, Rabcd)                                   # cdb(ex-06.206,Riem)
 
-   expr := R_{a b}.
-   substitute (expr, Rab)
-   evaluate   (expr, gab+iab)
+   from cdb.core.component import *
 
-   # cdbBeg(print.ex-06.02)
-   print ('Rab = ' + str(Rab.input_form())+'\n')  # reveals Cadabra's internal structure for storing Rab
+   RiemCompt = get_component (Riem, $\theta, \varphi, \theta, \varphi$)   # cdb(ex-06.207,RiemCompt)
 
-   print ('Rab[0] = ' + str(Rab[0]))
-   print ('Rab[1] = ' + str(Rab[1])+'\n')
-
-   print ('Rab[1][0] = ' + str(Rab[1][0]))
-   print ('Rab[1][1] = ' + str(Rab[1][1]))
-   print ('Rab[1][2] = ' + str(Rab[1][2])+'\n')
-
-   print ('Rab[1][2][0] = ' + str(Rab[1][2][0]))
-   print ('Rab[1][2][0][0] = ' + str(Rab[1][2][0][0]))
-   print ('Rab[1][2][0][1] = ' + str(Rab[1][2][0][1]))
-   # cdbEnd(print.ex-06.02)
 \end{cadabra}
 
 \begin{align*}
    &\Cdb{ex-06.201}\\[10pt]
    &\Cdb{ex-06.202}\\[10pt]
-   &\Cdb{ex-06.203}\\[10pt]
    &\Cdb{ex-06.204}\\[10pt]
    &\Cdb{ex-06.205}\\[10pt]
    &\Cdb{ex-06.206}
 \end{align*}
 
-\IfFileExists{example-06-1.cdbcopy}%
-{\lstinputlisting[backgroundcolor=\color{white}]{example-06-1.cdbcopy}}%
-{Where is {\tt example-06-1.cdbcopy}?}
+\begin{align*}
+   R^{\theta}{}_{\varphi\theta\varphi} &= \Cdb{ex-06.207}
+\end{align*}
 
 \clearpage
 
 % ============================================================================================
-\section*{Example 6-03 Using \emph{complete} to compute the inverse metric}
+\section*{Example 6-03 Using {\tt complete} to compute the inverse metric}
 
 This version uses \verb|complete| to compute the inverse metric.
 
@@ -128,16 +107,14 @@ This version uses \verb|complete| to compute the inverse metric.
 
    g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
 
-   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                              + \partial_{f}{g_{b g}}
-                                              - \partial_{b}{g_{f g}} ).
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
 
-   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                             - \partial_{g}{\Gamma^{d}_{e f}}
-                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
-
-   Rab := R_{a b} -> R^{c}_{a c b}.
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
    gab := { g_{\theta\theta}   = r**2,
             g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-06.301,gab)
@@ -145,15 +122,9 @@ This version uses \verb|complete| to compute the inverse metric.
    complete   (gab, $g^{a b}$)                                # cdb(ex-06.302,gab)
 
    substitute (Rabcd, Gamma)
-   substitute (Rab, Rabcd)
 
    evaluate   (Gamma, gab, rhsonly=True)                      # cdb(ex-06.303,Gamma)
    evaluate   (Rabcd, gab, rhsonly=True)                      # cdb(ex-06.304,Rabcd)
-   evaluate   (Rab,   gab, rhsonly=True)                      # cdb(ex-06.305,Rab)
-
-   Riem := R^{d}_{e f g}.
-   substitute (Riem, Rabcd)
-   evaluate   (Riem, gab)                                     # cdb(ex-06.306,Riem)
 
 \end{cadabra}
 
@@ -161,9 +132,7 @@ This version uses \verb|complete| to compute the inverse metric.
    &\Cdb{ex-06.301}\\[10pt]
    &\Cdb{ex-06.302}\\[10pt]
    &\Cdb{ex-06.303}\\[10pt]
-   &\Cdb{ex-06.304}\\[10pt]
-   &\Cdb{ex-06.305}\\[10pt]
-   &\Cdb{ex-06.306}
+   &\Cdb{ex-06.304}
 \end{align*}
 
 \clearpage
@@ -171,7 +140,7 @@ This version uses \verb|complete| to compute the inverse metric.
 % ============================================================================================
 \section*{Example 6-04 Components by scalar projection}
 
-This example shows how one component of the metric tensor can be computed using a scalar
+This example shows how one component of the Riemann tensor can be computed using a scalar
 projection.
 
 \begin{cadabra}
@@ -181,37 +150,60 @@ projection.
    theta{#}::LaTeXForm{"\theta"}.
    varphi{#}::LaTeXForm{"\varphi"}.
 
+   # usual definitions for the connection and Riemann tensor
+
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
+
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
+
+   substitute (Rabcd, Gamma)
+
    gab := { g_{\theta \theta}   = r**2,
             g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-06.400,gab)
 
-   # obtain components by contracting with basis vectors
+   iab := { g^{\theta\theta}   = 1/r**2,
+            g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
+
+   # complete   (gab, $g^{a b}$)
+   # evaluate   (Rabcd, gab+iab, rhsonly=True)
+
+   # define the basis for vectors and dual vectors
 
    basis := {theta^{\theta} = 1, varphi^{\varphi} = 1}.
+   dual  := {theta_{\theta} = 1, varphi_{\varphi} = 1}.
 
-   compt := g_{a b} varphi^{a} varphi^{b}.                  # cdb(ex-06.401,compt)
+   # obtain components by contracting with basis
 
-   evaluate (compt,gab+basis)                               # cdb(ex-06.402,compt)
+   compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.   # cdb(ex-06.401,compt)
+   substitute (compt,Rabcd)
 
-   gphiphi = compt._sympy_()
+   evaluate (compt,gab+iab+basis+dual)                                 # cdb(ex-06.402,compt)
+
+   compt_sympy = compt._sympy_()
 
    # cdbBeg(print.ex-06.04)
-   print ('type compt   = ' + str(type(compt)))      # shows that compt is a Cadabra object
-   print ('type gphiphi = ' + str(type(gphiphi)))    # shows that gphiphi is a Python object
-   print ('     compt   = ' + str(compt))            # will contain LaTeX markup
-   print ('     gphiphi = ' + str(gphiphi))          # will be pure Python/SymPy
+   print ('type compt   = ' + str(type(compt)))        # shows that compt is a Cadabra object
+   print ('type gphiphi = ' + str(type(compt_sympy)))  # shows that gphiphi is a Python object
+   print ('     compt   = ' + str(compt))              # will contain LaTeX markup
+   print ('     gphiphi = ' + str(compt_sympy))        # will be pure Python/SymPy
    # cdbEnd(print.ex-06.04)
 
    checkpoint.append (compt)
 \end{cadabra}
 
 \begin{align*}
-   g_{\varphi\varphi} &= \Cdb{ex-06.401}\\
-                      &= \Cdb{ex-06.402}
+   R^{\theta}{}_{\varphi\theta\varphi} &= \Cdb{ex-06.401}\\
+                                       &= \Cdb{ex-06.402}
 \end{align*}
 
-\IfFileExists{example-06-2.cdbcopy}%
-{\lstinputlisting[backgroundcolor=\color{white}]{example-06-2.cdbcopy}}%
-{Where is {\tt example-06-2.cdbcopy}?}
+\IfFileExists{example-06-04.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{example-06-04.cdbcopy}}%
+{Where is {\tt example-06-04.cdbcopy}?}
 
 \clearpage
 
@@ -259,9 +251,9 @@ the result of a call to \verb|evaluate|.
                       &= \Cdb{ex-06.502}
 \end{align*}
 
-\IfFileExists{example-06-3.cdbcopy}%
-{\lstinputlisting[backgroundcolor=\color{white}]{example-06-3.cdbcopy}}%
-{Where is {\tt example-06-3.cdbcopy}?}
+\IfFileExists{example-06-05.cdbcopy}%
+{\lstinputlisting[backgroundcolor=\color{white}]{example-06-05.cdbcopy}}%
+{Where is {\tt example-06-05.cdbcopy}?}
 
 \clearpage
 

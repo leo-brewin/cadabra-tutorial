@@ -1,23 +1,29 @@
-{\theta, \varphi}::Coordinate.
-{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+{t, x, y, z}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={t, x, y, z}, position=independent).
 
 \partial{#}::PartialDerivative.
 
+p1::LaTeXForm("p_1").
+p2::LaTeXForm("p_2").
+p3::LaTeXForm("p_3").
+
 g^{a b}::InverseMetric.
 
-Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                           + \partial_{f}{g_{b g}}
-                                           - \partial_{b}{g_{f g}} ).
+Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                           + \partial_{c}{g_{b d}}
+                                           - \partial_{d}{g_{b c}}).
 
-Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                          - \partial_{g}{\Gamma^{d}_{e f}}
-                          + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                          - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                          - \partial_{d}{\Gamma^{a}_{b c}}
+                          + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                          - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
 Rab := R_{a b} -> R^{c}_{a c b}.
 
-gab := { g_{\theta \theta}   = r**2,
-         g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
+gab := { g_{t t} = -1,
+         g_{x x} = t**(2*p1),
+         g_{y y} = t**(2*p2),
+         g_{z z} = t**(2*p3)}.
 
 complete   (gab, $g^{a b}$)
 
@@ -27,20 +33,4 @@ substitute (Rab, Rabcd)
 evaluate   (Gamma, gab, rhsonly=True)
 evaluate   (Rabcd, gab, rhsonly=True)
 evaluate   (Rab,   gab, rhsonly=True)
-
-indcs = Rab[1][2][0][0]
-compt = Rab[1][2][0][1]
-
-print ('Rab = ' + str(Rab.input_form())+'\n')
-
-print ('Rab[0] = ' + str(Rab[0]))
-print ('Rab[1] = ' + str(Rab[1])+'\n')
-
-print ('Rab[1][0] = ' + str(Rab[1][0]))
-print ('Rab[1][1] = ' + str(Rab[1][1]))
-print ('Rab[1][2] = ' + str(Rab[1][2])+'\n')
-
-print ('Rab[1][2][0] = ' + str(Rab[1][2][0]))
-print ('Rab[1][2][0][0] = ' + str(Rab[1][2][0][0]))
-print ('Rab[1][2][0][1] = ' + str(Rab[1][2][0][1]))
 

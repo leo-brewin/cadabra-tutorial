@@ -14,18 +14,18 @@
 
    g^{a b}::InverseMetric.  # essential when using complete (gab, $g^{a b}$)
 
-   Gamma := \Gamma^{a}_{f g} -> 1/2 g^{a b} (   \partial_{g}{g_{b f}}
-                                              + \partial_{f}{g_{b g}}
-                                              - \partial_{b}{g_{f g}} ).
+   Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                              + \partial_{c}{g_{b d}}
+                                              - \partial_{d}{g_{b c}}).
 
-   Rabcd := R^{d}_{e f g} ->   \partial_{f}{\Gamma^{d}_{e g}}
-                             - \partial_{g}{\Gamma^{d}_{e f}}
-                             + \Gamma^{d}_{b f} \Gamma^{b}_{e g}
-                             - \Gamma^{d}_{b g} \Gamma^{b}_{e f}.
+   Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                             - \partial_{d}{\Gamma^{a}_{b c}}
+                             + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                             - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
    Rab := R_{a b} -> R^{c}_{a c b}.
 
-   R := R -> R_{e g} g^{e g}.
+   R := R -> R_{a b} g^{a b}.
 
    gab := { g_{\theta\theta}   = r**2,
             g_{\varphi\varphi} = r**2 \sin(\theta)**2 }.      # cdb(ex-0604.101,gab)

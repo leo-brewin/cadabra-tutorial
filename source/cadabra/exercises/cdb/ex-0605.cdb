@@ -1,29 +1,32 @@
-{\theta, \varphi}::Coordinate.
-{a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
+{t, r, \theta, \varphi}::Coordinate.
+{a,b,c,d,e,f,g,h#}::Indices(values={t, r, \theta, \varphi}, position=independent).
 
-theta{#}::LaTeXForm{"\theta"}.
-varphi{#}::LaTeXForm{"\varphi"}.
+\partial{#}::PartialDerivative.
 
-gab := { g_{\theta \theta}   = r**2,
-         g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
+g^{a b}::InverseMetric.
 
-metric := g_{a b} -> g_{a b}.
+Gamma := \Gamma^{a}_{b c} -> 1/2 g^{a d} (   \partial_{b}{g_{d c}}
+                                           + \partial_{c}{g_{b d}}
+                                           - \partial_{d}{g_{b c}}).
 
-evaluate (metric,gab,rhsonly=True)
+Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
+                          - \partial_{d}{\Gamma^{a}_{b c}}
+                          + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
+                          - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
-indcs = metric[1][2][1][0]
-compt = metric[1][2][1][1]
+Rab := R_{a b} -> R^{c}_{a c b}.
 
-print ('metric = ' + str(metric.input_form())+'\n')
+gab := { g_{t t}            = -((2*r-m)/(2*r+m))**2,
+         g_{r r}            = (1+m/(2*r))**4,
+         g_{\theta\theta}   = r**2 (1+m/(2*r))**4,
+         g_{\varphi\varphi} = r**2 \sin(\theta)**2 (1+m/(2*r))**4}.
 
-print ('metric[0] = ' + str(metric[0]))
-print ('metric[1] = ' + str(metric[1])+'\n')
+complete   (gab, $g^{a b}$)
 
-print ('metric[1][0] = ' + str(metric[1][0]))
-print ('metric[1][1] = ' + str(metric[1][1]))
-print ('metric[1][2] = ' + str(metric[1][2])+'\n')
+substitute (Rabcd, Gamma)
+substitute (Rab, Rabcd)
 
-print ('metric[1][2][1] = '+ str(metric[1][2][1]))
-print ('metric[1][2][1][0] = '+ str(metric[1][2][1][0]))
-print ('metric[1][2][1][1] = '+ str(metric[1][2][1][1]))
+evaluate   (Gamma, gab, rhsonly=True)
+evaluate   (Rabcd, gab, rhsonly=True)
+evaluate   (Rab,   gab, rhsonly=True)
 

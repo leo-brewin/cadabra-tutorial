@@ -7,7 +7,6 @@ TARGETS = $(patsubst %.tex,%,$(wildcard example-[0-9][0-9]*.tex))
 #-------------------------------------------------------------------------------
 all:
 	@ for file in $(TARGETS); do make .$${file}; done;
-	@ # make shared
 	@ make summary
 	@ make veryclean
 #-------------------------------------------------------------------------------

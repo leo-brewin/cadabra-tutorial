@@ -1,4 +1,4 @@
 type compt   = <class 'cadabra2.Ex'>
-type gphiphi = <class 'sympy.core.mul.Mul'>
-     compt   = (r)**2 (\sin(\theta))**2
-     gphiphi = r**2*sin(theta)**2
+type gphiphi = <class 'sympy.core.power.Pow'>
+     compt   = (\sin(\theta))**2
+     gphiphi = sin(theta)**2

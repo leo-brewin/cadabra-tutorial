@@ -18,40 +18,30 @@
 \left[g^{\theta \theta} = {r}^{-2},~\discretionary{}{}{} g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
 }
 \cdbtag{ex-06.203}{%
-\Gamma^{a}{}_{f g} \rightarrow \square{}_{f}{}_{g}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
+\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right)%
+}
+\cdbtag{ex-06.204}{%
+\Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
 \square{}_{\theta}{}_{\varphi}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
 \square{}_{\varphi}{}_{\varphi}{}^{\theta}& =  - \frac{1}{2}\sin\left(2\theta\right)\\[-.5ex]%
 \end{aligned}\right.%
 }
-\cdbtag{ex-06.204}{%
-R^{d}{}_{e f g} \rightarrow \square{}_{e}{}_{g}{}^{d}{}_{f}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 1\\[-.5ex]%
-\end{aligned}\right.%
-}
 \cdbtag{ex-06.205}{%
-R_{a b} \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}& = 1\\[-.5ex]%
+R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+\square{}_{\varphi}{}_{\theta}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+\square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 1\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-06.206}{%
-\square{}_{e}{}_{g}{}^{d}{}_{f}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+\square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+\square{}_{\varphi}{}_{\theta}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
 \square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 1\\[-.5ex]%
 \end{aligned}\right.%
 }
-\cdbtag{print.ex-06.02}{%
-Rab = R_{a b} -> \components_{a b}({{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1})%
-Rab[0] = R_{a b}%
-Rab[1] = \components_{a b}({{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1})%
-Rab[1][0] = a%
-Rab[1][1] = b%
-Rab[1][2] = {{\varphi, \varphi} = (\sin(\theta))**2, {\theta, \theta} = 1}%
-Rab[1][2][0] = {\varphi, \varphi} = (\sin(\theta))**2%
-Rab[1][2][0][0] = {\varphi, \varphi}%
-Rab[1][2][0][1] = (\sin(\theta))**2%
+\cdbtag{ex-06.207}{%
+-{\left(\sin{\theta}\right)}^{2}%
 }
 \cdbtag{ex-06.301}{%
 \left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
@@ -60,27 +50,15 @@ Rab[1][2][0][1] = (\sin(\theta))**2%
 \left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2},~\discretionary{}{}{} g^{\theta \theta} = {r}^{-2},~\discretionary{}{}{} g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
 }
 \cdbtag{ex-06.303}{%
-\Gamma^{a}{}_{f g} \rightarrow \square{}_{f}{}_{g}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
+\Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
 \square{}_{\theta}{}_{\varphi}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
 \square{}_{\varphi}{}_{\varphi}{}^{\theta}& =  - \frac{1}{2}\sin\left(2\theta\right)\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-06.304}{%
-R^{d}{}_{e f g} \rightarrow \square{}_{e}{}_{g}{}^{d}{}_{f}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 1\\[-.5ex]%
-\end{aligned}\right.%
-}
-\cdbtag{ex-06.305}{%
-R_{a b} \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}& = 1\\[-.5ex]%
-\end{aligned}\right.%
-}
-\cdbtag{ex-06.306}{%
-\square{}_{e}{}_{g}{}^{d}{}_{f}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = {\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
+\square{}_{\varphi}{}_{\theta}{}^{\varphi}{}_{\theta}& = -1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}{}^{\theta}{}_{\varphi}& = -{\left(\sin{\theta}\right)}^{2}\\[-.5ex]%
 \square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 1\\[-.5ex]%
 \end{aligned}\right.%
 }
@@ -88,16 +66,16 @@ R_{a b} \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}
 \left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
 }
 \cdbtag{ex-06.401}{%
-g_{a b} \varphi^{a} \varphi^{b}%
+R^{a}{}_{b c d} \theta_{a} \varphi^{b} \theta^{c} \varphi^{d}%
 }
 \cdbtag{ex-06.402}{%
-{r}^{2} {\left(\sin{\theta}\right)}^{2}%
+{\left(\sin{\theta}\right)}^{2}%
 }
 \cdbtag{print.ex-06.04}{%
 type compt   = <class 'cadabra2.Ex'>%
-type gphiphi = <class 'sympy.core.mul.Mul'>%
-     compt   = (r)**2 (\sin(\theta))**2%
-     gphiphi = r**2*sin(theta)**2%
+type gphiphi = <class 'sympy.core.power.Pow'>%
+     compt   = (\sin(\theta))**2%
+     gphiphi = sin(theta)**2%
 }
 \cdbtag{ex-06.500}{%
 \left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%

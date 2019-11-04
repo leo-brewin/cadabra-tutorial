@@ -24,9 +24,9 @@ all:
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> $*.tmplog
 	@ # pick just one, bibtex or biber, must alter source.tex to suit
 	@ # echo "bibtex $* ..."
-	@ # bibtex $* &> $*.cdblog
+	@ # bibtex $* &> $*.biblog
 	@ echo "biber $* ..."
-	@ biber --decodecharsset=null $* &> $*.cdblog
+	@ biber --decodecharsset=null $* &> $*.biblog
 	@ echo "pdflatex $* ..."
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> $*.tmplog
 	@ echo "pdflatex $* ..."
@@ -43,9 +43,10 @@ rm-dot:
 clean:
 	@ for file in $(TARGETS); \
 	  do \
-	     rm -rf $${file}.log $${file}.out $${file}.tmplog $${file}.synctex.gz; \
+	     rm -rf $${file}.out $${file}.toc $${file}.synctex.gz; \
+	     rm -rf $${file}.log $${file}.biblog $${file}.tmplog; \
 		  rm -rf $${file}.bcf $${file}.blg $${file}.run.xml; \
-	     rm -rf $${file}.errors $${file}.exnum $${file}.itnum $${file}.lstnum $${file}.blg; \
+	     rm -rf $${file}.errors $${file}.exnum $${file}.itnum $${file}.lstnum; \
 	  done
 #-------------------------------------------------------------------------------
 veryclean:
@@ -70,4 +71,5 @@ pristine:
 github:
 	@ make pristine
 	@ make all
+	@ make rm-dot
 	@ make veryclean

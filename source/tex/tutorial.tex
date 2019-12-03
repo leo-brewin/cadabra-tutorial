@@ -3411,7 +3411,7 @@ rule then set the derivatives of $R_{abcd}$ to zero. A better option is to infor
 ahead of time which objects are non-constant. Here is a short fragment that does the job.
 \begin{cadabra}
    \partial{#}::PartialDerivative.                 |\lstlabel{ex-11.00}|
-   x{#}::Depends{\partial}.                        |\lstlabel{ex-11.01}|
+   x{#}::Depends{\partial{#}}.                     |\lstlabel{ex-11.01}|
 
    term := \partial_{a}{R_{bcde} x^{x} x^{e}}.     |\lstlabel{ex-11.02}|
 
@@ -4208,7 +4208,7 @@ demonstrating various ways to encounter this error.
       bah := B_{b};
       meh := @(A) + @(B);
    \end{cadabra}
-   The problem here is obvious -- the free indices on \verb|@(A)| and \verb|@(B)|
+   The problem here is obvious -- the free indices on \verb|@(foo)| and \verb|@(bah)|
    clearly do not match. Though this error is startlingly obvious in this example
    it may be much harder to detect in codes where the computation of \verb|A|
    and \verb|B| are buried deep in parts of the code far removed from each other
@@ -4222,7 +4222,8 @@ demonstrating various ways to encounter this error.
       ruleB := TmpB_{b} -> @(bah);
       ...
       meh := TmpA_{c} + TmpB_{c};
-      substitute (meh, ruleA+ruleB)
+      substitute (meh, ruleA)
+      substitute (meh, ruleB)
    \end{cadabra}
    The ellipses in the above denote some intervening code. The rules are created
    as soon as the expressions \verb|foo| and \verb|bah| have been created.
@@ -4644,6 +4645,12 @@ This is a great place to start when learning how to use SymPy.
 
 The Cadabra2 source code includes a wealth of sample notebook in the directory
 \verb|cadabra2/examples|.
+
+% ============================================================================================
+\section*{Acknowledgement}
+
+I am very grateful to Kasper Peeters for his careful reading of various drafts of this
+tutorial and for his many helpful suggesstions.
 
 % ============================================================================================
 \printbibliography  % create the bibliography using biblatex & biber

@@ -36,6 +36,8 @@ Cabcd := R_{a b c d} - (R_{a c} g_{b d} - R_{a d} g_{b c})
                      - (g_{a c} R_{b d} - g_{a d} R_{b c})
                + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).
 
+# Use 8 Cabcd to clear the fractions
+
 EightCabcd := 8 @(Cabcd).
 
 substitute     (Cabcd,Rscalar)

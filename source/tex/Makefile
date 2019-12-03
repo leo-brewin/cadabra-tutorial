@@ -73,3 +73,4 @@ github:
 	@ make all
 	@ make rm-dot
 	@ make veryclean
+	@ cp -rf tutorial.pdf ../../pdf/.

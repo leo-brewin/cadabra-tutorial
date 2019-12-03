@@ -53,7 +53,9 @@
                         - (g_{a c} R_{b d} - g_{a d} R_{b c})
                   + 1/2 R (g_{a c} g_{b d} - g_{a d} g_{b c}).            # cdb (ex-13a.100,Cabcd)
 
-   EightCabcd := 8 @(Cabcd).   # cdb (ex-13a.110,EightCabcd)
+   # Use 8 Cabcd to clear the fractions
+
+   EightCabcd := 8 @(Cabcd).                                              # cdb (ex-13a.110,EightCabcd)
 
    substitute     (Cabcd,Rscalar)
    substitute     (Cabcd,Rab)
@@ -65,27 +67,27 @@
 
    sort_product   (Cabcd)
    rename_dummies (Cabcd)
-   canonicalise   (Cabcd)     # cdb (ex-13a.101,Cabcd)
+   canonicalise   (Cabcd)                                                 # cdb (ex-13a.101,Cabcd)
 
-   EightCabcd := 8 @(Cabcd).  # cdb (ex-13a.111,EightCabcd)
+   EightCabcd := 8 @(Cabcd).                                              # cdb (ex-13a.111,EightCabcd)
 
    gab := {g_{x x} = gxx, g_{x y} = gxy, g_{x z} = gxz,
            g_{y x} = gxy, g_{y y} = gyy, g_{y z} = gyz,
            g_{z x} = gxz, g_{z y} = gyz, g_{z z} = gzz}.
 
    complete  (gab, $g^{a b}$)
-   evaluate  (Cabcd,gab)        # cdb (ex-13a.102,Cabcd)
-   evaluate  (EightCabcd,gab)   # cdb (ex-13a.112,EightCabcd)
+   evaluate  (Cabcd,gab)                                                  # cdb (ex-13a.102,Cabcd)
+   evaluate  (EightCabcd,gab)                                             # cdb (ex-13a.112,EightCabcd)
 
 \end{cadabra}
 
 \clearpage
 
-\begin{dgroup*}
-   \Dmath*{ C_{abcd} = \Cdb*{ex-13a.100}
-                     = \Cdb*{ex-13a.101}
-                     = \Cdb*{ex-13a.102}}
-\end{dgroup*}
+% \begin{dgroup*}
+%    \Dmath*{ C_{abcd} = \Cdb*{ex-13a.100}
+%                      = \Cdb*{ex-13a.101}
+%                      = \Cdb*{ex-13a.102}}
+% \end{dgroup*}
 
 \begin{dgroup*}
    \Dmath*{ 8C_{abcd} = \Cdb*{ex-13a.110}

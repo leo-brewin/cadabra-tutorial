@@ -9,7 +9,7 @@ echo "  diff *.cdbtex"
 tests-cdbtex.sh
 
 echo "---------------------------------------------------------"
-echo "  diff *.cdbtex"
+echo "  diff *.cdbcopy"
 tests-cdbcopy.sh
 
 echo "---------------------------------------------------------"

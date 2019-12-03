@@ -25,9 +25,8 @@ examples:
 	@ cdblatex.sh -T -skx -i $* &> $*.cdblog
 	@ # echo " -->"`cdbstats -i $*.cdblog`
 	@ if [[ $* = example-06 ]]; then \
-	     cdbcopy.py -i example-06 -t print.ex-06.02 -o example-06-1.cdbcopy; \
-	     cdbcopy.py -i example-06 -t print.ex-06.04 -o example-06-2.cdbcopy; \
-	     cdbcopy.py -i example-06 -t print.ex-06.05 -o example-06-3.cdbcopy; \
+	     cdbcopy.py -i example-06 -t print.ex-06.04 -o example-06-04.cdbcopy; \
+	     cdbcopy.py -i example-06 -t print.ex-06.05 -o example-06-05.cdbcopy; \
      fi
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
 	@ pdflatex -halt-on-error -interaction=batchmode $* &> /dev/null
@@ -35,9 +34,9 @@ examples:
 	@ cp -f $*.pdf    pdf/.
 	@ cp -f $*.cdb    cdb/.
 	@ cp -f $*.cdbtex tests/output/.
-	@ if [[ -e $*-rab.c ]];     then cp -f $*-*.c tests/output/.;       fi
-	@ if [[ -e $*-1.cdbcopy ]]; then cp -f $*-*.cdbcopy tests/output/.; fi
-	@ if [[ -e $*.json ]];      then cp -f $*.json tests/output/.;      fi
+	@ if [[ -e $*-rab.c ]];      then cp -f $*-*.c tests/output/.;       fi
+	@ if [[ -e $*-04.cdbcopy ]]; then cp -f $*-*.cdbcopy tests/output/.; fi
+	@ if [[ -e $*.json ]];       then cp -f $*.json tests/output/.;      fi
 	@ touch .$*
 #-------------------------------------------------------------------------------
 expected:
@@ -110,8 +109,9 @@ github:
 	@ rm -rf example-*.pdf
 	@ for file in $(TARGETS); \
 	  do \
-		  if [[ -e $${file}.json ]];      then mv -f $${file}.json      lib/.; fi ; \
-		  if [[ -e $${file}.cdbtex ]];    then mv -f $${file}.cdbtex    lib/.; fi ; \
-		  if [[ -e $${file}-rab.c ]];     then mv -f $${file}-*.c       lib/.; fi ; \
-		  if [[ -e $${file}-1.cdbcopy ]]; then mv -f $${file}-*.cdbcopy lib/.; fi ; \
+		  if [[ -e $${file}.json ]];       then mv -f $${file}.json      lib/.; fi ; \
+		  if [[ -e $${file}.cdbtex ]];     then mv -f $${file}.cdbtex    lib/.; fi ; \
+		  if [[ -e $${file}-rab.c ]];      then mv -f $${file}-*.c       lib/.; fi ; \
+		  if [[ -e $${file}-04.cdbcopy ]]; then mv -f $${file}-*.cdbcopy lib/.; fi ; \
 	  done
+	@ cp -rf examples.pdf ../../pdf/.

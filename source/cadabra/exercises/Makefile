@@ -105,3 +105,4 @@ github:
 		  if [[ -e $${file}-rab.c ]];   then mv -f $${file}*.c      lib/.; fi ; \
 		  if [[ -e $${file}.cdbcopy ]]; then mv -f $${file}.cdbcopy lib/.; fi ; \
 	  done
+	@ cp -rf exercises.pdf ../../../pdf/.

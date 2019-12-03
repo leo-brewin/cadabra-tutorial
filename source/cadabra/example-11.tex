@@ -59,17 +59,17 @@
                                               + D_{c}{g_{b d}}
                                               - D_{d}{g_{b c}} ).   # cdb (ex-11.003,ChrSym)
 
-   Gamma := \Gamma^{a}_{b c}.        # cdb (ex-11.100,Gamma)
+   Gamma := \Gamma^{a}_{b c}.              # cdb (ex-11.100,Gamma)
 
-   substitute     (Gamma,ChrSym)     # cdb (ex-11.101,Gamma)
-   substitute     (Gamma,gab)        # cdb (ex-11.102,Gamma)
-   substitute     (Gamma,iab)        # cdb (ex-11.103,Gamma)
-   distribute     (Gamma)            # cdb (ex-11.104,Gamma)
-   unwrap         (Gamma)            # cdb (ex-11.105,Gamma)
-   product_rule   (Gamma)            # cdb (ex-11.106,Gamma)
-   distribute     (Gamma)            # cdb (ex-11.107,Gamma)
-   substitute     (Gamma,Dx)         # cdb (ex-11.108,Gamma)
-   eliminate_kronecker (Gamma)       # cdb (ex-11.109,Gamma)
+   substitute     (Gamma,ChrSym)           # cdb (ex-11.101,Gamma)
+   substitute     (Gamma,gab)              # cdb (ex-11.102,Gamma)
+   substitute     (Gamma,iab)              # cdb (ex-11.103,Gamma)
+   distribute     (Gamma)                  # cdb (ex-11.104,Gamma)
+   unwrap         (Gamma)                  # cdb (ex-11.105,Gamma)
+   product_rule   (Gamma)                  # cdb (ex-11.106,Gamma)
+   distribute     (Gamma)                  # cdb (ex-11.107,Gamma)
+   substitute     (Gamma,Dx)               # cdb (ex-11.108,Gamma)
+   eliminate_kronecker (Gamma)             # cdb (ex-11.109,Gamma)
 
    def truncate (obj,n):
 
@@ -184,6 +184,9 @@
 
 % ============================================================================================
 % export to json format
+
+% --------------------------------------------------------------------------------------------
+\subsection*{Save $\Gamma^{a}{}_{bc}$ for later use in Example 12.}
 
 \begin{cadabra}
    jsonfile = 'example-11.json'

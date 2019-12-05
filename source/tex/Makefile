@@ -53,7 +53,6 @@ veryclean:
 	@ make clean
 	@ for file in $(TARGETS); \
 	  do \
-	     rm -rf $${file}.aux $${file}.bbl; \
 		  rm -rf $${file}.cdb $${file}_.cdb; \
 		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
 		  rm -rf $${file}.py $${file}.pytxt $${file}.pylog; \

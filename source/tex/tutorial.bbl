@@ -1,0 +1,813 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{peeters:2017-01}{webpage}{}
+      \name{author}{1}{}{%
+        {{hash=81f35a1e9a9b50a3bc9cd968b7bd4ccb}{%
+           family={Peeters},
+           familyi={P\bibinitperiod},
+           given={Kasper},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{fullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{bibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authorbibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authornamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authorfullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Cadabra2 home page}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://cadabra.science/index.html
+      \endverb
+      \verb{url}
+      \verb https://cadabra.science/index.html
+      \endverb
+      \keyw{cadabra,computer-algebra}
+    \endentry
+    \entry{peeters:2017-02}{webpage}{}
+      \name{author}{1}{}{%
+        {{hash=81f35a1e9a9b50a3bc9cd968b7bd4ccb}{%
+           family={Peeters},
+           familyi={P\bibinitperiod},
+           given={Kasper},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{fullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{bibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authorbibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authornamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \strng{authorfullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Cadabra2 GitHub reporistory}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://github.com/kpeeters/cadabra2
+      \endverb
+      \verb{url}
+      \verb https://github.com/kpeeters/cadabra2
+      \endverb
+      \keyw{cadabra,computer-algebra}
+    \endentry
+    \entry{brewin:2009-02}{article}{}
+      \name{author}{1}{}{%
+        {{hash=88bf9b772ddd6aee4a5d5f641a10ad46}{%
+           family={Brewin},
+           familyi={B\bibinitperiod},
+           given={Leo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \strng{fullhash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \strng{bibnamehash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \strng{authorbibnamehash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \strng{authornamehash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \strng{authorfullhash}{88bf9b772ddd6aee4a5d5f641a10ad46}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{title}{{A brief introduction to Cadabra: a tool for tensor computations in General Relativity}}
+      \field{volume}{181}
+      \field{year}{2010}
+      \field{pages}{489\bibrangedash 498}
+      \range{pages}{10}
+      \verb{eprint}
+      \verb arXiv:0903.2085
+      \endverb
+      \keyw{lcb,cadabra}
+    \endentry
+    \entry{grtensorIII:2017-01}{webpage}{}
+      \name{author}{3}{}{%
+        {{hash=0d33cda035ddcd2531e14695e6d1be68}{%
+           family={Musgrave},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d991131942a8332abbb9f2a6ccaad234}{%
+           family={Pollney},
+           familyi={P\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9b10edb7e2cfa49f3711b775d6873cca}{%
+           family={Lake},
+           familyi={L\bibinitperiod},
+           given={Kyall},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{438d7f911df8f9e9b24d093338c1022b}
+      \strng{fullhash}{438d7f911df8f9e9b24d093338c1022b}
+      \strng{bibnamehash}{438d7f911df8f9e9b24d093338c1022b}
+      \strng{authorbibnamehash}{438d7f911df8f9e9b24d093338c1022b}
+      \strng{authornamehash}{438d7f911df8f9e9b24d093338c1022b}
+      \strng{authorfullhash}{438d7f911df8f9e9b24d093338c1022b}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{GRTensorIII home page}}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://github.com/grtensor/grtensor
+      \endverb
+      \verb{url}
+      \verb https://github.com/grtensor/grtensor
+      \endverb
+      \keyw{computer-algebra}
+    \endentry
+    \entry{maxima:2014-01}{online}{}
+      \name{author}{1}{}{%
+        {{hash=bc3292567552688d69e5ddc95781245b}{%
+           family={Maxima},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {http://maxima.sourceforge.net/}%
+      }
+      \strng{namehash}{bc3292567552688d69e5ddc95781245b}
+      \strng{fullhash}{bc3292567552688d69e5ddc95781245b}
+      \strng{bibnamehash}{bc3292567552688d69e5ddc95781245b}
+      \strng{authorbibnamehash}{bc3292567552688d69e5ddc95781245b}
+      \strng{authornamehash}{bc3292567552688d69e5ddc95781245b}
+      \strng{authorfullhash}{bc3292567552688d69e5ddc95781245b}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Maxima, a Computer Algebra System. Version 5.34.1}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb http://maxima.sourceforge.net/
+      \endverb
+      \verb{url}
+      \verb http://maxima.sourceforge.net/
+      \endverb
+    \endentry
+    \entry{manssur:2004-01}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f8a06e121b601c0529626d8b2b2eefbd}{%
+           family={Manssur},
+           familyi={M\bibinitperiod},
+           given={L.\bibnamedelimi R.\bibnamedelimi U.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+        {{hash=0e9c8563f1faecdc101eaa82ea0e32d9}{%
+           family={Portugal},
+           familyi={P\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{15510eff6305acce18072230c1466dc9}
+      \strng{fullhash}{15510eff6305acce18072230c1466dc9}
+      \strng{bibnamehash}{15510eff6305acce18072230c1466dc9}
+      \strng{authorbibnamehash}{15510eff6305acce18072230c1466dc9}
+      \strng{authornamehash}{15510eff6305acce18072230c1466dc9}
+      \strng{authorfullhash}{15510eff6305acce18072230c1466dc9}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{note}{New version of Canon now found on Invar web page, as given above}
+      \field{number}{2}
+      \field{title}{The Canon package: a fast kernel for tensor manipulators}
+      \field{volume}{157}
+      \field{year}{2004}
+      \field{pages}{173\bibrangedash 180}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/S0010-4655(03)00494-6
+      \endverb
+      \verb{urlraw}
+      \verb http://www.lncc.br/~portugal/Invar.html
+      \endverb
+      \verb{url}
+      \verb http://www.lncc.br/~portugal/Invar.html
+      \endverb
+      \keyw{computer-algebra}
+    \endentry
+    \entry{portugal:1997-01}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0e9c8563f1faecdc101eaa82ea0e32d9}{%
+           family={Portugal},
+           familyi={P\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=acf62be73f04339a06643451c65ec3eb}{%
+           family={Saut\'u},
+           familyi={S\bibinitperiod},
+           given={S.\bibnamedelimi L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{fullhash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{bibnamehash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{authorbibnamehash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{authornamehash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{authorfullhash}{42aab0b9c59eb9eca0029b62c201001b}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{number}{2-3}
+      \field{title}{{Applications of Maple to general relativity}}
+      \field{volume}{105}
+      \field{year}{1997}
+      \field{pages}{233\bibrangedash 253}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/S0010-4655(97)00078-7
+      \endverb
+      \keyw{computer-algebra}
+    \endentry
+    \entry{xact:2008-01}{webpage}{}
+      \name{author}{1}{}{%
+        {{hash=4e848a40c4572fec76d44b6d1f612e45}{%
+           family={Mart\'{\i}n-Garc\'{\i}a},
+           familyi={M\bibinithyphendelim G\bibinitperiod},
+           given={Jos\'e},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{fullhash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{bibnamehash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{authorbibnamehash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{authornamehash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{authorfullhash}{4e848a40c4572fec76d44b6d1f612e45}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{xAct: Efficient tensor computer algebra for Mathematica}}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb http://metric.iem.csic.es/Martin-Garcia/xAct/
+      \endverb
+      \verb{url}
+      \verb http://metric.iem.csic.es/Martin-Garcia/xAct/
+      \endverb
+      \keyw{computer-algebra}
+    \endentry
+    \entry{maccallum:2018-01}{article}{}
+      \name{author}{1}{}{%
+        {{hash=52c7a0abf867e8ce2402c9445906e716}{%
+           family={MacCallum},
+           familyi={M\bibinitperiod},
+           given={Malcolm\bibnamedelimb A.\bibnamedelimi H.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{fullhash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{bibnamehash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{authorbibnamehash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{authornamehash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{authorfullhash}{52c7a0abf867e8ce2402c9445906e716}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The complicated nature of calculations in general relativity was one of the driving forces in the early development of computer algebra (CA). CA has become widely used in gravity research (GR) and its use can be expected to grow further. Here the general nature of computer algebra is discussed, along with some aspects of CA system design; features particular to GR's requirements are considered; information on packages for CA in GR is provided, both for those packages currently available and for their predecessors; and applications of CA in GR are outlined.}
+      \field{issn}{1433-8351}
+      \field{journaltitle}{Living Reviews in Relativity}
+      \field{title}{Computer algebra in gravity research}
+      \field{volume}{21}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1007/s41114-018-0015-6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s41114-018-0015-6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s41114-018-0015-6
+      \endverb
+      \keyw{computer-algebra}
+    \endentry
+    \entry{mtw:1973-01}{book}{}
+      \name{author}{3}{}{%
+        {{hash=e46a789df6638eeb0b9afe058e39c379}{%
+           family={Misner},
+           familyi={M\bibinitperiod},
+           given={Charles\bibnamedelima W.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=707ddbbdf095969f96b32d475efb0c4d}{%
+           family={Thorne},
+           familyi={T\bibinitperiod},
+           given={Kip\bibnamedelima S.},
+           giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=e0dd396adbc231a724a96d63572c9b03}{%
+           family={Wheeler},
+           familyi={W\bibinitperiod},
+           given={John\bibnamedelima Archibald},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {W. H. Freeman}%
+        {Company, San Francisco}%
+      }
+      \strng{namehash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{fullhash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{bibnamehash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{authorbibnamehash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{authornamehash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{authorfullhash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Gravitation}
+      \field{year}{1973}
+      \keyw{book}
+    \endentry
+    \entry{husa:2006-01}{article}{}
+      \name{author}{3}{}{%
+        {{hash=226bb6a36acb55df1a643b3f967101bc}{%
+           family={Husa},
+           familyi={H\bibinitperiod},
+           given={Sascha},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5fd2481cba368cef0cf9599760843cce}{%
+           family={Hinder},
+           familyi={H\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+        {{hash=1fe73ba600312b2441cdebe77df031d2}{%
+           family={Lechner},
+           familyi={L\bibinitperiod},
+           given={Christiane},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \strng{fullhash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \strng{bibnamehash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \strng{authorbibnamehash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \strng{authornamehash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \strng{authorfullhash}{7d309cbee54e10eb1c73c66c990f4ac0}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0010-4655}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{number}{12}
+      \field{title}{{Kranc: a Mathematica package to generate numerical codes for tensorial evolution equations}}
+      \field{volume}{174}
+      \field{year}{2006}
+      \field{pages}{983\bibrangedash 1004}
+      \range{pages}{22}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.cpc.2006.02.002
+      \endverb
+      \verb{eprint}
+      \verb arXiv:gr-qc/0404023
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0010465506001020
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0010465506001020
+      \endverb
+    \endentry
+    \entry{ruchlin:2018-01}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7e49070941c30a5fde886a5d23990666}{%
+           family={Ruchlin},
+           familyi={R\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+        {{hash=6cb2084f68d4e57242740c3346739af9}{%
+           family={Etienne},
+           familyi={E\bibinitperiod},
+           given={Zachariah\bibnamedelima B.},
+           giveni={Z\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=c3940d28880d8a136223b6beeac63034}{%
+           family={Baumgarte},
+           familyi={B\bibinitperiod},
+           given={Thomas\bibnamedelima W.},
+           giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{fullhash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{bibnamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{authorbibnamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{authornamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{authorfullhash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{6}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{$\mathrm{SENR}/\mathrm{NRPy}+$: Numerical relativity in singular curvilinear coordinate systems}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{064036}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.97.064036
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1712.07658
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.97.064036
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.97.064036
+      \endverb
+    \endentry
+    \entry{chavel:2006-01}{book}{}
+      \name{author}{1}{}{%
+        {{hash=850225858e7c82a40b63bae166d5c8df}{%
+           family={Chavel},
+           familyi={C\bibinitperiod},
+           given={Isaac},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press, Cambridge.}%
+      }
+      \strng{namehash}{850225858e7c82a40b63bae166d5c8df}
+      \strng{fullhash}{850225858e7c82a40b63bae166d5c8df}
+      \strng{bibnamehash}{850225858e7c82a40b63bae166d5c8df}
+      \strng{authorbibnamehash}{850225858e7c82a40b63bae166d5c8df}
+      \strng{authornamehash}{850225858e7c82a40b63bae166d5c8df}
+      \strng{authorfullhash}{850225858e7c82a40b63bae166d5c8df}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Riemannian Geometry. A modern introduction, 2nd ed.}}
+      \field{year}{2006}
+      \keyw{book,rnc,geodesic-variation}
+    \endentry
+    \entry{chern-chen-lam:2000-01}{book}{}
+      \name{author}{3}{}{%
+        {{hash=c2a5c820e3ae9fcd9d2d4a0312333801}{%
+           family={Chern},
+           familyi={C\bibinitperiod},
+           given={S.S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f9ef416f20f22aec36965b507d5e91bd}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={W.H.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=feb6a65a3a9a6f463303c18b1bba332b}{%
+           family={Lam},
+           familyi={L\bibinitperiod},
+           given={K.S.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {World Scientific, Singapore}%
+      }
+      \strng{namehash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{fullhash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{bibnamehash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{authorbibnamehash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{authornamehash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{authorfullhash}{5ae76dc2585c2332cf54a35c42df911d}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Lectures on Differential Geometry}}
+      \field{year}{2000}
+      \keyw{book,rnc}
+    \endentry
+    \entry{eisenhart:1926-01}{book}{}
+      \name{author}{1}{}{%
+        {{hash=88e915ba2134bef88c1a78973be887f4}{%
+           family={Eisenhart},
+           familyi={E\bibinitperiod},
+           given={Luther\bibnamedelima Pfahler},
+           giveni={L\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press, Princeton}%
+      }
+      \strng{namehash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{fullhash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{bibnamehash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{authorbibnamehash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{authornamehash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{authorfullhash}{88e915ba2134bef88c1a78973be887f4}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{RNC : Sec. 18 and Appx. 3}
+      \field{title}{Riemannian Geometry}
+      \field{year}{1926}
+      \keyw{book,rnc}
+    \endentry
+    \entry{gray:1973-01}{article}{}
+      \name{author}{1}{}{%
+        {{hash=41c8eb9bbb1e97ce07720390bcf4e913}{%
+           family={Gray},
+           familyi={G\bibinitperiod},
+           given={Alfred},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \strng{fullhash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \strng{bibnamehash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \strng{authorbibnamehash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \strng{authornamehash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \strng{authorfullhash}{41c8eb9bbb1e97ce07720390bcf4e913}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Michigan.Math.J.}
+      \field{title}{{The volume of a small geodesic ball of a Riemannian manifold}}
+      \field{volume}{20}
+      \field{year}{1973}
+      \field{pages}{329\bibrangedash 344}
+      \range{pages}{16}
+      \keyw{rnc}
+    \endentry
+    \entry{willmore:1996-01}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d2945be038e877294fd8e32e21ea452b}{%
+           family={Willmore},
+           familyi={W\bibinitperiod},
+           given={T.J.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press, Oxford}%
+      }
+      \strng{namehash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{fullhash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{bibnamehash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{authorbibnamehash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{authornamehash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{authorfullhash}{d2945be038e877294fd8e32e21ea452b}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Riemannian Geometry}
+      \field{year}{1996}
+      \keyw{book,rnc}
+    \endentry
+    \entry{calzetta:1988-01}{article}{}
+      \name{author}{3}{}{%
+        {{hash=018724912e34beb683506f49df8480b1}{%
+           family={Calzetta},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=189f16e8da82b288b7e21a276dff1e76}{%
+           family={Habib},
+           familyi={H\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1f45e01fe46d2ce324a78cc099f76d7f}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={B.L.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{fullhash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{bibnamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{authorbibnamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{authornamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{authorfullhash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{number}{10}
+      \field{title}{{Quantum kinetic field theory in curved spacetime: Covariant Wigner function and Liouville-Vlasov equations}}
+      \field{volume}{37}
+      \field{year}{1988}
+      \field{pages}{2901\bibrangedash 2919}
+      \range{pages}{19}
+      \keyw{rnc}
+    \endentry
+    \entry{shibata:1995-01}{article}{}
+      \name{author}{2}{}{%
+        {{hash=41bf97ddfab7a6296d0dc3265ce94f57}{%
+           family={Shibata},
+           familyi={S\bibinitperiod},
+           given={Masaru},
+           giveni={M\bibinitperiod}}}%
+        {{hash=676b4f56aef10be1cebd131ae7fbd9cb}{%
+           family={Nakamura},
+           familyi={N\bibinitperiod},
+           given={Takashi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{2ead73d26d412da1825f4704d675828a}
+      \strng{fullhash}{2ead73d26d412da1825f4704d675828a}
+      \strng{bibnamehash}{2ead73d26d412da1825f4704d675828a}
+      \strng{authorbibnamehash}{2ead73d26d412da1825f4704d675828a}
+      \strng{authornamehash}{2ead73d26d412da1825f4704d675828a}
+      \strng{authorfullhash}{2ead73d26d412da1825f4704d675828a}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{Half of the BSSN formulation}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{Evolution of three-dimensional gravitational waves: Harmonic slicing case}
+      \field{volume}{52}
+      \field{year}{1995}
+      \field{pages}{5428\bibrangedash 5444}
+      \range{pages}{17}
+    \endentry
+    \entry{baumgarte:1998-01}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c3940d28880d8a136223b6beeac63034}{%
+           family={Baumgarte},
+           familyi={B\bibinitperiod},
+           given={Thomas\bibnamedelima W.},
+           giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=d9d8f020b24bc773d3637cfac9f26d94}{%
+           family={Shapiro},
+           familyi={S\bibinitperiod},
+           given={Stuart\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{fullhash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{bibnamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{authorbibnamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{authornamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{authorfullhash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{The second half of the original BSSN formulation}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{{Numerical integration of Einstein's field equations}}
+      \field{volume}{59}
+      \field{year}{1998}
+      \field{pages}{024007}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb gr-qc/9810065
+      \endverb
+    \endentry
+    \entry{alcubierre:2000-03}{article}{}
+      \name{author}{8}{}{%
+        {{hash=91aa669597f86b414ca7b860a6d807b5}{%
+           family={Alcubierre},
+           familyi={A\bibinitperiod},
+           given={Miguel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9725c44f05a3b6d5155dd1360bc53b48}{%
+           family={Brugmann},
+           familyi={B\bibinitperiod},
+           given={Bernd},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9e0dbdc664be89dfa2b57c5a34845c53}{%
+           family={Dramlitsch},
+           familyi={D\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=55dffc61e78f8904467ae3a0c3e5fec3}{%
+           family={Font},
+           familyi={F\bibinitperiod},
+           given={Jose\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=54f713d8320d88a3a1947b9c5c7f1a4a}{%
+           family={Papadopoulos},
+           familyi={P\bibinitperiod},
+           given={Philippos},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7f90a8ec8d35a05d61570bebb52e3a10}{%
+           family={Seidel},
+           familyi={S\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=8f07a1ce8d2705c85e3cfee17d6761eb}{%
+           family={Stergioulas},
+           familyi={S\bibinitperiod},
+           given={Nikolaos},
+           giveni={N\bibinitperiod}}}%
+        {{hash=70d6315147889280cca5639bddd79fe1}{%
+           family={Takahashi},
+           familyi={T\bibinitperiod},
+           given={Ryoji},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{fullhash}{78e99ff2a246a10efff4edd0599bed1c}
+      \strng{bibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authorbibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authornamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authorfullhash}{78e99ff2a246a10efff4edd0599bed1c}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{{Towards a stable numerical evolution of strongly gravitating systems in general relativity: The conformal treatments}}
+      \field{volume}{62}
+      \field{year}{2000}
+      \field{pages}{044034}
+      \range{pages}{1}
+    \endentry
+    \entry{alcubierre:2003-01}{article}{}
+      \name{author}{7}{}{%
+        {{hash=91aa669597f86b414ca7b860a6d807b5}{%
+           family={Alcubierre},
+           familyi={A\bibinitperiod},
+           given={Miguel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c94bc7746f3f6f471ccd286ad4b90ea2}{%
+           family={Br{\"u}gmann},
+           familyi={B\bibinitperiod},
+           given={Bernd},
+           giveni={B\bibinitperiod}}}%
+        {{hash=1fab9b0067b4b9314409067906679eac}{%
+           family={Diener},
+           familyi={D\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=8ded63996a852cae0f5853b1b5841ed3}{%
+           family={Koppitz},
+           familyi={K\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d991131942a8332abbb9f2a6ccaad234}{%
+           family={Pollney},
+           familyi={P\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=7f90a8ec8d35a05d61570bebb52e3a10}{%
+           family={Seidel},
+           familyi={S\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=70d6315147889280cca5639bddd79fe1}{%
+           family={Takahashi},
+           familyi={T\bibinitperiod},
+           given={Ryoji},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{fullhash}{f4c4d120d59eba13dd863625260dae85}
+      \strng{bibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authorbibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authornamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
+      \strng{authorfullhash}{f4c4d120d59eba13dd863625260dae85}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{Gives the first form of BSSN which is manifestly strong-hyperbolic}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{title}{{Gauge conditions for long-term numerical black hole evolutions without excision}}
+      \field{volume}{67}
+      \field{year}{2003}
+      \field{pages}{084023}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb gr-qc/0206072
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

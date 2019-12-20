@@ -9,14 +9,7 @@
 % The utf-8 characters are written to the .bbl and this causes problems with pdflatex.
 %    First  solution use: biber tutorial and \usepackage[latin1]{inputenc}
 %    Second solution use: biber --decodecharsset=null tutorial
-\usepackage[style=numeric,
-            sorting=none,
-            sortcites=true]{biblatex}
-% \usepackage[style=numeric,
-%             sorting=none,
-%             sortcites=true,
-%             bibencoding=ascii,
-%             backend=biber]{biblatex}
+\usepackage[style=numeric, sorting=none, sortcites=true]{biblatex}
 \addbibresource{bibdata.bib}
 %
 \usepackage{cdblatex}
@@ -56,10 +49,10 @@ Australia}
 % \date{20-Jun-2018}% 1st version started
 % \date{10-Sep-2019}% 1st version finished
 % \date{28-Oct-2019}% 2nd version finished
-\date{3-Dec-2019}% 1st arxiv version finished
+\date{10-Dec-2019}% 1st arxiv version finished
+\reference{Preprint: arXiv:1912.08839}
 % \reference{Preprint: arXiv:0903.5365\\[5pt]
 %            Journal: {\it Phys.Rev.D.} {\bf 80} 084030 (2009)}
-\reference{Preprint}
 
 \maketitle
 
@@ -4617,7 +4610,7 @@ Mathematica, Matlab and Python code. Some readers may find these tools useful be
 use in this tutorial.
 
 \url{https://github.com/leo-brewin/riemann-normal-coords}\Break
-This site contains all of the Cadabra code used to the authors' paper on Riemann Normal
+This site contains all of the Cadabra code used in the authors' paper on Riemann Normal
 Coordinates \cite{brewin:2009-02}.
 
 \url{https://github.com/leo-brewin/adm-bssn-equations}\Break
@@ -4633,7 +4626,7 @@ system and another for the BSSN system.
 
 \url{https://docs.python.org/3/}\Break
 \url{https://docs.python.org/3/reference/index.html}\Break
-\url{https://docs.python.org/3/tutorial/index.html#tutorial-index}\Break
+\url{https://docs.python.org/3/tutorial/index.html}\Break
 These are the official sites for Python. They provide excellent information on all matters
 Python.
 

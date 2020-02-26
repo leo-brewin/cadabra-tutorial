@@ -91,16 +91,17 @@ Rabcd := R^{a}_{b c d} ->   \partial_{c}{\Gamma^{a}_{b d}}
                           + \Gamma^{e}_{b d} \Gamma^{a}_{c e}
                           - \Gamma^{e}_{b c} \Gamma^{a}_{d e}.
 
-substitute (Rabcd, Gamma)
-
 gab := { g_{\theta \theta}   = r**2,
          g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
 
 iab := { g^{\theta\theta}   = 1/r**2,
          g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
 
-# complete   (gab, $g^{a b}$)
-# evaluate   (Rabcd, gab+iab, rhsonly=True)
+substitute (Rabcd, Gamma)
+evaluate   (Rabcd, gab+iab, rhsonly=True)
+
+# above code just to compute Rabcd
+# following code is all that is needed for the scalar projection method
 
 # define the basis for vectors and dual vectors
 
@@ -112,7 +113,7 @@ dual  := {theta_{\theta} = 1, varphi_{\varphi} = 1}.
 compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.
 substitute (compt,Rabcd)
 
-evaluate (compt,gab+iab+basis+dual)
+evaluate (compt,basis+dual)
 
 compt_sympy = compt._sympy_()
 

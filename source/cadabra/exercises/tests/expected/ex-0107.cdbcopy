@@ -4,17 +4,17 @@ bah = A_{a} C_{c}
 type foo = <class 'cadabra2.Ex'>
 type bah = <class 'cadabra2.Ex'>
 
-id foo = 4439454080
-id bah = 4403326456
+id foo = 4589928496
+id bah = 4589928552
 
 foo = B_{b} A_{a}
 bah = B_{b} A_{a}
 
 bah = A_{a} B_{b}
 
-id foo = 4439454080
-id bah = 4439454080
+id foo = 4589928496
+id bah = 4589928496
 
-id foo = 4439454080
-id bah = 4443249104
+id foo = 4589928496
+id bah = 4589929336
 

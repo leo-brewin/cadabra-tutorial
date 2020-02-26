@@ -2537,9 +2537,9 @@ right hand side.
 
 Calls to \verb|evaluate| will return a Cadabra object that contains all of the non-zero
 components. This raises a simple question -- How can individual components of a tensor be
-found? The simplest answer is to call the Cadabra function \verb|get_component|. The
-$R^{\theta}{}_{\varphi\theta\varphi}$ component of the Riemann tensor $R^{a}{}_{b c d}$ can
-be obtained using the following code (appended to the above code)
+found? The simplest answer is to call the Cadabra function \verb|get_component|. Here is a
+simple example that extracts one component of the Riemann tensor (following on from the
+previous example).
 \lstset{firstnumber=25}
 \begin{cadabra}
    from cdb.core.component import *
@@ -2549,27 +2549,25 @@ be obtained using the following code (appended to the above code)
 
    RiemCompt = get_component (Riem, $\theta, \varphi, \theta, \varphi$) |\lstlabel{ex-06.207}|
 \end{cadabra}
-This will return
+It is tempting, given the above code, to assume that the selected component will be
+$R^\theta{}_{\varphi\theta\varphi}$. But in fact the result will be
+$R^\theta{}_{\varphi\varphi\theta}$ (note the swap in the last pair of indices). The reason
+is simple -- Cadabra will assign, left to right, the requested indices $\theta, \varphi,
+\theta, \varphi$ to the indices on the $\square{}$ as per the order shown in
+\lstref{ex-06.205}. That is, $d=\theta$, $b=\varphi$, $a=\theta$ and $c=\varphi$. So the
+selected component of $R^{a}{}_{bcd}$ will be $R^\theta{}_{\varphi\varphi\theta}$ which
+leads to
 \begin{align*}
-   R^\theta{}_{\varphi\theta\varphi} &= \cdb{ex-06.207} \tag*{\lstref{ex-06.207}}
+   R^\theta{}_{\varphi\varphi\theta} &= \cdb{ex-06.207} \tag*{\lstref{ex-06.207}}
 \end{align*}
 
-The same results can also be obtained by projecting the tensor onto a suitable combination
-of basis elements. Thus $R^{\theta}{}_{\varphi\theta\varphi}$ can be computed using
-$R^{a}{}_{bcd} e^\theta_{a} e^{b}_{\varphi} e^{c}_{\theta} e^{d}_{\varphi} e$
-where $e_{\theta} = \partial_{\theta}$ and $e_{\varphi}=\partial_{\varphi}$ are the standard
-basis for the coordinates $(\theta,\varphi)$. The following code fragment will do the job.
+Individual components can also be obtained by projecting the tensor onto a suitable
+combination of basis elements. Thus $R^{\theta}{}_{\varphi\theta\varphi}$ can be computed
+using $R^{a}{}_{bcd} e^\theta_{a} e^{b}_{\varphi} e^{c}_{\theta} e^{d}_{\varphi} e$ where
+$e_{\theta} = \partial_{\theta}$ and $e_{\varphi}=\partial_{\varphi}$ are the standard basis
+for the coordinates $(\theta,\varphi)$. The following code fragment will do the job.
 
 \begin{cadabra}[numbers=none]
-   theta{#}::LaTeXForm{"\theta"}.
-   varphi{#}::LaTeXForm{"\varphi"}.
-
-   gab := { g_{\theta \theta}   = r**2,
-            g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.
-
-   iab := { g^{\theta\theta}   = 1/r**2,
-            g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
-
    # define the basis for vectors and dual vectors
 
    basis := {theta^{\theta} = 1, varphi^{\varphi} = 1}.
@@ -2580,11 +2578,14 @@ basis for the coordinates $(\theta,\varphi)$. The following code fragment will d
    compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.
    substitute (compt, Rabcd)
 
-   evaluate (compt, gab+iab+basis+dual)
+   evaluate (compt, basis+dual)
 \end{cadabra}
 This fragment will require all the usual property definitions but more importantly it
 requires a definition of the tensor \verb|Rabcd|. This can be taken from either line
 \lstref*{ex-06.203} or \lstref*{ex-06.205} of the 2-sphere example given above.
+
+The advantage of the projection method over using calls to \verb|get_component| is that
+it is not subject to the index shuffling that can occur when using \verb|get_component|.
 
 % --------------------------------------------------------------------------------------------
 \subsection{Components in pure Python/SymPy}

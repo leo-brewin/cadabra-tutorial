@@ -23,7 +23,7 @@ examples:
 .%:	%.tex
 	@ echo "cdblatex.sh $* ..."
 	@ cdblatex.sh -T -skx -i $* &> $*.cdblog
-	@ # echo " -->"`cdbstats -i $*.cdblog`
+	@ # echo " -->"`cputime -i $*.cdblog`
 	@ if [[ $* = example-06 ]]; then \
 	     cdbcopy.py -i example-06 -t print.ex-06.04 -o example-06-04.cdbcopy; \
 	     cdbcopy.py -i example-06 -t print.ex-06.05 -o example-06-05.cdbcopy; \

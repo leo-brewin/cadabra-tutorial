@@ -23,7 +23,7 @@ exercises:
 .%:	%.tex
 	@ echo "cdblatex.sh $* ..."
 	@ cdblatex.sh -T -skx -i $* &> $*.cdblog
-	@ # echo " -->"`cdbstats -i $*.cdblog`
+	@ # echo " -->"`cputime -i $*.cdblog`
 	@ if [[ $* = ex-0107 ]]; then \
 	     cdbcopy.py -i ex-0107 -t print.0107 -o ex-0107.cdbcopy; \
      fi

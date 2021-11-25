@@ -5,8 +5,14 @@ def cdb_write_code (ex,name,filename,num):
 
     import sympy as sym
 
-    from sympy.printing.ccode import C99CodePrinter as printer
-    from sympy.printing.codeprinter import Assignment
+    # -- 24 sep 2021 ----------------------------------------- old
+    # from sympy.printing.ccode import C99CodePrinter as printer
+    # from sympy.printing.codeprinter import Assignment
+    # -- 24 sep 2021 ----------------------------------------- new
+    # changes due to upgrade of SymPy to v 1.7
+    from sympy.printing.c import C99CodePrinter as printer
+    from sympy.codegen.ast import Assignment
+    # -------------------------------------------------------- 24 sep 2021
 
     # this block for scalars
     if num == 0:
@@ -55,8 +61,14 @@ def py_write_code (lst,idx,name,filename):
 
     import sympy as sym
 
-    from sympy.printing.ccode import C99CodePrinter as printer
-    from sympy.printing.codeprinter import Assignment
+    # -- 24 sep 2021 ----------------------------------------- old
+    # from sympy.printing.ccode import C99CodePrinter as printer
+    # from sympy.printing.codeprinter import Assignment
+    # -- 24 sep 2021 ----------------------------------------- new
+    # changes due to upgrade of SymPy to v 1.7
+    from sympy.printing.c import C99CodePrinter as printer
+    from sympy.codegen.ast import Assignment
+    # -------------------------------------------------------- 24 sep 2021
 
     mat = sym.Matrix([lst])                   # row vector of terms
 

@@ -7,7 +7,7 @@ file="<none>"
 
 OPTIND=1
 
-while getopts 'i:' option
+while getopts 'hi:' option
 do
    case "$option" in
    "i")  file="$OPTARG"      ;;

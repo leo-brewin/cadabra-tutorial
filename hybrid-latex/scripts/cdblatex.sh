@@ -63,11 +63,11 @@ if [[ ! -e $file.tex ]]; then
 fi
 
 # does the source contain \Input?
-num=$(egrep -c -e'^\s*\\Input\{' "$file".tex)
+num=$(egrep -c -e'^\s*(\\|\@|\$)Input\{' "$file".tex)
 
 # yes, now merge source files
 if ! [[ $num = 0 ]]; then
-   merge-tex.py -i $file.tex -o .merged.tex
+   merge-src.py -i $file.tex -o .merged.tex
    name=".merged"
 fi
 

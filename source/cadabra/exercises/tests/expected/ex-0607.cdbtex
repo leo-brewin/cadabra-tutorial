@@ -22,7 +22,7 @@
 \partial_{b}{g_{a c}} \xi^{c}+g_{a c} \partial_{b}{\xi^{c}}-g^{c d} \partial_{b}{g_{a c}} g_{d e} \xi^{e}-g^{c d} \partial_{a}{g_{b c}} g_{d e} \xi^{e}+g^{c d} \partial_{c}{g_{a b}} g_{d e} \xi^{e}+\partial_{a}{g_{b c}} \xi^{c}+g_{b c} \partial_{a}{\xi^{c}}%
 }
 \cdbtag{ex-0607.107}{%
-\left[\xi^{\theta} = \sin\left(\varphi\right),~\discretionary{}{}{} \xi^{\varphi} = \cos{\theta} {\left(\sin{\theta}\right)}^{-1} \cos\left(\varphi\right)\right]%
+\left[\xi^{\theta} = \sin{\varphi},~\discretionary{}{}{} \xi^{\varphi} = \cos{\theta} {\left(\sin{\theta}\right)}^{-1} \cos{\varphi}\right]%
 }
 \cdbtag{ex-0607.108}{%
 \left[g_{t t} = -1+2m {r}^{-1},~\discretionary{}{}{} g_{r r} = {\left(1-2m {r}^{-1}\right)}^{-1},~\discretionary{}{}{} g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%

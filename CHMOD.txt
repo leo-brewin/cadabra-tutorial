@@ -16,4 +16,4 @@ chmod u+x ./hybrid-latex/scripts/cdbcopy.py
 chmod u+x ./hybrid-latex/scripts/cdblatex.sh
 chmod u+x ./hybrid-latex/scripts/cdbpostproc.py
 chmod u+x ./hybrid-latex/scripts/cdbpreproc.py
-chmod u+x ./hybrid-latex/scripts/merge-tex.py
+chmod u+x ./hybrid-latex/scripts/merge-src.py

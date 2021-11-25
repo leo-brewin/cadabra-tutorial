@@ -1,14 +1,3 @@
-# ----------------------------------------------
-# auto-generated from dgeom.tex
-# ----------------------------------------------
-def Print (obj):
-    try:
-        print(obj._latex_())
-    except:
-        print(latex(obj))
-# ----------------------------------------------
-
-
 {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w#}::Indices(position=independent).
 
 \nabla{#}::Derivative.
@@ -58,6 +47,7 @@ Rab := R_{a b} -> R^{c}_{a c b}.
 
 Rscalar := R -> g^{a b} R_{a b}.
 
+# Weyl in 4 dimensions
 Cabcd := C_{a b c d} -> R_{a b c d} - (1/2) (R_{a c} g_{b d} - R_{a d} g_{b c})
                                     - (1/2) (g_{a c} R_{b d} - g_{a d} R_{b c})
                                     + (R/6) (g_{a c} g_{b d} - g_{a d} g_{b c}).
@@ -89,17 +79,19 @@ substitute (expr,Rscalar)
 expr := C_{a b c d}.
 substitute (expr,Cabcd)
 
+
 import cdblib
 
 cdblib.create ('dgeom.json')
 
-cdblib.put ('dgab',dgab,'dgeom.json')
-cdblib.put ('diab',diab,'dgeom.json')
-cdblib.put ('GammaU',GammaU,'dgeom.json')
-cdblib.put ('GammaD',GammaD,'dgeom.json')
-cdblib.put ('RabcdU',RabcdU,'dgeom.json')
-cdblib.put ('RabcdD',RabcdD,'dgeom.json')
-cdblib.put ('Rab',Rab,'dgeom.json')
-cdblib.put ('Rscalara',Rscalar,'dgeom.json')
-cdblib.put ('Cabcd',Cabcd,'dgeom.json')
+cdblib.put ('dgab',     dgab,    'dgeom.json')
+cdblib.put ('diab',     diab,    'dgeom.json')
+cdblib.put ('GammaU',   GammaU,  'dgeom.json')
+cdblib.put ('GammaD',   GammaD,  'dgeom.json')
+cdblib.put ('RabcdU',   RabcdU,  'dgeom.json')
+cdblib.put ('RabcdD',   RabcdD,  'dgeom.json')
+cdblib.put ('Rab',      Rab,     'dgeom.json')
+cdblib.put ('Rscalara', Rscalar, 'dgeom.json')
+cdblib.put ('Cabcd',    Cabcd,   'dgeom.json')
+
 

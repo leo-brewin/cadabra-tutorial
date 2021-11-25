@@ -8,7 +8,7 @@
 }
 \cdbtag{ex-06.102}{%
 \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \cos{\theta}-1\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}& = -\cos{\theta}+1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = 1-\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-06.201}{%

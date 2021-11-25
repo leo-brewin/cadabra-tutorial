@@ -13,7 +13,7 @@ dV_{a b} \rightarrow \partial_{b}{V_{a}}-\partial_{a}{V_{b}}%
 \square{}_{\varphi}{}_{\varphi}& = dV_{\varphi \varphi}\\[-.5ex]%
 \end{aligned}\right.%
  \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \cos{\theta}-1\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}& = -\cos{\theta}+1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = 1-\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-0601.200}{%
@@ -24,7 +24,7 @@ dV_{a b} \rightarrow \partial_{b}{V_{a}}-\partial_{a}{V_{b}}%
 }
 \cdbtag{ex-0601.202}{%
 dV_{a b} \rightarrow \square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \cos{\theta}-1\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}& = -\cos{\theta}+1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = 1-\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

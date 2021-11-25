@@ -1,0 +1,11 @@
+{
+  "Cabcd": "C_{a b c d} -> R_{a b c d} -  1/2 R_{a c} g_{b d} +  1/2 R_{a d} g_{b c} -  1/2 g_{a c} R_{b d} +  1/2 g_{a d} R_{b c} +  1/6 R (g_{a c} g_{b d}-g_{a d} g_{b c})",
+  "GammaD": "\\Gamma_{a b c} ->  1/2 \\partial_{b}(g_{a c}) +  1/2 \\partial_{c}(g_{b a}) -  1/2 \\partial_{a}(g_{b c})",
+  "GammaU": "\\Gamma^{a}_{b c} ->  1/2 g^{a d} (\\partial_{b}(g_{d c}) + \\partial_{c}(g_{b d})-\\partial_{d}(g_{b c}))",
+  "Rab": "R_{a b} -> R^{c}_{a c b}",
+  "RabcdD": "R_{a b c d} -> \\partial_{c}(\\Gamma_{a b d})-\\partial_{d}(\\Gamma_{a b c}) + \\Gamma_{e a d} \\Gamma^{e}_{b c}-\\Gamma_{e a c} \\Gamma^{e}_{b d}",
+  "RabcdU": "R^{a}_{b c d} -> \\partial_{c}(\\Gamma^{a}_{b d})-\\partial_{d}(\\Gamma^{a}_{b c}) + \\Gamma^{e}_{b d} \\Gamma^{a}_{c e}-\\Gamma^{e}_{b c} \\Gamma^{a}_{d e}",
+  "Rscalara": "R -> g^{a b} R_{a b}",
+  "dgab": "\\partial_{c}(g_{a b}) -> \\Gamma^{d}_{a c} g_{d b} + \\Gamma^{d}_{b c} g_{a d}",
+  "diab": "\\partial_{c}(g^{a b}) -> -\\Gamma^{a}_{d c} g^{d b}-\\Gamma^{b}_{d c} g^{a d}"
+}

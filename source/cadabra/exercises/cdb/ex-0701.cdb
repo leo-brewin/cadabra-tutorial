@@ -75,8 +75,8 @@ def write_code (obj,name,filename,rank):
 
    import os
 
-   from sympy.printing.ccode import C99CodePrinter as printer
-   from sympy.printing.codeprinter import Assignment
+   from sympy.printing.c import C99CodePrinter as printer
+   from sympy.codegen.ast import Assignment
 
    idx=[]
    lst=[]

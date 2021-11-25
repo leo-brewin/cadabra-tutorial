@@ -28,9 +28,9 @@ R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned
 \square{}_{t}{}_{x}{}^{t}{}_{x}& = -p_1 {t}^{\left(2p_1-2\right)} \left(p_1-1\right)\\[-.5ex]%
 \square{}_{t}{}_{y}{}^{t}{}_{y}& = -p_2 {t}^{\left(2p_2-2\right)} \left(p_2-1\right)\\[-.5ex]%
 \square{}_{t}{}_{z}{}^{t}{}_{z}& = -p_3 {t}^{\left(2p_3-2\right)} \left(p_3-1\right)\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{x}{}_{x}& = p_1 \left(-p_1+1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{y}{}_{y}& = p_2 \left(-p_2+1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{z}{}_{z}& = p_3 \left(-p_3+1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{x}{}_{x}& = p_1 \left(1-p_1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{y}{}_{y}& = p_2 \left(1-p_2\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{z}{}_{z}& = p_3 \left(1-p_3\right) {t}^{-2}\\[-.5ex]%
 \square{}_{z}{}_{z}{}^{y}{}_{y}& = p_2 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
 \square{}_{z}{}_{z}{}^{x}{}_{x}& = p_1 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
 \square{}_{y}{}_{y}{}^{z}{}_{z}& = p_2 p_3 {t}^{\left(2p_2-2\right)}\\[-.5ex]%

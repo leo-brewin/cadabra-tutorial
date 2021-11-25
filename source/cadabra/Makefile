@@ -3,20 +3,25 @@ SHELL = /bin/bash
 #-------------------------------------------------------------------------------
 .PHONY: all tests
 #-------------------------------------------------------------------------------
-TARGETS = $(patsubst %.tex,%,$(wildcard example-[0-9][0-9]*.tex))
+TARGETS = dgeom $(patsubst %.tex,%,$(wildcard example-[0-9][0-9]*.tex))
 #-------------------------------------------------------------------------------
 all:
-	@ mkdir -p cdb pdf tests/output tests/expected
+	@ mkdir -p cdb pdf lib
+	@ mkdir -p tests/output tests/expected
+	@ mkdir -p tests/semantic/output tests/semantic/expected
 	@ for file in $(TARGETS); do make .$${file}; done;
 	@ make examples
 #-------------------------------------------------------------------------------
 examples:
 	@ make .examples
-.examples: example-[0-9][0-9]*.pdf
+.examples: example-[0-9][0-9]*.tex
 	@ echo "pdflatex examples ..."
 	@ pdflatex -halt-on-error -interaction=batchmode examples &> /dev/null
-	@ cp -f examples.pdf pdf/.
-	@ touch .examples
+	@ if [[ -e examples.pdf ]]; then \
+	      cp -f examples.pdf pdf/.; \
+	      cp -f examples.pdf ../../pdf/.; \
+			touch .examples; \
+	  fi
 #-------------------------------------------------------------------------------
 %:
 	@ make .$*
@@ -33,10 +38,11 @@ examples:
 	@ # can't use wildcard with -e so test on one file
 	@ cp -f $*.pdf    pdf/.
 	@ cp -f $*.cdb    cdb/.
+	@ cp -f $*.cdbtex lib/.
 	@ cp -f $*.cdbtex tests/output/.
-	@ if [[ -e $*-rab.c ]];      then cp -f $*-*.c tests/output/.;       fi
+	@ if [[ -e $*-rab.c ]];      then cp -f $*-*.c       tests/output/.; fi
 	@ if [[ -e $*-04.cdbcopy ]]; then cp -f $*-*.cdbcopy tests/output/.; fi
-	@ if [[ -e $*.json ]];       then cp -f $*.json tests/output/.;      fi
+	@ if [[ -e $*.json ]];       then cp -f $*.json      tests/output/.; fi
 	@ touch .$*
 #-------------------------------------------------------------------------------
 expected:
@@ -55,13 +61,7 @@ rm-dot:
 	@ rm -rf .merged.tex .tmp.txt
 	@ rm -rf .examples
 #-------------------------------------------------------------------------------
-rm-tests-output:
-	@ rm -rf tests/output/*
-	@ rm -rf tests/semantic/output/*
-#-------------------------------------------------------------------------------
 rm-output:
-	@ rm -rf cdb/*
-	@ rm -rf pdf/*
 	@ rm -rf tests/output/*
 	@ rm -rf tests/semantic/output/*
 #-------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ clean:
 #-------------------------------------------------------------------------------
 veryclean:
 	@ make clean
-	@ for file in $(TARGETS); \
+	@ for file in $(TARGETS) examples; \
 	  do \
 		  rm -rf $${file}.pdf; \
 		  rm -rf $${file}.cdb $${file}_.cdb; \
@@ -90,6 +90,7 @@ pristine:
 	@ make rm-output
 	@ make rm-expected
 	@ make veryclean
+	@ rm -rf cdb/* lib/* pdf/*
 	@ (cd tests/semantic; make pristine)
 	@ for file in $(TARGETS) examples; \
 	  do \
@@ -98,20 +99,21 @@ pristine:
 		  rm -rf $${file}.cdbtex $${file}*-*.cdbcopy; \
 	  done
 #-------------------------------------------------------------------------------
+github-clean:
+	@ make rm-dot
+	@ make rm-output
+	@ make veryclean
+	@ for file in $(TARGETS) examples; \
+	  do \
+		  if [[ -e $${file}.cdbtex ]];     then rm -f $${file}.cdbtex; fi ; \
+		  if [[ -e $${file}.json ]];       then mv -f $${file}.json      lib/.; fi ; \
+		  if [[ -e $${file}-rab.c ]];      then mv -f $${file}-*.c       lib/.; fi ; \
+		  if [[ -e $${file}-04.cdbcopy ]]; then mv -f $${file}-*.cdbcopy lib/.; fi ; \
+	  done
+#-------------------------------------------------------------------------------
 # prepare files for github
 github:
 	@ make pristine
 	@ make all
 	@ make expected
-	@ make rm-tests-output
-	@ make rm-dot
-	@ make veryclean
-	@ rm -rf example-*.pdf
-	@ for file in $(TARGETS); \
-	  do \
-		  if [[ -e $${file}.json ]];       then mv -f $${file}.json      lib/.; fi ; \
-		  if [[ -e $${file}.cdbtex ]];     then mv -f $${file}.cdbtex    lib/.; fi ; \
-		  if [[ -e $${file}-rab.c ]];      then mv -f $${file}-*.c       lib/.; fi ; \
-		  if [[ -e $${file}-04.cdbcopy ]]; then mv -f $${file}-*.cdbcopy lib/.; fi ; \
-	  done
-	@ cp -rf examples.pdf ../../pdf/.
+	@ make github-clean

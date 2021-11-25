@@ -1,5 +1,7 @@
 \documentclass[12pt]{cdblatex}
 \usepackage{examples}
+\usepackage{fancyhdr}
+\usepackage{footer}
 
 \begin{document}
 
@@ -24,8 +26,8 @@
 
       import os
 
-      from sympy.printing.ccode import C99CodePrinter as printer
-      from sympy.printing.codeprinter import Assignment
+      from sympy.printing.c import C99CodePrinter as printer
+      from sympy.codegen.ast import Assignment
 
       idx=[]  # indices in the form [{x, x}, {x, y} ...]
       lst=[]  # corresponding terms [termxx, termxy, ...]

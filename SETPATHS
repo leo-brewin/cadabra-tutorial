@@ -1,0 +1,16 @@
+function Export {
+   export $1="$2"
+}
+
+# just to be sure; only required when switching from one repo to another
+source OLDPATHS
+
+if [[ $1 = '' ]]; then
+   export HERE=$HOME/local/cadabra-tutorial/
+else
+   export HERE=$1
+fi
+
+if [[ "${OLDTEXINPUTS}"  = "" ]]; then Export OLDTEXINPUTS  "${TEXINPUTS}";  Export TEXINPUTS  ".:$HERE/tex/:${TEXINPUTS}";  fi
+if [[ "${OLDPYTHONPATH}" = "" ]]; then Export OLDPYTHONPATH "${PYTHONPATH}"; Export PYTHONPATH ".:$HERE/lib/:${PYTHONPATH}"; fi
+if [[ "${OLDPATH}"       = "" ]]; then Export OLDPATH       "${PATH}";       Export PATH       ".:$HERE/bin/:${PATH}";       fi

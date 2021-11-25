@@ -112,9 +112,13 @@ def filter_inline_comment (this_line):
     if len(this_line) == 0:
        return ""
     else:
-       the_beg,the_end,found = grep (this_line,re_inline_comment,2)
-       if the_beg > 0 :
-          return this_line[0:the_beg].rstrip(" ")
+       # save time by only searching for in-line comments in short-ish lines
+       if len(this_line) < 200:
+          the_beg,the_end,found = grep (this_line,re_inline_comment,2)
+          if the_beg > 0 :
+             return this_line[0:the_beg].rstrip(" ")
+          else:
+             return this_line.rstrip("\n")
        else:
           return this_line.rstrip("\n")
 

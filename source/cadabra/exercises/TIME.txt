@@ -1,0 +1,60 @@
+-- 08 Nov 2021 --------------------------------------------
+
+Cadabra 2.3.7 (build 2778.b0ba2dbb80 dated 2021-09-27)
+
+ex-0101 -->  0.6 secs and 48 Mbytes
+ex-0102 -->  0.7 secs and 49 Mbytes
+ex-0103 -->  0.7 secs and 49 Mbytes
+ex-0104 -->  0.7 secs and 49 Mbytes
+ex-0105 -->  0.6 secs and 49 Mbytes
+ex-0106 -->  0.6 secs and 49 Mbytes
+ex-0107 -->  0.6 secs and 49 Mbytes
+ex-0108 -->  0.6 secs and 49 Mbytes
+ex-0109 -->  0.6 secs and 49 Mbytes
+ex-0110 -->  0.6 secs and 49 Mbytes
+ex-0111 -->  0.6 secs and 49 Mbytes
+
+ex-0201 -->  0.7 secs and 49 Mbytes
+ex-0202 -->  0.7 secs and 50 Mbytes
+ex-0203 -->  0.7 secs and 49 Mbytes
+ex-0204 -->  0.6 secs and 49 Mbytes
+ex-0205 -->  0.7 secs and 49 Mbytes
+ex-0206 -->  0.6 secs and 49 Mbytes
+ex-0207 -->  0.7 secs and 49 Mbytes
+ex-0208 -->  0.6 secs and 49 Mbytes
+
+ex-0301 -->  1.5 secs and 50 Mbytes
+ex-0302 -->  0.7 secs and 50 Mbytes
+ex-0303 -->  0.8 secs and 49 Mbytes
+ex-0304 -->  2.1 secs and 50 Mbytes
+ex-0305 -->  0.6 secs and 49 Mbytes
+ex-0306 -->  0.6 secs and 49 Mbytes
+ex-0307 -->  1.5 secs and 50 Mbytes
+ex-0308 -->  1.6 secs and 48 Mbytes
+ex-0309 -->  1.4 secs and 49 Mbytes
+ex-0310 -->  0.6 secs and 49 Mbytes
+
+ex-0401 -->  0.6 secs and 48 Mbytes
+ex-0402 -->  0.6 secs and 48 Mbytes
+ex-0403 -->  0.8 secs and 49 Mbytes
+ex-0404 -->  0.6 secs and 48 Mbytes
+ex-0405 -->  0.8 secs and 49 Mbytes
+ex-0406 -->  0.6 secs and 48 Mbytes
+ex-0407 -->  0.6 secs and 48 Mbytes
+
+ex-0501 -->  0.7 secs and 49 Mbytes
+ex-0502 -->  0.7 secs and 49 Mbytes
+ex-0503 -->  0.7 secs and 49 Mbytes
+ex-0504 -->  0.7 secs and 49 Mbytes
+ex-0505 -->  0.7 secs and 49 Mbytes
+
+ex-0601 -->  1.0 secs and 54 Mbytes
+ex-0602 -->  1.0 secs and 55 Mbytes
+ex-0603 -->  1.0 secs and 54 Mbytes
+ex-0604 -->  5.6 secs and 57 Mbytes
+ex-0605 --> 39.7 secs and 67 Mbytes
+ex-0606 -->  8.7 secs and 57 Mbytes
+ex-0607 -->  5.9 secs and 59 Mbytes
+ex-0608 -->  1.0 secs and 55 Mbytes
+
+ex-0701 --> 22.4 secs and 83 Mbytes

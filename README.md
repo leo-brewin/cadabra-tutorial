@@ -6,7 +6,7 @@
 
 All of the sources for the tutorial (including the examples and exercises) are written with the Cadabra sources embedded in LaTeX documents. Simple tools are used to extract and execute the embedded Cadabra source while also capturing the output and making it available elsewhere in the LaTeX document. These tools have been cloned from the [Hybrid-LaTeX][2] project and can be found in the `hybrid-latex/` directory. A copy of the documentation for the Hybrid-LaTeX project is also included in the `hybrid-latex/` directory.
 
-Note that the hybrid LaTeX tools are not essential in order to work through the project. The raw Cadabra files (stripped bare of any of the hybrid Latex markup) can be found in `source/cadabra/cdb/. They can be run either at the command line or copied into the Cadabra2 gui. Using just the raw Cadabra files does have one disadavantage -- the formatting of the Cadabra output will not appear exactly as shown in the tutorial's pdf files (in `pdf/`).
+Note that the hybrid LaTeX tools are not essential in order to work through the project. The raw Cadabra files (stripped bare of any of the hybrid Latex markup) can be found in `source/cadabra/cdb/`. They can be run either at the command line or copied into the Cadabra2 gui. Using just the raw Cadabra files does have one disadavantage -- the formatting of the Cadabra output will not appear exactly as shown in the tutorial's pdf files (in `pdf/`).
 
 It is highly recommended that you do install the hybrid LaTeX tools as their use greatly simplifies any experiments you might want to run on the included examples. The tools are also of use in their own right (see for example the collection of examples in the [Hybrid-LaTeX][2] project).
 

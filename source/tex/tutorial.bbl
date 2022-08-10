@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 2.9 $
+% $ biblatex bbl format version 3.1 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -33,8 +33,9 @@
       \strng{authorbibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
       \strng{authornamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
       \strng{authorfullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \field{extraname}{1}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Cadabra2 home page}}
@@ -61,8 +62,9 @@
       \strng{authorbibnamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
       \strng{authornamehash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
       \strng{authorfullhash}{81f35a1e9a9b50a3bc9cd968b7bd4ccb}
+      \field{extraname}{2}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Cadabra2 GitHub reporistory}}
@@ -90,7 +92,7 @@
       \strng{authornamehash}{88bf9b772ddd6aee4a5d5f641a10ad46}
       \strng{authorfullhash}{88bf9b772ddd6aee4a5d5f641a10ad46}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computer Physics Communications}
@@ -129,7 +131,7 @@
       \strng{authornamehash}{438d7f911df8f9e9b24d093338c1022b}
       \strng{authorfullhash}{438d7f911df8f9e9b24d093338c1022b}
       \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{GRTensorIII home page}}
@@ -158,7 +160,7 @@
       \strng{authornamehash}{bc3292567552688d69e5ddc95781245b}
       \strng{authorfullhash}{bc3292567552688d69e5ddc95781245b}
       \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Maxima, a Computer Algebra System. Version 5.34.1}
@@ -172,25 +174,25 @@
     \endentry
     \entry{manssur:2004-01}{article}{}
       \name{author}{2}{}{%
-        {{hash=f8a06e121b601c0529626d8b2b2eefbd}{%
+        {{hash=c34bbdbe49017516c28996c16eb34896}{%
            family={Manssur},
            familyi={M\bibinitperiod},
            given={L.\bibnamedelimi R.\bibnamedelimi U.},
            giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
-        {{hash=0e9c8563f1faecdc101eaa82ea0e32d9}{%
+        {{hash=fee49bcd3414fcd88750e80bd04f4c9d}{%
            family={Portugal},
            familyi={P\bibinitperiod},
            given={R.},
            giveni={R\bibinitperiod}}}%
       }
-      \strng{namehash}{15510eff6305acce18072230c1466dc9}
-      \strng{fullhash}{15510eff6305acce18072230c1466dc9}
-      \strng{bibnamehash}{15510eff6305acce18072230c1466dc9}
-      \strng{authorbibnamehash}{15510eff6305acce18072230c1466dc9}
-      \strng{authornamehash}{15510eff6305acce18072230c1466dc9}
-      \strng{authorfullhash}{15510eff6305acce18072230c1466dc9}
+      \strng{namehash}{80cb19614e81c8cc9422ecf1c44b8a67}
+      \strng{fullhash}{80cb19614e81c8cc9422ecf1c44b8a67}
+      \strng{bibnamehash}{80cb19614e81c8cc9422ecf1c44b8a67}
+      \strng{authorbibnamehash}{80cb19614e81c8cc9422ecf1c44b8a67}
+      \strng{authornamehash}{80cb19614e81c8cc9422ecf1c44b8a67}
+      \strng{authorfullhash}{80cb19614e81c8cc9422ecf1c44b8a67}
       \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computer Physics Communications}
@@ -214,25 +216,25 @@
     \endentry
     \entry{portugal:1997-01}{article}{}
       \name{author}{2}{}{%
-        {{hash=0e9c8563f1faecdc101eaa82ea0e32d9}{%
+        {{hash=fee49bcd3414fcd88750e80bd04f4c9d}{%
            family={Portugal},
            familyi={P\bibinitperiod},
            given={R.},
            giveni={R\bibinitperiod}}}%
-        {{hash=acf62be73f04339a06643451c65ec3eb}{%
+        {{hash=a563436f0ae604360e74e08d192f675e}{%
            family={Saut\'u},
            familyi={S\bibinitperiod},
            given={S.\bibnamedelimi L.},
            giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
       }
-      \strng{namehash}{42aab0b9c59eb9eca0029b62c201001b}
-      \strng{fullhash}{42aab0b9c59eb9eca0029b62c201001b}
-      \strng{bibnamehash}{42aab0b9c59eb9eca0029b62c201001b}
-      \strng{authorbibnamehash}{42aab0b9c59eb9eca0029b62c201001b}
-      \strng{authornamehash}{42aab0b9c59eb9eca0029b62c201001b}
-      \strng{authorfullhash}{42aab0b9c59eb9eca0029b62c201001b}
+      \strng{namehash}{2497042b519267ea560e137d80a75f2b}
+      \strng{fullhash}{2497042b519267ea560e137d80a75f2b}
+      \strng{bibnamehash}{2497042b519267ea560e137d80a75f2b}
+      \strng{authorbibnamehash}{2497042b519267ea560e137d80a75f2b}
+      \strng{authornamehash}{2497042b519267ea560e137d80a75f2b}
+      \strng{authorfullhash}{2497042b519267ea560e137d80a75f2b}
       \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computer Physics Communications}
@@ -249,20 +251,20 @@
     \endentry
     \entry{xact:2008-01}{webpage}{}
       \name{author}{1}{}{%
-        {{hash=4e848a40c4572fec76d44b6d1f612e45}{%
+        {{hash=2ffae82f971cb480a9cc3c71b543197e}{%
            family={Mart\'{\i}n-Garc\'{\i}a},
            familyi={M\bibinithyphendelim G\bibinitperiod},
            given={Jos\'e},
            giveni={J\bibinitperiod}}}%
       }
-      \strng{namehash}{4e848a40c4572fec76d44b6d1f612e45}
-      \strng{fullhash}{4e848a40c4572fec76d44b6d1f612e45}
-      \strng{bibnamehash}{4e848a40c4572fec76d44b6d1f612e45}
-      \strng{authorbibnamehash}{4e848a40c4572fec76d44b6d1f612e45}
-      \strng{authornamehash}{4e848a40c4572fec76d44b6d1f612e45}
-      \strng{authorfullhash}{4e848a40c4572fec76d44b6d1f612e45}
+      \strng{namehash}{2ffae82f971cb480a9cc3c71b543197e}
+      \strng{fullhash}{2ffae82f971cb480a9cc3c71b543197e}
+      \strng{bibnamehash}{2ffae82f971cb480a9cc3c71b543197e}
+      \strng{authorbibnamehash}{2ffae82f971cb480a9cc3c71b543197e}
+      \strng{authornamehash}{2ffae82f971cb480a9cc3c71b543197e}
+      \strng{authorfullhash}{2ffae82f971cb480a9cc3c71b543197e}
       \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{xAct: Efficient tensor computer algebra for Mathematica}}
@@ -277,7 +279,7 @@
     \endentry
     \entry{maccallum:2018-01}{article}{}
       \name{author}{1}{}{%
-        {{hash=52c7a0abf867e8ce2402c9445906e716}{%
+        {{hash=0b0e8bc20381b994560101bd68772525}{%
            family={MacCallum},
            familyi={M\bibinitperiod},
            given={Malcolm\bibnamedelimb A.\bibnamedelimi H.},
@@ -286,14 +288,14 @@
       \list{publisher}{1}{%
         {Springer International Publishing}%
       }
-      \strng{namehash}{52c7a0abf867e8ce2402c9445906e716}
-      \strng{fullhash}{52c7a0abf867e8ce2402c9445906e716}
-      \strng{bibnamehash}{52c7a0abf867e8ce2402c9445906e716}
-      \strng{authorbibnamehash}{52c7a0abf867e8ce2402c9445906e716}
-      \strng{authornamehash}{52c7a0abf867e8ce2402c9445906e716}
-      \strng{authorfullhash}{52c7a0abf867e8ce2402c9445906e716}
+      \strng{namehash}{0b0e8bc20381b994560101bd68772525}
+      \strng{fullhash}{0b0e8bc20381b994560101bd68772525}
+      \strng{bibnamehash}{0b0e8bc20381b994560101bd68772525}
+      \strng{authorbibnamehash}{0b0e8bc20381b994560101bd68772525}
+      \strng{authornamehash}{0b0e8bc20381b994560101bd68772525}
+      \strng{authorfullhash}{0b0e8bc20381b994560101bd68772525}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The complicated nature of calculations in general relativity was one of the driving forces in the early development of computer algebra (CA). CA has become widely used in gravity research (GR) and its use can be expected to grow further. Here the general nature of computer algebra is discussed, along with some aspects of CA system design; features particular to GR's requirements are considered; information on packages for CA in GR is provided, both for those packages currently available and for their predecessors; and applications of CA in GR are outlined.}
@@ -315,17 +317,17 @@
     \endentry
     \entry{mtw:1973-01}{book}{}
       \name{author}{3}{}{%
-        {{hash=e46a789df6638eeb0b9afe058e39c379}{%
+        {{hash=05c5e0e62bd36ef32b9a719149851fdc}{%
            family={Misner},
            familyi={M\bibinitperiod},
            given={Charles\bibnamedelima W.},
            giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=707ddbbdf095969f96b32d475efb0c4d}{%
+        {{hash=09e928bef0c66042b777c23f5eb91c00}{%
            family={Thorne},
            familyi={T\bibinitperiod},
            given={Kip\bibnamedelima S.},
            giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-        {{hash=e0dd396adbc231a724a96d63572c9b03}{%
+        {{hash=656f2ece652560737fefbeef9b753049}{%
            family={Wheeler},
            familyi={W\bibinitperiod},
            given={John\bibnamedelima Archibald},
@@ -335,14 +337,14 @@
         {W. H. Freeman}%
         {Company, San Francisco}%
       }
-      \strng{namehash}{534d7a4e68dd385d2c1006ab50145ea5}
-      \strng{fullhash}{534d7a4e68dd385d2c1006ab50145ea5}
-      \strng{bibnamehash}{534d7a4e68dd385d2c1006ab50145ea5}
-      \strng{authorbibnamehash}{534d7a4e68dd385d2c1006ab50145ea5}
-      \strng{authornamehash}{534d7a4e68dd385d2c1006ab50145ea5}
-      \strng{authorfullhash}{534d7a4e68dd385d2c1006ab50145ea5}
+      \strng{namehash}{2d375dc68cdd744e95aa1d2fbe386ef4}
+      \strng{fullhash}{2d375dc68cdd744e95aa1d2fbe386ef4}
+      \strng{bibnamehash}{2d375dc68cdd744e95aa1d2fbe386ef4}
+      \strng{authorbibnamehash}{2d375dc68cdd744e95aa1d2fbe386ef4}
+      \strng{authornamehash}{2d375dc68cdd744e95aa1d2fbe386ef4}
+      \strng{authorfullhash}{2d375dc68cdd744e95aa1d2fbe386ef4}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Gravitation}
@@ -374,7 +376,7 @@
       \strng{authornamehash}{7d309cbee54e10eb1c73c66c990f4ac0}
       \strng{authorfullhash}{7d309cbee54e10eb1c73c66c990f4ac0}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0010-4655}
@@ -405,12 +407,12 @@
            familyi={R\bibinitperiod},
            given={Ian},
            giveni={I\bibinitperiod}}}%
-        {{hash=6cb2084f68d4e57242740c3346739af9}{%
+        {{hash=7ff41d7fad5e294252074a5d7e685cf1}{%
            family={Etienne},
            familyi={E\bibinitperiod},
            given={Zachariah\bibnamedelima B.},
            giveni={Z\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=c3940d28880d8a136223b6beeac63034}{%
+        {{hash=8ef7c26a3ef214c57adea335249d1a50}{%
            family={Baumgarte},
            familyi={B\bibinitperiod},
            given={Thomas\bibnamedelima W.},
@@ -419,14 +421,14 @@
       \list{publisher}{1}{%
         {American Physical Society}%
       }
-      \strng{namehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
-      \strng{fullhash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
-      \strng{bibnamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
-      \strng{authorbibnamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
-      \strng{authornamehash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
-      \strng{authorfullhash}{939b019c95d91bb9a3dfc8e6cbdb9e94}
+      \strng{namehash}{c502faee1c279fb21751c3303dc98766}
+      \strng{fullhash}{c502faee1c279fb21751c3303dc98766}
+      \strng{bibnamehash}{c502faee1c279fb21751c3303dc98766}
+      \strng{authorbibnamehash}{c502faee1c279fb21751c3303dc98766}
+      \strng{authornamehash}{c502faee1c279fb21751c3303dc98766}
+      \strng{authorfullhash}{c502faee1c279fb21751c3303dc98766}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issue}{6}
@@ -467,7 +469,7 @@
       \strng{authornamehash}{850225858e7c82a40b63bae166d5c8df}
       \strng{authorfullhash}{850225858e7c82a40b63bae166d5c8df}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Riemannian Geometry. A modern introduction, 2nd ed.}}
@@ -476,17 +478,17 @@
     \endentry
     \entry{chern-chen-lam:2000-01}{book}{}
       \name{author}{3}{}{%
-        {{hash=c2a5c820e3ae9fcd9d2d4a0312333801}{%
+        {{hash=ed5ddf9f196b412a2e2531bc9c4d57c7}{%
            family={Chern},
            familyi={C\bibinitperiod},
            given={S.S.},
            giveni={S\bibinitperiod}}}%
-        {{hash=f9ef416f20f22aec36965b507d5e91bd}{%
+        {{hash=73561e97fd98d66f45a38f069aab86a1}{%
            family={Chen},
            familyi={C\bibinitperiod},
            given={W.H.},
            giveni={W\bibinitperiod}}}%
-        {{hash=feb6a65a3a9a6f463303c18b1bba332b}{%
+        {{hash=df13111492bb05043d7ebc9e4c44e385}{%
            family={Lam},
            familyi={L\bibinitperiod},
            given={K.S.},
@@ -495,14 +497,14 @@
       \list{publisher}{1}{%
         {World Scientific, Singapore}%
       }
-      \strng{namehash}{5ae76dc2585c2332cf54a35c42df911d}
-      \strng{fullhash}{5ae76dc2585c2332cf54a35c42df911d}
-      \strng{bibnamehash}{5ae76dc2585c2332cf54a35c42df911d}
-      \strng{authorbibnamehash}{5ae76dc2585c2332cf54a35c42df911d}
-      \strng{authornamehash}{5ae76dc2585c2332cf54a35c42df911d}
-      \strng{authorfullhash}{5ae76dc2585c2332cf54a35c42df911d}
+      \strng{namehash}{5c5c98f9437b418c3d801f5fc79317d0}
+      \strng{fullhash}{5c5c98f9437b418c3d801f5fc79317d0}
+      \strng{bibnamehash}{5c5c98f9437b418c3d801f5fc79317d0}
+      \strng{authorbibnamehash}{5c5c98f9437b418c3d801f5fc79317d0}
+      \strng{authornamehash}{5c5c98f9437b418c3d801f5fc79317d0}
+      \strng{authorfullhash}{5c5c98f9437b418c3d801f5fc79317d0}
       \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Lectures on Differential Geometry}}
@@ -511,7 +513,7 @@
     \endentry
     \entry{eisenhart:1926-01}{book}{}
       \name{author}{1}{}{%
-        {{hash=88e915ba2134bef88c1a78973be887f4}{%
+        {{hash=0dbcf09555f2eff77f186d3eaea9278e}{%
            family={Eisenhart},
            familyi={E\bibinitperiod},
            given={Luther\bibnamedelima Pfahler},
@@ -520,14 +522,14 @@
       \list{publisher}{1}{%
         {Princeton University Press, Princeton}%
       }
-      \strng{namehash}{88e915ba2134bef88c1a78973be887f4}
-      \strng{fullhash}{88e915ba2134bef88c1a78973be887f4}
-      \strng{bibnamehash}{88e915ba2134bef88c1a78973be887f4}
-      \strng{authorbibnamehash}{88e915ba2134bef88c1a78973be887f4}
-      \strng{authornamehash}{88e915ba2134bef88c1a78973be887f4}
-      \strng{authorfullhash}{88e915ba2134bef88c1a78973be887f4}
+      \strng{namehash}{0dbcf09555f2eff77f186d3eaea9278e}
+      \strng{fullhash}{0dbcf09555f2eff77f186d3eaea9278e}
+      \strng{bibnamehash}{0dbcf09555f2eff77f186d3eaea9278e}
+      \strng{authorbibnamehash}{0dbcf09555f2eff77f186d3eaea9278e}
+      \strng{authornamehash}{0dbcf09555f2eff77f186d3eaea9278e}
+      \strng{authorfullhash}{0dbcf09555f2eff77f186d3eaea9278e}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{RNC : Sec. 18 and Appx. 3}
@@ -550,7 +552,7 @@
       \strng{authornamehash}{41c8eb9bbb1e97ce07720390bcf4e913}
       \strng{authorfullhash}{41c8eb9bbb1e97ce07720390bcf4e913}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Michigan.Math.J.}
@@ -563,7 +565,7 @@
     \endentry
     \entry{willmore:1996-01}{book}{}
       \name{author}{1}{}{%
-        {{hash=d2945be038e877294fd8e32e21ea452b}{%
+        {{hash=49bef88f5a22232471ac4d65888242bb}{%
            family={Willmore},
            familyi={W\bibinitperiod},
            given={T.J.},
@@ -572,14 +574,14 @@
       \list{publisher}{1}{%
         {Oxford University Press, Oxford}%
       }
-      \strng{namehash}{d2945be038e877294fd8e32e21ea452b}
-      \strng{fullhash}{d2945be038e877294fd8e32e21ea452b}
-      \strng{bibnamehash}{d2945be038e877294fd8e32e21ea452b}
-      \strng{authorbibnamehash}{d2945be038e877294fd8e32e21ea452b}
-      \strng{authornamehash}{d2945be038e877294fd8e32e21ea452b}
-      \strng{authorfullhash}{d2945be038e877294fd8e32e21ea452b}
+      \strng{namehash}{49bef88f5a22232471ac4d65888242bb}
+      \strng{fullhash}{49bef88f5a22232471ac4d65888242bb}
+      \strng{bibnamehash}{49bef88f5a22232471ac4d65888242bb}
+      \strng{authorbibnamehash}{49bef88f5a22232471ac4d65888242bb}
+      \strng{authornamehash}{49bef88f5a22232471ac4d65888242bb}
+      \strng{authorfullhash}{49bef88f5a22232471ac4d65888242bb}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Riemannian Geometry}
@@ -588,30 +590,30 @@
     \endentry
     \entry{calzetta:1988-01}{article}{}
       \name{author}{3}{}{%
-        {{hash=018724912e34beb683506f49df8480b1}{%
+        {{hash=a78f69532a83d25f3fd6b8a1473327b1}{%
            family={Calzetta},
            familyi={C\bibinitperiod},
            given={E.},
            giveni={E\bibinitperiod}}}%
-        {{hash=189f16e8da82b288b7e21a276dff1e76}{%
+        {{hash=d2939358c1110512df89ac51e9ab0b64}{%
            family={Habib},
            familyi={H\bibinitperiod},
            given={S.},
            giveni={S\bibinitperiod}}}%
-        {{hash=1f45e01fe46d2ce324a78cc099f76d7f}{%
+        {{hash=f3d1167089cc95700ee1ee88ebe36c8c}{%
            family={Hu},
            familyi={H\bibinitperiod},
            given={B.L.},
            giveni={B\bibinitperiod}}}%
       }
-      \strng{namehash}{8a7aa144b7bc66ce4d46d41597a10b42}
-      \strng{fullhash}{8a7aa144b7bc66ce4d46d41597a10b42}
-      \strng{bibnamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
-      \strng{authorbibnamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
-      \strng{authornamehash}{8a7aa144b7bc66ce4d46d41597a10b42}
-      \strng{authorfullhash}{8a7aa144b7bc66ce4d46d41597a10b42}
+      \strng{namehash}{46dbf69864f0886a2a5e88d121b88766}
+      \strng{fullhash}{46dbf69864f0886a2a5e88d121b88766}
+      \strng{bibnamehash}{46dbf69864f0886a2a5e88d121b88766}
+      \strng{authorbibnamehash}{46dbf69864f0886a2a5e88d121b88766}
+      \strng{authornamehash}{46dbf69864f0886a2a5e88d121b88766}
+      \strng{authorfullhash}{46dbf69864f0886a2a5e88d121b88766}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Phys. Rev. D}
@@ -643,7 +645,7 @@
       \strng{authornamehash}{2ead73d26d412da1825f4704d675828a}
       \strng{authorfullhash}{2ead73d26d412da1825f4704d675828a}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{Half of the BSSN formulation}
@@ -656,25 +658,25 @@
     \endentry
     \entry{baumgarte:1998-01}{article}{}
       \name{author}{2}{}{%
-        {{hash=c3940d28880d8a136223b6beeac63034}{%
+        {{hash=8ef7c26a3ef214c57adea335249d1a50}{%
            family={Baumgarte},
            familyi={B\bibinitperiod},
            given={Thomas\bibnamedelima W.},
            giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=d9d8f020b24bc773d3637cfac9f26d94}{%
+        {{hash=88d353f61e95915200c1004d5c16b829}{%
            family={Shapiro},
            familyi={S\bibinitperiod},
            given={Stuart\bibnamedelima L.},
            giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
       }
-      \strng{namehash}{ca0ae9c4568e55a3b2be8960662a7d53}
-      \strng{fullhash}{ca0ae9c4568e55a3b2be8960662a7d53}
-      \strng{bibnamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
-      \strng{authorbibnamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
-      \strng{authornamehash}{ca0ae9c4568e55a3b2be8960662a7d53}
-      \strng{authorfullhash}{ca0ae9c4568e55a3b2be8960662a7d53}
+      \strng{namehash}{49a3f113d4550434bf4dd49a289a8c15}
+      \strng{fullhash}{49a3f113d4550434bf4dd49a289a8c15}
+      \strng{bibnamehash}{49a3f113d4550434bf4dd49a289a8c15}
+      \strng{authorbibnamehash}{49a3f113d4550434bf4dd49a289a8c15}
+      \strng{authornamehash}{49a3f113d4550434bf4dd49a289a8c15}
+      \strng{authorfullhash}{49a3f113d4550434bf4dd49a289a8c15}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{The second half of the original BSSN formulation}
@@ -705,7 +707,7 @@
            familyi={D\bibinitperiod},
            given={Thomas},
            giveni={T\bibinitperiod}}}%
-        {{hash=55dffc61e78f8904467ae3a0c3e5fec3}{%
+        {{hash=767868db77b3e9dd26358931fc020fcc}{%
            family={Font},
            familyi={F\bibinitperiod},
            given={Jose\bibnamedelima A.},
@@ -732,13 +734,14 @@
            giveni={R\bibinitperiod}}}%
       }
       \strng{namehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
-      \strng{fullhash}{78e99ff2a246a10efff4edd0599bed1c}
+      \strng{fullhash}{26d9daddb56e736dbe40b933ce5a3c2e}
       \strng{bibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
       \strng{authorbibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
       \strng{authornamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
-      \strng{authorfullhash}{78e99ff2a246a10efff4edd0599bed1c}
+      \strng{authorfullhash}{26d9daddb56e736dbe40b933ce5a3c2e}
+      \field{extraname}{1}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Phys. Rev. D}
@@ -755,7 +758,7 @@
            familyi={A\bibinitperiod},
            given={Miguel},
            giveni={M\bibinitperiod}}}%
-        {{hash=c94bc7746f3f6f471ccd286ad4b90ea2}{%
+        {{hash=86788f78f5722bcfd570aa310a9e33fb}{%
            family={Br{\"u}gmann},
            familyi={B\bibinitperiod},
            given={Bernd},
@@ -787,13 +790,14 @@
            giveni={R\bibinitperiod}}}%
       }
       \strng{namehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
-      \strng{fullhash}{f4c4d120d59eba13dd863625260dae85}
+      \strng{fullhash}{1e6f03081076c4b8eccea7748a7e70c0}
       \strng{bibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
       \strng{authorbibnamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
       \strng{authornamehash}{c4de5cb4e45abbf1d079d83d77eaffbf}
-      \strng{authorfullhash}{f4c4d120d59eba13dd863625260dae85}
+      \strng{authorfullhash}{1e6f03081076c4b8eccea7748a7e70c0}
+      \field{extraname}{2}
       \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{Gives the first form of BSSN which is manifestly strong-hyperbolic}

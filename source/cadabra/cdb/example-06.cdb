@@ -35,8 +35,8 @@ iab := { g^{\theta\theta}   = 1/r**2,
 
 substitute (Rabcd, Gamma)
 
-evaluate   (Gamma, gab+iab, rhsonly=True)
-evaluate   (Rabcd, gab+iab, rhsonly=True)
+evaluate   (Gamma, join (gab,iab), rhsonly=True)
+evaluate   (Rabcd, join (gab,iab), rhsonly=True)
 
 # convert from a rule to a simple expression
 Riem := R^{a}_{b c d}.
@@ -98,7 +98,7 @@ iab := { g^{\theta\theta}   = 1/r**2,
          g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
 
 substitute (Rabcd, Gamma)
-evaluate   (Rabcd, gab+iab, rhsonly=True)
+evaluate   (Rabcd, join (gab,iab), rhsonly=True)
 
 # above code just to compute Rabcd
 # following code is all that is needed for the scalar projection method
@@ -113,7 +113,7 @@ dual  := {theta_{\theta} = 1, varphi_{\varphi} = 1}.
 compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.
 substitute (compt,Rabcd)
 
-evaluate (compt,basis+dual)
+evaluate (compt, join (basis,dual))
 
 compt_sympy = compt._sympy_()
 

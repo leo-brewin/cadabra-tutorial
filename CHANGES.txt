@@ -1,3 +1,9 @@
+-- 09 aug 2022
+
+1. Updated Cadabra codes to suit the new Cadabra syntax (as of 5 Aug 2022).
+   Cadabra now uses the "join" function to add lists. Previousy it used
+   the "+" operator.
+
 -- 21 nov 2021
 
 1. Updated python/writecode.py to suit changes introduced in symp 1.7.

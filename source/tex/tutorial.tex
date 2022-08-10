@@ -831,7 +831,7 @@ short cut by allowing you to write
 The \verb|repeat=True| clause will force Cadabra to keep applying rules until the expression
 settles down (i.e., no changes from one substitution to the next).
 
-Lists of rules can be concatenated with other rules using the addition operator. Thus you
+Lists of rules can be concatenated with other rules using the \verb|join| function. Thus you
 can also write
 \begin{cadabra}[numbers=none]
    RFromRab := R -> R_{a b} g^{a b}.
@@ -840,14 +840,23 @@ can also write
                                     - \partial_{d}{\Gamma_{a b c}}
                                     + \Gamma_{e a d} \Gamma^{e}_{b c}
                                     - \Gamma_{e a c} \Gamma^{e}_{b d} }.
-   RFromGamma = RFromRab + RabFromGamma
+   RFromGamma = join (RFromRab, RabFromGamma)
 \end{cadabra}
 
-There is one caveat that must be noted -- the version of Cadabra\footnote{\CdbVersion} used
-in this tutorial does not allow the addition of rules that \emph{each} contains just a
-\emph{simple} rule (as simple rules are not \emph{lists}). A simple hack is to convert each
-simple rule to a list by adding a trivial rule, (e.g., replace \verb|foo->bah| with
-\verb|{foo->bah,x->x}|).
+Note that the function \verb|join| takes exactly two arguments. If you wish to concatenate
+three rules you could use something like \verb|join (rule1, join (rule2,rule3))|. Unfortunately,
+that approach does get a bit messy if you wish to concatenate a long sequence of rules. Here is a simple
+function that will make such a task somewhat easier
+\begin{cadabra}[numbers=none]
+   def JoinLists (obj):
+      ans := {}.
+      for i in range (len(obj)):
+         ans = join (ans,obj[i])
+      return ans
+\end{cadabra}
+This function takes one array of rules (or lists of rules) and returns a single list built from
+the elements of that array. The previous example, of concatentaing three rules, could then be
+rewritten as \verb|JoinLists([rule1, rule2, rule3])|.
 
 % --------------------------------------------------------------------------------------------
 {\bf Line splitting}\\[5pt]
@@ -2484,8 +2493,8 @@ Here is the complete code for the Riemann tensor for the 2-sphere.
 
    substitute (Rabcd, Gamma)                                 |\lstlabel{ex-06.203}|
 
-   evaluate   (Gamma, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.204}|
-   evaluate   (Rabcd, gab+iab, rhsonly=True)                 |\lstlabel{ex-06.205}|
+   evaluate   (Gamma, join (gab,iab), rhsonly=True)          |\lstlabel{ex-06.204}|
+   evaluate   (Rabcd, join (gab,iab), rhsonly=True)          |\lstlabel{ex-06.205}|
 \end{cadabra}
 There are two minor aspects of the above code that should be noted. First, each call to
 \verb|evaluate| acts on a Cadabra rule and thus the argument \verb|rhsonly=True| is used
@@ -2578,7 +2587,7 @@ for the coordinates $(\theta,\varphi)$. The following code fragment will do the 
    compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.
    substitute (compt, Rabcd)
 
-   evaluate (compt, basis+dual)
+   evaluate (compt, join (basis,dual))
 \end{cadabra}
 This fragment will require all the usual property definitions but more importantly it
 requires a definition of the tensor \verb|Rabcd|. This can be taken from either line
@@ -4318,7 +4327,7 @@ demonstrating various ways to encounter this error.
    % -----------------------------------------------------------------------------------------
    \Item{\bf Only use \verb|->| to change index structure}\\[5pt]
    \itlabel{it:SubRuleChoices}
-   There are occasions where indices need to added or deleted from expressions.
+   There are occasions where indices need to be added or deleted from expressions.
    Doing so using an equality rule like \verb|A_{a b} = A_{a}| will raise a runtime error.
    For example, the following code
    \begin{cadabra}

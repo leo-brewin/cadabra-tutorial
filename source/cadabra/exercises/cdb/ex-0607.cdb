@@ -38,5 +38,5 @@ gab := { g_{t t}            = -(1-2*m/r),
 
 complete   (gab, $g^{a b}$)
 
-evaluate   (expr, gab+Kvect)
+evaluate   (expr, join (gab,Kvect))
 

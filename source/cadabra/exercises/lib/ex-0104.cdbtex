@@ -40,6 +40,6 @@ A_{a} A_{b} A_{f g} A_{c d e}%
 A_{a} A^{a}+A^{a} A_{a}%
 }
 \cdbtag{ex-0104.701}{%
-A_{a} A^{a}+A^{a} A_{a}%
+2A_{a} A^{a}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

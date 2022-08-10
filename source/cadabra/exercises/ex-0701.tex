@@ -108,7 +108,13 @@
             lhs = sympy.Symbol(name+' '+(idx[index]).replace(', ',']['))
             out.write(printer().doprint(Assignment(lhs, rhs))+'\n')
 
-   evaluate   (Rab,  gabRule+d1gabRule+d2gabRule+iabRule, simplify=False)
+   def JoinLists (obj):
+      ans := {}.
+      for i in range (len(obj)):
+         ans = join (ans,obj[i])
+      return ans
+
+   evaluate   (Rab,  JoinLists ([gabRule,d1gabRule,d2gabRule,iabRule]), simplify=False)
 
    write_code (Rab, 'Rab', 'ex-0701-rab.c',2)
 

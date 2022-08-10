@@ -69,8 +69,8 @@
 
    substitute (Rabcd, Gamma)                                  # cdb(ex-06.203,Gamma)
 
-   evaluate   (Gamma, gab+iab, rhsonly=True)                  # cdb(ex-06.204,Gamma)
-   evaluate   (Rabcd, gab+iab, rhsonly=True)                  # cdb(ex-06.205,Rabcd)
+   evaluate   (Gamma, join (gab,iab), rhsonly=True)           # cdb(ex-06.204,Gamma)
+   evaluate   (Rabcd, join (gab,iab), rhsonly=True)           # cdb(ex-06.205,Rabcd)
 
    # convert from a rule to a simple expression
    Riem := R^{a}_{b c d}.
@@ -170,7 +170,7 @@ projection.
             g^{\varphi\varphi} = 1/(r**2 \sin(\theta)**2) }.
 
    substitute (Rabcd, Gamma)
-   evaluate   (Rabcd, gab+iab, rhsonly=True)
+   evaluate   (Rabcd, join (gab,iab), rhsonly=True)
 
    # above code just to compute Rabcd
    # following code is all that is needed for the scalar projection method
@@ -185,7 +185,7 @@ projection.
    compt := R^{a}_{b c d} theta_{a} varphi^{b} theta^{c} varphi^{d}.   # cdb(ex-06.401,compt)
    substitute (compt,Rabcd)
 
-   evaluate (compt,basis+dual)                                         # cdb(ex-06.402,compt)
+   evaluate (compt, join (basis,dual))                                 # cdb(ex-06.402,compt)
 
    compt_sympy = compt._sympy_()
 

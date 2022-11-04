@@ -67,8 +67,8 @@ num=$(egrep -c -e'^\s*(\\|\@|\$)Input\{' "$file".tex)
 
 # yes, now merge source files
 if ! [[ $num = 0 ]]; then
-   merge-src.py -i $file.tex -o .merged.tex
-   name=".merged"
+   merge-src.py -i $file.tex -o $file"_.tex"
+   name=$file"_"
 fi
 
 touch $file.cdbtxt
@@ -77,9 +77,9 @@ cdbpreproc.py -i $file -m $name            || exit 1
 
 $CDB/cadabra2python $file"_.cdb" $file.py  || exit 3
 
-$Timer $CDB/cadabra2 $file.py > .tmp.txt   || exit 5
+$Timer $CDB/cadabra2 $file.py > $file"_.txt"   || exit 5
 
-iconv -c -f UTF-8 -t ASCII//translit .tmp.txt > $file.cdbtxt
+iconv -c -f UTF-8 -t ASCII//translit $file"_.txt" > $file.cdbtxt
 
 cdbpostproc.py $nowarn -i $file $sty       || exit 7
 
@@ -97,6 +97,6 @@ if [[ $silent = "no" ]]; then
 fi
 
 if [[ $keep = "no" ]]; then
-   rm -rf .merged.tex .tmp.txt
+   rm -rf $file"_.tex" $file"_.txt"
    rm -rf $file.log $file.out $file.py $file"_.cdb" $file.cdbidx $file.cdbtxt
 fi

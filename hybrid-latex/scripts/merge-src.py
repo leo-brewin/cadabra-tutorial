@@ -45,21 +45,21 @@ def include_files (txt, prev_path, this_line, prev_indent, recurse_depth):
 
    def set_comment (the_line):
        the_ext, found = grep (the_line, re_file_ext,1)
+       comment = "%"
        if found:
           if the_ext == ".tex":
-             return "%"
-          elif the_ext == ".py":
-             return "#"
-          elif the_ext == ".cdb":
-             return "#"
-          elif the_ext == ".ads":
-             return "--"
-          elif the_ext == ".adb":
-             return "--"
-          else:
-             return "#"
-       else:
-          return "#"
+             comment = "%"
+          if the_ext == ".py":
+             comment = "#"
+          if the_ext == ".cdb":
+             comment = "#"
+          if the_ext == ".ads":
+             comment = "--"
+          if the_ext == ".adb":
+             comment = "--"
+          if the_ext == ".txt":
+             comment = "#"
+       return comment
 
    def filter (the_line):
        # "uuid" is reserved for the original source

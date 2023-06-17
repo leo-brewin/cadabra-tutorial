@@ -10,7 +10,7 @@ for file in tests/output/*; do
 done
 
 # Any diff, no matter how trivial (e.g., dates), will cause diff to
-# return a non-zero exit code. This will cause subsequents in a Makefile
-# to fail. Avoid this by forcing a 0 exit.
+# return a non-zero exit code. This will cause subsequent statements in
+# a Makefile to fail. Avoid this by forcing a 0 exit.
 
 exit 0

@@ -30,4 +30,4 @@ if [[ $file = "<none>" ]]; then
 fi;
 
 rm -rf .merged.tex .tmp.txt
-rm -rf $file.log $file.out $file.py $file"_.cdb" $file.cdbidx $file.cdbtxt
+rm -rf $file.log $file.out $file.py $file"_.cdb" $file"_.tex" $file"_.txt" $file.cdbidx $file.cdbtxt

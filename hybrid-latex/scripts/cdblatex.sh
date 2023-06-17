@@ -97,6 +97,6 @@ if [[ $silent = "no" ]]; then
 fi
 
 if [[ $keep = "no" ]]; then
-   rm -rf $file"_.tex" $file"_.txt"
-   rm -rf $file.log $file.out $file.py $file"_.cdb" $file.cdbidx $file.cdbtxt
+   rm -rf $file"_.tex" $file"_.txt" $file"_.cdb"
+   rm -rf $file.log $file.out $file.py $file.cdbidx $file.cdbtxt
 fi

@@ -1,9 +1,9 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0406.100}{%
-g_{a b} x^{a} x^{b}+\Gamma_{a b c} x^{a} x^{b} x^{c}%
+g_{a b} x^{a} x^{b}\discretionary{}{}{}+\Gamma_{a b c} x^{a} x^{b} x^{c}%
 }
 \cdbtag{ex-0406.101}{%
-x^{a} x^{b} g_{a b}+x^{a} x^{b} x^{c} \Gamma_{a b c}%
+x^{a} x^{b} g_{a b}\discretionary{}{}{}+x^{a} x^{b} x^{c} \Gamma_{a b c}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

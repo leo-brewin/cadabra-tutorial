@@ -1,15 +1,15 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0504.100}{%
-A_{a b} B^{a b}+A_{a b} A_{c d} B^{a b} B^{c d}-C_{a b} B^{a b}%
+A_{a b} B^{a b}\discretionary{}{}{}+A_{a b} A_{c d} B^{a b} B^{c d}\discretionary{}{}{}-C_{a b} B^{a b}%
 }
 \cdbtag{ex-0504.101}{%
-\mu_{0} A_{a b} B^{a b}+\mu_{1} A_{a b} A_{c d} B^{a b} B^{c d}-\mu_{2} C_{a b} B^{a b}%
+\mu_{0} A_{a b} B^{a b}\discretionary{}{}{}+\mu_{1} A_{a b} A_{c d} B^{a b} B^{c d}\discretionary{}{}{}-\mu_{2} C_{a b} B^{a b}%
 }
 \cdbtag{ex-0504.102}{%
-\mu_{0} A_{a b} B^{a b}-\mu_{2} C_{a b} B^{a b}%
+\mu_{0} A_{a b} B^{a b}\discretionary{}{}{}-\mu_{2} C_{a b} B^{a b}%
 }
 \cdbtag{ex-0504.103}{%
-A_{a b} B^{a b}-C_{a b} B^{a b}%
+A_{a b} B^{a b}\discretionary{}{}{}-C_{a b} B^{a b}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

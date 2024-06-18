@@ -1,7 +1,7 @@
+\def\Date{24 May 2024}
+
 \documentclass[12pt]{cdblatex}
 \usepackage{examples}
-\usepackage{fancyhdr}
-\usepackage{footer}
 
 \begin{document}
 
@@ -127,13 +127,43 @@ This is relatively straightforward. We just apply a few carefully chosen applica
    import cdblib
    Gamma  = cdblib.get ('Gamma','example-11.json')                # cdb(ex-12.100,Gamma)
 
-   # note that the next two lines require careful inspection of the free indices on Gamma
+   # --------------------------------------------------------------------------
+   # note: in versions prior to 24 may 2024, the first \Gamma^a shown in example 12
+   #       of the tutorial was actually the *downstairs* version
+   #       this block added to create reformated version of \Gamma^a for the tutorial
+
+   # note that the next line requires careful inspection of the free indices on Gamma
    # expecting Gamma = \Gamma^{a}_{bc}
-   Gamma := z^{b} z^{c} @(Gamma).
+
+   GammaUp := z^{b} z^{c} @(Gamma).                               # cdb(ex-12.110,GammaUp)
+
+   product_sort (GammaUp)                                         # cdb(ex-12.113,GammaUp)
+
+   checkpoint.append (GammaUp)
+
+   gam1  = get_xterm (GammaUp,1)                                  # cdb(ex-12.210,gam1)
+   gam2  = get_xterm (GammaUp,2)                                  # cdb(ex-12.211,gam2)
+   gam3  = get_xterm (GammaUp,3)                                  # cdb(ex-12.212,gam3)
+
+   gam30 = get_gterm (gam3,1)                                     # cdb(ex-12.213,gam30)
+   gam31 = get_gterm (gam3,2)                                     # cdb(ex-12.214,gam31)
+
+   gam1  = reformat (gam1, 3,1)                                   # cdb(ex-12.310,gam1)
+   gam2  = reformat (gam2,12,1)                                   # cdb(ex-12.311,gam2)
+
+   gam30 = reformat (gam30,40,1)                                  # cdb(ex-12.312,gam30)
+   gam31 = reformat (gam31,45,2)                                  # cdb(ex-12.313,gam31)
+
+   gam3 := @(gam30) + @(gam31).                                   # cdb(ex-12.314,gam3)
+
+   GammaUp := @(gam1) + @(gam2) + @(gam3).                        # cdb(ex-12.315,GammaUp)
+
+   checkpoint.append (GammaUp)
+   # --------------------------------------------------------------------------
 
    # lower index ^{a} to _{v}
 
-   Gamma := g_{v a} @(Gamma).
+   Gamma := g_{v a} @(GammaUp).
 
    distribute (Gamma)
    substitute (Gamma, $g_{a d} g^{d b} -> \delta_{a}^{b}$)
@@ -199,6 +229,30 @@ This is relatively straightforward. We just apply a few carefully chosen applica
    \Dmath*{\cdb*{ex-12.303}}
    \Dmath*{\cdb*{ex-12.304}}
    \Dmath*{\cdb*{ex-12.305}}
+\end{dgroup*}
+
+\clearpage
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.110}}
+   \Dmath*{\cdb*{ex-12.113}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.210}}
+   \Dmath*{\cdb*{ex-12.211}}
+   \Dmath*{\cdb*{ex-12.212}}
+   \Dmath*{\cdb*{ex-12.213}}
+   \Dmath*{\cdb*{ex-12.214}}
+\end{dgroup*}
+
+\begin{dgroup*}
+   \Dmath*{\cdb*{ex-12.310}}
+   \Dmath*{\cdb*{ex-12.311}}
+   \Dmath*{\cdb*{ex-12.312}}
+   \Dmath*{\cdb*{ex-12.313}}
+   \Dmath*{\cdb*{ex-12.314}}
+   \Dmath*{\cdb*{ex-12.315}}
 \end{dgroup*}
 
 \clearpage

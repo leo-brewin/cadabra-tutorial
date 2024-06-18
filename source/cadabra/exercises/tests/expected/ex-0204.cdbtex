@@ -1,6 +1,6 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0204.101}{%
-\nabla_{a}\left(\partial_{b}{v^{c}}+\Gamma^{c}{}_{d b} v^{d}\right) \rightarrow \partial_{a}\left(\partial_{b}{v^{c}}+\Gamma^{c}{}_{d b} v^{d}\right)+\Gamma^{c}{}_{d a} \left(\partial_{b}{v^{d}}+\Gamma^{d}{}_{e b} v^{e}\right)-\Gamma^{d}{}_{b a} \left(\partial_{d}{v^{c}}+\Gamma^{c}{}_{e d} v^{e}\right)%
+\nabla_{a}\left(\partial_{b}{v^{c}}\discretionary{}{}{}+\Gamma^{c}{}_{d b} v^{d}\right) \rightarrow \partial_{a}\left(\partial_{b}{v^{c}}\discretionary{}{}{}+\Gamma^{c}{}_{d b} v^{d}\right)\discretionary{}{}{}+\Gamma^{c}{}_{d a} \left(\partial_{b}{v^{d}}\discretionary{}{}{}+\Gamma^{d}{}_{e b} v^{e}\right)\discretionary{}{}{}-\Gamma^{d}{}_{b a} \left(\partial_{d}{v^{c}}\discretionary{}{}{}+\Gamma^{c}{}_{e d} v^{e}\right)%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

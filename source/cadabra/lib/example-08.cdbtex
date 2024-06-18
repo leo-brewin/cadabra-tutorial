@@ -1,16 +1,16 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-08-02.101}{%
-g_{a b} - \frac{1}{3}x^{c} x^{d} R_{a c b d} - \frac{1}{6}x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}%
+g_{a b}\discretionary{}{}{} - \frac{1}{3}x^{c} x^{d} R_{a c b d}\discretionary{}{}{} - \frac{1}{6}x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}%
 }
 \cdbtag{ex-08-02.102}{%
-g^{a b}+\frac{1}{3}x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}+\frac{1}{6}x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}%
+g^{a b}\discretionary{}{}{}+\frac{1}{3}x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}\discretionary{}{}{}+\frac{1}{6}x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}%
 }
 \cdbtag{ex-08-02.103}{%
-g_{a b} - \frac{1}{3}x^{c} x^{d} R_{a c b d} - \frac{1}{6}x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}%
+g_{a b}\discretionary{}{}{} - \frac{1}{3}x^{c} x^{d} R_{a c b d}\discretionary{}{}{} - \frac{1}{6}x^{c} x^{d} x^{e} \nabla_{c}{R_{a d b e}}%
 }
 \cdbtag{ex-08-02.104}{%
-g^{a b}+\frac{1}{3}x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}+\frac{1}{6}x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}%
+g^{a b}\discretionary{}{}{}+\frac{1}{3}x^{c} x^{d} g^{a e} g^{b f} R_{c e d f}\discretionary{}{}{}+\frac{1}{6}x^{c} x^{d} x^{e} g^{a f} g^{b g} \nabla_{c}{R_{d f e g}}%
 }
 \cdbtag{ex-08-02.105}{%
 0%

@@ -3,7 +3,7 @@ checkpoint_file = 'tests/semantic/output/example-14.json'
 cdblib.create (checkpoint_file)
 checkpoint = []
 
-{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (position=independent).
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices(position=independent).
 
 \partial{#}::PartialDerivative.
 

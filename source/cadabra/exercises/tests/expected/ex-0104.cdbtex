@@ -37,7 +37,7 @@ A_{b} A_{a} A_{c d e} A_{f g}%
 A_{a} A_{b} A_{f g} A_{c d e}%
 }
 \cdbtag{ex-0104.700}{%
-A_{a} A^{a}+A^{a} A_{a}%
+A_{a} A^{a}\discretionary{}{}{}+A^{a} A_{a}%
 }
 \cdbtag{ex-0104.701}{%
 2A_{a} A^{a}%

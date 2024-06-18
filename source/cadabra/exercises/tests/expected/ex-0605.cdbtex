@@ -1,52 +1,52 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0605.101}{%
-\left[g_{t t} = -{\left(\left(2r-m\right) {\left(2r+m\right)}^{-1}\right)}^{2},~\discretionary{}{}{} g_{r r} = {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4},~\discretionary{}{}{} g_{\theta \theta} = {r}^{2} {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2} {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4}\right]%
+\left[g_{t t} = -{\left(\left(2r\discretionary{}{}{}-m\right) {\left(2r\discretionary{}{}{}+m\right)}^{-1}\right)}^{2}, \discretionary{}{}{}g_{r r} = {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}, \discretionary{}{}{}g_{\theta \theta} = {r}^{2} {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2} {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}\right]%
 }
 \cdbtag{ex-0605.102}{%
-\left[g_{t t} = -{\left(\left(2r-m\right) {\left(2r+m\right)}^{-1}\right)}^{2},~\discretionary{}{}{} g_{r r} = {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4},~\discretionary{}{}{} g_{\theta \theta} = {r}^{2} {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2} {\left(1+\frac{1}{2}m {r}^{-1}\right)}^{4},~\discretionary{}{}{} g^{t t} = \left(-{m}^{2}-4m r-4{r}^{2}\right) {\left({m}^{2}-4m r+4{r}^{2}\right)}^{-1},~\discretionary{}{}{} g^{r r} = 16{r}^{4} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-1},~\discretionary{}{}{} g^{\theta \theta} = 16{r}^{2} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-1},~\discretionary{}{}{} g^{\varphi \varphi} = 16{r}^{2} {\left({m}^{4} {\left(\sin{\theta}\right)}^{2}+8{m}^{3} r {\left(\sin{\theta}\right)}^{2}+24{m}^{2} {r}^{2} {\left(\sin{\theta}\right)}^{2}+32m {r}^{3} {\left(\sin{\theta}\right)}^{2}+16{r}^{4} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
+\left[g_{t t} = -{\left(\left(2r\discretionary{}{}{}-m\right) {\left(2r\discretionary{}{}{}+m\right)}^{-1}\right)}^{2}, \discretionary{}{}{}g_{r r} = {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}, \discretionary{}{}{}g_{\theta \theta} = {r}^{2} {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2} {\left(1\discretionary{}{}{}+\frac{1}{2}m {r}^{-1}\right)}^{4}, \discretionary{}{}{}g^{t t} = \left(-{m}^{2}\discretionary{}{}{}-4m r\discretionary{}{}{}-4{r}^{2}\right) {\left({m}^{2}\discretionary{}{}{}-4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}, \discretionary{}{}{}g^{r r} = 16{r}^{4} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-1}, \discretionary{}{}{}g^{\theta \theta} = 16{r}^{2} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-1}, \discretionary{}{}{}g^{\varphi \varphi} = 16{r}^{2} {\left({m}^{4} {\left(\sin{\theta}\right)}^{2}\discretionary{}{}{}+8{m}^{3} r {\left(\sin{\theta}\right)}^{2}\discretionary{}{}{}+24{m}^{2} {r}^{2} {\left(\sin{\theta}\right)}^{2}\discretionary{}{}{}+32m {r}^{3} {\left(\sin{\theta}\right)}^{2}\discretionary{}{}{}+16{r}^{4} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
 }
 \cdbtag{ex-0605.103}{%
-\Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{r}{}^{\varphi}& = \left(-m+2r\right) {\left(r \left(m+2r\right)\right)}^{-1}\\[-.5ex]%
+\Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{r}{}^{\varphi}& = \left(-m\discretionary{}{}{}+2r\right) {\left(r \left(m\discretionary{}{}{}+2r\right)\right)}^{-1}\\[-.5ex]%
 \square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{r}{}^{\theta}& = \left(-m+2r\right) {\left(r \left(m+2r\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{r}{}^{r}& = -2m {\left(r \left(m+2r\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{t}{}_{r}{}^{t}& = 4m {\left(-{m}^{2}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{\varphi}{}^{\varphi}& = \left(-m+2r\right) {\left(r \left(m+2r\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{r}{}^{\theta}& = \left(-m\discretionary{}{}{}+2r\right) {\left(r \left(m\discretionary{}{}{}+2r\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{r}{}^{r}& = -2m {\left(r \left(m\discretionary{}{}{}+2r\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{r}{}^{t}& = 4m {\left(-{m}^{2}\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{\varphi}{}^{\varphi}& = \left(-m\discretionary{}{}{}+2r\right) {\left(r \left(m\discretionary{}{}{}+2r\right)\right)}^{-1}\\[-.5ex]%
 \square{}_{\theta}{}_{\varphi}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{\theta}{}^{\theta}& = \left(-m+2r\right) {\left(r \left(m+2r\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{t}{}^{t}& = 4m {\left(-{m}^{2}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{\varphi}{}^{r}& = r \left(m-2r\right) {\left(\sin{\theta}\right)}^{2} {\left(m+2r\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{\theta}{}^{\theta}& = \left(-m\discretionary{}{}{}+2r\right) {\left(r \left(m\discretionary{}{}{}+2r\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{t}{}^{t}& = 4m {\left(-{m}^{2}\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{\varphi}{}^{r}& = r \left(m\discretionary{}{}{}-2r\right) {\left(\sin{\theta}\right)}^{2} {\left(m\discretionary{}{}{}+2r\right)}^{-1}\\[-.5ex]%
 \square{}_{\varphi}{}_{\varphi}{}^{\theta}& =  - \frac{1}{2}\sin\left(2\theta\right)\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{r}& = r \left(m-2r\right) {\left(m+2r\right)}^{-1}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{r}& = -64m {r}^{4} \left(m-2r\right) {\left({\left(m+2r\right)}^{3} \left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{\theta}{}^{r}& = r \left(m\discretionary{}{}{}-2r\right) {\left(m\discretionary{}{}{}+2r\right)}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{r}& = -64m {r}^{4} \left(m\discretionary{}{}{}-2r\right) {\left({\left(m\discretionary{}{}{}+2r\right)}^{3} \left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)\right)}^{-1}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-0605.104}{%
-R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{t}{}_{t}{}^{r}{}_{r}& = 128m {r}^{3} \left(-{m}^{2}+4m r-4{r}^{2}\right) {\left({m}^{8}+16{m}^{7} r+112{m}^{6} {r}^{2}+448{m}^{5} {r}^{3}+1120{m}^{4} {r}^{4}+1792{m}^{3} {r}^{5}+1792{m}^{2} {r}^{6}+1024m {r}^{7}+256{r}^{8}\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{r}{}_{r}& = -4m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = 8m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{\varphi}{}^{r}{}_{r}& = -4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{t}{}_{r}{}^{t}{}_{r}& = -8m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{r}{}^{\theta}{}_{r}& = 4m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{\theta}{}^{\varphi}{}_{\theta}& = -8m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{r}{}^{\varphi}{}_{r}& = 4m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{t}{}^{r}{}_{t}& = 128m {r}^{3} \left({m}^{2}-4m r+4{r}^{2}\right) {\left({m}^{8}+16{m}^{7} r+112{m}^{6} {r}^{2}+448{m}^{5} {r}^{3}+1120{m}^{4} {r}^{4}+1792{m}^{3} {r}^{5}+1792{m}^{2} {r}^{6}+1024m {r}^{7}+256{r}^{8}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{\theta}{}^{r}{}_{\theta}& = 4m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}{}^{\theta}{}_{\varphi}& = -8m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{\varphi}{}^{r}{}_{\varphi}& = 4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{r}{}^{t}{}_{t}& = 8m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{r}{}^{\theta}{}_{\theta}& = -4m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 8m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{r}{}_{r}{}^{\varphi}{}_{\varphi}& = -4m {\left(r \left({m}^{2}+4m r+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{\varphi}{}^{t}{}_{t}& = -4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\theta}{}_{\theta}{}^{t}{}_{t}& = -4m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{\varphi}{}_{\varphi}& = 64m {r}^{3} {\left(m-2r\right)}^{2} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{\theta}{}_{\theta}& = 64m {r}^{3} {\left(m-2r\right)}^{2} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{\varphi}{}^{t}{}_{\varphi}& = 4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{t}{}_{\theta}{}^{t}{}_{\theta}& = 4m r {\left({m}^{2}+4m r+4{r}^{2}\right)}^{-1}\\[-.5ex]%
-\square{}_{\varphi}{}_{t}{}^{\varphi}{}_{t}& = -64m {r}^{3} {\left(m-2r\right)}^{2} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
-\square{}_{\theta}{}_{t}{}^{\theta}{}_{t}& = -64m {r}^{3} {\left(m-2r\right)}^{2} {\left({m}^{4}+8{m}^{3} r+24{m}^{2} {r}^{2}+32m {r}^{3}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
+R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{t}{}_{t}{}^{r}{}_{r}& = 128m {r}^{3} \left(-{m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}-4{r}^{2}\right) {\left({m}^{8}\discretionary{}{}{}+16{m}^{7} r\discretionary{}{}{}+112{m}^{6} {r}^{2}\discretionary{}{}{}+448{m}^{5} {r}^{3}\discretionary{}{}{}+1120{m}^{4} {r}^{4}\discretionary{}{}{}+1792{m}^{3} {r}^{5}\discretionary{}{}{}+1792{m}^{2} {r}^{6}\discretionary{}{}{}+1024m {r}^{7}\discretionary{}{}{}+256{r}^{8}\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{\theta}{}^{r}{}_{r}& = -4m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{\varphi}{}^{\theta}{}_{\theta}& = 8m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{\varphi}{}^{r}{}_{r}& = -4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{r}{}^{t}{}_{r}& = -8m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{r}{}^{\theta}{}_{r}& = 4m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{\theta}{}^{\varphi}{}_{\theta}& = -8m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{r}{}^{\varphi}{}_{r}& = 4m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{t}{}^{r}{}_{t}& = 128m {r}^{3} \left({m}^{2}\discretionary{}{}{}-4m r\discretionary{}{}{}+4{r}^{2}\right) {\left({m}^{8}\discretionary{}{}{}+16{m}^{7} r\discretionary{}{}{}+112{m}^{6} {r}^{2}\discretionary{}{}{}+448{m}^{5} {r}^{3}\discretionary{}{}{}+1120{m}^{4} {r}^{4}\discretionary{}{}{}+1792{m}^{3} {r}^{5}\discretionary{}{}{}+1792{m}^{2} {r}^{6}\discretionary{}{}{}+1024m {r}^{7}\discretionary{}{}{}+256{r}^{8}\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{\theta}{}^{r}{}_{\theta}& = 4m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}{}^{\theta}{}_{\varphi}& = -8m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{\varphi}{}^{r}{}_{\varphi}& = 4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{r}{}^{t}{}_{t}& = 8m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{r}{}^{\theta}{}_{\theta}& = -4m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{\theta}{}^{\varphi}{}_{\varphi}& = 8m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{r}{}_{r}{}^{\varphi}{}_{\varphi}& = -4m {\left(r \left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{\varphi}{}^{t}{}_{t}& = -4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\theta}{}_{\theta}{}^{t}{}_{t}& = -4m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{\varphi}{}_{\varphi}& = 64m {r}^{3} {\left(m\discretionary{}{}{}-2r\right)}^{2} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{\theta}{}_{\theta}& = 64m {r}^{3} {\left(m\discretionary{}{}{}-2r\right)}^{2} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{\varphi}{}^{t}{}_{\varphi}& = 4m r {\left(\sin{\theta}\right)}^{2} {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{t}{}_{\theta}{}^{t}{}_{\theta}& = 4m r {\left({m}^{2}\discretionary{}{}{}+4m r\discretionary{}{}{}+4{r}^{2}\right)}^{-1}\\[-.5ex]%
+\square{}_{\varphi}{}_{t}{}^{\varphi}{}_{t}& = -64m {r}^{3} {\left(m\discretionary{}{}{}-2r\right)}^{2} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
+\square{}_{\theta}{}_{t}{}^{\theta}{}_{t}& = -64m {r}^{3} {\left(m\discretionary{}{}{}-2r\right)}^{2} {\left({m}^{4}\discretionary{}{}{}+8{m}^{3} r\discretionary{}{}{}+24{m}^{2} {r}^{2}\discretionary{}{}{}+32m {r}^{3}\discretionary{}{}{}+16{r}^{4}\right)}^{-2}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-0605.105}{%

@@ -702,7 +702,7 @@ moment what these mean, just accept that they are valid Cadabra statements)
 \begin{cadabra}[numbers=none]
    {a,b,c,d,e#}::Indices.
    \delta{#}::KroneckerDelta.
-   D{#}::LaTeXForm{"\nabla"}.
+   D{#}::LaTeXForm("\nabla").
 \end{cadabra}
 This dual use of the hash character forces a compromise to be made -- comments are not
 allowed as trailing text on a pure Cadabra line (e.g., on the end of a property
@@ -2891,7 +2891,7 @@ a \verb|#include|) into a separate C-program.
       labelled \verb|x,y,z|.
 
       {\bf Hint:} You may need to refer back to Exercise \exref{ex:6.08} to hide the first
-                  and second partial derivatives of $g_{ab}$. You could also need to add
+                  and second partial derivatives of $g_{ab}$. You might also need to add
                   \verb|simplify=False| to the argument list in the call to \verb|evaluate|.
                   The function \verb|write_code| will optimise the C-code so there is not a
                   great deal to be gained by asking Sympy to also optimise its output.
@@ -3470,7 +3470,7 @@ well and produces the following result
 \end{dgroup*}
 
 It was previously noted that it is rather easy to hit the computational wall. Here is a
-slightly changes that does just that -- truncate the result \emph{after} the housekeeping,
+small change that does just that -- truncate the result \emph{after} the housekeeping,
 that is
 \begin{cadabra}[numbers=none]
    sort_product   (Gamma)
@@ -3512,7 +3512,7 @@ $\Gamma^{a}$ by \begin{align*}
 \end{align*}
 then using the results from the previous example it is easy to show that
 \begin{dgroup*}[spread=5pt]
-   \Dmath*{ \Gamma^{a} = z^{b} z^{c} \Gamma^{a}{}_{bc}(x) = \cdb{ex-12.305} }
+   \Dmath*{ \Gamma^{a} = z^{b} z^{c} \Gamma^{a}{}_{bc}(x) = \cdb{ex-12.315} }
 \end{dgroup*}
 
 Calzetta etal.\cite{calzetta:1988-01} have also computed an expression for the connection in
@@ -3615,7 +3615,7 @@ fragment
 \begin{cadabra}[numbers=none]
    # lower free index ^{a} to _{v}
 
-   Gamma := g_{v a} @(Gamma).
+   Gamma := g_{v a} @(GammaUp).
 
    distribute (Gamma)
    substitute (Gamma, $g_{a d} g^{d b} -> \delta_{a}^{b}$)
@@ -3640,7 +3640,7 @@ Recall that Cadabra will do the necessary index juggling to avoid any clash that
 arise in the above computation (see the results of Exercise \exref{ex:1.09}).
 
 At this point the difference $\Delta\Gamma_{a}:=\Gamma_{a}-\GammaBar_{a}$ is given by
-\Dmath*{\Delta\Gamma_{a} = \cdb{ex-12.diff.305} }
+\Dmath*[spread=3pt]{\Delta\Gamma_{a} = \cdb{ex-12.diff.305} }
 
 Now the fun begins (cancelling terms). First notice that $\Delta\Gamma$ consists of second
 and third order terms in $x$. It is easy to see that the second order terms will vanish when
@@ -3681,10 +3681,11 @@ united (in line \lstref*{ex-12.07}) by setting $\mu_{0}=\mu_{1}=\mu_{2}$ and the
 line of the code rebuilds \verb|diff| for later processing of the third order terms.
 
 Similar code can be used to commute the second covariant derivatives leading to
-\Dmath*{\Delta\Gamma_{a} = \cdb{ex-12.diff.307} } The final steps are now rather obvious --
-apply the second Bianchi identity to the first term and the first Bianchi identity to the
-second term. These steps are (once again) implemented using code very similar to that given
-above. The result is that $\Delta\Gamma_{a}=0$, that is $\Gamma=\GammaBar$.
+\Dmath*[spread=3pt]{\Delta\Gamma_{a} = \cdb{ex-12.diff.307} }
+The final steps are now rather obvious -- apply the second Bianchi identity to the first
+term and the first Bianchi identity to the second term. These steps are (once again)
+implemented using code very similar to that given above. The result is that
+$\Delta\Gamma_{a}=0$, that is $\Gamma=\GammaBar$.
 
 \clearpage
 
@@ -4437,8 +4438,8 @@ demonstrating various ways to encounter this error.
    If you want to specify the LaTeX form for an object that carries indices you
    must use \verb|{#}|, otherwise do not use \verb|{#}|. Here are two simple example.
    \begin{cadabra}
-      foo{#}::LaTeXForm{"{\bar\alpha}"}.    # matches objects foo with indices
-      bah::LaTeXForm{"{\hat\beta}"}.        # matches objects bah without indices
+      foo{#}::LaTeXForm("{\bar\alpha}").    # matches objects foo with indices
+      bah::LaTeXForm("{\hat\beta}").        # matches objects bah without indices
    \end{cadabra}
 
    % -----------------------------------------------------------------------------------------

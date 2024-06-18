@@ -97,13 +97,43 @@ def reformat (obj,scaleA,scaleB):
 import cdblib
 Gamma  = cdblib.get ('Gamma','example-11.json')
 
-# note that the next two lines require careful inspection of the free indices on Gamma
+# --------------------------------------------------------------------------
+# note: in versions prior to 24 may 2024, the first \Gamma^a shown in example 12
+#       of the tutorial was actually the *downstairs* version
+#       this block added to create reformated version of \Gamma^a for the tutorial
+
+# note that the next line requires careful inspection of the free indices on Gamma
 # expecting Gamma = \Gamma^{a}_{bc}
-Gamma := z^{b} z^{c} @(Gamma).
+
+GammaUp := z^{b} z^{c} @(Gamma).
+
+product_sort (GammaUp)
+
+checkpoint.append (GammaUp)
+
+gam1  = get_xterm (GammaUp,1)
+gam2  = get_xterm (GammaUp,2)
+gam3  = get_xterm (GammaUp,3)
+
+gam30 = get_gterm (gam3,1)
+gam31 = get_gterm (gam3,2)
+
+gam1  = reformat (gam1, 3,1)
+gam2  = reformat (gam2,12,1)
+
+gam30 = reformat (gam30,40,1)
+gam31 = reformat (gam31,45,2)
+
+gam3 := @(gam30) + @(gam31).
+
+GammaUp := @(gam1) + @(gam2) + @(gam3).
+
+checkpoint.append (GammaUp)
+# --------------------------------------------------------------------------
 
 # lower index ^{a} to _{v}
 
-Gamma := g_{v a} @(Gamma).
+Gamma := g_{v a} @(GammaUp).
 
 distribute (Gamma)
 substitute (Gamma, $g_{a d} g^{d b} -> \delta_{a}^{b}$)

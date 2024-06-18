@@ -22,22 +22,22 @@
 \partial_{t}\left(\exp\left(-4\phi\right) g_{i j}\right)%
 }
 \cdbtag{ex-15-03.102}{%
-\partial_{t}\left(\exp\left(-4\phi\right)\right) g_{i j}+\exp\left(-4\phi\right) \partial_{t}{g_{i j}}%
+\partial_{t}\left(\exp\left(-4\phi\right)\right) g_{i j}\discretionary{}{}{}+\exp\left(-4\phi\right) \partial_{t}{g_{i j}}%
 }
 \cdbtag{ex-15-03.103}{%
--4\exp\left(-4\phi\right) \partial_{t}{\phi} g_{i j}+\exp\left(-4\phi\right) \partial_{t}{g_{i j}}%
+-4\exp\left(-4\phi\right) \partial_{t}{\phi} g_{i j}\discretionary{}{}{}+\exp\left(-4\phi\right) \partial_{t}{g_{i j}}%
 }
 \cdbtag{ex-15-03.104}{%
--4\exp\left(-4\phi\right) \partial_{t}{\phi} g_{i j}-2\exp\left(-4\phi\right) N K_{i j}%
+-4\exp\left(-4\phi\right) \partial_{t}{\phi} g_{i j}\discretionary{}{}{}-2\exp\left(-4\phi\right) N K_{i j}%
 }
 \cdbtag{ex-15-03.105}{%
-\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}-2\exp\left(-4\phi\right) N K_{i j}%
+\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}\discretionary{}{}{}-2\exp\left(-4\phi\right) N K_{i j}%
 }
 \cdbtag{ex-15-03.106}{%
-\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}-2\exp\left(-4\phi\right) N \left(A_{i j}+\frac{1}{3}g_{i j} K\right)%
+\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}\discretionary{}{}{}-2\exp\left(-4\phi\right) N \left(A_{i j}\discretionary{}{}{}+\frac{1}{3}g_{i j} K\right)%
 }
 \cdbtag{ex-15-03.107}{%
-\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}-2\exp\left(-4\phi\right) N A_{i j} - \frac{2}{3}\exp\left(-4\phi\right) N g_{i j} K%
+\frac{2}{3}\exp\left(-4\phi\right) K N g_{i j}\discretionary{}{}{}-2\exp\left(-4\phi\right) N A_{i j}\discretionary{}{}{} - \frac{2}{3}\exp\left(-4\phi\right) N g_{i j} K%
 }
 \cdbtag{ex-15-03.108}{%
 -2N \exp\left(-4\phi\right) A_{i j}%

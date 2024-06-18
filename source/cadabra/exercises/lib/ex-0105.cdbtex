@@ -1,7 +1,7 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0105.100}{%
-A_{a} A^{a}+A^{a} A_{a}%
+A_{a} A^{a}\discretionary{}{}{}+A^{a} A_{a}%
 }
 \cdbtag{ex-0105.101}{%
 2A_{a} A^{a}%

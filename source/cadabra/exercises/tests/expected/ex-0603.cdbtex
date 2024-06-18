@@ -1,7 +1,7 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0603.100}{%
-\left[V_{\theta} = \varphi,~\discretionary{}{}{} V_{\varphi} = \sin{\theta}\right]%
+\left[V_{\theta} = \varphi, \discretionary{}{}{}V_{\varphi} = \sin{\theta}\right]%
 }
 \cdbtag{ex-0603.101}{%
 U_{a} V_{b}%

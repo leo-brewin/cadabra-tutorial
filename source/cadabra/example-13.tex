@@ -1,7 +1,7 @@
+\def\Date{19 Jun 2024}
+
 \documentclass[12pt]{cdblatex}
 \usepackage{examples}
-\usepackage{fancyhdr}
-\usepackage{footer}
 
 \begin{document}
 
@@ -23,7 +23,7 @@
 
 \begin{cadabra}
    {x,y,z}::Coordinate.
-   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices (values={x,y,z},position=independent).
+   {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w#}::Indices(values={x,y,z},position=independent).
 
    \partial{#}::PartialDerivative.
 
@@ -110,9 +110,9 @@
 
    R_{a b c d}::RiemannTensor.
 
-   ex{#}::LaTeXForm{"e_x"}.
-   ey{#}::LaTeXForm{"e_y"}.
-   ez{#}::LaTeXForm{"e_z"}.
+   ex{#}::LaTeXForm("e_x").
+   ey{#}::LaTeXForm("e_y").
+   ez{#}::LaTeXForm("e_z").
 
    {R_{a b c d}, g_{a b}, g^{a b}}::SortOrder.
 

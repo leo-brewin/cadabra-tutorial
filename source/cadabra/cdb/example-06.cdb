@@ -77,8 +77,8 @@ evaluate   (Rabcd, gab, rhsonly=True)
 {\theta, \varphi}::Coordinate.
 {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
 
-theta{#}::LaTeXForm{"\theta"}.
-varphi{#}::LaTeXForm{"\varphi"}.
+theta{#}::LaTeXForm("\theta").
+varphi{#}::LaTeXForm("\varphi").
 
 # usual definitions for the connection and Riemann tensor
 
@@ -127,8 +127,8 @@ checkpoint.append (compt)
 {\theta, \varphi}::Coordinate.
 {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
 
-theta{#}::LaTeXForm{"\theta"}.
-varphi{#}::LaTeXForm{"\varphi"}.
+theta{#}::LaTeXForm("\theta").
+varphi{#}::LaTeXForm("\varphi").
 
 gab := { g_{\theta \theta}   = r**2,
          g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.

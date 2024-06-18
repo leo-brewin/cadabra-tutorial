@@ -73,7 +73,7 @@ veryclean:
 	@ for file in $(TARGETS) exercises; \
 	  do \
 		  rm -rf $${file}.pdf; \
-		  rm -rf $${file}.cdb $${file}_.cdb; \
+		  rm -rf $${file}.cdb $${file}_.cdb $${file}_.txt; \
 		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
 		  rm -rf $${file}.py; \
 	  done

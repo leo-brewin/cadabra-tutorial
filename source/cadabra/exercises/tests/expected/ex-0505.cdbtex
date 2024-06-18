@@ -1,19 +1,19 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0505.100}{%
-V^{a}{}_{; b ; c}-V^{a}{}_{; c ; b}%
+V^{a}{}_{; b ; c}\discretionary{}{}{}-V^{a}{}_{; c ; b}%
 }
 \cdbtag{ex-0505.101}{%
-\mu_{0} V^{a}{}_{; b ; c}-\mu_{1} V^{a}{}_{; c ; b}%
+\mu_{0} V^{a}{}_{; b ; c}\discretionary{}{}{}-\mu_{1} V^{a}{}_{; c ; b}%
 }
 \cdbtag{ex-0505.102}{%
-\mu_{0} V^{a}{}_{; b ; c}+ \ldots %
+\mu_{0} V^{a}{}_{; b ; c}\discretionary{}{}{}+ \ldots %
 }
 \cdbtag{ex-0505.103}{%
-\mu_{0} \left(V^{a}{}_{; c ; b}-R^{a}{}_{d b c} V^{d}\right)+ \ldots %
+\mu_{0} \left(V^{a}{}_{; c ; b}\discretionary{}{}{}-R^{a}{}_{d b c} V^{d}\right)\discretionary{}{}{}+ \ldots %
 }
 \cdbtag{ex-0505.104}{%
-\mu_{0} \left(V^{a}{}_{; c ; b}-R^{a}{}_{d b c} V^{d}\right)-\mu_{1} V^{a}{}_{; c ; b}%
+\mu_{0} \left(V^{a}{}_{; c ; b}\discretionary{}{}{}-R^{a}{}_{d b c} V^{d}\right)\discretionary{}{}{}-\mu_{1} V^{a}{}_{; c ; b}%
 }
 \cdbtag{ex-0505.105}{%
 -R^{a}{}_{d b c} V^{d}%

@@ -91,6 +91,7 @@ import re
 
 re_subscript   = re.compile (r'\\,_')
 re_superscript = re.compile (r'\\,\^')
+re_cdot        = re.compile (r'\\cdot')
 
 def tex_macro (tex, index):
    the_lines = tag_output [index]
@@ -102,7 +103,10 @@ def tex_macro (tex, index):
          tmp0 = the_lines[i]
          tmp1 = re_subscript.sub ("{}_",tmp0)
          tmp2 = re_superscript.sub ("{}^",tmp1)
-         tex.write (tmp2+"%\n")
+         # On odd occassions we get a redundant \cdot
+         # I don't like that -- so this will replace it with {}
+         tmp3 = re_cdot.sub ("{}",tmp2)
+         tex.write (tmp3+"%\n")
    tex.write("}\n")
 
 # -----------------------------------------------------------------------------

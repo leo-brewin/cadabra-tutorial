@@ -1,7 +1,7 @@
+\def\Date{10 Aug 2022}
+
 \documentclass[12pt]{cdblatex}
 \usepackage{examples}
-\usepackage{fancyhdr}
-\usepackage{footer}
 
 \begin{document}
 
@@ -149,8 +149,8 @@ projection.
    {\theta, \varphi}::Coordinate.
    {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
 
-   theta{#}::LaTeXForm{"\theta"}.
-   varphi{#}::LaTeXForm{"\varphi"}.
+   theta{#}::LaTeXForm("\theta").
+   varphi{#}::LaTeXForm("\varphi").
 
    # usual definitions for the connection and Riemann tensor
 
@@ -220,8 +220,8 @@ the result of a call to \verb|evaluate|.
    {\theta, \varphi}::Coordinate.
    {a,b,c,d,e,f,g,h#}::Indices(values={\theta, \varphi}, position=independent).
 
-   theta{#}::LaTeXForm{"\theta"}.
-   varphi{#}::LaTeXForm{"\varphi"}.
+   theta{#}::LaTeXForm("\theta").
+   varphi{#}::LaTeXForm("\varphi").
 
    gab := { g_{\theta \theta}   = r**2,
             g_{\varphi \varphi} = r**2 \sin(\theta)**2 }.   # cdb(ex-06.500,gab)

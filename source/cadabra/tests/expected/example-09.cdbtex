@@ -1,51 +1,51 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-09.095}{%
-h^{e}{}_{p} h^{d}{}_{q} h^{c}{}_{r} \nabla_{c}\left(\nabla_{d}{v_{e}}\right)-h^{e}{}_{p} K_{r q} n^{d} \nabla_{d}{v_{e}}+K_{q}{}^{b} K_{r p} v_{b}-h^{d}{}_{p} h^{b}{}_{q} h^{e}{}_{r} \nabla_{b}\left(\nabla_{e}{v_{d}}\right)+h^{d}{}_{p} K_{q r} n^{e} \nabla_{e}{v_{d}}-K_{q p} K_{r}{}^{c} v_{c}%
+h^{e}{}_{p} h^{d}{}_{q} h^{c}{}_{r} \nabla_{c}\left(\nabla_{d}{v_{e}}\right)\discretionary{}{}{}-h^{e}{}_{p} K_{r q} n^{d} \nabla_{d}{v_{e}}\discretionary{}{}{}+K_{q}{}^{b} K_{r p} v_{b}\discretionary{}{}{}-h^{d}{}_{p} h^{b}{}_{q} h^{e}{}_{r} \nabla_{b}\left(\nabla_{e}{v_{d}}\right)\discretionary{}{}{}+h^{d}{}_{p} K_{q r} n^{e} \nabla_{e}{v_{d}}\discretionary{}{}{}-K_{q p} K_{r}{}^{c} v_{c}%
 }
 \cdbtag{ex-09.096}{%
-h^{c}{}_{r} h^{d}{}_{q} h^{e}{}_{p} \nabla_{c}\left(\nabla_{d}{v_{e}}\right)-h^{e}{}_{p} K_{r q} \nabla_{d}{v_{e}} n^{d}+v_{b} K_{q}{}^{b} K_{r p}-h^{b}{}_{q} h^{d}{}_{p} h^{e}{}_{r} \nabla_{b}\left(\nabla_{e}{v_{d}}\right)+h^{d}{}_{p} K_{q r} \nabla_{e}{v_{d}} n^{e}-v_{c} K_{r}{}^{c} K_{q p}%
+h^{c}{}_{r} h^{d}{}_{q} h^{e}{}_{p} \nabla_{c}\left(\nabla_{d}{v_{e}}\right)\discretionary{}{}{}-h^{e}{}_{p} K_{r q} \nabla_{d}{v_{e}} n^{d}\discretionary{}{}{}+v_{b} K_{q}{}^{b} K_{r p}\discretionary{}{}{}-h^{b}{}_{q} h^{d}{}_{p} h^{e}{}_{r} \nabla_{b}\left(\nabla_{e}{v_{d}}\right)\discretionary{}{}{}+h^{d}{}_{p} K_{q r} \nabla_{e}{v_{d}} n^{e}\discretionary{}{}{}-v_{c} K_{r}{}^{c} K_{q p}%
 }
 \cdbtag{ex-09.097}{%
-h^{a}{}_{r} h^{b}{}_{q} h^{c}{}_{p} \nabla_{a}\left(\nabla_{b}{v_{c}}\right)-h^{b}{}_{p} K_{r q} \nabla_{a}{v_{b}} n^{a}+v_{a} K_{q}{}^{a} K_{r p}-h^{a}{}_{q} h^{c}{}_{p} h^{b}{}_{r} \nabla_{a}\left(\nabla_{b}{v_{c}}\right)+h^{b}{}_{p} K_{q r} \nabla_{a}{v_{b}} n^{a}-v_{a} K_{r}{}^{a} K_{q p}%
+h^{a}{}_{r} h^{b}{}_{q} h^{c}{}_{p} \nabla_{a}\left(\nabla_{b}{v_{c}}\right)\discretionary{}{}{}-h^{b}{}_{p} K_{r q} \nabla_{a}{v_{b}} n^{a}\discretionary{}{}{}+v_{a} K_{q}{}^{a} K_{r p}\discretionary{}{}{}-h^{a}{}_{q} h^{c}{}_{p} h^{b}{}_{r} \nabla_{a}\left(\nabla_{b}{v_{c}}\right)\discretionary{}{}{}+h^{b}{}_{p} K_{q r} \nabla_{a}{v_{b}} n^{a}\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{q p}%
 }
 \cdbtag{ex-09.098}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \nabla_{c}\left(\nabla_{b}{v_{a}}\right)+v_{a} K_{q}{}^{a} K_{p r}-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \nabla_{b}\left(\nabla_{c}{v_{a}}\right)-v_{a} K_{r}{}^{a} K_{p q}%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \nabla_{c}\left(\nabla_{b}{v_{a}}\right)\discretionary{}{}{}+v_{a} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \nabla_{b}\left(\nabla_{c}{v_{a}}\right)\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.099}{%
-v_{a} K_{q}{}^{a} K_{p r}-v_{a} K_{r}{}^{a} K_{p q}+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \left(\nabla_{c}\left(\nabla_{b}{v_{a}}\right)-\nabla_{b}\left(\nabla_{c}{v_{a}}\right)\right)%
+v_{a} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{p q}\discretionary{}{}{}+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \left(\nabla_{c}\left(\nabla_{b}{v_{a}}\right)\discretionary{}{}{}-\nabla_{b}\left(\nabla_{c}{v_{a}}\right)\right)%
 }
 \cdbtag{ex-09.101}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \left(\nabla_{c}\left(\nabla_{b}{v_{a}}\right)-\nabla_{b}\left(\nabla_{c}{v_{a}}\right)\right)+v_{a} \left(K_{q}{}^{a} K_{p r}-K_{r}{}^{a} K_{p q}\right)%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} \left(\nabla_{c}\left(\nabla_{b}{v_{a}}\right)\discretionary{}{}{}-\nabla_{b}\left(\nabla_{c}{v_{a}}\right)\right)\discretionary{}{}{}+v_{a} \left(K_{q}{}^{a} K_{p r}\discretionary{}{}{}-K_{r}{}^{a} K_{p q}\right)%
 }
 \cdbtag{ex-09.102}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} v_{d}+v_{a} \left(K_{q}{}^{a} K_{p r}-K_{r}{}^{a} K_{p q}\right)%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} v_{d}\discretionary{}{}{}+v_{a} \left(K_{q}{}^{a} K_{p r}\discretionary{}{}{}-K_{r}{}^{a} K_{p q}\right)%
 }
 \cdbtag{ex-09.103}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} v_{d}+v_{a} K_{q}{}^{a} K_{p r}-v_{a} K_{r}{}^{a} K_{p q}%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} v_{d}\discretionary{}{}{}+v_{a} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.104}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} h^{e}{}_{d} v_{e}+h^{b}{}_{a} v_{b} K_{q}{}^{a} K_{p r}-h^{b}{}_{a} v_{b} K_{r}{}^{a} K_{p q}%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} h^{e}{}_{d} v_{e}\discretionary{}{}{}+h^{b}{}_{a} v_{b} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-h^{b}{}_{a} v_{b} K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.105}{%
-h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} h^{e}{}_{d} v_{e}+K_{q}{}^{b} v_{b} K_{p r}-K_{r}{}^{b} v_{b} K_{p q}%
+h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} {{\strut}^g R}^{d}{}_{a b c} h^{e}{}_{d} v_{e}\discretionary{}{}{}+K_{q}{}^{b} v_{b} K_{p r}\discretionary{}{}{}-K_{r}{}^{b} v_{b} K_{p q}%
 }
 \cdbtag{ex-09.106}{%
-v_{e} h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} h^{e}{}_{d} {{\strut}^g R}^{d}{}_{a b c}+v_{b} K_{q}{}^{b} K_{p r}-v_{b} K_{r}{}^{b} K_{p q}%
+v_{e} h^{a}{}_{p} h^{b}{}_{q} h^{c}{}_{r} h^{e}{}_{d} {{\strut}^g R}^{d}{}_{a b c}\discretionary{}{}{}+v_{b} K_{q}{}^{b} K_{p r}\discretionary{}{}{}-v_{b} K_{r}{}^{b} K_{p q}%
 }
 \cdbtag{ex-09.107}{%
-v_{e} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{e}{}_{a} {{\strut}^g R}^{a}{}_{b c d}+v_{a} K_{q}{}^{a} K_{p r}-v_{a} K_{r}{}^{a} K_{p q}%
+v_{e} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{e}{}_{a} {{\strut}^g R}^{a}{}_{b c d}\discretionary{}{}{}+v_{a} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.108}{%
-v_{a} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}+v_{a} K_{q}{}^{a} K_{p r}-v_{a} K_{r}{}^{a} K_{p q}%
+v_{a} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}\discretionary{}{}{}+v_{a} K_{q}{}^{a} K_{p r}\discretionary{}{}{}-v_{a} K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.109}{%
-v_{a} \left(h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}+K_{q}{}^{a} K_{p r}-K_{r}{}^{a} K_{p q}\right)%
+v_{a} \left(h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}\discretionary{}{}{}+K_{q}{}^{a} K_{p r}\discretionary{}{}{}-K_{r}{}^{a} K_{p q}\right)%
 }
 \cdbtag{ex-09.110}{%
-h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}+K_{q}{}^{a} K_{p r}-K_{r}{}^{a} K_{p q}%
+h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} h^{a}{}_{e} {{\strut}^g R}^{e}{}_{b c d}\discretionary{}{}{}+K_{q}{}^{a} K_{p r}\discretionary{}{}{}-K_{r}{}^{a} K_{p q}%
 }
 \cdbtag{ex-09.111}{%
-h^{a}{}_{e} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} {{\strut}^g R}^{e}{}_{b c d}+K_{q}{}^{a} K_{p r}-K_{r}{}^{a} K_{p q}%
+h^{a}{}_{e} h^{b}{}_{p} h^{c}{}_{q} h^{d}{}_{r} {{\strut}^g R}^{e}{}_{b c d}\discretionary{}{}{}+K_{q}{}^{a} K_{p r}\discretionary{}{}{}-K_{r}{}^{a} K_{p q}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

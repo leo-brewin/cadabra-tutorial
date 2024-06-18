@@ -1,22 +1,22 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{dgab.000}{%
-\partial_{c}{g_{a b}} \rightarrow \Gamma^{d}{}_{a c} g_{d b}+\Gamma^{d}{}_{b c} g_{a d}%
+\partial_{c}{g_{a b}} \rightarrow \Gamma^{d}{}_{a c} g_{d b}\discretionary{}{}{}+\Gamma^{d}{}_{b c} g_{a d}%
 }
 \cdbtag{diab.000}{%
-\partial_{c}{g^{a b}} \rightarrow -\Gamma^{a}{}_{d c} g^{d b}-\Gamma^{b}{}_{d c} g^{a d}%
+\partial_{c}{g^{a b}} \rightarrow -\Gamma^{a}{}_{d c} g^{d b}\discretionary{}{}{}-\Gamma^{b}{}_{d c} g^{a d}%
 }
 \cdbtag{Gamma.000}{%
-\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right)%
+\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}\discretionary{}{}{}+\partial_{c}{g_{b d}}\discretionary{}{}{}-\partial_{d}{g_{b c}}\right)%
 }
 \cdbtag{Gamma.010}{%
-\Gamma_{a b c} \rightarrow \frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}}%
+\Gamma_{a b c} \rightarrow \frac{1}{2}\partial_{b}{g_{a c}}\discretionary{}{}{}+\frac{1}{2}\partial_{c}{g_{b a}}\discretionary{}{}{} - \frac{1}{2}\partial_{a}{g_{b c}}%
 }
 \cdbtag{Rabcd.000}{%
-R^{a}{}_{b c d} \rightarrow \partial_{c}{\Gamma^{a}{}_{b d}}-\partial_{d}{\Gamma^{a}{}_{b c}}+\Gamma^{e}{}_{b d} \Gamma^{a}{}_{c e}-\Gamma^{e}{}_{b c} \Gamma^{a}{}_{d e}%
+R^{a}{}_{b c d} \rightarrow \partial_{c}{\Gamma^{a}{}_{b d}}\discretionary{}{}{}-\partial_{d}{\Gamma^{a}{}_{b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b d} \Gamma^{a}{}_{c e}\discretionary{}{}{}-\Gamma^{e}{}_{b c} \Gamma^{a}{}_{d e}%
 }
 \cdbtag{Rabcd.010}{%
-R_{a b c d} \rightarrow \partial_{c}{\Gamma_{a b d}}-\partial_{d}{\Gamma_{a b c}}+\Gamma_{e a d} \Gamma^{e}{}_{b c}-\Gamma_{e a c} \Gamma^{e}{}_{b d}%
+R_{a b c d} \rightarrow \partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma_{e a d} \Gamma^{e}{}_{b c}\discretionary{}{}{}-\Gamma_{e a c} \Gamma^{e}{}_{b d}%
 }
 \cdbtag{Rab.000}{%
 R_{a b} \rightarrow R^{c}{}_{a c b}%
@@ -25,43 +25,43 @@ R_{a b} \rightarrow R^{c}{}_{a c b}%
 R \rightarrow g^{a b} R_{a b}%
 }
 \cdbtag{Cabcd.000}{%
-C_{a b c d} \rightarrow R_{a b c d} - \frac{1}{2}R_{a c} g_{b d}+\frac{1}{2}R_{a d} g_{b c} - \frac{1}{2}g_{a c} R_{b d}+\frac{1}{2}g_{a d} R_{b c}+\frac{1}{6}R \left(g_{a c} g_{b d}-g_{a d} g_{b c}\right)%
+C_{a b c d} \rightarrow R_{a b c d}\discretionary{}{}{} - \frac{1}{2}R_{a c} g_{b d}\discretionary{}{}{}+\frac{1}{2}R_{a d} g_{b c}\discretionary{}{}{} - \frac{1}{2}g_{a c} R_{b d}\discretionary{}{}{}+\frac{1}{2}g_{a d} R_{b c}\discretionary{}{}{}+\frac{1}{6}R \left(g_{a c} g_{b d}\discretionary{}{}{}-g_{a d} g_{b c}\right)%
 }
 \cdbtag{libdg.dgab.000}{%
 \partial_{c}{g_{a b}}%
 }
 \cdbtag{libdg.dgab.001}{%
-\Gamma^{d}{}_{a c} g_{d b}+\Gamma^{d}{}_{b c} g_{a d}%
+\Gamma^{d}{}_{a c} g_{d b}\discretionary{}{}{}+\Gamma^{d}{}_{b c} g_{a d}%
 }
 \cdbtag{libdg.diab.000}{%
 \partial_{c}{g^{a b}}%
 }
 \cdbtag{libdg.diab.001}{%
--\Gamma^{a}{}_{d c} g^{d b}-\Gamma^{b}{}_{d c} g^{a d}%
+-\Gamma^{a}{}_{d c} g^{d b}\discretionary{}{}{}-\Gamma^{b}{}_{d c} g^{a d}%
 }
 \cdbtag{libdg.Gamma.000}{%
 \Gamma^{a}{}_{b c}%
 }
 \cdbtag{libdg.Gamma.001}{%
-\frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right)%
+\frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}\discretionary{}{}{}+\partial_{c}{g_{b d}}\discretionary{}{}{}-\partial_{d}{g_{b c}}\right)%
 }
 \cdbtag{libdg.Gamma.010}{%
 \Gamma_{a b c}%
 }
 \cdbtag{libdg.Gamma.011}{%
-\frac{1}{2}\partial_{b}{g_{a c}}+\frac{1}{2}\partial_{c}{g_{b a}} - \frac{1}{2}\partial_{a}{g_{b c}}%
+\frac{1}{2}\partial_{b}{g_{a c}}\discretionary{}{}{}+\frac{1}{2}\partial_{c}{g_{b a}}\discretionary{}{}{} - \frac{1}{2}\partial_{a}{g_{b c}}%
 }
 \cdbtag{libdg.Rabcd.000}{%
 R^{a}{}_{b c d}%
 }
 \cdbtag{libdg.Rabcd.001}{%
-\partial_{c}{\Gamma^{a}{}_{b d}}-\partial_{d}{\Gamma^{a}{}_{b c}}+\Gamma^{e}{}_{b d} \Gamma^{a}{}_{c e}-\Gamma^{e}{}_{b c} \Gamma^{a}{}_{d e}%
+\partial_{c}{\Gamma^{a}{}_{b d}}\discretionary{}{}{}-\partial_{d}{\Gamma^{a}{}_{b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b d} \Gamma^{a}{}_{c e}\discretionary{}{}{}-\Gamma^{e}{}_{b c} \Gamma^{a}{}_{d e}%
 }
 \cdbtag{libdg.Rabcd.010}{%
 R_{a b c d}%
 }
 \cdbtag{libdg.Rabcd.011}{%
-\partial_{c}{\Gamma_{a b d}}-\partial_{d}{\Gamma_{a b c}}+\Gamma_{e a d} \Gamma^{e}{}_{b c}-\Gamma_{e a c} \Gamma^{e}{}_{b d}%
+\partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma_{e a d} \Gamma^{e}{}_{b c}\discretionary{}{}{}-\Gamma_{e a c} \Gamma^{e}{}_{b d}%
 }
 \cdbtag{libdg.Rab.000}{%
 R_{a b}%
@@ -79,6 +79,6 @@ g^{a b} R_{a b}%
 C_{a b c d}%
 }
 \cdbtag{libdg.Cabcd.001}{%
-R_{a b c d} - \frac{1}{2}R_{a c} g_{b d}+\frac{1}{2}R_{a d} g_{b c} - \frac{1}{2}g_{a c} R_{b d}+\frac{1}{2}g_{a d} R_{b c}+\frac{1}{6}R \left(g_{a c} g_{b d}-g_{a d} g_{b c}\right)%
+R_{a b c d}\discretionary{}{}{} - \frac{1}{2}R_{a c} g_{b d}\discretionary{}{}{}+\frac{1}{2}R_{a d} g_{b c}\discretionary{}{}{} - \frac{1}{2}g_{a c} R_{b d}\discretionary{}{}{}+\frac{1}{2}g_{a d} R_{b c}\discretionary{}{}{}+\frac{1}{6}R \left(g_{a c} g_{b d}\discretionary{}{}{}-g_{a d} g_{b c}\right)%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

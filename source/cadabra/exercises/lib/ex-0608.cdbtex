@@ -1,17 +1,17 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0608.201}{%
-\left[dV_{\theta \varphi} = \sin{\theta},~\discretionary{}{}{} dV_{\varphi \theta} = \cos{\theta}\right]%
+\left[dV_{\theta \varphi} = \sin{\theta}, \discretionary{}{}{}dV_{\varphi \theta} = \cos{\theta}\right]%
 }
 \cdbtag{ex-0608.202}{%
-\partial_{b}{V_{a}}-\partial_{a}{V_{b}}%
+\partial_{b}{V_{a}}\discretionary{}{}{}-\partial_{a}{V_{b}}%
 }
 \cdbtag{ex-0608.212}{%
-dV_{b a}-dV_{a b}%
+dV_{b a}\discretionary{}{}{}-dV_{a b}%
 }
 \cdbtag{ex-0608.203}{%
-\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \sin{\theta}-\cos{\theta}\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}& = -\sin{\theta}+\cos{\theta}\\[-.5ex]%
+\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \sin{\theta}\discretionary{}{}{}-\cos{\theta}\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = -\sin{\theta}\discretionary{}{}{}+\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

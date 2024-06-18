@@ -1,24 +1,24 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-06.100}{%
-\left[V_{\theta} = \varphi,~\discretionary{}{}{} V_{\varphi} = \sin{\theta}\right]%
+\left[V_{\theta} = \varphi, \discretionary{}{}{}V_{\varphi} = \sin{\theta}\right]%
 }
 \cdbtag{ex-06.101}{%
-\partial_{b}{V_{a}}-\partial_{a}{V_{b}}%
+\partial_{b}{V_{a}}\discretionary{}{}{}-\partial_{a}{V_{b}}%
 }
 \cdbtag{ex-06.102}{%
-\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \cos{\theta}-1\\[-.5ex]%
-\square{}_{\theta}{}_{\varphi}& = 1-\cos{\theta}\\[-.5ex]%
+\square{}_{a}{}_{b}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}& = \cos{\theta}\discretionary{}{}{}-1\\[-.5ex]%
+\square{}_{\theta}{}_{\varphi}& = 1\discretionary{}{}{}-\cos{\theta}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-06.201}{%
-\left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
+\left[g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
 }
 \cdbtag{ex-06.202}{%
-\left[g^{\theta \theta} = {r}^{-2},~\discretionary{}{}{} g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
+\left[g^{\theta \theta} = {r}^{-2}, \discretionary{}{}{}g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
 }
 \cdbtag{ex-06.203}{%
-\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}+\partial_{c}{g_{b d}}-\partial_{d}{g_{b c}}\right)%
+\Gamma^{a}{}_{b c} \rightarrow \frac{1}{2}g^{a d} \left(\partial_{b}{g_{d c}}\discretionary{}{}{}+\partial_{c}{g_{b d}}\discretionary{}{}{}-\partial_{d}{g_{b c}}\right)%
 }
 \cdbtag{ex-06.204}{%
 \Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
@@ -44,10 +44,10 @@ R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned
 -{\left(\sin{\theta}\right)}^{2}%
 }
 \cdbtag{ex-06.301}{%
-\left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
+\left[g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
 }
 \cdbtag{ex-06.302}{%
-\left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2},~\discretionary{}{}{} g^{\theta \theta} = {r}^{-2},~\discretionary{}{}{} g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
+\left[g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}, \discretionary{}{}{}g^{\theta \theta} = {r}^{-2}, \discretionary{}{}{}g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
 }
 \cdbtag{ex-06.303}{%
 \Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{\varphi}{}_{\theta}{}^{\varphi}& = {\left(\tan{\theta}\right)}^{-1}\\[-.5ex]%
@@ -63,7 +63,7 @@ R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned
 \end{aligned}\right.%
 }
 \cdbtag{ex-06.400}{%
-\left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
+\left[g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
 }
 \cdbtag{ex-06.401}{%
 R^{a}{}_{b c d} \theta_{a} \varphi^{b} \theta^{c} \varphi^{d}%
@@ -78,10 +78,10 @@ type gphiphi = <class 'sympy.core.power.Pow'>%
      gphiphi = sin(theta)**2%
 }
 \cdbtag{ex-06.500}{%
-\left[g_{\theta \theta} = {r}^{2},~\discretionary{}{}{} g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
+\left[g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
 }
 \cdbtag{ex-06.501}{%
-\left[\varphi,~\discretionary{}{}{} \varphi\right]%
+\left[\varphi, \discretionary{}{}{}\varphi\right]%
 }
 \cdbtag{ex-06.502}{%
 {r}^{2} {\left(\sin{\theta}\right)}^{2}%

@@ -1,10 +1,10 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0606.101}{%
-\left[g_{t t} = -1,~\discretionary{}{}{} g_{x x} = {t}^{2p_1},~\discretionary{}{}{} g_{y y} = {t}^{2p_2},~\discretionary{}{}{} g_{z z} = {t}^{2p_3}\right]%
+\left[g_{t t} = -1, \discretionary{}{}{}g_{x x} = {t}^{2p_1}, \discretionary{}{}{}g_{y y} = {t}^{2p_2}, \discretionary{}{}{}g_{z z} = {t}^{2p_3}\right]%
 }
 \cdbtag{ex-0606.102}{%
-\left[g_{t t} = -1,~\discretionary{}{}{} g_{x x} = {t}^{2p_1},~\discretionary{}{}{} g_{y y} = {t}^{2p_2},~\discretionary{}{}{} g_{z z} = {t}^{2p_3},~\discretionary{}{}{} g^{t t} = -1,~\discretionary{}{}{} g^{x x} = {t}^{-2p_1},~\discretionary{}{}{} g^{y y} = {t}^{-2p_2},~\discretionary{}{}{} g^{z z} = {t}^{-2p_3}\right]%
+\left[g_{t t} = -1, \discretionary{}{}{}g_{x x} = {t}^{2p_1}, \discretionary{}{}{}g_{y y} = {t}^{2p_2}, \discretionary{}{}{}g_{z z} = {t}^{2p_3}, \discretionary{}{}{}g^{t t} = -1, \discretionary{}{}{}g^{x x} = {t}^{-2p_1}, \discretionary{}{}{}g^{y y} = {t}^{-2p_2}, \discretionary{}{}{}g^{z z} = {t}^{-2p_3}\right]%
 }
 \cdbtag{ex-0606.103}{%
 \Gamma^{a}{}_{b c} \rightarrow \square{}_{c}{}_{b}{}^{a}\left\{\begin{aligned}\square{}_{z}{}_{t}{}^{z}& = p_3 {t}^{-1}\\[-.5ex]%
@@ -13,43 +13,43 @@
 \square{}_{t}{}_{z}{}^{z}& = p_3 {t}^{-1}\\[-.5ex]%
 \square{}_{t}{}_{y}{}^{y}& = p_2 {t}^{-1}\\[-.5ex]%
 \square{}_{t}{}_{x}{}^{x}& = p_1 {t}^{-1}\\[-.5ex]%
-\square{}_{z}{}_{z}{}^{t}& = p_3 {t}^{\left(2p_3-1\right)}\\[-.5ex]%
-\square{}_{y}{}_{y}{}^{t}& = p_2 {t}^{\left(2p_2-1\right)}\\[-.5ex]%
-\square{}_{x}{}_{x}{}^{t}& = p_1 {t}^{\left(2p_1-1\right)}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{t}& = p_3 {t}^{\left(2p_3\discretionary{}{}{}-1\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{t}& = p_2 {t}^{\left(2p_2\discretionary{}{}{}-1\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{t}& = p_1 {t}^{\left(2p_1\discretionary{}{}{}-1\right)}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-0606.104}{%
-R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{x}{}_{x}{}^{t}{}_{t}& = p_1 {t}^{\left(2p_1-2\right)} \left(p_1-1\right)\\[-.5ex]%
-\square{}_{y}{}_{y}{}^{t}{}_{t}& = p_2 {t}^{\left(2p_2-2\right)} \left(p_2-1\right)\\[-.5ex]%
-\square{}_{z}{}_{z}{}^{t}{}_{t}& = p_3 {t}^{\left(2p_3-2\right)} \left(p_3-1\right)\\[-.5ex]%
-\square{}_{x}{}_{t}{}^{x}{}_{t}& = p_1 \left(p_1-1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{y}{}_{t}{}^{y}{}_{t}& = p_2 \left(p_2-1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{z}{}_{t}{}^{z}{}_{t}& = p_3 \left(p_3-1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{x}{}^{t}{}_{x}& = -p_1 {t}^{\left(2p_1-2\right)} \left(p_1-1\right)\\[-.5ex]%
-\square{}_{t}{}_{y}{}^{t}{}_{y}& = -p_2 {t}^{\left(2p_2-2\right)} \left(p_2-1\right)\\[-.5ex]%
-\square{}_{t}{}_{z}{}^{t}{}_{z}& = -p_3 {t}^{\left(2p_3-2\right)} \left(p_3-1\right)\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{x}{}_{x}& = p_1 \left(1-p_1\right) {t}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{y}{}_{y}& = p_2 \left(1-p_2\right) {t}^{-2}\\[-.5ex]%
-\square{}_{t}{}_{t}{}^{z}{}_{z}& = p_3 \left(1-p_3\right) {t}^{-2}\\[-.5ex]%
-\square{}_{z}{}_{z}{}^{y}{}_{y}& = p_2 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
-\square{}_{z}{}_{z}{}^{x}{}_{x}& = p_1 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
-\square{}_{y}{}_{y}{}^{z}{}_{z}& = p_2 p_3 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
-\square{}_{y}{}_{y}{}^{x}{}_{x}& = p_1 p_2 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
-\square{}_{x}{}_{x}{}^{z}{}_{z}& = p_1 p_3 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
-\square{}_{x}{}_{x}{}^{y}{}_{y}& = p_1 p_2 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
-\square{}_{y}{}_{z}{}^{y}{}_{z}& = -p_2 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
-\square{}_{x}{}_{z}{}^{x}{}_{z}& = -p_1 p_3 {t}^{\left(2p_3-2\right)}\\[-.5ex]%
-\square{}_{z}{}_{y}{}^{z}{}_{y}& = -p_2 p_3 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
-\square{}_{x}{}_{y}{}^{x}{}_{y}& = -p_1 p_2 {t}^{\left(2p_2-2\right)}\\[-.5ex]%
-\square{}_{z}{}_{x}{}^{z}{}_{x}& = -p_1 p_3 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
-\square{}_{y}{}_{x}{}^{y}{}_{x}& = -p_1 p_2 {t}^{\left(2p_1-2\right)}\\[-.5ex]%
+R^{a}{}_{b c d} \rightarrow \square{}_{d}{}_{b}{}^{a}{}_{c}\left\{\begin{aligned}\square{}_{x}{}_{x}{}^{t}{}_{t}& = p_1 {t}^{\left(2p_1\discretionary{}{}{}-2\right)} \left(p_1\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{t}{}_{t}& = p_2 {t}^{\left(2p_2\discretionary{}{}{}-2\right)} \left(p_2\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{t}{}_{t}& = p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)} \left(p_3\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{x}{}_{t}{}^{x}{}_{t}& = p_1 \left(p_1\discretionary{}{}{}-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{y}{}_{t}{}^{y}{}_{t}& = p_2 \left(p_2\discretionary{}{}{}-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{z}{}_{t}{}^{z}{}_{t}& = p_3 \left(p_3\discretionary{}{}{}-1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{x}{}^{t}{}_{x}& = p_1 {t}^{\left(2p_1\discretionary{}{}{}-2\right)} \left(1\discretionary{}{}{}-p_1\right)\\[-.5ex]%
+\square{}_{t}{}_{y}{}^{t}{}_{y}& = p_2 {t}^{\left(2p_2\discretionary{}{}{}-2\right)} \left(1\discretionary{}{}{}-p_2\right)\\[-.5ex]%
+\square{}_{t}{}_{z}{}^{t}{}_{z}& = p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)} \left(1\discretionary{}{}{}-p_3\right)\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{x}{}_{x}& = p_1 \left(1\discretionary{}{}{}-p_1\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{y}{}_{y}& = p_2 \left(1\discretionary{}{}{}-p_2\right) {t}^{-2}\\[-.5ex]%
+\square{}_{t}{}_{t}{}^{z}{}_{z}& = p_3 \left(1\discretionary{}{}{}-p_3\right) {t}^{-2}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{y}{}_{y}& = p_2 p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{z}{}^{x}{}_{x}& = p_1 p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{z}{}_{z}& = p_2 p_3 {t}^{\left(2p_2\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{y}{}^{x}{}_{x}& = p_1 p_2 {t}^{\left(2p_2\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{z}{}_{z}& = p_1 p_3 {t}^{\left(2p_1\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{x}{}^{y}{}_{y}& = p_1 p_2 {t}^{\left(2p_1\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{z}{}^{y}{}_{z}& = -p_2 p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{z}{}^{x}{}_{z}& = -p_1 p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{y}{}^{z}{}_{y}& = -p_2 p_3 {t}^{\left(2p_2\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{x}{}_{y}{}^{x}{}_{y}& = -p_1 p_2 {t}^{\left(2p_2\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{z}{}_{x}{}^{z}{}_{x}& = -p_1 p_3 {t}^{\left(2p_1\discretionary{}{}{}-2\right)}\\[-.5ex]%
+\square{}_{y}{}_{x}{}^{y}{}_{x}& = -p_1 p_2 {t}^{\left(2p_1\discretionary{}{}{}-2\right)}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \cdbtag{ex-0606.105}{%
-R_{a b} \rightarrow \square{}_{b}{}_{a}\left\{\begin{aligned}\square{}_{x}{}_{x}& = p_1 {t}^{\left(2p_1-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
-\square{}_{y}{}_{y}& = p_2 {t}^{\left(2p_2-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
-\square{}_{z}{}_{z}& = p_3 {t}^{\left(2p_3-2\right)} \left(p_1+p_2+p_3-1\right)\\[-.5ex]%
-\square{}_{t}{}_{t}& = \left(-{p_1}^{2}+p_1-{p_2}^{2}+p_2-{p_3}^{2}+p_3\right) {t}^{-2}\\[-.5ex]%
+R_{a b} \rightarrow \square{}_{b}{}_{a}\left\{\begin{aligned}\square{}_{x}{}_{x}& = p_1 {t}^{\left(2p_1\discretionary{}{}{}-2\right)} \left(p_1\discretionary{}{}{}+p_2\discretionary{}{}{}+p_3\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{y}{}_{y}& = p_2 {t}^{\left(2p_2\discretionary{}{}{}-2\right)} \left(p_1\discretionary{}{}{}+p_2\discretionary{}{}{}+p_3\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{z}{}_{z}& = p_3 {t}^{\left(2p_3\discretionary{}{}{}-2\right)} \left(p_1\discretionary{}{}{}+p_2\discretionary{}{}{}+p_3\discretionary{}{}{}-1\right)\\[-.5ex]%
+\square{}_{t}{}_{t}& = \left(-{p_1}^{2}\discretionary{}{}{}+p_1\discretionary{}{}{}-{p_2}^{2}\discretionary{}{}{}+p_2\discretionary{}{}{}-{p_3}^{2}\discretionary{}{}{}+p_3\right) {t}^{-2}\\[-.5ex]%
 \end{aligned}\right.%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

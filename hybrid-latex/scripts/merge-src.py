@@ -53,9 +53,9 @@ def include_files (txt, prev_path, this_line, prev_indent, recurse_depth):
              comment = "#"
           if the_ext == ".cdb":
              comment = "#"
-          if the_ext == ".ads":
+          if the_ext == ".ad":
              comment = "--"
-          if the_ext == ".adb":
+          if the_ext == ".adt":
              comment = "--"
           if the_ext == ".txt":
              comment = "#"
@@ -82,8 +82,6 @@ def include_files (txt, prev_path, this_line, prev_indent, recurse_depth):
    comment    = set_comment (this_line)
 
    if markup:
-      # print (type(comment))
-      # print (type(the_path))
       txt.write (the_indent*" "+comment + " beg" + make_str(recurse_depth,2) + ": ./" + the_path + "\n")
 
    if not os.path.isfile (the_path):

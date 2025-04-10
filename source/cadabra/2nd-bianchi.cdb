@@ -1,0 +1,66 @@
+{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u#}::Indices(position=independent).
+
+def add_tags (obj,tag):
+   n = 0
+   ans = Ex('0')
+   for i in obj.top().terms():
+      foo = obj[i]
+      bah = Ex(tag+'_{'+str(n)+'}')
+      ans := @(ans) + @(bah) @(foo).
+      n = n + 1
+   return ans
+
+def clear_tags (obj,tag):
+   ans := @(obj).
+   foo  = Ex(tag+'_{a?} -> 1')
+   substitute (ans,foo)
+   return ans
+
+;::Symbol;
+            # see https://cadabra.science/qa/473/is-this-legal-syntax
+            # this code works with and without this trick
+
+# rules for the first two covariant derivs of V^a
+
+# deriv1 = commutator for 2nd derivatives of v^a
+# unused here
+deriv1 := v^{a}_{; c ; d} - v^{a}_{; d ; c} -> R^{a}_{b c d} v^{b}.
+
+# deriv2 = covariant derivative of deriv1
+deriv2 := A^{a}_{c d e} -> v^{a}_{; c ; d ; e} - v^{a}_{; d ; c ; e} - R^{a}_{b c d ; e} v^{b}
+                                                                     - R^{a}_{b c d} v^{b}_{; e}.
+
+# deriv3 = commutator for 3rd derivatives of v^a
+deriv3 := v^{a}_{; c ; d ; e} -> v^{a}_{; c ; e ; d}
+                               + R^{a}_{f d e} v^{f}_{; c}
+                               - R^{f}_{c d e} v^{a}_{; f}.
+
+cycle := A^{a}_{c d e} + A^{a}_{d e c} + A^{a}_{e c d}.
+
+substitute (cycle,deriv2)
+
+cycle = add_tags (cycle,'\\mu')
+
+# sub on the first pair
+zoom (cycle, $\mu_{0} Q??$)
+substitute (cycle,deriv3)
+unzoom (cycle)
+
+# sub on the second pair
+zoom (cycle, $\mu_{4} Q??$)
+substitute (cycle,deriv3,)
+unzoom (cycle)
+
+# sub on the third pair
+zoom (cycle, $\mu_{8} Q??$)
+substitute (cycle,deriv3,)
+unzoom (cycle)
+
+cycle = clear_tags (cycle,'\\mu')
+
+sort_sum (cycle)
+rename_dummies (cycle)
+
+factor_out (cycle,$v^{a?}_{; b?},v^{a?}$)
+
+

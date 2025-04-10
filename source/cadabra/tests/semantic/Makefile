@@ -56,7 +56,7 @@ veryclean:
 	@ make clean
 	@ for file in $(TARGETS); \
 	  do \
-	     rm -rf $${file}.cdb $${file}_.cdb; \
+	     rm -rf $${file}.cdb $${file}_.cdb $${file}_.txt; \
 		  rm -rf $${file}.cdbidx $${file}.cdbtxt $${file}.cdblog; \
 		  rm -rf $${file}.cdbtex $${file}.txt; \
 		  rm -rf $${file}.py; \

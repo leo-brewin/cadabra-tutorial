@@ -4,7 +4,7 @@
 A_{a b c}%
 }
 \cdbtag{ex-0110.102}{%
-\delta^{a}{}_{u} \delta^{b}{}_{v} \delta^{c}{}_{w} A_{a b c}%
+\delta^{a}\!{}_{u} \delta^{b}\!{}_{v} \delta^{c}\!{}_{w} A_{a b c}%
 }
 \cdbtag{ex-0110.103}{%
 A_{u v w}%

@@ -1,15 +1,15 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0310.foo.001}{%
-A B\discretionary{}{}{}+A B A B\discretionary{}{}{}+A B A B A B\discretionary{}{}{}+A B A B A B A B%
+A B{}+A B A B{}+A B A B A B{}+A B A B A B A B%
 }
 \cdbtag{ex-0310.bah.001}{%
-A B\discretionary{}{}{}+A B A B\discretionary{}{}{}+A B A B A B\discretionary{}{}{}+A B A B A B A B%
+A B{}+A B A B{}+A B A B A B{}+A B A B A B A B%
 }
 \cdbtag{ex-0310.foo.002}{%
-A\discretionary{}{}{}+A A B\discretionary{}{}{}+A A B A B\discretionary{}{}{}+A A B A B A B%
+A{}+A A B{}+A A B A B{}+A A B A B A B%
 }
 \cdbtag{ex-0310.bah.002}{%
-A\discretionary{}{}{}+A A\discretionary{}{}{}+A A A\discretionary{}{}{}+A A A A%
+A{}+A A{}+A A A{}+A A A A%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

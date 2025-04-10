@@ -1,36 +1,36 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0607.100}{%
-\xi_{a ; b}\discretionary{}{}{}+\xi_{b ; a}%
+\xi_{a ; b}{}+\xi_{b ; a}%
 }
 \cdbtag{ex-0607.101}{%
-\partial_{b}{\xi_{a}}\discretionary{}{}{}-\Gamma^{c}{}_{a b} \xi_{c}\discretionary{}{}{}+\partial_{a}{\xi_{b}}\discretionary{}{}{}-\Gamma^{c}{}_{b a} \xi_{c}%
+\partial_{b}\!{\xi_{a}}{}-\,\Gamma^{c}\!{}_{a b} \xi_{c}{}+\partial_{a}\!{\xi_{b}}{}-\,\Gamma^{c}\!{}_{b a} \xi_{c}%
 }
 \cdbtag{ex-0607.102}{%
-\partial_{b}\left(g_{a c} \xi^{c}\right)\discretionary{}{}{}-\Gamma^{c}{}_{a b} g_{c d} \xi^{d}\discretionary{}{}{}+\partial_{a}\left(g_{b c} \xi^{c}\right)\discretionary{}{}{}-\Gamma^{c}{}_{b a} g_{c d} \xi^{d}%
+\partial_{b}\!\left(g_{a c} \xi^{c}\right){}-\,\Gamma^{c}\!{}_{a b} g_{c d} \xi^{d}{}+\partial_{a}\!\left(g_{b c} \xi^{c}\right){}-\,\Gamma^{c}\!{}_{b a} g_{c d} \xi^{d}%
 }
 \cdbtag{ex-0607.103}{%
-\partial_{b}\left(g_{a c} \xi^{c}\right)\discretionary{}{}{} - \frac{1}{2}g^{c e} \left(\partial_{b}{g_{e a}}\discretionary{}{}{}+\partial_{a}{g_{e b}}\discretionary{}{}{}-\partial_{e}{g_{a b}}\right) g_{c d} \xi^{d}\discretionary{}{}{}+\partial_{a}\left(g_{b c} \xi^{c}\right)\discretionary{}{}{} - \frac{1}{2}g^{c e} \left(\partial_{a}{g_{e b}}\discretionary{}{}{}+\partial_{b}{g_{e a}}\discretionary{}{}{}-\partial_{e}{g_{b a}}\right) g_{c d} \xi^{d}%
+\partial_{b}\!\left(g_{a c} \xi^{c}\right){} - \frac{1}{2}\,g^{c e} \left(\partial_{b}\!{g_{e a}}{}+\partial_{a}\!{g_{e b}}{}-\,\partial_{e}\!{g_{a b}}\right) g_{c d} \xi^{d}{}+\partial_{a}\!\left(g_{b c} \xi^{c}\right){} - \frac{1}{2}\,g^{c e} \left(\partial_{a}\!{g_{e b}}{}+\partial_{b}\!{g_{e a}}{}-\,\partial_{e}\!{g_{b a}}\right) g_{c d} \xi^{d}%
 }
 \cdbtag{ex-0607.104}{%
-\partial_{b}\left(g_{a c} \xi^{c}\right)\discretionary{}{}{}-g^{c e} \partial_{b}{g_{e a}} g_{c d} \xi^{d}\discretionary{}{}{}-g^{c e} \partial_{a}{g_{e b}} g_{c d} \xi^{d}\discretionary{}{}{}+\frac{1}{2}g^{c e} \partial_{e}{g_{a b}} g_{c d} \xi^{d}\discretionary{}{}{}+\partial_{a}\left(g_{b c} \xi^{c}\right)\discretionary{}{}{}+\frac{1}{2}g^{c e} \partial_{e}{g_{b a}} g_{c d} \xi^{d}%
+\partial_{b}\!\left(g_{a c} \xi^{c}\right){}-\,g^{c e} \partial_{b}\!{g_{e a}} g_{c d} \xi^{d}{}-\,g^{c e} \partial_{a}\!{g_{e b}} g_{c d} \xi^{d}{}+\frac{1}{2}\,g^{c e} \partial_{e}\!{g_{a b}} g_{c d} \xi^{d}{}+\partial_{a}\!\left(g_{b c} \xi^{c}\right){}+\frac{1}{2}\,g^{c e} \partial_{e}\!{g_{b a}} g_{c d} \xi^{d}%
 }
 \cdbtag{ex-0607.105}{%
-\partial_{b}{g_{a c}} \xi^{c}\discretionary{}{}{}+g_{a c} \partial_{b}{\xi^{c}}\discretionary{}{}{}-g^{c e} \partial_{b}{g_{e a}} g_{c d} \xi^{d}\discretionary{}{}{}-g^{c e} \partial_{a}{g_{e b}} g_{c d} \xi^{d}\discretionary{}{}{}+\frac{1}{2}g^{c e} \partial_{e}{g_{a b}} g_{c d} \xi^{d}\discretionary{}{}{}+\partial_{a}{g_{b c}} \xi^{c}\discretionary{}{}{}+g_{b c} \partial_{a}{\xi^{c}}\discretionary{}{}{}+\frac{1}{2}g^{c e} \partial_{e}{g_{b a}} g_{c d} \xi^{d}%
+\partial_{b}\!{g_{a c}} \xi^{c}{}+g_{a c} \partial_{b}\!{\xi^{c}}{}-\,g^{c e} \partial_{b}\!{g_{e a}} g_{c d} \xi^{d}{}-\,g^{c e} \partial_{a}\!{g_{e b}} g_{c d} \xi^{d}{}+\frac{1}{2}\,g^{c e} \partial_{e}\!{g_{a b}} g_{c d} \xi^{d}{}+\partial_{a}\!{g_{b c}} \xi^{c}{}+g_{b c} \partial_{a}\!{\xi^{c}}{}+\frac{1}{2}\,g^{c e} \partial_{e}\!{g_{b a}} g_{c d} \xi^{d}%
 }
 \cdbtag{ex-0607.106}{%
-\partial_{b}{g_{a c}} \xi^{c}\discretionary{}{}{}+g_{a c} \partial_{b}{\xi^{c}}\discretionary{}{}{}-g^{c d} \partial_{b}{g_{a c}} g_{d e} \xi^{e}\discretionary{}{}{}-g^{c d} \partial_{a}{g_{b c}} g_{d e} \xi^{e}\discretionary{}{}{}+g^{c d} \partial_{c}{g_{a b}} g_{d e} \xi^{e}\discretionary{}{}{}+\partial_{a}{g_{b c}} \xi^{c}\discretionary{}{}{}+g_{b c} \partial_{a}{\xi^{c}}%
+\partial_{b}\!{g_{a c}} \xi^{c}{}+g_{a c} \partial_{b}\!{\xi^{c}}{}-\,g^{c d} \partial_{b}\!{g_{a c}} g_{d e} \xi^{e}{}-\,g^{c d} \partial_{a}\!{g_{b c}} g_{d e} \xi^{e}{}+g^{c d} \partial_{c}\!{g_{a b}} g_{d e} \xi^{e}{}+\partial_{a}\!{g_{b c}} \xi^{c}{}+g_{b c} \partial_{a}\!{\xi^{c}}%
 }
 \cdbtag{ex-0607.107}{%
-\left[\xi^{\theta} = \sin{\varphi}, \discretionary{}{}{}\xi^{\varphi} = \cos{\theta} {\left(\sin{\theta}\right)}^{-1} \cos{\varphi}\right]%
+\left[\xi^{\theta} = \sin{\varphi}, {}\xi^{\varphi} = \cos{\theta} {\left(\sin{\theta}\right)}^{-\,1} \cos{\varphi}\right]%
 }
 \cdbtag{ex-0607.108}{%
-\left[g_{t t} = -1\discretionary{}{}{}+2m {r}^{-1}, \discretionary{}{}{}g_{r r} = {\left(1\discretionary{}{}{}-2m {r}^{-1}\right)}^{-1}, \discretionary{}{}{}g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}\right]%
+\left[g_{t t} = -\,1{}+2\,m {r}^{-\,1}, {}g_{r r} = {\left(1{}-2\,m {r}^{-\,1}\right)}^{-\,1}, {}g_{\theta \theta} = {r}^{2\,}, {}g_{\varphi \varphi} = {r}^{2\,} {\left(\sin{\theta}\right)}^{2\,}\right]%
 }
 \cdbtag{ex-0607.109}{%
-\left[g_{t t} = -1\discretionary{}{}{}+2m {r}^{-1}, \discretionary{}{}{}g_{r r} = {\left(1\discretionary{}{}{}-2m {r}^{-1}\right)}^{-1}, \discretionary{}{}{}g_{\theta \theta} = {r}^{2}, \discretionary{}{}{}g_{\varphi \varphi} = {r}^{2} {\left(\sin{\theta}\right)}^{2}, \discretionary{}{}{}g^{t t} = {\left(2m {r}^{-1}\discretionary{}{}{}-1\right)}^{-1}, \discretionary{}{}{}g^{r r} = -2m {r}^{-1}\discretionary{}{}{}+1, \discretionary{}{}{}g^{\theta \theta} = {r}^{-2}, \discretionary{}{}{}g^{\varphi \varphi} = {\left({r}^{2} {\left(\sin{\theta}\right)}^{2}\right)}^{-1}\right]%
+\left[g_{t t} = -\,1{}+2\,m {r}^{-\,1}, {}g_{r r} = {\left(1{}-2\,m {r}^{-\,1}\right)}^{-\,1}, {}g_{\theta \theta} = {r}^{2\,}, {}g_{\varphi \varphi} = {r}^{2\,} {\left(\sin{\theta}\right)}^{2\,}, {}g^{t t} = -\,r {\left(-2\,m{}+r\right)}^{-\,1}, {}g^{r r} = \left(-2\,m{}+r\right) {r}^{-\,1}, {}g^{\theta \theta} = {r}^{-2\,}, {}g^{\varphi \varphi} = {\left({r}^{2\,} {\left(\sin{\theta}\right)}^{2\,}\right)}^{-\,1}\right]%
 }
 \cdbtag{ex-0607.110}{%
-0%
+0\,%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

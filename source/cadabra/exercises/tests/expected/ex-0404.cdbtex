@@ -1,9 +1,9 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0404.100}{%
-\frac{1}{3}A_{a b} x^{a} x^{b}\discretionary{}{}{}+\frac{1}{9}B_{e c} x^{c} x^{e}\discretionary{}{}{} - \frac{1}{5}C_{p c} B_{d q} g^{c d} x^{p} x^{q}%
+\frac{1}{3}\,A_{a b} x^{a} x^{b}{}+\frac{1}{9}\,B_{e c} x^{c} x^{e}{} - \frac{1}{5}\,C_{p c} B_{d q} g^{c d} x^{p} x^{q}%
 }
 \cdbtag{ex-0404.101}{%
-\frac{1}{45}x^{a} x^{b} \left(15A_{a b}\discretionary{}{}{}+5B_{a b}\discretionary{}{}{}-9B_{c a} C_{b d} g^{d c}\right)%
+\frac{1}{45}\,x^{a} x^{b} \left(15\,A_{a b}{}+5\,B_{a b}{}-9\,B_{c a} C_{b d} g^{d c}\right)%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

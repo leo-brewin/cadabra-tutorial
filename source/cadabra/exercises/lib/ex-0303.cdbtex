@@ -1,57 +1,57 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{dgab.000}{%
-\partial_{c}{g_{a b}} \rightarrow \Gamma^{d}{}_{a c} g_{d b}\discretionary{}{}{}+\Gamma^{d}{}_{b c} g_{a d}%
+\partial_{c}\!{g_{a b}} \rightarrow \Gamma^{d}\!{}_{a c} g_{d b}{}+\Gamma^{d}\!{}_{b c} g_{a d}%
 }
 \cdbtag{Rabcd.000}{%
-R^{a}{}_{b c d} \rightarrow \partial_{c}{\Gamma^{a}{}_{b d}}\discretionary{}{}{}-\partial_{d}{\Gamma^{a}{}_{b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b d} \Gamma^{a}{}_{c e}\discretionary{}{}{}-\Gamma^{e}{}_{b c} \Gamma^{a}{}_{d e}%
+R^{a}\!{}_{b c d} \rightarrow \partial_{c}\!{\Gamma^{a}\!{}_{b d}}{}-\,\partial_{d}\!{\Gamma^{a}\!{}_{b c}}{}+\Gamma^{e}\!{}_{b d} \Gamma^{a}\!{}_{c e}{}-\,\Gamma^{e}\!{}_{b c} \Gamma^{a}\!{}_{d e}%
 }
 \cdbtag{Gamma.010}{%
-\left[g_{a e} \Gamma^{e}{}_{b c} \rightarrow \Gamma_{a b c}, \discretionary{}{}{}g_{e a} \Gamma^{e}{}_{b c} \rightarrow \Gamma_{a b c}\right]%
+\left[g_{a e} \Gamma^{e}\!{}_{b c} \rightarrow \Gamma_{a b c}, {}g_{e a} \Gamma^{e}\!{}_{b c} \rightarrow \Gamma_{a b c}\right]%
 }
 \cdbtag{Rabcd.010}{%
-R_{a b c d} \rightarrow g_{a e} R^{e}{}_{b c d}%
+R_{a b c d} \rightarrow g_{a e} R^{e}\!{}_{b c d}%
 }
 \cdbtag{gabDGamma.000}{%
-g_{a e} \partial_{c}{\Gamma^{e}{}_{b d}} \rightarrow \partial_{c}\left(g_{a e} \Gamma^{e}{}_{b d}\right)\discretionary{}{}{}-\Gamma^{e}{}_{b d} \partial_{c}{g_{a e}}%
+g_{a e} \partial_{c}\!{\Gamma^{e}\!{}_{b d}} \rightarrow \partial_{c}\!\left(g_{a e} \Gamma^{e}\!{}_{b d}\right){}-\,\Gamma^{e}\!{}_{b d} \partial_{c}\!{g_{a e}}%
 }
 \cdbtag{ex-0303.101}{%
 R_{a b c d}%
 }
 \cdbtag{ex-0303.102}{%
-g_{a e} R^{e}{}_{b c d}%
+g_{a e} R^{e}\!{}_{b c d}%
 }
 \cdbtag{ex-0303.103}{%
-g_{a e} \left(\partial_{c}{\Gamma^{e}{}_{b d}}\discretionary{}{}{}-\partial_{d}{\Gamma^{e}{}_{b c}}\discretionary{}{}{}+\Gamma^{f}{}_{b d} \Gamma^{e}{}_{c f}\discretionary{}{}{}-\Gamma^{f}{}_{b c} \Gamma^{e}{}_{d f}\right)%
+g_{a e} \left(\partial_{c}\!{\Gamma^{e}\!{}_{b d}}{}-\,\partial_{d}\!{\Gamma^{e}\!{}_{b c}}{}+\Gamma^{f}\!{}_{b d} \Gamma^{e}\!{}_{c f}{}-\,\Gamma^{f}\!{}_{b c} \Gamma^{e}\!{}_{d f}\right)%
 }
 \cdbtag{ex-0303.104}{%
-g_{a e} \partial_{c}{\Gamma^{e}{}_{b d}}\discretionary{}{}{}-g_{a e} \partial_{d}{\Gamma^{e}{}_{b c}}\discretionary{}{}{}+g_{a e} \Gamma^{f}{}_{b d} \Gamma^{e}{}_{c f}\discretionary{}{}{}-g_{a e} \Gamma^{f}{}_{b c} \Gamma^{e}{}_{d f}%
+g_{a e} \partial_{c}\!{\Gamma^{e}\!{}_{b d}}{}-\,g_{a e} \partial_{d}\!{\Gamma^{e}\!{}_{b c}}{}+g_{a e} \Gamma^{f}\!{}_{b d} \Gamma^{e}\!{}_{c f}{}-\,g_{a e} \Gamma^{f}\!{}_{b c} \Gamma^{e}\!{}_{d f}%
 }
 \cdbtag{ex-0303.105}{%
-\partial_{c}\left(g_{a e} \Gamma^{e}{}_{b d}\right)\discretionary{}{}{}-\Gamma^{e}{}_{b d} \partial_{c}{g_{a e}}\discretionary{}{}{}-\partial_{d}\left(g_{a e} \Gamma^{e}{}_{b c}\right)\discretionary{}{}{}+\Gamma^{e}{}_{b c} \partial_{d}{g_{a e}}\discretionary{}{}{}+g_{a e} \Gamma^{f}{}_{b d} \Gamma^{e}{}_{c f}\discretionary{}{}{}-g_{a e} \Gamma^{f}{}_{b c} \Gamma^{e}{}_{d f}%
+\partial_{c}\!\left(g_{a e} \Gamma^{e}\!{}_{b d}\right){}-\,\Gamma^{e}\!{}_{b d} \partial_{c}\!{g_{a e}}{}-\,\partial_{d}\!\left(g_{a e} \Gamma^{e}\!{}_{b c}\right){}+\Gamma^{e}\!{}_{b c} \partial_{d}\!{g_{a e}}{}+g_{a e} \Gamma^{f}\!{}_{b d} \Gamma^{e}\!{}_{c f}{}-\,g_{a e} \Gamma^{f}\!{}_{b c} \Gamma^{e}\!{}_{d f}%
 }
 \cdbtag{ex-0303.106}{%
-\partial_{c}\left(g_{a e} \Gamma^{e}{}_{b d}\right)\discretionary{}{}{}-\Gamma^{e}{}_{b d} \left(\Gamma^{f}{}_{a c} g_{f e}\discretionary{}{}{}+\Gamma^{f}{}_{e c} g_{a f}\right)\discretionary{}{}{}-\partial_{d}\left(g_{a e} \Gamma^{e}{}_{b c}\right)\discretionary{}{}{}+\Gamma^{e}{}_{b c} \left(\Gamma^{f}{}_{a d} g_{f e}\discretionary{}{}{}+\Gamma^{f}{}_{e d} g_{a f}\right)\discretionary{}{}{}+g_{a e} \Gamma^{f}{}_{b d} \Gamma^{e}{}_{c f}\discretionary{}{}{}-g_{a e} \Gamma^{f}{}_{b c} \Gamma^{e}{}_{d f}%
+\partial_{c}\!\left(g_{a e} \Gamma^{e}\!{}_{b d}\right){}-\,\Gamma^{e}\!{}_{b d} \left(\Gamma^{f}\!{}_{a c} g_{f e}{}+\Gamma^{f}\!{}_{e c} g_{a f}\right){}-\,\partial_{d}\!\left(g_{a e} \Gamma^{e}\!{}_{b c}\right){}+\Gamma^{e}\!{}_{b c} \left(\Gamma^{f}\!{}_{a d} g_{f e}{}+\Gamma^{f}\!{}_{e d} g_{a f}\right){}+g_{a e} \Gamma^{f}\!{}_{b d} \Gamma^{e}\!{}_{c f}{}-\,g_{a e} \Gamma^{f}\!{}_{b c} \Gamma^{e}\!{}_{d f}%
 }
 \cdbtag{ex-0303.107}{%
-\partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\Gamma^{e}{}_{b d} \left(\Gamma_{e a c}\discretionary{}{}{}+\Gamma_{a e c}\right)\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b c} \left(\Gamma_{e a d}\discretionary{}{}{}+\Gamma_{a e d}\right)\discretionary{}{}{}+\Gamma_{a c f} \Gamma^{f}{}_{b d}\discretionary{}{}{}-\Gamma_{a d f} \Gamma^{f}{}_{b c}%
+\partial_{c}\!{\Gamma_{a b d}}{}-\,\Gamma^{e}\!{}_{b d} \left(\Gamma_{e a c}{}+\Gamma_{a e c}\right){}-\,\partial_{d}\!{\Gamma_{a b c}}{}+\Gamma^{e}\!{}_{b c} \left(\Gamma_{e a d}{}+\Gamma_{a e d}\right){}+\Gamma_{a c f} \Gamma^{f}\!{}_{b d}{}-\,\Gamma_{a d f} \Gamma^{f}\!{}_{b c}%
 }
 \cdbtag{ex-0303.109}{%
-\partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\Gamma^{e}{}_{b d} \Gamma_{e a c}\discretionary{}{}{}-\Gamma^{e}{}_{b d} \Gamma_{a e c}\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b c} \Gamma_{e a d}\discretionary{}{}{}+\Gamma^{e}{}_{b c} \Gamma_{a e d}\discretionary{}{}{}+\Gamma_{a c f} \Gamma^{f}{}_{b d}\discretionary{}{}{}-\Gamma_{a d f} \Gamma^{f}{}_{b c}%
+\partial_{c}\!{\Gamma_{a b d}}{}-\,\Gamma^{e}\!{}_{b d} \Gamma_{e a c}{}-\,\Gamma^{e}\!{}_{b d} \Gamma_{a e c}{}-\,\partial_{d}\!{\Gamma_{a b c}}{}+\Gamma^{e}\!{}_{b c} \Gamma_{e a d}{}+\Gamma^{e}\!{}_{b c} \Gamma_{a e d}{}+\Gamma_{a c f} \Gamma^{f}\!{}_{b d}{}-\,\Gamma_{a d f} \Gamma^{f}\!{}_{b c}%
 }
 \cdbtag{ex-0303.110}{%
-\partial_{c}{A_{a b d}}\discretionary{}{}{}-\Gamma^{e}{}_{b d} A_{e a c}\discretionary{}{}{}-\Gamma^{e}{}_{b d} A_{a e c}\discretionary{}{}{}-\partial_{d}{A_{a b c}}\discretionary{}{}{}+\Gamma^{e}{}_{b c} A_{e a d}\discretionary{}{}{}+\Gamma^{e}{}_{b c} A_{a e d}\discretionary{}{}{}+A_{a c f} \Gamma^{f}{}_{b d}\discretionary{}{}{}-A_{a d f} \Gamma^{f}{}_{b c}%
+\partial_{c}\!{A_{a b d}}{}-\,\Gamma^{e}\!{}_{b d} A_{e a c}{}-\,\Gamma^{e}\!{}_{b d} A_{a e c}{}-\,\partial_{d}\!{A_{a b c}}{}+\Gamma^{e}\!{}_{b c} A_{e a d}{}+\Gamma^{e}\!{}_{b c} A_{a e d}{}+A_{a c f} \Gamma^{f}\!{}_{b d}{}-\,A_{a d f} \Gamma^{f}\!{}_{b c}%
 }
 \cdbtag{ex-0303.111}{%
-\partial_{c}{A_{a b d}}\discretionary{}{}{}-A_{e a c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-A_{a e c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\partial_{d}{A_{a b c}}\discretionary{}{}{}+A_{e a d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+A_{a e d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+A_{a c f} \Gamma^{f}{}_{b d}\discretionary{}{}{}-A_{a d f} \Gamma^{f}{}_{b c}%
+\partial_{c}\!{A_{a b d}}{}-\,A_{e a c} \Gamma^{e}\!{}_{b d}{}-\,A_{a e c} \Gamma^{e}\!{}_{b d}{}-\,\partial_{d}\!{A_{a b c}}{}+A_{e a d} \Gamma^{e}\!{}_{b c}{}+A_{a e d} \Gamma^{e}\!{}_{b c}{}+A_{a c f} \Gamma^{f}\!{}_{b d}{}-\,A_{a d f} \Gamma^{f}\!{}_{b c}%
 }
 \cdbtag{ex-0303.112}{%
-\partial_{c}{A_{a b d}}\discretionary{}{}{}-A_{e a c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-A_{a e c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\partial_{d}{A_{a b c}}\discretionary{}{}{}+A_{e a d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+A_{a e d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+A_{a c e} \Gamma^{e}{}_{b d}\discretionary{}{}{}-A_{a d e} \Gamma^{e}{}_{b c}%
+\partial_{c}\!{A_{a b d}}{}-\,A_{e a c} \Gamma^{e}\!{}_{b d}{}-\,A_{a e c} \Gamma^{e}\!{}_{b d}{}-\,\partial_{d}\!{A_{a b c}}{}+A_{e a d} \Gamma^{e}\!{}_{b c}{}+A_{a e d} \Gamma^{e}\!{}_{b c}{}+A_{a c e} \Gamma^{e}\!{}_{b d}{}-\,A_{a d e} \Gamma^{e}\!{}_{b c}%
 }
 \cdbtag{ex-0303.113}{%
-\partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\Gamma_{e a c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\Gamma_{a e c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma_{e a d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+\Gamma_{a e d} \Gamma^{e}{}_{b c}\discretionary{}{}{}+\Gamma_{a c e} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\Gamma_{a d e} \Gamma^{e}{}_{b c}%
+\partial_{c}\!{\Gamma_{a b d}}{}-\,\Gamma_{e a c} \Gamma^{e}\!{}_{b d}{}-\,\Gamma_{a e c} \Gamma^{e}\!{}_{b d}{}-\,\partial_{d}\!{\Gamma_{a b c}}{}+\Gamma_{e a d} \Gamma^{e}\!{}_{b c}{}+\Gamma_{a e d} \Gamma^{e}\!{}_{b c}{}+\Gamma_{a c e} \Gamma^{e}\!{}_{b d}{}-\,\Gamma_{a d e} \Gamma^{e}\!{}_{b c}%
 }
 \cdbtag{ex-0303.114}{%
-\partial_{c}{\Gamma_{a b d}}\discretionary{}{}{}-\Gamma_{e a c} \Gamma^{e}{}_{b d}\discretionary{}{}{}-\partial_{d}{\Gamma_{a b c}}\discretionary{}{}{}+\Gamma_{e a d} \Gamma^{e}{}_{b c}%
+\partial_{c}\!{\Gamma_{a b d}}{}-\,\Gamma_{e a c} \Gamma^{e}\!{}_{b d}{}-\,\partial_{d}\!{\Gamma_{a b c}}{}+\Gamma_{e a d} \Gamma^{e}\!{}_{b c}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

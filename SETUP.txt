@@ -1,0 +1,13 @@
+if [ -z ${CDBSETUP} ]; then
+
+   CDBSETUP="Yes"
+
+   export CDBLIB=$PWD/hybrid-latex/python/cdblib.py
+   export WRITEC=$PWD/hybrid-latex/python/writecode.py
+
+   export TEXINPUTS=$PWD/hybrid-latex/latex/:$TEXINPUTS:
+   export PYTHONPATH=$PWD/hybrid-latex/python/:$PYTHONPATH:
+
+   export PATH=$PWD/hybrid-latex/scripts/:$PATH
+
+fi

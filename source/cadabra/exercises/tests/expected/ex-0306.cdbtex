@@ -7,30 +7,30 @@ R_{a b c d} \rightarrow A_{a} B_{b} C_{c} D_{d}%
 A_{a} B_{b} C_{c} D_{d} \rightarrow R_{a b c d}%
 }
 \cdbtag{derivDD.000}{%
-DD_{b c}\left(V?_{a}\right) \rightarrow R^{d}{}_{a b c} V?_{d}%
+DD_{b c}\!\left(V?_{a}\right) \rightarrow R^{d}\!{}_{a b c} V?_{d}%
 }
 \cdbtag{pruleDD.000}{%
-DD_{e f}\left(A_{a} B_{b} C_{c} D_{d}\right) \rightarrow DD_{e f}{A_{a}} B_{b} C_{c} D_{d}\discretionary{}{}{}+A_{a} DD_{e f}{B_{b}} C_{c} D_{d}\discretionary{}{}{}+A_{a} B_{b} DD_{e f}{C_{c}} D_{d}\discretionary{}{}{}+A_{a} B_{b} C_{c} DD_{e f}{D_{d}}%
+DD_{e f}\!\left(A_{a} B_{b} C_{c} D_{d}\right) \rightarrow DD_{e f}\!{A_{a}} B_{b} C_{c} D_{d}{}+A_{a} DD_{e f}\!{B_{b}} C_{c} D_{d}{}+A_{a} B_{b} DD_{e f}\!{C_{c}} D_{d}{}+A_{a} B_{b} C_{c} DD_{e f}\!{D_{d}}%
 }
 \cdbtag{ex-0306.100}{%
-\nabla_{f}\left(\nabla_{e}{R_{a b c d}}\right)\discretionary{}{}{}-\nabla_{e}\left(\nabla_{f}{R_{a b c d}}\right)%
+\nabla_{f}\!\left(\nabla_{e}\!{R_{a b c d}}\right){}-\,\nabla_{e}\!\left(\nabla_{f}\!{R_{a b c d}}\right)%
 }
 \cdbtag{ex-0306.101}{%
-DD_{e f}{R_{a b c d}}%
+DD_{e f}\!{R_{a b c d}}%
 }
 \cdbtag{ex-0306.102}{%
-DD_{e f}\left(A_{a} B_{b} C_{c} D_{d}\right)%
+DD_{e f}\!\left(A_{a} B_{b} C_{c} D_{d}\right)%
 }
 \cdbtag{ex-0306.103}{%
-DD_{e f}{A_{a}} B_{b} C_{c} D_{d}\discretionary{}{}{}+A_{a} DD_{e f}{B_{b}} C_{c} D_{d}\discretionary{}{}{}+A_{a} B_{b} DD_{e f}{C_{c}} D_{d}\discretionary{}{}{}+A_{a} B_{b} C_{c} DD_{e f}{D_{d}}%
+DD_{e f}\!{A_{a}} B_{b} C_{c} D_{d}{}+A_{a} DD_{e f}\!{B_{b}} C_{c} D_{d}{}+A_{a} B_{b} DD_{e f}\!{C_{c}} D_{d}{}+A_{a} B_{b} C_{c} DD_{e f}\!{D_{d}}%
 }
 \cdbtag{ex-0306.104}{%
-R^{g}{}_{a e f} A_{g} B_{b} C_{c} D_{d}\discretionary{}{}{}+A_{a} R^{g}{}_{b e f} B_{g} C_{c} D_{d}\discretionary{}{}{}+A_{a} B_{b} R^{g}{}_{c e f} C_{g} D_{d}\discretionary{}{}{}+A_{a} B_{b} C_{c} R^{g}{}_{d e f} D_{g}%
+R^{g}\!{}_{a e f} A_{g} B_{b} C_{c} D_{d}{}+A_{a} R^{g}\!{}_{b e f} B_{g} C_{c} D_{d}{}+A_{a} B_{b} R^{g}\!{}_{c e f} C_{g} D_{d}{}+A_{a} B_{b} C_{c} R^{g}\!{}_{d e f} D_{g}%
 }
 \cdbtag{ex-0306.105}{%
-A_{g} B_{b} C_{c} D_{d} R^{g}{}_{a e f}\discretionary{}{}{}+A_{a} B_{g} C_{c} D_{d} R^{g}{}_{b e f}\discretionary{}{}{}+A_{a} B_{b} C_{g} D_{d} R^{g}{}_{c e f}\discretionary{}{}{}+A_{a} B_{b} C_{c} D_{g} R^{g}{}_{d e f}%
+A_{g} B_{b} C_{c} D_{d} R^{g}\!{}_{a e f}{}+A_{a} B_{g} C_{c} D_{d} R^{g}\!{}_{b e f}{}+A_{a} B_{b} C_{g} D_{d} R^{g}\!{}_{c e f}{}+A_{a} B_{b} C_{c} D_{g} R^{g}\!{}_{d e f}%
 }
 \cdbtag{ex-0306.106}{%
-R_{g b c d} R^{g}{}_{a e f}\discretionary{}{}{}+R_{a g c d} R^{g}{}_{b e f}\discretionary{}{}{}+R_{a b g d} R^{g}{}_{c e f}\discretionary{}{}{}+R_{a b c g} R^{g}{}_{d e f}%
+R_{g b c d} R^{g}\!{}_{a e f}{}+R_{a g c d} R^{g}\!{}_{b e f}{}+R_{a b g d} R^{g}\!{}_{c e f}{}+R_{a b c g} R^{g}\!{}_{d e f}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

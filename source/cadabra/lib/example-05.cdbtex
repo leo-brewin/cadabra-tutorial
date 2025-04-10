@@ -1,33 +1,33 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-05.100}{%
-A_{a} v^{a}\discretionary{}{}{}+B_{a} v^{a}\discretionary{}{}{}+C_{a} v^{a}%
+A_{a} v^{a}{}+B_{a} v^{a}{}+C_{a} v^{a}%
 }
 \cdbtag{ex-05.101}{%
- \ldots \discretionary{}{}{}+B_{a} v^{a}\discretionary{}{}{}+ \ldots %
+ \ldots {}+B_{a} v^{a}{}+ \ldots %
 }
 \cdbtag{ex-05.102}{%
- \ldots \discretionary{}{}{}+B_{a} w^{a}\discretionary{}{}{}+ \ldots %
+ \ldots {}+B_{a} w^{a}{}+ \ldots %
 }
 \cdbtag{ex-05.103}{%
-A_{a} v^{a}\discretionary{}{}{}+B_{a} w^{a}\discretionary{}{}{}+C_{a} v^{a}%
+A_{a} v^{a}{}+B_{a} w^{a}{}+C_{a} v^{a}%
 }
 \cdbtag{ex-05.200}{%
-2V_{p q}\discretionary{}{}{}-3V_{q p}%
+2\,V_{p q}{}-3\,V_{q p}%
 }
 \cdbtag{ex-05.201}{%
-2\mu_{0} V_{p q}\discretionary{}{}{}-3\mu_{1} V_{q p}%
+2\,\mu_{0\,} V_{p q}{}-3\,\mu_{1} V_{q p}%
 }
 \cdbtag{ex-05.202}{%
- \ldots \discretionary{}{}{}-3\mu_{1} V_{q p}%
+ \ldots {}-3\,\mu_{1} V_{q p}%
 }
 \cdbtag{ex-05.203}{%
- \ldots \discretionary{}{}{}+3\mu_{1} V_{p q}%
+ \ldots {}+3\,\mu_{1} V_{p q}%
 }
 \cdbtag{ex-05.204}{%
-2\mu_{0} V_{p q}\discretionary{}{}{}+3\mu_{1} V_{p q}%
+2\,\mu_{0\,} V_{p q}{}+3\,\mu_{1} V_{p q}%
 }
 \cdbtag{ex-05.205}{%
-5V_{p q}%
+5\,V_{p q}%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

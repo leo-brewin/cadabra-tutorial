@@ -1,18 +1,13 @@
 SHELL = /bin/bash
 #-------------------------------------------------------------------------------
-.PHONY:	exercises examples install pdf tutorial
+.PHONY:	exercises examples pdf tutorial
 #-------------------------------------------------------------------------------
 all:
-	@ make install
 	@ make exercises
 	@ make examples
 	@ make tutorial
 	@ make pdf
 	@ make veryclean
-#-------------------------------------------------------------------------------
-install:
-	@ echo "> make intsall ..."
-	@ (cd hybrid-latex; INSTALL.sh)
 #-------------------------------------------------------------------------------
 exercises:
 	@ echo "> make exercises ..."
@@ -55,7 +50,6 @@ pristine:
 #-------------------------------------------------------------------------------
 github:
 	@ rm -rf pdf/*
-	@ (cd hybrid-latex;             INSTALL.sh)
 	@ (cd source/cadabra/exercises; make github)
 	@ (cd source/cadabra;           make github)
 	@ (cd source/tex;               make github)

@@ -1,24 +1,24 @@
 \chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
 \catcode`\#=11			             % set catcode for hash to be a letter (11)
 \cdbtag{ex-0102.101}{%
-\Gamma_{a b c}\discretionary{}{}{}+\Gamma_{b a c}\discretionary{}{}{}-\partial_{c}{g_{a b}}%
+\Gamma_{a b c}{}+\Gamma_{b a c}{}-\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.102}{%
-g_{a d} \Gamma^{d}{}_{b c}\discretionary{}{}{}+g_{b d} \Gamma^{d}{}_{a c}\discretionary{}{}{}-\partial_{c}{g_{a b}}%
+g_{a d} \Gamma^{d}\!{}_{b c}{}+g_{b d} \Gamma^{d}\!{}_{a c}{}-\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.103}{%
-\frac{1}{2}g_{a d} g^{d e} \left(\partial_{b}{g_{e c}}\discretionary{}{}{}+\partial_{c}{g_{b e}}\discretionary{}{}{}-\partial_{e}{g_{b c}}\right)\discretionary{}{}{}+\frac{1}{2}g_{b d} g^{d e} \left(\partial_{a}{g_{e c}}\discretionary{}{}{}+\partial_{c}{g_{a e}}\discretionary{}{}{}-\partial_{e}{g_{a c}}\right)\discretionary{}{}{}-\partial_{c}{g_{a b}}%
+\frac{1}{2}\,g_{a d} g^{d e} \left(\partial_{b}\!{g_{e c}}{}+\partial_{c}\!{g_{b e}}{}-\,\partial_{e}\!{g_{b c}}\right){}+\frac{1}{2}\,g_{b d} g^{d e} \left(\partial_{a}\!{g_{e c}}{}+\partial_{c}\!{g_{a e}}{}-\,\partial_{e}\!{g_{a c}}\right){}-\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.104}{%
-\frac{1}{2}g_{a d} g^{d e} \partial_{b}{g_{e c}}\discretionary{}{}{}+\frac{1}{2}g_{a d} g^{d e} \partial_{c}{g_{b e}}\discretionary{}{}{} - \frac{1}{2}g_{a d} g^{d e} \partial_{e}{g_{b c}}\discretionary{}{}{}+\frac{1}{2}g_{b d} g^{d e} \partial_{a}{g_{e c}}\discretionary{}{}{}+\frac{1}{2}g_{b d} g^{d e} \partial_{c}{g_{a e}}\discretionary{}{}{} - \frac{1}{2}g_{b d} g^{d e} \partial_{e}{g_{a c}}\discretionary{}{}{}-\partial_{c}{g_{a b}}%
+\frac{1}{2}\,g_{a d} g^{d e} \partial_{b}\!{g_{e c}}{}+\frac{1}{2}\,g_{a d} g^{d e} \partial_{c}\!{g_{b e}}{} - \frac{1}{2}\,g_{a d} g^{d e} \partial_{e}\!{g_{b c}}{}+\frac{1}{2}\,g_{b d} g^{d e} \partial_{a}\!{g_{e c}}{}+\frac{1}{2}\,g_{b d} g^{d e} \partial_{c}\!{g_{a e}}{} - \frac{1}{2}\,g_{b d} g^{d e} \partial_{e}\!{g_{a c}}{}-\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.105}{%
-\frac{1}{2}g_{a}{}^{e} \partial_{b}{g_{e c}}\discretionary{}{}{}+\frac{1}{2}g_{a}{}^{e} \partial_{c}{g_{b e}}\discretionary{}{}{} - \frac{1}{2}g_{a}{}^{e} \partial_{e}{g_{b c}}\discretionary{}{}{}+\frac{1}{2}g_{b}{}^{e} \partial_{a}{g_{e c}}\discretionary{}{}{}+\frac{1}{2}g_{b}{}^{e} \partial_{c}{g_{a e}}\discretionary{}{}{} - \frac{1}{2}g_{b}{}^{e} \partial_{e}{g_{a c}}\discretionary{}{}{}-\partial_{c}{g_{a b}}%
+\frac{1}{2}\,g_{a}\!{}^{e} \partial_{b}\!{g_{e c}}{}+\frac{1}{2}\,g_{a}\!{}^{e} \partial_{c}\!{g_{b e}}{} - \frac{1}{2}\,g_{a}\!{}^{e} \partial_{e}\!{g_{b c}}{}+\frac{1}{2}\,g_{b}\!{}^{e} \partial_{a}\!{g_{e c}}{}+\frac{1}{2}\,g_{b}\!{}^{e} \partial_{c}\!{g_{a e}}{} - \frac{1}{2}\,g_{b}\!{}^{e} \partial_{e}\!{g_{a c}}{}-\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.106}{%
-\frac{1}{2}\partial_{c}{g_{b a}}\discretionary{}{}{} - \frac{1}{2}\partial_{c}{g_{a b}}%
+\frac{1}{2}\,\partial_{c}\!{g_{b a}}{} - \frac{1}{2}\,\partial_{c}\!{g_{a b}}%
 }
 \cdbtag{ex-0102.107}{%
-0%
+0\,%
 }
 \catcode`\#=\thehashcode          % restore original catcode for hash

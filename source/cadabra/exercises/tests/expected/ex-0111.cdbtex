@@ -13,13 +13,13 @@ A_{b c a}%
 A_{a b c}%
 }
 \cdbtag{ex-0111.202}{%
-\delta^{a}{}_{u} \delta^{b}{}_{v} \delta^{c}{}_{w} A_{a b c}%
+\delta^{a}\!{}_{u} \delta^{b}\!{}_{v} \delta^{c}\!{}_{w} A_{a b c}%
 }
 \cdbtag{ex-0111.203}{%
 A_{u v w}%
 }
 \cdbtag{ex-0111.204}{%
-\delta^{u}{}_{b} \delta^{v}{}_{c} \delta^{w}{}_{a} A_{u v w}%
+\delta^{u}\!{}_{b} \delta^{v}\!{}_{c} \delta^{w}\!{}_{a} A_{u v w}%
 }
 \cdbtag{ex-0111.205}{%
 A_{b c a}%

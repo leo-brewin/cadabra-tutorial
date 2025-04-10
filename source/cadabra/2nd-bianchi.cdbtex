@@ -1,0 +1,33 @@
+\chardef\thehashcode=\catcode`\#	 % save catcode of hash (probably 6)
+\catcode`\#=11			             % set catcode for hash to be a letter (11)
+\cdbtag{ex-99.100}{%
+v^{a}{}_{; c ; d}{}-v^{a}{}_{; d ; c} \rightarrow R^{a}{}_{b c d} v^{b}%
+}
+\cdbtag{ex-99.101}{%
+A^{a}{}_{c d e} \rightarrow v^{a}{}_{; c ; d ; e}{}-v^{a}{}_{; d ; c ; e}{}-R^{a}{}_{b c d ; e} v^{b}{}-R^{a}{}_{b c d} v^{b}{}_{; e}%
+}
+\cdbtag{ex-99.102}{%
+v^{a}{}_{; c ; d ; e} \rightarrow v^{a}{}_{; c ; e ; d}{}+R^{a}{}_{f d e} v^{f}{}_{; c}{}-R^{f}{}_{c d e} v^{a}{}_{; f}%
+}
+\cdbtag{ex-99.103}{%
+A^{a}{}_{c d e}{}+A^{a}{}_{d e c}{}+A^{a}{}_{e c d}%
+}
+\cdbtag{ex-99.104}{%
+v^{a}{}_{; c ; d ; e}{}-v^{a}{}_{; d ; c ; e}{}-R^{a}{}_{b c d ; e} v^{b}{}-R^{a}{}_{b c d} v^{b}{}_{; e}{}+v^{a}{}_{; d ; e ; c}{}-v^{a}{}_{; e ; d ; c}{}-R^{a}{}_{b d e ; c} v^{b}{}-R^{a}{}_{b d e} v^{b}{}_{; c}{}+v^{a}{}_{; e ; c ; d}{}-v^{a}{}_{; c ; e ; d}{}-R^{a}{}_{b e c ; d} v^{b}{}-R^{a}{}_{b e c} v^{b}{}_{; d}%
+}
+\cdbtag{ex-99.105}{%
+\mu_{0} v^{a}{}_{; c ; d ; e}{}-\mu_{1} v^{a}{}_{; d ; c ; e}{}-\mu_{2} R^{a}{}_{b c d ; e} v^{b}{}-\mu_{3} R^{a}{}_{b c d} v^{b}{}_{; e}{}+\mu_{4} v^{a}{}_{; d ; e ; c}{}-\mu_{5} v^{a}{}_{; e ; d ; c}{}-\mu_{6} R^{a}{}_{b d e ; c} v^{b}{}-\mu_{7} R^{a}{}_{b d e} v^{b}{}_{; c}{}+\mu_{8} v^{a}{}_{; e ; c ; d}{}-\mu_{9} v^{a}{}_{; c ; e ; d}{}-\mu_{10} R^{a}{}_{b e c ; d} v^{b}{}-\mu_{11} R^{a}{}_{b e c} v^{b}{}_{; d}%
+}
+\cdbtag{ex-99.106}{%
+\mu_{0} \left(v^{a}{}_{; c ; e ; d}{}+R^{a}{}_{f d e} v^{f}{}_{; c}{}-R^{f}{}_{c d e} v^{a}{}_{; f}\right){}+ \ldots %
+}
+\cdbtag{ex-99.107}{%
+ \ldots {}+\mu_{4} \left(v^{a}{}_{; d ; c ; e}{}+R^{a}{}_{f e c} v^{f}{}_{; d}{}-R^{f}{}_{d e c} v^{a}{}_{; f}\right){}+ \ldots %
+}
+\cdbtag{ex-99.108}{%
+ \ldots {}+\mu_{8} \left(v^{a}{}_{; e ; d ; c}{}+R^{a}{}_{f c d} v^{f}{}_{; e}{}-R^{f}{}_{e c d} v^{a}{}_{; f}\right){}+ \ldots %
+}
+\cdbtag{ex-99.109}{%
+v^{a}{}_{; b} \left(-R^{b}{}_{c d e}{}-R^{b}{}_{d e c}{}-R^{b}{}_{e c d}\right){}+v^{b} \left(-R^{a}{}_{b c d ; e}{}-R^{a}{}_{b d e ; c}{}-R^{a}{}_{b e c ; d}\right)%
+}
+\catcode`\#=\thehashcode          % restore original catcode for hash

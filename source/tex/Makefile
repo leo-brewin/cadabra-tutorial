@@ -47,6 +47,7 @@ rm-dot:
 clean:
 	@ for file in $(TARGETS); \
 	  do \
+	     rm -rf $${file}.aux; \
 	     rm -rf $${file}.out $${file}.toc $${file}.synctex.gz; \
 	     rm -rf $${file}.log $${file}.biblog $${file}.tmplog; \
 		  rm -rf $${file}.bcf $${file}.blg $${file}.run.xml; \

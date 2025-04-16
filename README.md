@@ -93,7 +93,7 @@ Most of the popular operating system have Python3 already installed. You can che
 $ python --version
 ```
 
-If that does not report version 3 or later, then you will need to manually install python. Most operating system provide native package managers (HomeBrew on macOs, apt/dnf/yum on Linux) that you can use to do the job. Otherwise, you can install Python3 using [Conda miniforge][4].
+If that does not report version 3 or later, then you will need to manually install python. Most operating systems provide native package managers (HomeBrew on macOs, apt/dnf/yum on Linux) that you can use to do the job. Otherwise, you can install Python3 using [Conda miniforge][4].
 
 You will also need version 1.7 or later of sympy. That may already be part of your python environment. You can check which version you have (if any) by running
 

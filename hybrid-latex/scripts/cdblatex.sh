@@ -76,6 +76,9 @@ fi
 
 touch $file.cdbtxt
 
+# ----------------------------------------------------------
+# bulk of the work done here
+
 cdbpreproc.py -i $file -m $name            || exit 1
 
 $Timer $CDB/cadabra2 $file"_.cdb" > $file"_.txt"   || exit 3
